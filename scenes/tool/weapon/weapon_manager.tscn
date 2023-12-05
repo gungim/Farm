@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhiwgokg7aarq"]
+
+[ext_resource type="Script" path="res://scenes/tool/weapon/weapon_manager.gd" id="1_fxrjd"]
+[ext_resource type="PackedScene" uid="uid://dsancscjhffj8" path="res://scenes/tool/weapon/axe/Axe.tscn" id="2_anr8t"]
+[ext_resource type="PackedScene" uid="uid://bdasrpfigad0e" path="res://scenes/tool/weapon/sword_big/SwordBig.tscn" id="3_s7xdt"]
+
+[node name="WeaponManager" type="Node2D"]
+script = ExtResource("1_fxrjd")
+
+[node name="Axe" parent="." instance=ExtResource("2_anr8t")]
+
+[node name="SwordBig" parent="." instance=ExtResource("3_s7xdt")]

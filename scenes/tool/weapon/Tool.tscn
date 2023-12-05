@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://8l7cdhdkuekn"]
+
+[ext_resource type="Script" path="res://scenes/tool/weapon/tool.gd" id="1_wwlk0"]
+
+[node name="Tool" type="Node2D"]
+script = ExtResource("1_wwlk0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-8, 7)
+animation = &""
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
