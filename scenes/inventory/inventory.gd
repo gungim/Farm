@@ -1,78 +1,58 @@
-extends Node
+extends Resource
 class_name Inventory
 
+signal updated_slot(index: int)
+signal slot_added(slot_index : int)
 
-signal change_open
-signal drop_item(item: InventorySlotItem)
-signal drag_item(item: InventorySlotItem)
+@export var slots: Array[Slot] = []
+@export var amount_slot: int = 40
 
-@onready var container: NinePatchRect = $MarginContainer/NinePatchRect
-@onready var slots_container: GridContainer = $MarginContainer/NinePatchRect/GridContainer
-@onready var player: Player
-@onready var selected_item: InventorySlotItem
-@onready var item_detail_container: InventoryItemDetail = $MarginContainer/NinePatchRect/ItemDetail
-
-@export var is_open: bool = false
-@export var items: Array[Item] = []
-
-var slot_item_scene = preload("res://scenes/inventory/inventory_slot_item.tscn")
-var slots: Array[InventorySlotItem] = []
-var amount: int = 40
-
-func _ready():
-	player = get_tree().get_first_node_in_group("Player")
-	slots_container.columns = 9
-	self.visible = is_open
-	_update_slots()
-	test_add_item()
-	
-
-func _update_slots():
-	for child in slots_container.get_children():
-		child.queue_free()
-	slots.clear()
-	
-	for i in amount:
-		var slot_obj = slot_item_scene.instantiate()
-		slot_obj.emit_signal("update_item")
-		slot_obj.connect("gui_input",  _on_slot_gui_input.bind(slot_obj))
+func _init():
+	for i in amount_slot:
+		var slot_obj = Slot.new();
 		slots.append(slot_obj)
-		slots_container.add_child(slot_obj)
 
-func add_item_at(item: InventorySlotItem, index: int = 0):
-	if index >= amount and index < 0:
+func set_slot(item: InventoryItem, index: int):
+	if index >= slots.size():
 		return
-	var find_first_slot_empty: int = -1;
-	if slots[index].item:
-		for i in amount:
-			if slots[i].item:
-				return
-			else:
-				find_first_slot_empty = i
-				break
-	else:
-		find_first_slot_empty = index
-	if find_first_slot_empty != -1:
-		slots[find_first_slot_empty].item = item.item
-		slots[find_first_slot_empty].emit_signal("update_item")
+	slots[index].item = item
+	updated_slot.emit(index)
 
-func _on_change_open():
-	is_open = !is_open
-	self.visible = is_open
-	player.emit_signal("can_move", !is_open)
+func set_slot_with_other_slot(item: InventoryItem, index: int):
+	if index >= slots.size():
+		return
+	slots[index].item = item
+	updated_slot.emit(index)
 
-func _on_slot_gui_input(event: InputEvent, slot_obj):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and  event.pressed:
-			item_detail_container.emit_signal("view_item_detail", slot_obj)
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				emit_signal("drag_item", slot_obj)
-			elif event.is_released():
-				emit_signal("drop_item", slot_obj)
+func get_slot_amount(index: int)->int:
+	if index >= slots.size():
+		return 0
+	return slots[index].amount
 
-# Test
-func test_add_item():
-	var slot_obj = slot_item_scene.instantiate()
-	slot_obj.item = items[0]
-	add_item_at(slot_obj, 2)
+func add(item : InventoryItem, amount : int):
+	var index_item_in_slots = -1;
+	for i in slots.size():
+		if slots[i] == null:
+			_add_slot(i)
+			index_item_in_slots = i;
+			break
+		elif slots[i].item.name == item.name:
+			index_item_in_slots = i;
+			break;
+	
+	if index_item_in_slots >=0:
+		slots[index_item_in_slots].item=item
+		slots[index_item_in_slots].amount += amount
+		updated_slot.emit(index_item_in_slots)
+
+func _add_slot(slot_index : int, emit_signal := true):
+	var slot = Slot.new()
+	slot.item = null
+	slot.amount = 0
+	slots.insert(slot_index, slot)
+	if emit_signal:
+		slot_added.emit(slot_index)
+
+
+func get_max_stack_for_item(item : InventoryItem) -> int:
+	return item.max_stack

@@ -1,15 +1,13 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dqsu2o07mbxkq"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://caqbvffnohpl"]
 
-[ext_resource type="Script" path="res://scenes/inventory/item/item.gd" id="1_3oujr"]
-[ext_resource type="Texture2D" uid="uid://ck7tfr1ywlj5v" path="res://sprite/tool/axe_icon.png" id="1_fslpt"]
+[ext_resource type="Texture2D" uid="uid://ck7tfr1ywlj5v" path="res://sprite/tool/axe_icon.png" id="1_7sh1c"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="1_f237c"]
 
 [resource]
-script = ExtResource("1_3oujr")
+script = ExtResource("1_f237c")
 id = 0
-icon = ExtResource("1_fslpt")
-weight = 0
+max_stack = 2
 name = "axe"
+icon = ExtResource("1_7sh1c")
+weight = 0.0
 properties = {}
-categories = {
-"type": "tool"
-}

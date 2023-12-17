@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c5qthjynhslhw"]
+[gd_scene load_steps=14 format=3 uid="uid://c5qthjynhslhw"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_4slol"]
 [ext_resource type="PackedScene" uid="uid://m2ib88feldcx" path="res://scenes/character/player/Player.tscn" id="1_t8u0s"]
@@ -7,9 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://1ccubohjejau" path="res://sprite/map/misc.png" id="3_d3ky2"]
 [ext_resource type="Script" path="res://scenes/world/tile_map.gd" id="3_fq5b3"]
 [ext_resource type="Script" path="res://scenes/world/farm_tile.gd" id="7_mbaal"]
-[ext_resource type="PackedScene" uid="uid://4kpvpqk534at" path="res://scenes/inventory/inventory_sys.tscn" id="8_1f3fe"]
-[ext_resource type="Resource" uid="uid://dqsu2o07mbxkq" path="res://scenes/inventory/item/axe.tres" id="9_cxox6"]
-[ext_resource type="Resource" uid="uid://ccaug1oxpv4fa" path="res://scenes/inventory/item/sword.tres" id="10_y4smn"]
+[ext_resource type="PackedScene" uid="uid://b4wpyocjendwe" path="res://scenes/inventory/inventory_sys.tscn" id="8_0gjac"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a270r"]
 texture = ExtResource("2_3et7a")
@@ -576,25 +574,6 @@ script = ExtResource("7_mbaal")
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_t8u0s")]
 position = Vector2(173, 83)
 
-[node name="UI" type="Node" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="inventory_sys" parent="UI" instance=ExtResource("8_1f3fe")]
-y_sort_enabled = true
-
-[node name="Inventory" parent="UI/inventory_sys" index="0"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="hot_bar" parent="UI/inventory_sys" index="1"]
-z_as_relative = false
-offset_left = -26.0
-offset_top = -52.0
-offset_right = 26.0
-items = Array[Resource("res://scenes/inventory/item/item.gd")]([ExtResource("9_cxox6"), ExtResource("10_y4smn")])
-
-[editable path="UI/inventory_sys"]
+[node name="InventorySys" parent="CanvasLayer" instance=ExtResource("8_0gjac")]

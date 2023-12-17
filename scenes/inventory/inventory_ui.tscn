@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://crxgnlr5pwebb"]
+
+[ext_resource type="Script" path="res://scenes/inventory/inventory_ui.gd" id="1_qfse4"]
+[ext_resource type="Resource" uid="uid://caqbvffnohpl" path="res://scenes/inventory/item/axe.tres" id="2_hexrb"]
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchor_left = 0.167
+anchor_top = 0.21
+anchor_right = 0.813
+anchor_bottom = 0.752
+offset_left = -0.384018
+offset_top = -0.0800018
+offset_right = 0.42395
+offset_bottom = -0.296021
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_qfse4")
+item = ExtResource("2_hexrb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Inventory
+"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+columns = 13

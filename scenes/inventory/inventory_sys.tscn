@@ -1,32 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://4kpvpqk534at"]
+[gd_scene load_steps=4 format=3 uid="uid://b4wpyocjendwe"]
 
-[ext_resource type="Script" path="res://scenes/inventory/inventory_sys.gd" id="1_5xv25"]
-[ext_resource type="Resource" uid="uid://8sfb8g5do660" path="res://scenes/inventory/database.tres" id="2_1j5hx"]
-[ext_resource type="PackedScene" uid="uid://byqhr4x0hsswx" path="res://scenes/inventory/inventory.tscn" id="3_v5ukw"]
-[ext_resource type="PackedScene" uid="uid://bsntxtw8yqwu1" path="res://scenes/inventory/hot_bar.tscn" id="4_ej0gs"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_sys.gd" id="1_rbv83"]
+[ext_resource type="Resource" uid="uid://cyohttplkvs51" path="res://scenes/inventory/inventory.tres" id="2_4wxvh"]
+[ext_resource type="PackedScene" uid="uid://crxgnlr5pwebb" path="res://scenes/inventory/inventory_ui.tscn" id="2_jcuye"]
 
-[node name="InventorySys" type="Control" node_paths=PackedStringArray("hot_bar", "inventory") groups=["Inventory"]]
+[node name="InventorySys" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_5xv25")
-database = ExtResource("2_1j5hx")
-hot_bar = NodePath("hot_bar")
-inventory = NodePath("Inventory")
+script = ExtResource("1_rbv83")
+inventory = ExtResource("2_4wxvh")
 
-[node name="Inventory" parent="." instance=ExtResource("3_v5ukw")]
+[node name="InventoryUI" parent="." instance=ExtResource("2_jcuye")]
 layout_mode = 1
-
-[node name="hot_bar" parent="." instance=ExtResource("4_ej0gs")]
-custom_minimum_size = Vector2(52, 52)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
