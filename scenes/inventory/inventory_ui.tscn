@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://crxgnlr5pwebb"]
+[gd_scene load_steps=2 format=3 uid="uid://crxgnlr5pwebb"]
 
 [ext_resource type="Script" path="res://scenes/inventory/inventory_ui.gd" id="1_qfse4"]
-[ext_resource type="Resource" uid="uid://caqbvffnohpl" path="res://scenes/inventory/item/axe.tres" id="2_hexrb"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -18,7 +17,6 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_qfse4")
-item = ExtResource("2_hexrb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

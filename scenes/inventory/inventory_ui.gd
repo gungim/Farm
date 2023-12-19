@@ -6,7 +6,7 @@ class_name InventoryUI
 @onready var container: GridContainer = $VBoxContainer/MarginContainer/ScrollContainer/GridContainer
 
 @export var is_open: bool = false
-@export var item: InventoryItem
+
 
 var inventory: Inventory
 var slots: Array[SlotUI] = []
@@ -14,6 +14,7 @@ var slots: Array[SlotUI] = []
 func _ready():
 	inventory = owner.inventory
 	setup_slots()
+	setup_inventory()
 	visible = is_open
 
 func setup_inventory():
@@ -37,11 +38,6 @@ func _input(event):
 		if event.is_action_pressed("tab") and event.pressed:
 			is_open = !is_open
 			visible = is_open
-		if event.is_action_pressed("test"):
-			test()
 
 func _on_updated_slot(index):
 	slots[index].update_info_slot(inventory.slots[index])
-
-func test():
-	inventory.add(item, 1)

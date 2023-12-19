@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4wpyocjendwe"]
+[gd_scene load_steps=5 format=3 uid="uid://b4wpyocjendwe"]
 
 [ext_resource type="Script" path="res://scenes/inventory/inventory_sys.gd" id="1_rbv83"]
-[ext_resource type="Resource" uid="uid://cyohttplkvs51" path="res://scenes/inventory/inventory.tres" id="2_4wxvh"]
+[ext_resource type="Resource" uid="uid://bqmtwlv4wv3os" path="res://scenes/inventory/inventory.tres" id="2_4wxvh"]
 [ext_resource type="PackedScene" uid="uid://crxgnlr5pwebb" path="res://scenes/inventory/inventory_ui.tscn" id="2_jcuye"]
+[ext_resource type="Script" path="res://scenes/inventory/handler_ui.gd" id="4_wpwcg"]
 
 [node name="InventorySys" type="Control"]
 layout_mode = 3
@@ -16,3 +17,9 @@ inventory = ExtResource("2_4wxvh")
 
 [node name="InventoryUI" parent="." instance=ExtResource("2_jcuye")]
 layout_mode = 1
+
+[node name="HandlerUI" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_wpwcg")

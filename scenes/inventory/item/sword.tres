@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://rv633fxgl4l7"]
+
+[ext_resource type="Texture2D" uid="uid://de2d0d7jpuqfo" path="res://sprite/tool/sword_icon.png" id="1_4vggw"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="1_8680c"]
+
+[resource]
+script = ExtResource("1_8680c")
+id = 0
+max_stack = 1
+name = "sword"
+icon = ExtResource("1_4vggw")
+weight = 10.0
+properties = {}

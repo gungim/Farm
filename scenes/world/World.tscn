@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c5qthjynhslhw"]
+[gd_scene load_steps=16 format=3 uid="uid://c5qthjynhslhw"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_4slol"]
 [ext_resource type="PackedScene" uid="uid://m2ib88feldcx" path="res://scenes/character/player/Player.tscn" id="1_t8u0s"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://scenes/world/tile_map.gd" id="3_fq5b3"]
 [ext_resource type="Script" path="res://scenes/world/farm_tile.gd" id="7_mbaal"]
 [ext_resource type="PackedScene" uid="uid://b4wpyocjendwe" path="res://scenes/inventory/inventory_sys.tscn" id="8_0gjac"]
+[ext_resource type="Resource" uid="uid://caqbvffnohpl" path="res://scenes/inventory/item/axe.tres" id="9_264m3"]
+[ext_resource type="Resource" uid="uid://rv633fxgl4l7" path="res://scenes/inventory/item/sword.tres" id="10_4b43t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a270r"]
 texture = ExtResource("2_3et7a")
@@ -577,3 +579,5 @@ position = Vector2(173, 83)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InventorySys" parent="CanvasLayer" instance=ExtResource("8_0gjac")]
+item = ExtResource("9_264m3")
+item2 = ExtResource("10_4b43t")
