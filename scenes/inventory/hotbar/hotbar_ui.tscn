@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3qx1ngn7jsv8"]
+
+[ext_resource type="Script" path="res://scenes/inventory/hotbar/hotbar_ui.gd" id="1_3dg5y"]
+[ext_resource type="PackedScene" uid="uid://ctsafsvkkxj8o" path="res://scenes/inventory/slot_ui.tscn" id="2_3awl6"]
+
+[node name="HotbarUI" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+script = ExtResource("1_3dg5y")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -54.0
+offset_top = -52.0
+offset_right = 54.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="SlotUI" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_3awl6")]
+layout_mode = 2
+
+[node name="SlotUI2" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_3awl6")]
+layout_mode = 2

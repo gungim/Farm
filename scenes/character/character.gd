@@ -1,9 +1,8 @@
 extends CharacterBody2D
 class_name Character
 
-signal can_move(value: bool)
 var FRICTION = 0.15
-var is_can_move: bool = true
+var can_move: bool = true
 
 @export var MAX_SPEED = 100
 @export var ACCELERATION = 40
@@ -18,13 +17,12 @@ var hp: int = 0
 func _ready():
 	hp = HP
 
+
 func move():
-	if is_can_move:
+	if can_move:
 		mov_direction = mov_direction.normalized()
 		velocity += mov_direction * ACCELERATION
 		velocity = velocity.limit_length(MAX_SPEED) 
 		velocity = lerp(velocity, Vector2.ZERO, FRICTION)
 		move_and_slide()
 
-func _on_can_move(value: bool):
-	is_can_move = value

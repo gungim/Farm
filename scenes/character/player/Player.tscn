@@ -1,53 +1,94 @@
-[gd_scene load_steps=21 format=3 uid="uid://m2ib88feldcx"]
+[gd_scene load_steps=28 format=3 uid="uid://m2ib88feldcx"]
 
 [ext_resource type="PackedScene" uid="uid://djof5io4wy5s5" path="res://scenes/character/Character.tscn" id="1_j08dx"]
 [ext_resource type="Script" path="res://scenes/character/player/player.gd" id="2_50726"]
-[ext_resource type="Texture2D" uid="uid://do1ftmdbxr5hp" path="res://sprite/body.png" id="2_lk2cm"]
+[ext_resource type="Texture2D" uid="uid://cr04120uh51dw" path="res://sprite/character/farm.png" id="3_flg6l"]
 [ext_resource type="PackedScene" uid="uid://bhiwgokg7aarq" path="res://scenes/tool/weapon/weapon_manager.tscn" id="3_ox6ty"]
 [ext_resource type="Script" path="res://scenes/character/player/player_fsm.gd" id="4_8v4u7"]
+[ext_resource type="Texture2D" uid="uid://do1ftmdbxr5hp" path="res://sprite/character/body.png" id="4_ctard"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vhuvf"]
 radius = 4.0
 height = 16.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_y221m"]
+atlas = ExtResource("3_flg6l")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81fkq"]
+atlas = ExtResource("3_flg6l")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7lj2"]
+atlas = ExtResource("3_flg6l")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kkc8"]
+atlas = ExtResource("3_flg6l")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a80p3"]
+atlas = ExtResource("3_flg6l")
+region = Rect2(128, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_gge4w"]
-atlas = ExtResource("2_lk2cm")
+atlas = ExtResource("4_ctard")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_njahy"]
-atlas = ExtResource("2_lk2cm")
+atlas = ExtResource("4_ctard")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eoymr"]
-atlas = ExtResource("2_lk2cm")
+atlas = ExtResource("4_ctard")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7jviu"]
-atlas = ExtResource("2_lk2cm")
+atlas = ExtResource("4_ctard")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ratj"]
-atlas = ExtResource("2_lk2cm")
+atlas = ExtResource("4_ctard")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvum2"]
-atlas = ExtResource("2_lk2cm")
+atlas = ExtResource("4_ctard")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n61aa"]
-atlas = ExtResource("2_lk2cm")
+atlas = ExtResource("4_ctard")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3c0ly"]
-atlas = ExtResource("2_lk2cm")
+atlas = ExtResource("4_ctard")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v0lq5"]
-atlas = ExtResource("2_lk2cm")
+atlas = ExtResource("4_ctard")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2x8gn"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y221m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81fkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7lj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kkc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a80p3")
+}],
+"loop": true,
+"name": &"Farm",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gge4w")
@@ -200,8 +241,37 @@ tracks/2/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_4nh6c"]
+resource_name = "Farm"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Farm"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uhg31"]
 _data = {
+"Farm": SubResource("Animation_4nh6c"),
 "Idle": SubResource("Animation_puooy"),
 "Move": SubResource("Animation_ipxgc"),
 "RESET": SubResource("Animation_q7xeh")
@@ -229,5 +299,3 @@ libraries = {
 [node name="WeaponManager" parent="." index="4" instance=ExtResource("3_ox6ty")]
 visible = false
 rotation = 3.05433
-
-[connection signal="change_is_farming" from="." to="." method="_on_change_is_farming"]

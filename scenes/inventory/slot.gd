@@ -3,4 +3,6 @@ class_name Slot
 
 @export var amount: int = 0
 @export var item: InventoryItem
-@export var max_stack: int = 999
+
+# Only using from hotbar, use to bind inventory index
+@export var hotbar_index: int = -1

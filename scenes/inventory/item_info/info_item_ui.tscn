@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxqta55ejk4nj"]
+
+[ext_resource type="Script" path="res://scenes/inventory/item_info/info_item_ui.gd" id="1_04ked"]
+[ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="2_f1s4l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gq0nl"]
+font = ExtResource("2_f1s4l")
+
+[sub_resource type="LabelSettings" id="LabelSettings_jc13x"]
+font = ExtResource("2_f1s4l")
+
+[node name="InforItem" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_04ked")
+
+[node name="KeyLabel" type="Label" parent="."]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_gq0nl")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+
+[node name="ValueLabel" type="Label" parent="MarginContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_jc13x")
+autowrap_mode = 3

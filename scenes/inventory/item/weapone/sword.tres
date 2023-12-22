@@ -10,4 +10,7 @@ max_stack = 1
 name = "sword"
 icon = ExtResource("1_4vggw")
 weight = 10.0
-properties = {}
+properties = {
+"tool": true
+}
+description = ""

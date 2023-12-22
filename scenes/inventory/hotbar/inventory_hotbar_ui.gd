@@ -1,14 +1,15 @@
+# Using to display hotbar in inventory
 extends Control
-class_name InventoryUI
+class_name InventoryHotbarUI
 
+@onready var container: HBoxContainer = $MarginContainer/HBoxContainer
 @onready var slot_scene = preload("res://scenes/inventory/slot_ui.tscn")
-
-@onready var container: GridContainer = $MarginContainer/ScrollContainer/GridContainer
-
 @onready var inventory: Inventory
 
 var slots: Array[SlotUI] = []
 
+func get_slot_index(output: int)->int:
+	return -1
 
 func _ready():
 	inventory = get_tree().get_first_node_in_group("InventorySys").inventory
@@ -22,16 +23,17 @@ func setup_slots():
 	for child in container.get_children():
 		child.queue_free()
 	slots.clear()
-	for i in inventory.amount_slot:
+	for i in  inventory.amount_hotbar:
 		var slot_obj = slot_scene.instantiate()
-		slot_obj.gui_input.connect(_on_slot_gui_input.bind(i))
+		slot_obj.gui_input.connect(_on_slot_gui_input.bind(inventory.amount_slot + i))
 		slots.append(slot_obj)
 		container.add_child(slots[i])
 		slot_obj.update_info_slot(null)
 
-func _on_updated_slot(slot_index: int):
-	if slot_index < inventory.amount_slot:
-		var index = slot_index if slot_index < inventory.amount_slot else slot_index - inventory.amount_slot - 1
+# chỉ chấp nhận slot_index >= inventory.amount_slot
+func _on_updated_slot(slot_index):
+	if slot_index >= inventory.amount_slot:
+		var index = slot_index if slot_index < inventory.amount_slot else slot_index - inventory.amount_slot
 		slots[index].update_info_slot(inventory.slots[slot_index])
 
 func _on_slot_gui_input(event: InputEvent, index):

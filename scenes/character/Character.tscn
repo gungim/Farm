@@ -16,5 +16,3 @@ script = ExtResource("2_bajal")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
-
-[connection signal="can_move" from="." to="." method="_on_can_move"]

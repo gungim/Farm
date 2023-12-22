@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4wpyocjendwe"]
+[gd_scene load_steps=8 format=3 uid="uid://b4wpyocjendwe"]
 
 [ext_resource type="Script" path="res://scenes/inventory/inventory_sys.gd" id="1_rbv83"]
 [ext_resource type="Resource" uid="uid://bqmtwlv4wv3os" path="res://scenes/inventory/inventory.tres" id="2_4wxvh"]
-[ext_resource type="PackedScene" uid="uid://crxgnlr5pwebb" path="res://scenes/inventory/inventory_ui.tscn" id="2_jcuye"]
-[ext_resource type="Script" path="res://scenes/inventory/handler_ui.gd" id="4_wpwcg"]
+[ext_resource type="PackedScene" uid="uid://crxgnlr5pwebb" path="res://scenes/inventory/player_inventory.tscn" id="2_jcuye"]
+[ext_resource type="Resource" uid="uid://caqbvffnohpl" path="res://scenes/inventory/item/weapone/axe.tres" id="3_l2bqp"]
+[ext_resource type="PackedScene" uid="uid://1ldwvhqrk5jb" path="res://scenes/inventory/handler_ui.tscn" id="4_gnhkf"]
+[ext_resource type="Resource" uid="uid://rv633fxgl4l7" path="res://scenes/inventory/item/weapone/sword.tres" id="4_yygpr"]
+[ext_resource type="PackedScene" uid="uid://c3qx1ngn7jsv8" path="res://scenes/inventory/hotbar/hotbar_ui.tscn" id="8_1dec4"]
 
-[node name="InventorySys" type="Control"]
+[node name="InventorySys" type="Control" groups=["InventorySys"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,12 +17,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rbv83")
 inventory = ExtResource("2_4wxvh")
+items = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource("3_l2bqp"), ExtResource("4_yygpr")])
 
-[node name="InventoryUI" parent="." instance=ExtResource("2_jcuye")]
+[node name="PlayerInventory" parent="." instance=ExtResource("2_jcuye")]
 layout_mode = 1
 
-[node name="HandlerUI" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("4_wpwcg")
+[node name="HandlerUI" parent="." instance=ExtResource("4_gnhkf")]
+layout_mode = 1
+
+[node name="HotbarUI" parent="." instance=ExtResource("8_1dec4")]
+layout_mode = 1

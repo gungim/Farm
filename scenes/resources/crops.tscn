@@ -1,0 +1,110 @@
+[gd_scene load_steps=14 format=3 uid="uid://p1ykhh521wfy"]
+
+[ext_resource type="Script" path="res://scenes/resources/crops.gd" id="1_0vhn0"]
+[ext_resource type="Texture2D" uid="uid://daomwwxlevxd8" path="res://sprite/crops/tomato.png" id="2_dbjw7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx7og"]
+atlas = ExtResource("2_dbjw7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lm5y"]
+atlas = ExtResource("2_dbjw7")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25lgw"]
+atlas = ExtResource("2_dbjw7")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p67tg"]
+atlas = ExtResource("2_dbjw7")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuh1j"]
+atlas = ExtResource("2_dbjw7")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hj0d8"]
+atlas = ExtResource("2_dbjw7")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nrg0"]
+atlas = ExtResource("2_dbjw7")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcgcp"]
+atlas = ExtResource("2_dbjw7")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4chcd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx7og")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lm5y")
+}],
+"loop": true,
+"name": &"1",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25lgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p67tg")
+}],
+"loop": true,
+"name": &"2",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuh1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hj0d8")
+}],
+"loop": true,
+"name": &"3",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nrg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcgcp")
+}],
+"loop": true,
+"name": &"4",
+"speed": 1.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yveiq"]
+radius = 4.0
+height = 12.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_xjsxc"]
+font_size = 12
+
+[node name="Crops" type="StaticBody2D"]
+script = ExtResource("1_0vhn0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4chcd")
+animation = &"3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_yveiq")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -16.0
+offset_top = -24.0
+offset_right = 15.0
+offset_bottom = -4.0
+text = "99:99"
+label_settings = SubResource("LabelSettings_xjsxc")
+
+[node name="Timer" type="Timer" parent="."]

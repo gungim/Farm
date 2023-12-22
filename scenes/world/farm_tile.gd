@@ -7,12 +7,9 @@ var dic_of_land:Dictionary = {}
 var tile: Vector2i
 
 func _ready():
-	pass
+	FarmEvents.connect("on_hoe", _on_hoe)
 
-func _input(event):
-	pass
-
-func hoe():
+func _on_hoe():
 	tile = local_to_map(get_global_mouse_position())
 	var str_tile = str(tile)
 	var tile_in_dic = dic_of_land.get(str_tile)

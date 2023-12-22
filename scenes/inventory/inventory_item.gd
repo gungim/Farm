@@ -31,5 +31,7 @@ class_name InventoryItem
 ## Item custom properties
 @export var properties : Dictionary
 
+@export var description : String
+
 ## Id represents none item (Used in networked scripts)
 const NONE = -1

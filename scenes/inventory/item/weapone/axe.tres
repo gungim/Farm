@@ -10,4 +10,7 @@ max_stack = 2
 name = "axe"
 icon = ExtResource("1_7sh1c")
 weight = 0.0
-properties = {}
+properties = {
+"tool": true
+}
+description = "Axe can help you plow the soil to plant trees"
