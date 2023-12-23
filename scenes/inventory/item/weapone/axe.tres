@@ -1,16 +1,15 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://caqbvffnohpl"]
 
-[ext_resource type="Texture2D" uid="uid://ck7tfr1ywlj5v" path="res://sprite/tool/axe_icon.png" id="1_7sh1c"]
-[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="1_f237c"]
+[ext_resource type="Texture2D" uid="uid://ck7tfr1ywlj5v" path="res://sprite/tool/axe_icon.png" id="1_xmw08"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_cc8b4"]
 
 [resource]
-script = ExtResource("1_f237c")
-id = 0
+script = ExtResource("2_cc8b4")
 max_stack = 2
 name = "axe"
-icon = ExtResource("1_7sh1c")
+icon = ExtResource("1_xmw08")
 weight = 0.0
 properties = {
-"tool": true
+"type": "weapon"
 }
 description = "Axe can help you plow the soil to plant trees"

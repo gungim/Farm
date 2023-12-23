@@ -16,7 +16,6 @@ func setup():
 		var slot_obj = Slot.new();
 		slots.append(slot_obj)
 
-
 func set_slot(item: InventoryItem, index: int):
 	if index >= slots.size():
 		return
@@ -48,6 +47,16 @@ func add_item_at(item: InventoryItem, amount: int, slot_index: int):
 		return
 	slots[slot_index].item = item
 	slots[slot_index].amount = amount
+	updated_slot.emit(slot_index)
+
+func update_amount_slot(slot: Slot, change_amount: int):
+	var slot_index =  slots.find(slot)
+	if slot_index >= slots.size() and slot_index < 0:
+		return
+	slots[slot_index] = slot
+	slots[slot_index].amount = slots[slot_index].amount + change_amount
+	if slots[slot_index].amount <= 0:
+		slots[slot_index].item = null
 	updated_slot.emit(slot_index)
 
 func get_item_in_slot(slot_index:int)->InventoryItem:

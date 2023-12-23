@@ -10,10 +10,7 @@ signal on_item_unequipped()
 signal on_item_select(item)
 
 # Signal called when open/close inventory
-signal on_open_inventory
-
-# Signal called when item used(on hotbar)
-signal on_use_item(item)
+signal on_open_inventory(value)
 
 signal on_change_player_can_move(value)
 
@@ -32,8 +29,6 @@ func _ready():
 	on_item_unequipped.connect(_on_item_unequipped)
 	on_item_select.connect(_on_item_select)
 	on_open_inventory.connect(_on_open_inventory)
-	on_use_item.connect(_on_use_item)
-
 
 func _on_item_equipped(item: Slot, index: int):
 	slot = item
@@ -48,10 +43,6 @@ func _on_item_unequipped():
 func _on_item_select(item: Slot):
 	slot = item
 
-func _on_open_inventory():
-	is_open_inventory = !is_open_inventory
+func _on_open_inventory(value: bool):
+	is_open_inventory = value
 	player.cancel_all_action()
-
-func _on_use_item(item: InventoryItem):
-	if item:
-		print_debug(item.name)

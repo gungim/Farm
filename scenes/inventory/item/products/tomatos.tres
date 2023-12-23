@@ -1,14 +1,16 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://bs5ywmw61bvrp"]
 
-[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="1_0hb55"]
-[ext_resource type="Texture2D" uid="uid://cw7diubnbae8c" path="res://sprite/crops/tomato_icon.png" id="1_1jlcj"]
+[ext_resource type="Texture2D" uid="uid://cw7diubnbae8c" path="res://sprite/crops/tomato_icon.png" id="1_62obh"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_p4f1t"]
 
 [resource]
-script = ExtResource("1_0hb55")
-id = 0
+script = ExtResource("2_p4f1t")
 max_stack = 999
 name = "tomato"
-icon = ExtResource("1_1jlcj")
+icon = ExtResource("1_62obh")
 weight = 1.0
-properties = {}
-description = ""
+properties = {
+"increment_hp": 10,
+"type": "food"
+}
+description = "Là sản phẩm của cây cà chua, ăn cà chua để tăng sinh lực"

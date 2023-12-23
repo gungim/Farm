@@ -17,8 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+PlayerEvents="*res://script/player_events.gd"
 InventoryEvents="*res://script/inventory_events.gd"
 FarmEvents="*res://script/farm_events.gd"
+UiEvents="*res://script/ui_events.gd"
 
 [editor_plugins]
 

@@ -14,8 +14,6 @@ class_name InventoryItem
 ## 	@export var satisfies_hunger = 12
 ## [/codeblock]
 
-@export var id := 0
-
 ## Maximum amount of this item within an [Inventory] slot
 @export var max_stack := 0
 
@@ -29,9 +27,9 @@ class_name InventoryItem
 @export var weight : float
 
 ## Item custom properties
-@export var properties : Dictionary
+## type of item: tool, weapon, seed, food
+@export var properties : Dictionary = {
+	"type":"tool"
+}
 
 @export var description : String
-
-## Id represents none item (Used in networked scripts)
-const NONE = -1

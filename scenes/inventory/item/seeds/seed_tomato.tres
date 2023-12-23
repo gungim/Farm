@@ -5,7 +5,6 @@
 
 [resource]
 script = ExtResource("2_p1chd")
-id = 0
 max_stack = 999
 name = "seed_tomato"
 icon = ExtResource("1_4m841")

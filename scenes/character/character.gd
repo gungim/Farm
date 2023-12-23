@@ -5,18 +5,14 @@ var FRICTION = 0.15
 var can_move: bool = true
 
 @export var MAX_SPEED = 100
+@export var MAX_HP = 100
 @export var ACCELERATION = 40
 @export var HP: int = 10
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
 var mov_direction: Vector2  = Vector2.ZERO
-var hp: int = 0
 @onready var animated: AnimatedSprite2D = $AnimatedSprite2D
 @onready var fsm: FSM = $FiniteStateMachine
-
-func _ready():
-	hp = HP
-
 
 func move():
 	if can_move:
@@ -26,3 +22,7 @@ func move():
 		velocity = lerp(velocity, Vector2.ZERO, FRICTION)
 		move_and_slide()
 
+func change_hp(value: int):
+	HP = value
+	if HP >= MAX_HP:
+		HP = MAX_HP

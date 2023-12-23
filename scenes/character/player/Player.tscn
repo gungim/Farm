@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://m2ib88feldcx"]
+[gd_scene load_steps=33 format=3 uid="uid://m2ib88feldcx"]
 
 [ext_resource type="PackedScene" uid="uid://djof5io4wy5s5" path="res://scenes/character/Character.tscn" id="1_j08dx"]
 [ext_resource type="Script" path="res://scenes/character/player/player.gd" id="2_50726"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bhiwgokg7aarq" path="res://scenes/tool/weapon/weapon_manager.tscn" id="3_ox6ty"]
 [ext_resource type="Script" path="res://scenes/character/player/player_fsm.gd" id="4_8v4u7"]
 [ext_resource type="Texture2D" uid="uid://do1ftmdbxr5hp" path="res://sprite/character/body.png" id="4_ctard"]
+[ext_resource type="Script" path="res://scenes/character/player/equipment.gd" id="7_p4s8h"]
+[ext_resource type="Texture2D" uid="uid://casbvr8o848ji" path="res://sprite/crops/seed_tomato_icon.png" id="8_xmf7b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vhuvf"]
 radius = 4.0
@@ -132,6 +134,34 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_4nh6c"]
+resource_name = "Farm"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Farm"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 0]
+}
+
 [sub_resource type="Animation" id="Animation_puooy"]
 resource_name = "Idle"
 length = 0.4
@@ -241,40 +271,50 @@ tracks/2/keys = {
 "values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_4nh6c"]
-resource_name = "Farm"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Farm"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uhg31"]
 _data = {
 "Farm": SubResource("Animation_4nh6c"),
 "Idle": SubResource("Animation_puooy"),
 "Move": SubResource("Animation_ipxgc"),
 "RESET": SubResource("Animation_q7xeh")
+}
+
+[sub_resource type="Animation" id="Animation_u3is3"]
+resource_name = "Use"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-8, -20), Vector2(-8, -22)]
+}
+
+[sub_resource type="Animation" id="Animation_gb5ul"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-8, -20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_prmue"]
+_data = {
+"RESET": SubResource("Animation_gb5ul"),
+"Use": SubResource("Animation_u3is3")
 }
 
 [node name="Player" instance=ExtResource("1_j08dx")]
@@ -299,3 +339,19 @@ libraries = {
 [node name="WeaponManager" parent="." index="4" instance=ExtResource("3_ox6ty")]
 visible = false
 rotation = 3.05433
+
+[node name="Equipment" type="Node2D" parent="." index="5"]
+script = ExtResource("7_p4s8h")
+
+[node name="TextureRect" type="TextureRect" parent="Equipment" index="0"]
+custom_minimum_size = Vector2(16, 16)
+offset_left = -8.0
+offset_top = -20.0
+offset_right = 8.0
+offset_bottom = -4.0
+texture = ExtResource("8_xmf7b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Equipment" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_prmue")
+}

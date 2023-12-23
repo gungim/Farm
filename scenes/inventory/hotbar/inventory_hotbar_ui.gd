@@ -8,7 +8,7 @@ class_name InventoryHotbarUI
 
 var slots: Array[SlotUI] = []
 
-func get_slot_index(output: int)->int:
+func get_slot_index(_output: int)->int:
 	return -1
 
 func _ready():

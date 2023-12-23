@@ -5,9 +5,12 @@ var target: Vector2 = Vector2.ZERO
 var can_farm: bool = false
 
 @onready var weapon_manager: WeaponManager = $WeaponManager
+@onready var equipment: Equipment = $Equipment
 
 func _ready():
 	InventoryEvents.connect("on_change_player_can_move", _on_change_player_can_move)
+	PlayerEvents.connect("on_use_item", _on_use_item)
+	PlayerEvents.connect("on_hold_item", _on_hold_item)
 
 func _input(event):
 	if event.is_action_pressed("mouse_left"):
@@ -42,3 +45,41 @@ func change_is_farming(value):
 func _on_change_player_can_move(value: bool):
 	can_move = value
 
+func hold_item(_slot: Slot):
+	pass
+
+func eat_food(slot: Slot):
+	var properties = slot.item.properties
+	change_hp(properties.increment_hp)
+	UiEvents.emit_signal("update_hp_label", HP)
+#	InventoryEvents.emit_signal()
+
+func _on_use_item(slot: Slot):
+	if slot and slot.item:
+		var properties = slot.item.properties
+		match properties.type:
+			'tool':
+				pass
+			'food':
+				eat_food(slot)
+			'seed':
+				equipment.update_item(slot)
+			'weapon':
+				pass
+	else:
+		equipment.update_item(null)
+
+func _on_hold_item(slot: Slot):
+	if slot and slot.item:
+		var properties = slot.item.properties
+		match properties.type:
+			'tool':
+				pass
+			'food':
+				equipment.update_item(slot)
+			'seed':
+				equipment.update_item(slot)
+			'weapon':
+				pass
+	else:
+		equipment.update_item(null)
