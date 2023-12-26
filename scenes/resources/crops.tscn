@@ -83,28 +83,45 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yveiq"]
-radius = 4.0
-height = 12.0
+radius = 6.0
+height = 16.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_xjsxc"]
 font_size = 12
 
-[node name="Crops" type="StaticBody2D"]
+[node name="Crops" type="Area2D"]
+light_mask = 2
+visibility_layer = 4
+position = Vector2(40, 36)
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_0vhn0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4chcd")
-animation = &"3"
+animation = &"1"
+autoplay = "1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_yveiq")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -16.0
-offset_top = -24.0
-offset_right = 15.0
-offset_bottom = -4.0
-text = "99:99"
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_top = -31.0
+offset_right = 24.0
+offset_bottom = -11.0
+grow_horizontal = 2
+text = "00:00:00"
 label_settings = SubResource("LabelSettings_xjsxc")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="."]
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

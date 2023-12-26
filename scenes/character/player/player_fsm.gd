@@ -7,7 +7,6 @@ func _init():
 	_add_state("farming")
 
 func _ready():
-	animation_player = owner.get_node("AnimationPlayer")
 	set_state(states.move)
 
 func _state_logic(_delta: float)->void:

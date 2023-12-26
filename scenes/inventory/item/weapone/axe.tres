@@ -10,6 +10,6 @@ name = "axe"
 icon = ExtResource("1_xmw08")
 weight = 0.0
 properties = {
-"type": "weapon"
+"type": "farm_tool"
 }
 description = "Axe can help you plow the soil to plant trees"

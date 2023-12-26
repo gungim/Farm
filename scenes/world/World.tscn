@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://scenes/world/tile_map.gd" id="3_fq5b3"]
 [ext_resource type="Script" path="res://scenes/world/farm_tile.gd" id="7_mbaal"]
 [ext_resource type="PackedScene" uid="uid://b4wpyocjendwe" path="res://scenes/inventory/inventory_sys.tscn" id="8_0gjac"]
-[ext_resource type="PackedScene" uid="uid://d4kuh6e4x0md1" path="res://scenes/world/player_energy.tscn" id="9_hc3hb"]
+[ext_resource type="PackedScene" uid="uid://d4kuh6e4x0md1" path="res://scenes/ui/player_energy.tscn" id="9_hc3hb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a270r"]
 texture = ExtResource("2_3et7a")
@@ -545,7 +545,7 @@ sources/0 = SubResource("TileSetAtlasSource_3yyt5")
 [node name="World" type="Node2D"]
 script = ExtResource("1_4slol")
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="WorldTileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_lwh5n")
 format = 2
 layer_0/name = "BG"

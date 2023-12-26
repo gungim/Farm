@@ -1,5 +1,8 @@
 extends Node
 
+signal on_connect_inventory(inven)
+signal on_update_slot(slot)
+
 # Sinal called when item equipped
 signal on_item_equipped(item, index)
 
@@ -22,6 +25,7 @@ var slot_index: int = -1
 var slot: Slot  = null
 var equipped: bool = false
 var player: Player
+var inventory: Inventory
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
@@ -29,6 +33,8 @@ func _ready():
 	on_item_unequipped.connect(_on_item_unequipped)
 	on_item_select.connect(_on_item_select)
 	on_open_inventory.connect(_on_open_inventory)
+	on_connect_inventory.connect(_on_connect_inventory)
+	on_update_slot.connect(_on_update_slot)
 
 func _on_item_equipped(item: Slot, index: int):
 	slot = item
@@ -46,3 +52,12 @@ func _on_item_select(item: Slot):
 func _on_open_inventory(value: bool):
 	is_open_inventory = value
 	player.cancel_all_action()
+
+func _on_connect_inventory(inven):
+	inventory = inven
+	
+func _on_add_item(item: InventoryItem):
+	inventory.add_item(item)
+
+func _on_update_slot(item: Slot):
+	inventory.update_slot(item)

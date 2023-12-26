@@ -21,8 +21,3 @@ func move():
 		velocity = velocity.limit_length(MAX_SPEED) 
 		velocity = lerp(velocity, Vector2.ZERO, FRICTION)
 		move_and_slide()
-
-func change_hp(value: int):
-	HP = value
-	if HP >= MAX_HP:
-		HP = MAX_HP

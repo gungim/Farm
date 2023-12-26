@@ -7,6 +7,8 @@ class_name InventorySys
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	inventory.setup()
+	if inventory:
+		InventoryEvents.emit_signal("on_connect_inventory", inventory)
 	hotbar_ui.setup_slots()
 	add_default_item()
 

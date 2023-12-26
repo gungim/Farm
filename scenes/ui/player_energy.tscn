@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d4kuh6e4x0md1"]
 
-[ext_resource type="Script" path="res://scenes/world/player_energy.gd" id="1_oo2b8"]
+[ext_resource type="Script" path="res://scenes/ui/player_energy.gd" id="1_oo2b8"]
 [ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="2_h7vaf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_28fgi"]

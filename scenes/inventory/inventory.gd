@@ -49,12 +49,12 @@ func add_item_at(item: InventoryItem, amount: int, slot_index: int):
 	slots[slot_index].amount = amount
 	updated_slot.emit(slot_index)
 
-func update_amount_slot(slot: Slot, change_amount: int):
+func update_slot(slot: Slot):
+	print_debug(slot.amount)
 	var slot_index =  slots.find(slot)
 	if slot_index >= slots.size() and slot_index < 0:
 		return
 	slots[slot_index] = slot
-	slots[slot_index].amount = slots[slot_index].amount + change_amount
 	if slots[slot_index].amount <= 0:
 		slots[slot_index].item = null
 	updated_slot.emit(slot_index)
