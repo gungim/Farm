@@ -79,7 +79,7 @@ func _on_plant(slot: Slot):
 				var start_time = Time.get_unix_time_from_system()
 				set_cell(farming_layer, tile, land_tile_id, Vector2i(1,0), 0)
 				
-				# Update type to PLANTED and set seed type, start_itime
+				# Update type to PLANTED and set seed type, start_time
 				tile_in_dic["Planted"] = true
 				tile_in_dic["Seed"] = item_in_slot.name
 				tile_in_dic["StartTime"] = start_time
@@ -87,12 +87,13 @@ func _on_plant(slot: Slot):
 				
 				# Spawn crop scene at tile vec
 				var tile_vec: Vector2i =  key_to_vecter(key)
-				set_cell(farming_layer, tile_vec, land_tile_id, Vector2i(1,0), 0)
 				var obj_scene: Crops = crop_scene.instantiate()
+				var seed_res =load("res://scenes/inventory/item/seeds/"+ tile_in_dic["Seed"] + ".tres")
 				
 				add_child(obj_scene)
-#				obj_scene.setup(nul)
+				obj_scene.setup(start_time, seed_res)
 				obj_scene.position = map_to_local(tile_vec) - Vector2(0, 5)
+				obj_scene.id = key
 
 func _on_harvest():
 	var tile: Vector2i  = local_to_map(get_global_mouse_position())
@@ -112,8 +113,6 @@ func _on_harvest():
 			var product_res = load("res://scenes/inventory/item/products/"+ product_name + ".tres")
 			# Caculate output quantity
 			match water_status:
-				"Full":
-					output_quantity = output_quantity
 				"Mid":
 					output_quantity = output_quantity * 2/3
 				"Short":
