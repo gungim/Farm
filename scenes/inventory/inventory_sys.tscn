@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rbv83")
 inventory = ExtResource("2_4wxvh")
-items = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource("3_l2bqp"), ExtResource("4_yygpr"), ExtResource("7_s6vib"), ExtResource("7_xpx00"), ExtResource("5_edsxu"), ExtResource("5_edsxu"), ExtResource("5_edsxu"), ExtResource("5_edsxu"), ExtResource("5_edsxu")])
+items = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource("3_l2bqp"), ExtResource("4_yygpr"), ExtResource("7_s6vib"), ExtResource("7_xpx00"), ExtResource("5_edsxu")])
 
 [node name="PlayerInventory" parent="." instance=ExtResource("2_jcuye")]
 layout_mode = 1

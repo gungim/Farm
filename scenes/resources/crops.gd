@@ -18,9 +18,9 @@ var current_secs: int = 0
 func _ready():
 	time_label.visible = false
 
-func setup(start_time: float, seed: SeedItem):
-	if seed:
-		completed_time = seed.time_range
+func setup(start_time: float, seed_item: SeedItem):
+	if seed_item:
+		completed_time = seed_item.time_range
 		stages = [0, completed_time / 3, completed_time * 2 / 3, completed_time]
 		if start_time:
 			current_secs = completed_time - (Time.get_unix_time_from_system() - start_time)

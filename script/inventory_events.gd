@@ -58,10 +58,11 @@ func _on_open_inventory(value: bool):
 		emit_signal("on_item_unequipped")
 	else:
 		PlayerEvents.emit_signal("on_cancel_all_action")
+	PlayerEvents.emit_signal("on_allow_other_action", !value)
 
 func _on_connect_inventory(inven):
 	inventory = inven
-	
+
 func _on_add_item(item: InventoryItem, amount:int=1):
 	inventory.add_item(item, amount)
 

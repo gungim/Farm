@@ -13,8 +13,8 @@ func unselect():
 	$NinePatchRect.visible = false
 
 func _on_mouse_exited():
-	PlayerEvents.allow_orther_action = true
+	PlayerEvents.emit_signal("on_allow_other_action", true)
 
 
 func _on_mouse_entered():
-	PlayerEvents.allow_orther_action = false
+	PlayerEvents.emit_signal("on_allow_other_action", false)

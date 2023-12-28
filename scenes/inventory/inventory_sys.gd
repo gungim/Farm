@@ -16,3 +16,4 @@ func add_default_item():
 	for item in items:
 		if item:
 			inventory.add_item(item)
+	inventory.add_item_at(items[4], 999, 43)

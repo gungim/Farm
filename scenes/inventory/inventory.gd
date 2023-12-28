@@ -28,30 +28,29 @@ func get_slot_amount(index: int)->int:
 	return slots[index].amount
 
 func add_item(item : InventoryItem, amount : int = 1):
-	var added: bool = false
 	for i in slots.size():
-		var item_in_slot = get_item_in_slot(i)
-		if item_in_slot:
-			if item_in_slot.name == item.name and slots[i].amount + amount <= item.max_stack:
-				slots[i].amount += amount
-				updated_slot.emit(i)
-				added = true
-				break
-				
-	# Nếu k thêm vào được slot đã có, thì thêm vào slot trông
-	if not added:
-		for i in slots.size():
-			var item_in_slot = get_item_in_slot(i)
-			if not item_in_slot:
-				add_item_at(item, amount, i)
-				break
+		amount = add_item_at(item, amount, i)
+		if amount > 0:
+			continue
+		else:
+			break
 
-func add_item_at(item: InventoryItem, amount: int, slot_index: int):
+func add_item_at(item: InventoryItem, amount: int, slot_index: int) -> int:
 	if slot_index >= slots.size() and slot_index < 0:
-		return
+		return amount
+
+	if slots[slot_index].item and slots[slot_index].item != item :
+		return amount
+
+	var total_amount = slots[slot_index].amount + amount
+	var insert_amount = total_amount if total_amount <= item.max_stack else item.max_stack
+	var remaining_amount = 0 if total_amount <= item.max_stack else total_amount - item.max_stack
+
 	slots[slot_index].item = item
-	slots[slot_index].amount = amount
+	slots[slot_index].amount = insert_amount
 	updated_slot.emit(slot_index)
+
+	return remaining_amount
 
 func update_slot(slot: Slot):
 	var slot_index =  slots.find(slot)
@@ -74,16 +73,11 @@ func remove_at(slot_index: int):
 	slots[slot_index].item = null
 	updated_slot.emit(slot_index)
 
-func is_slot_empty(slot_index: int) -> int:
-	if slot_index >= slots.size() and slot_index < 0: return -1
-	if slots[slot_index].item: return 1
-	else: return 0
-
 # Using with swap item or merge item
 func swap_item(first_index: int, second_index: int):
 	var first_slot = slots[first_index]
 	var second_slot = slots[second_index]
-	
+
 	# if first item and second item equa, using merge
 	if first_slot.item == second_slot.item:
 		var total_amount =first_slot.amount + second_slot.amount
@@ -94,9 +88,9 @@ func swap_item(first_index: int, second_index: int):
 		var temp_slot  = first_slot
 		first_slot = second_slot
 		second_slot = temp_slot
-		
+
 	slots[first_index] = first_slot
 	slots[second_index] = second_slot
-	
+
 	updated_slot.emit(first_index)
 	updated_slot.emit(second_index)

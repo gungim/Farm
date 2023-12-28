@@ -24,20 +24,20 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			target = get_global_mouse_position()
-			if PlayerEvents.allow_orther_action and position.distance_to(target) > 32:
+			if PlayerEvents.allow_other_action and position.distance_to(target) > 32:
 				move_to_target()
-			else:
-				match farm_state:
-					ACTIONS.PLANT:
-						FarmEvents.emit_signal("on_plant", current_slot_selected)
-						plant_tree(current_slot_selected)
-					ACTIONS.HOE:
-						FarmEvents.emit_signal("on_hoe")
-					ACTIONS.WATERING:
-						FarmEvents.emit_signal("on_watering")
-					ACTIONS.HARVEST:
-						FarmEvents.emit_signal("on_harvest")
-						harvest()
+			elif current_slot_selected:
+					match farm_state:
+						ACTIONS.PLANT:
+							FarmEvents.emit_signal("on_plant", current_slot_selected)
+							plant_tree(current_slot_selected)
+						ACTIONS.HOE:
+							FarmEvents.emit_signal("on_hoe")
+						ACTIONS.WATERING:
+							FarmEvents.emit_signal("on_watering")
+						ACTIONS.HARVEST:
+							FarmEvents.emit_signal("on_harvest")
+							harvest()
 	if event is InputEventKey:
 		if event.keycode == KEY_SPACE and event.pressed:
 			PlayerEvents.emit_signal("on_use_item")
