@@ -1,6 +1,7 @@
 extends Area2D
 class_name Crops
 
+var id: String = "id"
 var stages: Array[int] = []
 
 var can_harvest: bool = false
@@ -11,20 +12,21 @@ var can_harvest: bool = false
 
 # Unit seconds
 # min=0
-@export var completed_time: float = 120
+var completed_time: float
 var current_secs: int = 0
 
 func _ready():
-	stages = [0, completed_time / 3, completed_time * 2 / 3, completed_time]
 	time_label.visible = false
 
-func setup(start_time):
-	if start_time:
-		var current_time = Time.get_datetime_dict_from_system()
-		current_secs = (current_time["day"] - start_time["day"])*60*60*60  + (current_time["hour"]-start_time["hour"])*60*60  + (current_time["minute"]-start_time["minute"])* 60 +(current_time["second"]- start_time["second"])
-	else:
-		current_secs = completed_time
-	timer.start()
+func setup(start_time: float, seed: SeedItem):
+	if seed:
+		completed_time = seed.time_range
+		stages = [0, completed_time / 3, completed_time * 2 / 3, completed_time]
+		if start_time:
+			current_secs = completed_time - (Time.get_unix_time_from_system() - start_time)
+		else:
+			current_secs = completed_time
+		timer.start()
 
 func _on_timer_timeout():
 	current_secs -= 1
@@ -40,14 +42,16 @@ func _on_timer_timeout():
 	else:
 		animated.play("1")
 
-func format_time(secs: int)-> String:
+func format_time(secs: int) -> String:
 	var hours = floor(secs / (60 * 60));
 	var divisor_for_minutes = secs % (60 * 60);
 	var minutes = floor(divisor_for_minutes / 60);
 	var divisor_for_seconds = divisor_for_minutes % 60;
 	var seconds = ceil(divisor_for_seconds);
-	
-	return"{0}:{1}:{2}".format([hours, minutes, seconds]);
+	hours = hours if hours >= 10 else "0" + str(hours)
+	minutes = minutes if minutes >= 10 else "0" + str(minutes)
+	seconds = seconds if seconds >= 10 else "0" + str(seconds)
+	return "{0}:{1}:{2}".format([hours, minutes, seconds]);
 
 func test():
 	var start_time_test = {
@@ -60,8 +64,6 @@ func test():
 		"second": 29, 
 		"dst": false 
 	}
-	
-	setup(start_time_test)
 
 
 func _on_mouse_entered():

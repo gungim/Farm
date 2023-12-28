@@ -1,6 +1,7 @@
 extends Node
 
 # Signal called when player hoe
-signal on_hoe_tile
-signal on_watering_tile
-signal on_plant_tile(seed)
+signal on_hoe
+signal on_watering
+signal on_plant(seed)
+signal on_harvest

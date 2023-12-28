@@ -9,6 +9,7 @@
 custom_minimum_size = Vector2(52, 52)
 offset_right = 52.0
 offset_bottom = 51.0
+mouse_default_cursor_shape = 2
 script = ExtResource("1_whwry")
 
 [node name="Panel" type="Panel" parent="."]
@@ -55,6 +56,3 @@ offset_top = -25.0
 offset_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
-
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

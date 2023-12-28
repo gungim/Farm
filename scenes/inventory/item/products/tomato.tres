@@ -7,10 +7,12 @@
 script = ExtResource("2_p4f1t")
 max_stack = 999
 name = "tomato"
+display_name = ""
 icon = ExtResource("1_62obh")
 weight = 1.0
 properties = {
-"increment_hp": 10,
-"type": "food"
+"healing": 10,
+"time_range": 120.0
 }
+action = 4
 description = "Là sản phẩm của cây cà chua, ăn cà chua để tăng sinh lực"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4wpyocjendwe"]
+[gd_scene load_steps=11 format=3 uid="uid://b4wpyocjendwe"]
 
 [ext_resource type="Script" path="res://scenes/inventory/inventory_sys.gd" id="1_rbv83"]
 [ext_resource type="Resource" uid="uid://bqmtwlv4wv3os" path="res://scenes/inventory/inventory.tres" id="2_4wxvh"]
@@ -6,8 +6,9 @@
 [ext_resource type="Resource" uid="uid://caqbvffnohpl" path="res://scenes/inventory/item/weapone/axe.tres" id="3_l2bqp"]
 [ext_resource type="PackedScene" uid="uid://1ldwvhqrk5jb" path="res://scenes/inventory/handler_ui.tscn" id="4_gnhkf"]
 [ext_resource type="Resource" uid="uid://rv633fxgl4l7" path="res://scenes/inventory/item/weapone/sword.tres" id="4_yygpr"]
-[ext_resource type="Resource" uid="uid://dbmppfdp6d7bb" path="res://scenes/inventory/item/seeds/seed_tomato.tres" id="5_edsxu"]
-[ext_resource type="Resource" uid="uid://bs5ywmw61bvrp" path="res://scenes/inventory/item/products/tomatos.tres" id="6_8el7u"]
+[ext_resource type="Resource" uid="uid://bvkt88vl6n8hw" path="res://scenes/inventory/item/seeds/seed_tomato.tres" id="5_edsxu"]
+[ext_resource type="Resource" uid="uid://bs5ywmw61bvrp" path="res://scenes/inventory/item/products/tomato.tres" id="7_s6vib"]
+[ext_resource type="Resource" uid="uid://c5ayinf4o0shd" path="res://scenes/inventory/item/weapone/sickle.tres" id="7_xpx00"]
 [ext_resource type="PackedScene" uid="uid://c3qx1ngn7jsv8" path="res://scenes/inventory/hotbar/hotbar_ui.tscn" id="8_1dec4"]
 
 [node name="InventorySys" type="Control" groups=["InventorySys"]]
@@ -19,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rbv83")
 inventory = ExtResource("2_4wxvh")
-items = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource("3_l2bqp"), ExtResource("4_yygpr"), ExtResource("5_edsxu"), ExtResource("6_8el7u")])
+items = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource("3_l2bqp"), ExtResource("4_yygpr"), ExtResource("7_s6vib"), ExtResource("7_xpx00"), ExtResource("5_edsxu"), ExtResource("5_edsxu"), ExtResource("5_edsxu"), ExtResource("5_edsxu"), ExtResource("5_edsxu")])
 
 [node name="PlayerInventory" parent="." instance=ExtResource("2_jcuye")]
 layout_mode = 1

@@ -7,9 +7,9 @@
 script = ExtResource("2_cc8b4")
 max_stack = 2
 name = "axe"
+display_name = ""
 icon = ExtResource("1_xmw08")
 weight = 0.0
-properties = {
-"type": "farm_tool"
-}
+properties = {}
+action = 0
 description = "Axe can help you plow the soil to plant trees"

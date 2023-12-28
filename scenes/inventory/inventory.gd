@@ -28,19 +28,23 @@ func get_slot_amount(index: int)->int:
 	return slots[index].amount
 
 func add_item(item : InventoryItem, amount : int = 1):
+	var added: bool = false
 	for i in slots.size():
 		var item_in_slot = get_item_in_slot(i)
-		
-		if not item_in_slot:
-			add_item_at(item, amount, i)
-			break
-		elif item_in_slot:
+		if item_in_slot:
 			if item_in_slot.name == item.name and slots[i].amount + amount <= item.max_stack:
 				slots[i].amount += amount
 				updated_slot.emit(i)
+				added = true
 				break
-			else:
-				continue
+				
+	# Nếu k thêm vào được slot đã có, thì thêm vào slot trông
+	if not added:
+		for i in slots.size():
+			var item_in_slot = get_item_in_slot(i)
+			if not item_in_slot:
+				add_item_at(item, amount, i)
+				break
 
 func add_item_at(item: InventoryItem, amount: int, slot_index: int):
 	if slot_index >= slots.size() and slot_index < 0:
@@ -50,7 +54,6 @@ func add_item_at(item: InventoryItem, amount: int, slot_index: int):
 	updated_slot.emit(slot_index)
 
 func update_slot(slot: Slot):
-	print_debug(slot.amount)
 	var slot_index =  slots.find(slot)
 	if slot_index >= slots.size() and slot_index < 0:
 		return

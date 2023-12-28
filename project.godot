@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Global="*res://script/global.gd"
 PlayerEvents="*res://script/player_events.gd"
 InventoryEvents="*res://script/inventory_events.gd"
 FarmEvents="*res://script/farm_events.gd"

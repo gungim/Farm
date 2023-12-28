@@ -7,9 +7,9 @@
 script = ExtResource("2_l7pnf")
 max_stack = 1
 name = "sword"
+display_name = ""
 icon = ExtResource("1_4gup7")
 weight = 10.0
-properties = {
-"type": "weapon"
-}
+properties = {}
+action = 3
 description = ""

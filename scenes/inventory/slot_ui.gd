@@ -29,10 +29,3 @@ func select_slot(value: bool):
 
 func clear_info():
 	amount_label.text = ''
-
-func _on_mouse_entered():
-	InventoryEvents.emit_signal("on_change_player_can_move", false)
-
-
-func _on_mouse_exited():
-	InventoryEvents.emit_signal("on_change_player_can_move", true)

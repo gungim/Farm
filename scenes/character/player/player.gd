@@ -6,7 +6,7 @@ signal updated_hp
 var target: Vector2 = Vector2.ZERO
 # using to check player can farm
 
-enum farm_states {PLANT, HOE, WATER}
+enum ACTIONS {HOE, PLANT, WATERING, CHOP, FOOD, HARVEST}
 var farm_state = null
 var current_slot_selected: Slot
 
@@ -16,7 +16,7 @@ var current_slot_selected: Slot
 
 func _ready():
 	change_hp(0)
-	InventoryEvents.connect("on_change_player_can_move", _on_change_player_can_move)
+	PlayerEvents.connect("on_cancel_all_action", _on_cancel_all_action)
 	PlayerEvents.connect("on_use_item", _on_use_item)
 	PlayerEvents.connect("on_hold_item", _on_hold_item)
 
@@ -24,17 +24,20 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			target = get_global_mouse_position()
-			if can_move and position.distance_to(target) > 32:
+			if PlayerEvents.allow_orther_action and position.distance_to(target) > 32:
 				move_to_target()
 			else:
 				match farm_state:
-					farm_states.PLANT:
-						FarmEvents.emit_signal("on_plant_tile", current_slot_selected)
+					ACTIONS.PLANT:
+						FarmEvents.emit_signal("on_plant", current_slot_selected)
 						plant_tree(current_slot_selected)
-					farm_states.HOE:
-						FarmEvents.emit_signal("on_hoe_tile")
-					farm_states.WATER:
-						FarmEvents.emit_signal("on_watering_tile")
+					ACTIONS.HOE:
+						FarmEvents.emit_signal("on_hoe")
+					ACTIONS.WATERING:
+						FarmEvents.emit_signal("on_watering")
+					ACTIONS.HARVEST:
+						FarmEvents.emit_signal("on_harvest")
+						harvest()
 	if event is InputEventKey:
 		if event.keycode == KEY_SPACE and event.pressed:
 			PlayerEvents.emit_signal("on_use_item")
@@ -54,12 +57,9 @@ func move_to_target():
 	fsm.set_state(fsm.states.move_to_tile)
 	mov_direction = position.direction_to(target)
 
-func cancel_all_action():
+func _on_cancel_all_action():
 	mov_direction  = Vector2.ZERO
 	fsm.set_state(fsm.states.idle)
-
-func _on_change_player_can_move(value: bool):
-	can_move = value
 
 func change_hp(value: int):
 	HP += value
@@ -69,45 +69,48 @@ func change_hp(value: int):
 func hold_item(slot: Slot):
 	equipment.update_item(slot)
 
-func eat_food(slot: Slot):
-	var properties = slot.item.properties
-	if HP < MAX_HP:
-		change_hp(properties.increment_hp)
-		slot.amount -= 1
-		if slot.amount <= 0:
-			current_slot_selected = null
-			equipment.update_item(current_slot_selected)
-		InventoryEvents.emit_signal("on_update_slot", slot)
-
-func plant_tree(slot: Slot):
+func decrement_slot(slot: Slot):
 	slot.amount -= 1
 	if slot.amount <= 0:
 		current_slot_selected = null
 		equipment.update_item(current_slot_selected)
 	InventoryEvents.emit_signal("on_update_slot", slot)
 
+func eat_food(slot: Slot):
+	var properties = slot.item.properties
+	if HP < MAX_HP:
+		change_hp(properties.healing)
+		decrement_slot(slot)
+		
+func plant_tree(slot: Slot):
+	decrement_slot(slot)
+
+func harvest():
+	pass
+
+# using when click on hotbar
 func _on_use_item(slot: Slot):
 	if slot and slot.item:
-		var properties = slot.item.properties
-		match properties.type:
-			'food':
+		var action = slot.item.action
+		var actions = InventoryItem.ACTIONS
+		match action:
+			actions.FOOD:
 				eat_food(slot)
-			'weapon':
-				pass
 
 func _on_hold_item(slot: Slot):
+	current_slot_selected = slot
 	if slot and slot.item:
-		var properties = slot.item.properties
-		match properties.type:
-			'weapon':
+		var action = slot.item.action
+		var actions= InventoryItem.ACTIONS
+		match action:
+			actions.CHOP:
 				pass
-			'farm_tool':
-				farm_state = farm_states.HOE
-			'seed':
-				hold_item(slot)
-				current_slot_selected = slot
-				farm_state = farm_states.PLANT
-			_:
-				hold_item(slot)
+			actions.HOE:
+				farm_state = ACTIONS.HOE
+			actions.PLANT:
+				farm_state = ACTIONS.PLANT
+			actions.HARVEST:
+				farm_state = ACTIONS.HARVEST
+		hold_item(slot)
 	else:
 		equipment.update_item(null)
