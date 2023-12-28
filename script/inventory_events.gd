@@ -54,7 +54,10 @@ func _on_item_select(item: Slot):
 
 func _on_open_inventory(value: bool):
 	is_open_inventory = value
-	PlayerEvents.emit_signal("on_cancel_all_action")
+	if not is_open_inventory:
+		emit_signal("on_item_unequipped")
+	else:
+		PlayerEvents.emit_signal("on_cancel_all_action")
 
 func _on_connect_inventory(inven):
 	inventory = inven

@@ -79,15 +79,24 @@ func is_slot_empty(slot_index: int) -> int:
 	if slots[slot_index].item: return 1
 	else: return 0
 
+# Using with swap item or merge item
 func swap_item(first_index: int, second_index: int):
-	var temp_item = slots[first_index].item
-	var temp_amount =slots[first_index].amount
+	var first_slot = slots[first_index]
+	var second_slot = slots[second_index]
 	
-	slots[first_index].item = slots[second_index].item
-	slots[first_index].amount = slots[second_index].amount
-	
-	slots[second_index].item = temp_item
-	slots[second_index].amount = temp_amount
+	# if first item and second item equa, using merge
+	if first_slot.item == second_slot.item:
+		var total_amount =first_slot.amount + second_slot.amount
+		var max_item_stack = first_slot.item.max_stack
+		first_slot.amount = max_item_stack if total_amount > max_item_stack else total_amount
+		second_slot.amount = total_amount - max_item_stack  if total_amount > max_item_stack else 0
+	else:
+		var temp_slot  = first_slot
+		first_slot = second_slot
+		second_slot = temp_slot
+		
+	slots[first_index] = first_slot
+	slots[second_index] = second_slot
 	
 	updated_slot.emit(first_index)
 	updated_slot.emit(second_index)

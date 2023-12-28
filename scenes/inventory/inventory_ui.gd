@@ -38,11 +38,9 @@ func _on_slot_gui_input(event: InputEvent, index):
 	if event is InputEventMouseButton:
 		if event.button_index ==  MOUSE_BUTTON_LEFT and event.pressed:
 			var slot = inventory.slots[index]
-			if InventoryEvents.slot != slot and slot.item:
-				InventoryEvents.emit_signal("on_item_select", slot)
-			else:
-				if  not InventoryEvents.equipped and slot.item:
-					InventoryEvents.emit_signal("on_item_equipped", slot, index)
-				elif InventoryEvents.equipped:
-					inventory.swap_item(InventoryEvents.slot_index, index)
-					InventoryEvents.emit_signal("on_item_unequipped")
+			InventoryEvents.emit_signal("on_item_select", slot)
+			if  not InventoryEvents.equipped and slot.item:
+				InventoryEvents.emit_signal("on_item_equipped", slot, index)
+			elif InventoryEvents.equipped:
+				inventory.swap_item(InventoryEvents.slot_index, index)
+				InventoryEvents.emit_signal("on_item_unequipped")
