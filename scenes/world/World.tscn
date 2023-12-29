@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5qthjynhslhw"]
+[gd_scene load_steps=16 format=3 uid="uid://c5qthjynhslhw"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_4slol"]
 [ext_resource type="PackedScene" uid="uid://m2ib88feldcx" path="res://scenes/character/player/Player.tscn" id="1_t8u0s"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/world/farm_tile.gd" id="7_mbaal"]
 [ext_resource type="PackedScene" uid="uid://b4wpyocjendwe" path="res://scenes/inventory/inventory_sys.tscn" id="8_0gjac"]
 [ext_resource type="PackedScene" uid="uid://d4kuh6e4x0md1" path="res://scenes/ui/player_energy.tscn" id="9_hc3hb"]
+[ext_resource type="PackedScene" uid="uid://ct35gijnklrli" path="res://scenes/resources/trees/pine_tree.tscn" id="10_xs7od"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a270r"]
 texture = ExtResource("2_3et7a")
@@ -543,6 +544,7 @@ texture = ExtResource("3_d3ky2")
 sources/0 = SubResource("TileSetAtlasSource_3yyt5")
 
 [node name="World" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_4slol")
 
 [node name="WorldTileMap" type="TileMap" parent="."]
@@ -567,13 +569,11 @@ layer_2/tile_data = PackedInt32Array()
 script = ExtResource("3_fq5b3")
 
 [node name="FarmTileMap" type="TileMap" parent="." groups=["FarmMap"]]
+y_sort_enabled = true
 tile_set = SubResource("TileSet_ikw3l")
 format = 2
 layer_0/name = "Faming"
 script = ExtResource("7_mbaal")
-
-[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_t8u0s")]
-position = Vector2(173, 83)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -581,3 +581,9 @@ position = Vector2(173, 83)
 
 [node name="PlayerEnergy" parent="CanvasLayer" instance=ExtResource("9_hc3hb")]
 offset_right = 231.0
+
+[node name="pine_tree" parent="." instance=ExtResource("10_xs7od")]
+position = Vector2(252, 119)
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_t8u0s")]
+position = Vector2(173, 83)

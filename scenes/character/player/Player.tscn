@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://casbvr8o848ji" path="res://sprite/crops/seed_tomato_icon.png" id="8_xmf7b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vhuvf"]
-radius = 4.0
-height = 16.0
+radius = 5.0
+height = 12.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y221m"]
 atlas = ExtResource("3_flg6l")
@@ -319,11 +319,11 @@ _data = {
 
 [node name="Player" instance=ExtResource("1_j08dx")]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 3
 script = ExtResource("2_50726")
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(0, 6)
+position = Vector2(0, 10)
 shape = SubResource("CapsuleShape2D_vhuvf")
 
 [node name="AnimatedSprite2D" parent="." index="1"]

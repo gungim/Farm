@@ -10,8 +10,10 @@ class_name SlotUI
 	"selected": preload("res://sprite/ui/generic-rpg-ui-inventario02.png"),
 }
 
+
 func _ready():
 	select_slot(false)
+
 
 func update_info_slot(slot: Slot):
 	if slot != null and slot.item != null:
@@ -21,11 +23,13 @@ func update_info_slot(slot: Slot):
 		icon.texture = null
 		amount_label.text = ""
 
+
 func select_slot(value: bool):
 	if !value:
 		label.texture = type_label["default"]
 	else:
 		label.texture = type_label["selected"]
 
+
 func clear_info():
-	amount_label.text = ''
+	amount_label.text = ""

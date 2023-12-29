@@ -10,29 +10,29 @@ class_name InventoryItem
 ## [codeblock]
 ## 	extends InventoryItem
 ## 	class_name FoodItem
-## 	
+##
 ## 	@export var satisfies_hunger = 12
 ## [/codeblock]
-enum ACTIONS {HOE, PLANT, WATERING, CHOP, FOOD, HARVEST}
+enum ACTIONS { HOE, PLANT, WATERING, CHOP, FOOD, HARVEST }
 ## Maximum amount of this item within an [Inventory] slot
 @export var max_stack := 0
 
 ## Name of item
-@export var name : String
+@export var name: String
 
 ##
 @export var display_name: String
 
 ## Item icon in texture2D, displayed by [SlotUI]
-@export var icon : Texture2D
+@export var icon: Texture2D
 
 ## Item weight in float
-@export var weight : float
+@export var weight: float
 
 ## Item custom properties
 ## type of item: tool, weapon, seed, food
-@export var properties : Dictionary = {}
+@export var properties: Dictionary = {}
 
 @export var action: ACTIONS
 
-@export var description : String
+@export var description: String

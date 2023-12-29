@@ -6,3 +6,5 @@ class_name SeedItem
 
 # sản lượng
 @export var output_quantity: int = 6
+
+@export var product: InventoryItem

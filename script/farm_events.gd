@@ -5,3 +5,4 @@ signal on_hoe
 signal on_watering
 signal on_plant(seed)
 signal on_harvest
+signal on_chop

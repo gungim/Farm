@@ -83,7 +83,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yveiq"]
-radius = 6.0
+radius = 3.0
 height = 16.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_xjsxc"]
@@ -92,7 +92,6 @@ font_size = 12
 [node name="Crops" type="Area2D"]
 light_mask = 2
 visibility_layer = 4
-position = Vector2(40, 36)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_0vhn0")
@@ -103,6 +102,8 @@ animation = &"1"
 autoplay = "1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_yveiq")
 
 [node name="Label" type="Label" parent="."]

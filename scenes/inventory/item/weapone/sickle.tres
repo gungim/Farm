@@ -7,9 +7,9 @@
 script = ExtResource("2_n2dpg")
 max_stack = 1
 name = "Sickle"
-display_name = ""
+display_name = "Cái liềm"
 icon = ExtResource("1_vgg7s")
-weight = 10.0
+weight = 1.0
 properties = {}
 action = 5
 description = "Dung để thu hoạch cây trồng"

@@ -7,9 +7,9 @@
 script = ExtResource("2_cc8b4")
 max_stack = 2
 name = "axe"
-display_name = ""
+display_name = "Cái rìu"
 icon = ExtResource("1_xmw08")
-weight = 0.0
+weight = 1.0
 properties = {}
-action = 0
-description = "Axe can help you plow the soil to plant trees"
+action = 3
+description = "Dùng để chặt cây"
