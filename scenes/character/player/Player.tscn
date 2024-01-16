@@ -3,11 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://djof5io4wy5s5" path="res://scenes/character/Character.tscn" id="1_j08dx"]
 [ext_resource type="Script" path="res://scenes/character/player/player.gd" id="2_50726"]
 [ext_resource type="Texture2D" uid="uid://cr04120uh51dw" path="res://sprite/character/farm.png" id="3_flg6l"]
-[ext_resource type="PackedScene" uid="uid://bhiwgokg7aarq" path="res://scenes/tool/weapon/weapon_manager.tscn" id="3_ox6ty"]
 [ext_resource type="Script" path="res://scenes/character/player/player_fsm.gd" id="4_8v4u7"]
 [ext_resource type="Texture2D" uid="uid://do1ftmdbxr5hp" path="res://sprite/character/body.png" id="4_ctard"]
+[ext_resource type="Texture2D" uid="uid://de2d0d7jpuqfo" path="res://sprite/tool/sword_icon.png" id="7_edl82"]
 [ext_resource type="Script" path="res://scenes/character/player/equipment.gd" id="7_p4s8h"]
-[ext_resource type="Texture2D" uid="uid://casbvr8o848ji" path="res://sprite/crops/seed_tomato_icon.png" id="8_xmf7b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vhuvf"]
 radius = 5.0
@@ -279,6 +278,9 @@ _data = {
 "RESET": SubResource("Animation_q7xeh")
 }
 
+[sub_resource type="Animation" id="Animation_kgnq8"]
+resource_name = "Chop"
+
 [sub_resource type="Animation" id="Animation_gb5ul"]
 length = 0.001
 tracks/0/type = "value"
@@ -313,16 +315,17 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_prmue"]
 _data = {
+"Chop": SubResource("Animation_kgnq8"),
 "RESET": SubResource("Animation_gb5ul"),
 "Use": SubResource("Animation_u3is3")
 }
 
 [node name="Player" instance=ExtResource("1_j08dx")]
-collision_layer = 4
-collision_mask = 3
 script = ExtResource("2_50726")
 
 [node name="CollisionShape2D" parent="." index="0"]
+light_mask = 4
+visibility_layer = 15
 position = Vector2(0, 10)
 shape = SubResource("CapsuleShape2D_vhuvf")
 
@@ -338,9 +341,7 @@ libraries = {
 "": SubResource("AnimationLibrary_uhg31")
 }
 
-[node name="WeaponManager" parent="." index="4" instance=ExtResource("3_ox6ty")]
-visible = false
-rotation = 3.05433
+[node name="WeaponAnimation" type="AnimationPlayer" parent="." index="4"]
 
 [node name="Equipment" type="Node2D" parent="." index="5"]
 script = ExtResource("7_p4s8h")
@@ -351,9 +352,11 @@ offset_left = -8.0
 offset_top = -20.0
 offset_right = 8.0
 offset_bottom = -4.0
-texture = ExtResource("8_xmf7b")
+texture = ExtResource("7_edl82")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Equipment" index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_prmue")
 }
+
+[node name="Camera2D" type="Camera2D" parent="." index="6"]

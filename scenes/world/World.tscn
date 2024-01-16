@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c5qthjynhslhw"]
+[gd_scene load_steps=25 format=3 uid="uid://c5qthjynhslhw"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_4slol"]
 [ext_resource type="PackedScene" uid="uid://m2ib88feldcx" path="res://scenes/character/player/Player.tscn" id="1_t8u0s"]
@@ -8,8 +8,17 @@
 [ext_resource type="Script" path="res://scenes/world/tile_map.gd" id="3_fq5b3"]
 [ext_resource type="Script" path="res://scenes/world/farm_tile.gd" id="7_mbaal"]
 [ext_resource type="PackedScene" uid="uid://b4wpyocjendwe" path="res://scenes/inventory/inventory_sys.tscn" id="8_0gjac"]
+[ext_resource type="Resource" uid="uid://bw50ugnsstvr0" path="res://scenes/inventory/item/products/potato.tres" id="8_7c5hj"]
+[ext_resource type="Resource" uid="uid://bs5ywmw61bvrp" path="res://scenes/inventory/item/products/tomato.tres" id="9_8glbp"]
 [ext_resource type="PackedScene" uid="uid://d4kuh6e4x0md1" path="res://scenes/ui/player_energy.tscn" id="9_hc3hb"]
-[ext_resource type="PackedScene" uid="uid://ct35gijnklrli" path="res://scenes/resources/trees/pine_tree.tscn" id="10_xs7od"]
+[ext_resource type="Resource" uid="uid://bourwnadihaei" path="res://scenes/inventory/item/seeds/pine.tres" id="10_5tfeu"]
+[ext_resource type="PackedScene" uid="uid://b3keuf1aeixhq" path="res://scenes/character/animals/pig.tscn" id="10_p6jec"]
+[ext_resource type="Resource" uid="uid://d180kfhexouf8" path="res://scenes/inventory/item/seeds/potato.tres" id="11_sle63"]
+[ext_resource type="Resource" uid="uid://bvkt88vl6n8hw" path="res://scenes/inventory/item/seeds/tomato.tres" id="12_pry2q"]
+[ext_resource type="Resource" uid="uid://caqbvffnohpl" path="res://scenes/inventory/item/weapone/axe.tres" id="13_hi4wt"]
+[ext_resource type="Resource" uid="uid://cprkft6h1dafq" path="res://scenes/inventory/item/weapone/hoe.tres" id="14_1oi7g"]
+[ext_resource type="Resource" uid="uid://c5ayinf4o0shd" path="res://scenes/inventory/item/weapone/sickle.tres" id="15_gwabm"]
+[ext_resource type="Resource" uid="uid://rv633fxgl4l7" path="res://scenes/inventory/item/weapone/sword.tres" id="16_qa200"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a270r"]
 texture = ExtResource("2_3et7a")
@@ -533,6 +542,13 @@ terrain_set_0/terrain_3/name = "Land"
 terrain_set_0/terrain_3/color = Color(0.517647, 0.172549, 0.0509804, 1)
 sources/0 = SubResource("TileSetAtlasSource_a270r")
 sources/1 = SubResource("TileSetAtlasSource_pjkff")
+metadata/_better_terrain = {
+"decoration": ["Decoration", Color(0.411765, 0.411765, 0.411765, 1), 3, [], {
+"path": "res://addons/better-terrain/icons/Decoration.svg"
+}],
+"terrains": [],
+"version": "0.2"
+}
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3yyt5"]
 texture = ExtResource("3_d3ky2")
@@ -578,12 +594,13 @@ script = ExtResource("7_mbaal")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InventorySys" parent="CanvasLayer" instance=ExtResource("8_0gjac")]
+items = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource("8_7c5hj"), ExtResource("9_8glbp"), ExtResource("10_5tfeu"), ExtResource("11_sle63"), ExtResource("12_pry2q"), ExtResource("13_hi4wt"), ExtResource("14_1oi7g"), ExtResource("15_gwabm"), ExtResource("16_qa200"), null])
 
 [node name="PlayerEnergy" parent="CanvasLayer" instance=ExtResource("9_hc3hb")]
 offset_right = 231.0
 
-[node name="pine_tree" parent="." instance=ExtResource("10_xs7od")]
-position = Vector2(252, 119)
-
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_t8u0s")]
 position = Vector2(173, 83)
+
+[node name="Pig" parent="." instance=ExtResource("10_p6jec")]
+position = Vector2(641, 162)

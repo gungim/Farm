@@ -6,11 +6,9 @@ signal updated_hp
 var target: Vector2 = Vector2.ZERO
 # using to check player can farm
 
-enum ACTIONS { HOE, PLANT, WATERING, CHOP, FOOD, HARVEST }
 var farm_state = null
 var current_slot_selected: Slot
 
-@onready var weapon_manager: WeaponManager = $WeaponManager
 @onready var equipment: Equipment = $Equipment
 
 
@@ -24,23 +22,23 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			print_debug(farm_state, GlobalEvents.tool_actions.CHOP)
 			target = get_global_mouse_position()
 			if PlayerEvents.allow_other_action and position.distance_to(target) > 32:
-				move_to_target()
+				fsm.set_state(fsm.states.move_to_tile)
 			elif current_slot_selected:
 				match farm_state:
-					ACTIONS.PLANT:
-						FarmEvents.emit_signal("on_plant", current_slot_selected)
-						plant_tree(current_slot_selected)
-					ACTIONS.HOE:
+					"PLANT":
+						plant_tree()
+					GlobalEvents.tool_actions.HOE:
 						FarmEvents.emit_signal("on_hoe")
-					ACTIONS.WATERING:
+					GlobalEvents.tool_actions.WATERING:
 						FarmEvents.emit_signal("on_watering")
-					ACTIONS.HARVEST:
-						FarmEvents.emit_signal("on_harvest")
+					GlobalEvents.tool_actions.HARVEST:
 						harvest()
-					ACTIONS.CHOP:
-						FarmEvents.emit_signal("on_chop", current_slot_selected)
+					GlobalEvents.tool_actions.CHOP:
+						chop_tree()
+
 	if event is InputEventKey:
 		if event.keycode == KEY_SPACE and event.pressed:
 			PlayerEvents.emit_signal("on_use_item")
@@ -53,14 +51,11 @@ func get_input():
 func _process(_delta):
 	if velocity <= Vector2.ZERO:
 		animated.flip_h = true
-		weapon_manager.rotation = 0
 	else:
 		animated.flip_h = false
-		weapon_manager.rotation = 180
 
 
 func move_to_target():
-	fsm.set_state(fsm.states.move_to_tile)
 	mov_direction = position.direction_to(target)
 
 
@@ -76,58 +71,61 @@ func change_hp(value: int):
 	updated_hp.emit(HP)
 
 
-func hold_item(slot: Slot):
-	equipment.update_item(slot)
+func hold_item():
+	equipment.update_item(current_slot_selected)
 
 
-func update_equipment_item(slot: Slot):
-	if slot.amount <= 0:
+func update_equipment_item():
+	if current_slot_selected.amount <= 0:
 		current_slot_selected = null
 		equipment.update_item(current_slot_selected)
 
 
-func eat_food(slot: Slot):
-	var properties = slot.item.properties
+func eat_food():
+	var properties = current_slot_selected.item.properties
 	if HP < MAX_HP:
 		change_hp(properties.healing)
-		slot.amount -= 1
-		update_equipment_item(slot)
+		current_slot_selected.amount -= 1
+		update_equipment_item()
 
 
-func plant_tree(slot: Slot):
-	update_equipment_item(slot)
+func plant_tree():
+	FarmEvents.emit_signal("on_plant", current_slot_selected)
+	update_equipment_item()
 
 
 func harvest():
-	pass
+	FarmEvents.emit_signal("on_harvest")
+
+
+func chop_tree():
+	print_debug("Chop tree")
+	var item = current_slot_selected.item
+	var max_damage = item.properties["max_damage"]
+	var min_damage = item.properties["min_damage"]
+	var dmg: int = randi_range(min_damage, max_damage)
+	FarmEvents.emit_signal("on_chop", dmg)
 
 
 # using when click on hotbar
 func _on_use_item(slot: Slot):
 	if slot and slot.item:
-		var action = slot.item.action
-		var actions = InventoryItem.ACTIONS
+		var action = slot.item
 		match action:
-			actions.FOOD:
-				eat_food(slot)
+			GlobalEvents.product_actions.FOOD:
+				eat_food()
 
 
 func _on_hold_item(slot: Slot):
 	current_slot_selected = slot
 	if slot and slot.item:
-		var action = slot.item.action
-		var actions = InventoryItem.ACTIONS
-		match action:
-			actions.CHOP:
-				pass
-			actions.HOE:
-				farm_state = ACTIONS.HOE
-			actions.CHOP:
-				farm_state = ACTIONS.CHOP
-			actions.PLANT:
-				farm_state = ACTIONS.PLANT
-			actions.HARVEST:
-				farm_state = ACTIONS.HARVEST
-		hold_item(slot)
+		var item = slot.item
+
+		if item is ToolItem:
+			var action = slot.item.action
+			farm_state = action
+		elif item is SeedItem:
+			farm_state = "PLANT"
+			hold_item()
 	else:
-		equipment.update_item(null)
+		hold_item()

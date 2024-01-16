@@ -1,0 +1,238 @@
+[gd_scene load_steps=23 format=3 uid="uid://b3keuf1aeixhq"]
+
+[ext_resource type="PackedScene" uid="uid://djof5io4wy5s5" path="res://scenes/character/Character.tscn" id="1_8f6l6"]
+[ext_resource type="Script" path="res://scenes/character/animals/pig.gd" id="2_wjkyi"]
+[ext_resource type="Script" path="res://scenes/character/animals/animnal_fms.gd" id="3_gjbdi"]
+[ext_resource type="Texture2D" uid="uid://btyg5vi417hxa" path="res://sprite/animals/Pig.png" id="3_nbqxt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_46ve3"]
+radius = 5.09902
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nasp"]
+atlas = ExtResource("3_nbqxt")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyts3"]
+atlas = ExtResource("3_nbqxt")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hoppb"]
+atlas = ExtResource("3_nbqxt")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ara8f"]
+atlas = ExtResource("3_nbqxt")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gee4s"]
+atlas = ExtResource("3_nbqxt")
+region = Rect2(16, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1i3cu"]
+atlas = ExtResource("3_nbqxt")
+region = Rect2(32, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kk54v"]
+atlas = ExtResource("3_nbqxt")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yxnd"]
+atlas = ExtResource("3_nbqxt")
+region = Rect2(16, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c040s"]
+atlas = ExtResource("3_nbqxt")
+region = Rect2(32, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pikg"]
+atlas = ExtResource("3_nbqxt")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_628ht"]
+atlas = ExtResource("3_nbqxt")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lv5w0"]
+atlas = ExtResource("3_nbqxt")
+region = Rect2(32, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pobi5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nasp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyts3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hoppb")
+}],
+"loop": true,
+"name": &"EatDown",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ara8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gee4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1i3cu")
+}],
+"loop": true,
+"name": &"EatLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kk54v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yxnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c040s")
+}],
+"loop": true,
+"name": &"EatRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pikg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_628ht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lv5w0")
+}],
+"loop": true,
+"name": &"EatUp",
+"speed": 4.0
+}]
+
+[sub_resource type="Animation" id="Animation_66xss"]
+resource_name = "Idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"EatUp"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_qmum1"]
+resource_name = "MoveUp"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"EatUp"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_ekkb0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"EatUp"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g6fau"]
+_data = {
+"Idle": SubResource("Animation_66xss"),
+"MoveUp": SubResource("Animation_qmum1"),
+"RESET": SubResource("Animation_ekkb0")
+}
+
+[node name="Pig" instance=ExtResource("1_8f6l6")]
+script = ExtResource("2_wjkyi")
+MAX_SPEED = 20
+HP = 100
+
+[node name="CollisionShape2D" parent="." index="0"]
+light_mask = 8
+visibility_layer = 15
+shape = SubResource("CircleShape2D_46ve3")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_pobi5")
+animation = &"EatUp"
+
+[node name="FiniteStateMachine" parent="." index="2"]
+script = ExtResource("3_gjbdi")
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_g6fau")
+}
+
+[node name="EnergyTimer" type="Timer" parent="." index="4"]
+
+[node name="StateTimer" type="Timer" parent="." index="5"]
+autostart = true
+
+[connection signal="timeout" from="EnergyTimer" to="." method="_on_energy_timer_timeout"]
+[connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]

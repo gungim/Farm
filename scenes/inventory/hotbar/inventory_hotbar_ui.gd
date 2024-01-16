@@ -52,7 +52,7 @@ func _on_slot_gui_input(event: InputEvent, index):
 				InventoryEvents.emit_signal("on_item_select", slot)
 			else:
 				if not InventoryEvents.equipped and slot.item:
-					InventoryEvents.emit_signal("on_item_equipped", slot, index)
+					InventoryEvents.emit_signal("on_item_picked", slot, index)
 				elif InventoryEvents.equipped:
 					inventory.swap_item(InventoryEvents.slot_index, index)
-					InventoryEvents.emit_signal("on_item_unequipped")
+					InventoryEvents.emit_signal("on_item_unpicked")

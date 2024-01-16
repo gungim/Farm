@@ -49,13 +49,13 @@ func _on_slot_gui_input(event: InputEvent, index):
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			PlayerEvents.emit_signal("on_hold_item", slot)
 
-			var selected_slot_index = (
+			selected_slot_index = (
 				index if index < inventory.amount_slot else index - inventory.amount_slot
 			)
-			for child in container.get_children():
+			for child in slots:
 				child.unselect()
 			slots[selected_slot_index].selected()
-		if event.button_index == MOUSE_BUTTON_LEFT and event.double_click:
+		elif event.button_index == MOUSE_BUTTON_LEFT and event.double_click:
 			PlayerEvents.emit_signal("on_use_item", slot)
 
 

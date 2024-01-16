@@ -8,6 +8,7 @@ class_name InventoryUI
 @onready var inventory: Inventory
 
 var slots: Array[SlotUI] = []
+var slot: Slot = null
 
 
 func _ready():
@@ -45,10 +46,15 @@ func _on_updated_slot(slot_index: int):
 func _on_slot_gui_input(event: InputEvent, index):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			var slot = inventory.slots[index]
+			slot = inventory.slots[index]
 			InventoryEvents.emit_signal("on_item_select", slot)
+
 			if not InventoryEvents.equipped and slot.item:
-				InventoryEvents.emit_signal("on_item_equipped", slot, index)
+				InventoryEvents.emit_signal("on_item_picked", slot, index)
 			elif InventoryEvents.equipped:
 				inventory.swap_item(InventoryEvents.slot_index, index)
-				InventoryEvents.emit_signal("on_item_unequipped")
+				InventoryEvents.emit_signal("on_item_unpicked")
+	
+	if event is InputEventMouseMotion:
+		slot = inventory.slots[index]
+		InventoryEvents.emit_signal("on_item_select", slot)

@@ -6,23 +6,21 @@ class_name HandlerUI
 
 func _ready():
 	texture.visible = false
-	InventoryEvents.connect("on_item_equipped", _on_item_equipped)
-	InventoryEvents.connect("on_item_unequipped", _on_item_unequipped)
+	InventoryEvents.connect("on_item_picked", _on_item_picked)
+	InventoryEvents.connect("on_item_unpicked", _on_item_unpicked)
 
 
-func _on_item_equipped(slot: Slot, _index):
+func _on_item_picked(slot: Slot, _index):
 	texture.texture = slot.item.icon
 	texture.visible = true
 	texture.position = get_global_mouse_position()
 
 
-func _on_item_unequipped():
+func _on_item_unpicked():
 	texture.visible = false
 	texture.texture = null
 	texture.position = Vector2.ZERO
 
 
-func _input(event):
-	if event is InputEventMouseMotion:
-		if texture.visible:
-			texture.position = get_global_mouse_position()
+func _physics_process(_delta):
+	texture.position = get_global_mouse_position()

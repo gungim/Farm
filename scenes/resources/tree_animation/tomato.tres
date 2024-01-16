@@ -1,0 +1,83 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://byiyd1iboi0dd"]
+
+[ext_resource type="Texture2D" uid="uid://daomwwxlevxd8" path="res://sprite/crops/tomato.png" id="1_8brbc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sks1"]
+atlas = ExtResource("1_8brbc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rf4c6"]
+atlas = ExtResource("1_8brbc")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qussy"]
+atlas = ExtResource("1_8brbc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc4qp"]
+atlas = ExtResource("1_8brbc")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrbwv"]
+atlas = ExtResource("1_8brbc")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_teu1p"]
+atlas = ExtResource("1_8brbc")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k431w"]
+atlas = ExtResource("1_8brbc")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ic5ed"]
+atlas = ExtResource("1_8brbc")
+region = Rect2(48, 16, 16, 16)
+
+[resource]
+resource_name = "tomato"
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sks1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rf4c6")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qussy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc4qp")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrbwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_teu1p")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k431w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ic5ed")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]

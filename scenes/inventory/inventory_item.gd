@@ -13,12 +13,8 @@ class_name InventoryItem
 ##
 ## 	@export var satisfies_hunger = 12
 ## [/codeblock]
-enum ACTIONS { HOE, PLANT, WATERING, CHOP, FOOD, HARVEST }
 ## Maximum amount of this item within an [Inventory] slot
 @export var max_stack := 0
-
-## Name of item
-@export var name: String
 
 ##
 @export var display_name: String
@@ -32,7 +28,5 @@ enum ACTIONS { HOE, PLANT, WATERING, CHOP, FOOD, HARVEST }
 ## Item custom properties
 ## type of item: tool, weapon, seed, food
 @export var properties: Dictionary = {}
-
-@export var action: ACTIONS
 
 @export var description: String

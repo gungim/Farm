@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ProductionItem" load_steps=3 format=3 uid="uid://djhj56v5kwi1v"]
+
+[ext_resource type="Texture2D" uid="uid://cw7diubnbae8c" path="res://sprite/crops/tomato_icon.png" id="1_syie0"]
+[ext_resource type="Script" path="res://scenes/inventory/item/products/product_item.gd" id="2_5anhy"]
+
+[resource]
+script = ExtResource("2_5anhy")
+action = 0
+max_stack = 999
+display_name = "Quả cà chua"
+icon = ExtResource("1_syie0")
+weight = 1.0
+properties = {
+"healing": 10
+}
+description = "Là sản phẩm của cây cà chua, ăn cà chua để tăng sinh lực"

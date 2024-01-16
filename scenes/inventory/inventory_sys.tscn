@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4wpyocjendwe"]
+[gd_scene load_steps=13 format=3 uid="uid://b4wpyocjendwe"]
 
 [ext_resource type="Script" path="res://scenes/inventory/inventory_sys.gd" id="1_rbv83"]
 [ext_resource type="Resource" uid="uid://bqmtwlv4wv3os" path="res://scenes/inventory/inventory.tres" id="2_4wxvh"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://bs5ywmw61bvrp" path="res://scenes/inventory/item/products/tomato.tres" id="7_s6vib"]
 [ext_resource type="Resource" uid="uid://c5ayinf4o0shd" path="res://scenes/inventory/item/weapone/sickle.tres" id="7_xpx00"]
 [ext_resource type="PackedScene" uid="uid://c3qx1ngn7jsv8" path="res://scenes/inventory/hotbar/hotbar_ui.tscn" id="8_1dec4"]
+[ext_resource type="Resource" uid="uid://d180kfhexouf8" path="res://scenes/inventory/item/seeds/seed_potato.tres" id="11_sduik"]
 
 [node name="InventorySys" type="Control" groups=["InventorySys"]]
 layout_mode = 3
@@ -21,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rbv83")
 inventory = ExtResource("2_4wxvh")
-items = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource("3_l2bqp"), ExtResource("4_siyjc"), ExtResource("4_yygpr"), ExtResource("7_s6vib"), ExtResource("7_xpx00"), ExtResource("5_edsxu")])
+items = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource("3_l2bqp"), ExtResource("4_siyjc"), ExtResource("4_yygpr"), ExtResource("7_s6vib"), ExtResource("7_xpx00"), ExtResource("5_edsxu"), ExtResource("11_sduik")])
 
 [node name="PlayerInventory" parent="." instance=ExtResource("2_jcuye")]
 visible = false

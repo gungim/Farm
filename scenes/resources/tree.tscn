@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://3ds60l0iqwe6"]
+
+[ext_resource type="PackedScene" uid="uid://p1ykhh521wfy" path="res://scenes/resources/crops.tscn" id="1_x7oup"]
+
+[node name="Tree" instance=ExtResource("1_x7oup")]

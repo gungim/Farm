@@ -1,15 +1,17 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://caqbvffnohpl"]
+[gd_resource type="Resource" script_class="ToolItem" load_steps=3 format=3 uid="uid://caqbvffnohpl"]
 
-[ext_resource type="Texture2D" uid="uid://ck7tfr1ywlj5v" path="res://sprite/tool/axe_icon.png" id="1_xmw08"]
-[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_cc8b4"]
+[ext_resource type="Script" path="res://scenes/inventory/item/weapone/tool_item.gd" id="1_0hak8"]
+[ext_resource type="Texture2D" uid="uid://ck7tfr1ywlj5v" path="res://sprite/tool/axe_icon.png" id="1_j8haw"]
 
 [resource]
-script = ExtResource("2_cc8b4")
-max_stack = 2
-name = "axe"
-display_name = "Cái rìu"
-icon = ExtResource("1_xmw08")
+script = ExtResource("1_0hak8")
+action = 11
+max_stack = 1
+display_name = "Cây rìu"
+icon = ExtResource("1_j8haw")
 weight = 1.0
-properties = {}
-action = 3
+properties = {
+"max_damage": 12,
+"min_damage": 10
+}
 description = "Dùng để chặt cây"

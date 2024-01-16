@@ -1,15 +1,14 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://c5ayinf4o0shd"]
+[gd_resource type="Resource" script_class="ToolItem" load_steps=3 format=3 uid="uid://c5ayinf4o0shd"]
 
-[ext_resource type="Texture2D" uid="uid://de2d0d7jpuqfo" path="res://sprite/tool/sword_icon.png" id="1_vgg7s"]
-[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_n2dpg"]
+[ext_resource type="Texture2D" uid="uid://cvknmyc6jgen1" path="res://sprite/tool/sickle_icon.png" id="1_c21gi"]
+[ext_resource type="Script" path="res://scenes/inventory/item/weapone/tool_item.gd" id="1_ptdqb"]
 
 [resource]
-script = ExtResource("2_n2dpg")
+script = ExtResource("1_ptdqb")
+action = 14
 max_stack = 1
-name = "Sickle"
 display_name = "Cái liềm"
-icon = ExtResource("1_vgg7s")
+icon = ExtResource("1_c21gi")
 weight = 1.0
 properties = {}
-action = 5
 description = "Dung để thu hoạch cây trồng"

@@ -1,15 +1,14 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://rv633fxgl4l7"]
+[gd_resource type="Resource" script_class="ToolItem" load_steps=3 format=3 uid="uid://rv633fxgl4l7"]
 
-[ext_resource type="Texture2D" uid="uid://de2d0d7jpuqfo" path="res://sprite/tool/sword_icon.png" id="1_4gup7"]
-[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_l7pnf"]
+[ext_resource type="Script" path="res://scenes/inventory/item/weapone/tool_item.gd" id="1_1d6ke"]
+[ext_resource type="Texture2D" uid="uid://de2d0d7jpuqfo" path="res://sprite/tool/sword_icon.png" id="1_8bjav"]
 
 [resource]
-script = ExtResource("2_l7pnf")
+script = ExtResource("1_1d6ke")
+action = 12
 max_stack = 1
-name = "sword"
 display_name = "Thanh kiếm"
-icon = ExtResource("1_4gup7")
+icon = ExtResource("1_8bjav")
 weight = 10.0
 properties = {}
-action = 3
 description = "Đung để tấn công"

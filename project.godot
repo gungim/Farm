@@ -17,15 +17,20 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://script/global.gd"
+GlobalEvents="*res://script/global.gd"
 PlayerEvents="*res://script/player_events.gd"
 InventoryEvents="*res://script/inventory_events.gd"
 FarmEvents="*res://script/farm_events.gd"
 UiEvents="*res://script/ui_events.gd"
+BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")
 
 [input]
 
@@ -92,3 +97,4 @@ test2={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+2d/sdf/scale=0

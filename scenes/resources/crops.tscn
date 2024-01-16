@@ -82,18 +82,16 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yveiq"]
-radius = 3.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iu78k"]
+radius = 7.0
 height = 16.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_xjsxc"]
 font_size = 12
 
-[node name="Crops" type="Area2D"]
+[node name="Crops" type="StaticBody2D"]
 light_mask = 2
 visibility_layer = 4
-collision_layer = 8
-collision_mask = 0
 script = ExtResource("1_0vhn0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -102,9 +100,13 @@ animation = &"1"
 autoplay = "1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 8
+visibility_layer = 15
 position = Vector2(0, 4)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_yveiq")
+shape = SubResource("CapsuleShape2D_iu78k")
+one_way_collision_margin = 5.0
+debug_color = Color(0.870588, 0.294118, 0.486275, 0.419608)
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 5

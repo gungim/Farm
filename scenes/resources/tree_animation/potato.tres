@@ -1,0 +1,55 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://i7ie17udaa5w"]
+
+[ext_resource type="Texture2D" uid="uid://c0svcbkv4mtj2" path="res://sprite/crops/potato.png" id="1_vi0sf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6co2"]
+atlas = ExtResource("1_vi0sf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32msk"]
+atlas = ExtResource("1_vi0sf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqehc"]
+atlas = ExtResource("1_vi0sf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40n2k"]
+atlas = ExtResource("1_vi0sf")
+region = Rect2(48, 0, 16, 16)
+
+[resource]
+resource_name = "potato"
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6co2")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32msk")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqehc")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40n2k")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]

@@ -12,7 +12,7 @@ class_name SlotUI
 
 
 func _ready():
-	select_slot(false)
+	label.texture = type_label["default"]
 
 
 func update_info_slot(slot: Slot):
@@ -22,13 +22,6 @@ func update_info_slot(slot: Slot):
 	else:
 		icon.texture = null
 		amount_label.text = ""
-
-
-func select_slot(value: bool):
-	if !value:
-		label.texture = type_label["default"]
-	else:
-		label.texture = type_label["selected"]
 
 
 func clear_info():

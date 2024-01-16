@@ -22,3 +22,4 @@ mono_crash.*.json
 .godot/
 
 addons/
+.DS_Store
