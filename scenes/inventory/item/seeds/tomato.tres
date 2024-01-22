@@ -7,8 +7,10 @@
 [resource]
 script = ExtResource("3_3p8se")
 time_range = 60
-default_output = 6
-product = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource("2_g81j6")])
+product = Array[Dictionary]([{
+"amount": 6,
+"res": ExtResource("2_g81j6")
+}])
 harvest_action = 0
 max_stack = 999
 display_name = "Hạt giống cây cà chua"

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnrm1oseudwi5"]
+
+[ext_resource type="Script" path="res://scenes/farm_world/chicken_nest.gd" id="1_e644k"]
+[ext_resource type="Texture2D" uid="uid://luhxbn3r6fpr" path="res://sprite/map/chicken_nest.png" id="2_4fe5i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_galjg"]
+radius = 9.05539
+
+[node name="ChickenNest" type="StaticBody2D"]
+script = ExtResource("1_e644k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4fe5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_galjg")

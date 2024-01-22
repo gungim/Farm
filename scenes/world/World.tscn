@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c5qthjynhslhw"]
+[gd_scene load_steps=29 format=3 uid="uid://c5qthjynhslhw"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_4slol"]
 [ext_resource type="PackedScene" uid="uid://m2ib88feldcx" path="res://scenes/character/player/Player.tscn" id="1_t8u0s"]
@@ -12,13 +12,17 @@
 [ext_resource type="Resource" uid="uid://bs5ywmw61bvrp" path="res://scenes/inventory/item/products/tomato.tres" id="9_8glbp"]
 [ext_resource type="PackedScene" uid="uid://d4kuh6e4x0md1" path="res://scenes/ui/player_energy.tscn" id="9_hc3hb"]
 [ext_resource type="Resource" uid="uid://bourwnadihaei" path="res://scenes/inventory/item/seeds/pine.tres" id="10_5tfeu"]
-[ext_resource type="PackedScene" uid="uid://b3keuf1aeixhq" path="res://scenes/character/animals/pig.tscn" id="10_p6jec"]
+[ext_resource type="PackedScene" uid="uid://b3keuf1aeixhq" path="res://scenes/character/animals/animal.tscn" id="10_p6jec"]
 [ext_resource type="Resource" uid="uid://d180kfhexouf8" path="res://scenes/inventory/item/seeds/potato.tres" id="11_sle63"]
 [ext_resource type="Resource" uid="uid://bvkt88vl6n8hw" path="res://scenes/inventory/item/seeds/tomato.tres" id="12_pry2q"]
 [ext_resource type="Resource" uid="uid://caqbvffnohpl" path="res://scenes/inventory/item/weapone/axe.tres" id="13_hi4wt"]
 [ext_resource type="Resource" uid="uid://cprkft6h1dafq" path="res://scenes/inventory/item/weapone/hoe.tres" id="14_1oi7g"]
 [ext_resource type="Resource" uid="uid://c5ayinf4o0shd" path="res://scenes/inventory/item/weapone/sickle.tres" id="15_gwabm"]
 [ext_resource type="Resource" uid="uid://rv633fxgl4l7" path="res://scenes/inventory/item/weapone/sword.tres" id="16_qa200"]
+[ext_resource type="Resource" uid="uid://p2cbnvdnp3hr" path="res://scenes/inventory/item/weapone/sprinkler.tres" id="17_1irrw"]
+[ext_resource type="PackedScene" uid="uid://h5xwe0kc7433" path="res://scenes/farm_world/water_trough.tscn" id="21_qvyb3"]
+[ext_resource type="PackedScene" uid="uid://dltctpow5j600" path="res://scenes/farm_world/food_trough.tscn" id="22_b1h2y"]
+[ext_resource type="PackedScene" uid="uid://bnrm1oseudwi5" path="res://scenes/farm_world/chicken_nest.tscn" id="23_56x8d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a270r"]
 texture = ExtResource("2_3et7a")
@@ -594,7 +598,7 @@ script = ExtResource("7_mbaal")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InventorySys" parent="CanvasLayer" instance=ExtResource("8_0gjac")]
-items = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource("8_7c5hj"), ExtResource("9_8glbp"), ExtResource("10_5tfeu"), ExtResource("11_sle63"), ExtResource("12_pry2q"), ExtResource("13_hi4wt"), ExtResource("14_1oi7g"), ExtResource("15_gwabm"), ExtResource("16_qa200"), null])
+items = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource("8_7c5hj"), ExtResource("9_8glbp"), ExtResource("10_5tfeu"), ExtResource("11_sle63"), ExtResource("12_pry2q"), ExtResource("13_hi4wt"), ExtResource("14_1oi7g"), ExtResource("15_gwabm"), ExtResource("16_qa200"), ExtResource("17_1irrw")])
 
 [node name="PlayerEnergy" parent="CanvasLayer" instance=ExtResource("9_hc3hb")]
 offset_right = 231.0
@@ -604,3 +608,12 @@ position = Vector2(173, 83)
 
 [node name="Pig" parent="." instance=ExtResource("10_p6jec")]
 position = Vector2(641, 162)
+
+[node name="WaterTrough" parent="." instance=ExtResource("21_qvyb3")]
+position = Vector2(985, 158)
+
+[node name="FoodTrough" parent="." instance=ExtResource("22_b1h2y")]
+position = Vector2(976, 261)
+
+[node name="ChickenNest" parent="." instance=ExtResource("23_56x8d")]
+position = Vector2(1070, 200)

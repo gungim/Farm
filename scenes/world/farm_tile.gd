@@ -53,9 +53,7 @@ func setup():
 
 		# Update water status
 		var water_status = tile.get("water_status")
-		match water_status:
-			"Full":
-				set_cell(farming_layer, tile_vec, land_tile_id, Vector2i(1, 0), 0)
+		set_cell_water_tile(tile_vec, water_status)
 
 
 func _on_hoe():
@@ -72,7 +70,7 @@ func _on_watering():
 	var key = "{0},{1}".format([tile_vec.x, tile_vec.y])
 	var tile = farm_dic.get(key)
 	if tile:
-		set_cell(farming_layer, tile_vec, land_tile_id, Vector2i(2, 0), 0)
+		set_cell_water_tile(tile_vec, "Full")
 		tile["water_status"] = "Full"
 		farm_dic[key] = tile
 
@@ -140,13 +138,13 @@ func _on_harvest():
 	var key = "{0},{1}".format([tile_vec.x, tile_vec.y])
 	var tile = farm_dic.get(key)
 
-	if check_harvestable_tile(tile):
+	if tile and check_harvestable_tile(tile):
 		var seed_res = get_resource(tile["seed"])
 
 		# Add product to inventory
 		for item in seed_res.product:
-			var ran_output = random_output(tile)
-			InventoryEvents.emit_signal("on_add_item", item, ran_output)
+			var ran_output = random_output(item.amount, tile)
+			InventoryEvents.emit_signal("on_add_item", item.res, ran_output)
 		# remove crop scene after harvest
 		for child in get_children():
 			if child.id == key:
@@ -158,21 +156,21 @@ func _on_chop_tree(dmg: int):
 	var key = "{0},{1}".format([tile_vec.x, tile_vec.y])
 	var tile = farm_dic.get(key)
 
-	if check_harvestable_tile(tile):
+	if tile and check_harvestable_tile(tile):
 		var seed_res = get_resource(tile["seed"])
+		tile["hp"] -= dmg
 
 		if tile["hp"] <= 0:
 			# Add product to inventory
 			for item in seed_res.product:
-				var ran_output = random_output(tile)
-				InventoryEvents.emit_signal("on_add_item", item, ran_output)
+				var ran_output = random_output(item.amount, tile)
+				InventoryEvents.emit_signal("on_add_item", item.res, ran_output)
 
 			for child in get_children():
 				if child.id == key:
 					child.kill()
 					break
 		else:
-			tile["hp"] -= dmg
 			farm_dic[key] = tile
 
 			for child in get_children():
@@ -180,6 +178,13 @@ func _on_chop_tree(dmg: int):
 					child.chop()
 					break
 		# remove crop scene after harvest
+
+func set_cell_water_tile(tile_vec, status):
+	match status:
+		"Full":
+			set_cell(farming_layer, tile_vec, land_tile_id, Vector2i(1, 0), 0)
+		"Short":
+			set_cell(farming_layer, tile_vec, land_tile_id, Vector2i(2, 0), 0)
 
 
 # key have the form "{10},{20}"
@@ -202,8 +207,11 @@ func set_tile_planted(tile: Vector2i):
 	set_cell(farming_layer, tile, land_tile_id, Vector2i(1, 0), 0)
 
 
+# kiểm tra 1 tile có thể thu hoạch hay chưa
 # tile in farm_dic
 func check_harvestable_tile(tile: Dictionary) -> bool:
+	if not tile:
+		return false
 	var current_time = Time.get_unix_time_from_system()
 	if tile and tile["planted"]:
 		var start_time = tile["start_time"]
@@ -215,20 +223,19 @@ func check_harvestable_tile(tile: Dictionary) -> bool:
 
 # Tính toán ngẫu nhiên sản lượng khi thu hoạch cây,
 # Sản lượng đượng tính ngẫu nhiên xung quanh default_output
-func random_output(tile: Dictionary) -> int:
+func random_output(item: int, tile: Dictionary) -> int:
 	var water_status = tile.get("water_status")
-	var seed_res = get_resource(tile["seed"])
-	var default_output = seed_res.default_output
+	var output = 0
 
 	match water_status:
 		"Mid":
-			default_output = default_output * 2 / 3
+			output = item * float(2) / 3
 		"Short":
-			default_output = default_output / 3
+			output = float(item) / 3
 		_:
-			default_output = default_output
+			output = item
 
-	var ran_output = randi_range(default_output - 1, default_output + 2)
+	var ran_output = randi_range(output - 1, output + 2)
 
 	return ran_output
 

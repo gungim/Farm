@@ -4,10 +4,8 @@ class_name SeedItem
 # thời gian để cây lớn
 @export var time_range: int = 100
 
-# sản lượng mặc định
-@export var default_output: int = 6
-
-@export var product: Array[InventoryItem] = []
+# Dictionary {res: product res(InventoryItem), amount: int}
+@export var product: Array[Dictionary] = []
 
 # Cách thu hoạch
 # Chop = 1 -- Chặt

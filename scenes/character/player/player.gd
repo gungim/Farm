@@ -22,13 +22,14 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			print_debug(farm_state, GlobalEvents.tool_actions.CHOP)
 			target = get_global_mouse_position()
+
 			if PlayerEvents.allow_other_action and position.distance_to(target) > 32:
 				fsm.set_state(fsm.states.move_to_tile)
+
 			elif current_slot_selected:
 				match farm_state:
-					"PLANT":
+					GlobalEvents.tool_actions.PLANT:
 						plant_tree()
 					GlobalEvents.tool_actions.HOE:
 						FarmEvents.emit_signal("on_hoe")
@@ -83,6 +84,7 @@ func update_equipment_item():
 
 func eat_food():
 	var properties = current_slot_selected.item.properties
+
 	if HP < MAX_HP:
 		change_hp(properties.healing)
 		current_slot_selected.amount -= 1
@@ -99,7 +101,6 @@ func harvest():
 
 
 func chop_tree():
-	print_debug("Chop tree")
 	var item = current_slot_selected.item
 	var max_damage = item.properties["max_damage"]
 	var min_damage = item.properties["min_damage"]
@@ -125,7 +126,7 @@ func _on_hold_item(slot: Slot):
 			var action = slot.item.action
 			farm_state = action
 		elif item is SeedItem:
-			farm_state = "PLANT"
+			farm_state = GlobalEvents.tool_actions.PLANT
 			hold_item()
 	else:
 		hold_item()

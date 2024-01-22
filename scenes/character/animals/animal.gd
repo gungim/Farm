@@ -5,14 +5,26 @@ var target: Vector2 = Vector2.ZERO
 
 @onready var energy_timer: Timer = $EnergyTimer
 @onready var state_timer: Timer = $StateTimer
+@onready var live_timer: Timer = $LiveTimer
+
+@export var live_time: int = 259200
+
+var start_live_time: int = 1705879128
+var current_live_time: int = 259200
 
 
 func _ready():
-	energy_timer.wait_time = 120
-	state_timer.wait_time = 20 # 20
+	energy_timer.wait_time = 360
+	state_timer.wait_time = 20  # 20
+	live_timer.wait_time = 10
 
 	state_timer.start()
 	energy_timer.start()
+	live_timer.start()
+
+func setup(start_time: int):
+	start_live_time = start_time
+
 
 func move_to_pos():
 	mov_direction = position.direction_to(target)
@@ -29,6 +41,7 @@ func _on_energy_timer_timeout():
 		energy_timer.stop()
 		move_to_feeding_trough(Vector2.ZERO)
 
+
 func incre_hp():
 	if HP == MAX_HP:
 		return
@@ -42,9 +55,22 @@ func _on_state_timer_timeout():
 	fsm.set_state(new_state)
 	random_direction()
 
+
 func random_direction():
 	var val1 = randf_range(-1, 1)
 	var val2 = randf_range(-1, 1)
-	
+
 	mov_direction = Vector2(val1, val2)
 
+
+func _on_live_timer_timeout():
+	var current_time = int(Time.get_unix_time_from_system() - start_live_time)
+	if current_time <= 0:
+		die()
+
+
+func die():
+	queue_free()
+
+func generates_items():
+	pass

@@ -1,14 +1,16 @@
 [gd_resource type="Resource" script_class="SeedItem" load_steps=4 format=3 uid="uid://bourwnadihaei"]
 
 [ext_resource type="Texture2D" uid="uid://casbvr8o848ji" path="res://sprite/crops/seed_tomato_icon.png" id="1_3jvet"]
-[ext_resource type="Resource" uid="uid://bs5ywmw61bvrp" path="res://scenes/inventory/item/products/tomato.tres" id="2_i68vx"]
+[ext_resource type="Resource" uid="uid://djhj56v5kwi1v" path="res://scenes/inventory/item/products/wood.tres" id="2_mys7k"]
 [ext_resource type="Script" path="res://scenes/inventory/item/seeds/seed_item.gd" id="3_u683a"]
 
 [resource]
 script = ExtResource("3_u683a")
 time_range = 60
-default_output = 6
-product = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource("2_i68vx")])
+product = Array[Dictionary]([{
+"amount": 32,
+"res": ExtResource("2_mys7k")
+}])
 harvest_action = 1
 max_stack = 999
 display_name = "Hạt giống cây thông"

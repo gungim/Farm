@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_n6ou4")
 action = 13
-max_stack = 2
+max_stack = 1
 display_name = "Cái cuốc"
 icon = ExtResource("1_okyfh")
 weight = 1.0

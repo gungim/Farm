@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_rnyfp")
-action = 0
+action = Array[int]([0])
 max_stack = 999
 display_name = "Quả cà chua"
 icon = ExtResource("1_62obh")

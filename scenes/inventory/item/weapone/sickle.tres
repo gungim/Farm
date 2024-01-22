@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ToolItem" load_steps=3 format=3 uid="uid://c5ayinf4o0shd"]
 
-[ext_resource type="Texture2D" uid="uid://cvknmyc6jgen1" path="res://sprite/tool/sickle_icon.png" id="1_c21gi"]
+[ext_resource type="Texture2D" uid="uid://2jhvxnvw51ac" path="res://sprite/tool/sickle.png" id="1_o055r"]
 [ext_resource type="Script" path="res://scenes/inventory/item/weapone/tool_item.gd" id="1_ptdqb"]
 
 [resource]
@@ -8,7 +8,7 @@ script = ExtResource("1_ptdqb")
 action = 14
 max_stack = 1
 display_name = "Cái liềm"
-icon = ExtResource("1_c21gi")
+icon = ExtResource("1_o055r")
 weight = 1.0
 properties = {}
 description = "Dung để thu hoạch cây trồng"

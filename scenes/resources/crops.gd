@@ -8,7 +8,7 @@ var can_harvest: bool = false
 # Unit seconds
 # min=0
 var completed_time: int
-var current_secs: int = 0
+var current_time: int = 0
 var harvest_action
 
 # [0, 15, 30, 45]
@@ -31,7 +31,7 @@ func setup(start_time: int, time_range: int, sprite_frames: SpriteFrames, action
 	harvest_action = action
 	animated.sprite_frames = sprite_frames
 	completed_time = time_range
-	current_secs = int(Time.get_unix_time_from_system() - start_time)
+	current_time = int(Time.get_unix_time_from_system() - start_time)
 
 	var anm_amount = sprite_frames.animations
 
@@ -40,8 +40,8 @@ func setup(start_time: int, time_range: int, sprite_frames: SpriteFrames, action
 		stages.push_back(value)
 	stages.push_back(time_range)
 
-	if current_secs < 0 or current_secs > completed_time:
-		time_label.text = format_time(completed_time - current_secs)
+	if current_time < 0 or current_time > completed_time:
+		time_label.text = format_time(completed_time - current_time)
 		animated.play(str(stages.size() - 1))
 	else:
 		timer.start()
@@ -49,18 +49,18 @@ func setup(start_time: int, time_range: int, sprite_frames: SpriteFrames, action
 
 
 func _on_timer_timeout():
-	current_secs += 1
-	time_label.text = format_time(completed_time - current_secs)
+	current_time += 1
+	time_label.text = format_time(completed_time - current_time)
 
-	if current_secs > stages[-1]:
+	if current_time > stages[-1]:
 		animated.play(str(stages.size() - 1))
 		time_label.text = ""
 		timer.stop()
-	elif current_secs <= stages[1]:
+	elif current_time <= stages[1]:
 		animated.play(str(0))
 	else:
 		for i in range(1, stages.size()):
-			if current_secs <= stages[i]:
+			if current_time <= stages[i]:
 				animated.play(str(i - 1))
 				break
 
@@ -97,4 +97,4 @@ func chop():
 	print_debug("Chop")
 
 func kill():
-	pass
+	queue_free()
