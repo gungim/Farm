@@ -12,7 +12,6 @@
 [ext_resource type="Resource" uid="uid://bs5ywmw61bvrp" path="res://scenes/inventory/item/products/tomato.tres" id="9_8glbp"]
 [ext_resource type="PackedScene" uid="uid://d4kuh6e4x0md1" path="res://scenes/ui/player_energy.tscn" id="9_hc3hb"]
 [ext_resource type="Resource" uid="uid://bourwnadihaei" path="res://scenes/inventory/item/seeds/pine.tres" id="10_5tfeu"]
-[ext_resource type="PackedScene" uid="uid://b3keuf1aeixhq" path="res://scenes/character/animals/animal.tscn" id="10_p6jec"]
 [ext_resource type="Resource" uid="uid://d180kfhexouf8" path="res://scenes/inventory/item/seeds/potato.tres" id="11_sle63"]
 [ext_resource type="Resource" uid="uid://bvkt88vl6n8hw" path="res://scenes/inventory/item/seeds/tomato.tres" id="12_pry2q"]
 [ext_resource type="Resource" uid="uid://caqbvffnohpl" path="res://scenes/inventory/item/weapone/axe.tres" id="13_hi4wt"]
@@ -23,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://h5xwe0kc7433" path="res://scenes/farm_world/water_trough.tscn" id="21_qvyb3"]
 [ext_resource type="PackedScene" uid="uid://dltctpow5j600" path="res://scenes/farm_world/food_trough.tscn" id="22_b1h2y"]
 [ext_resource type="PackedScene" uid="uid://bnrm1oseudwi5" path="res://scenes/farm_world/chicken_nest.tscn" id="23_56x8d"]
+[ext_resource type="PackedScene" uid="uid://cecmhjsxnob4w" path="res://scenes/character/animals/pig.tscn" id="23_xpedb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a270r"]
 texture = ExtResource("2_3et7a")
@@ -604,16 +604,17 @@ items = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource
 offset_right = 231.0
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_t8u0s")]
-position = Vector2(173, 83)
+position = Vector2(888, 110)
 
-[node name="Pig" parent="." instance=ExtResource("10_p6jec")]
-position = Vector2(641, 162)
-
-[node name="WaterTrough" parent="." instance=ExtResource("21_qvyb3")]
+[node name="WaterTrough" parent="." groups=["Trough"] instance=ExtResource("21_qvyb3")]
 position = Vector2(985, 158)
 
-[node name="FoodTrough" parent="." instance=ExtResource("22_b1h2y")]
+[node name="FoodTrough" parent="." groups=["Trough"] instance=ExtResource("22_b1h2y")]
 position = Vector2(976, 261)
 
 [node name="ChickenNest" parent="." instance=ExtResource("23_56x8d")]
 position = Vector2(1070, 200)
+
+[node name="Pig" parent="." instance=ExtResource("23_xpedb")]
+position = Vector2(652, 261)
+HP = 6

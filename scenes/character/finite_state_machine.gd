@@ -15,7 +15,7 @@ func _physics_process(delta):
 	if state != -1:
 		_state_logic(delta)
 		var transition: int = _get_transition()
-		if transition != -1:
+		if transition != -1 and transition != state:
 			set_state(transition)
 
 

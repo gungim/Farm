@@ -14,6 +14,7 @@ func _ready():
 
 func _state_logic(_detal: float) -> void:
 	if state == states.move_to_pos:
+		owner.move()
 		owner.move_to_pos()
 	elif state == states.random_move:
 		owner.move()
@@ -22,7 +23,7 @@ func _state_logic(_detal: float) -> void:
 func _get_transition() -> int:
 	match state:
 		states.move_to_pos:
-			if owner.velocity.length() <= 10:
+			if owner.HP == owner.MAX_HP:
 				return states.idle
 		states.eat:
 			if owner.HP == owner.MAX_HP:
@@ -46,7 +47,8 @@ func _enter_state(_prev: int, _new: int) -> void:
 
 func random_state() -> int:
 	var cop_states = states
-	cop_states.erase(cop_states.eat)
+	if owner.HP >= owner.MAX_HP / 3:
+		cop_states.erase(cop_states.eat)
 
 	var key: String = cop_states.keys()[randi() % cop_states.size()]
 	return states[key]
