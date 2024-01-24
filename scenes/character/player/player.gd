@@ -1,6 +1,7 @@
 extends Character
 class_name Player
 
+# Signal được phát khi HP của player bị thay đổi
 signal updated_hp
 
 var target: Vector2 = Vector2.ZERO
@@ -36,7 +37,7 @@ func _input(event):
 					GlobalEvents.tool_actions.WATERING:
 						FarmEvents.emit_signal("on_watering")
 					GlobalEvents.tool_actions.HARVEST:
-						harvest()
+						harvest_crops()
 					GlobalEvents.tool_actions.CHOP:
 						chop_tree()
 
@@ -96,15 +97,14 @@ func plant_tree():
 	update_equipment_item()
 
 
-func harvest():
+func harvest_crops():
 	FarmEvents.emit_signal("on_harvest")
 
 
 func chop_tree():
 	var item = current_slot_selected.item
-	var max_damage = item.properties["max_damage"]
-	var min_damage = item.properties["min_damage"]
-	var dmg: int = randi_range(min_damage, max_damage)
+	var damage = item.properties["damage"]
+	var dmg: int = randi_range(damage - 2, damage + 2)
 	FarmEvents.emit_signal("on_chop", dmg)
 
 

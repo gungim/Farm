@@ -38,11 +38,11 @@ func _get_transition() -> int:
 func _enter_state(_prev: int, _new: int) -> void:
 	match state:
 		states.random_move:
-			animation_player.play("MoveUp")
+			animation_player.play("Move")
 		states.idle:
 			animation_player.play("Idle")
 		_:
-			animation_player.play("MoveUp")
+			animation_player.play("Move")
 
 
 func random_state() -> int:

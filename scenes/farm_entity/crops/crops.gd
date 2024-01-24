@@ -36,7 +36,7 @@ func setup(start_time: int, time_range: int, sprite_frames: SpriteFrames, action
 	var anm_amount = sprite_frames.animations
 
 	for i in anm_amount.size() - 1:
-		var value = completed_time * i / anm_amount.size()
+		var value = completed_time * i / float(anm_amount.size())
 		stages.push_back(value)
 	stages.push_back(time_range)
 
@@ -95,6 +95,7 @@ func harvest():
 
 func chop():
 	print_debug("Chop")
+
 
 func kill():
 	queue_free()

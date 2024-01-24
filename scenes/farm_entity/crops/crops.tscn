@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://p1ykhh521wfy"]
 
-[ext_resource type="Script" path="res://scenes/resources/crops.gd" id="1_0vhn0"]
+[ext_resource type="Script" path="res://scenes/farm_entity/crops/crops.gd" id="1_0vhn0"]
 [ext_resource type="Texture2D" uid="uid://daomwwxlevxd8" path="res://sprite/crops/tomato.png" id="2_dbjw7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tx7og"]

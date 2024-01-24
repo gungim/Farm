@@ -1,17 +1,34 @@
 extends Character
-class_name Pig
+class_name Animal
 
+# Timer cho HP giảm dần
 @onready var energy_timer: Timer = $EnergyTimer
+
+# Timer cho tự động đổi state
 @onready var state_timer: Timer = $StateTimer
+
+# Timer cho thời gian sống
 @onready var live_timer: Timer = $LiveTimer
+
+# Timer cho tăng HP, chạy sau khi move_to_feeding_trough xong
 @onready var eat_timer: Timer = $EatTimer
 
+# Thời gian sống(ms)
 @export var live_time: int = 259200
 
+# Thời gian bắt đầu sống (có thể tính theo thời gian mua ở cửa hàng)
 var start_live_time: int = 1705879128
-var current_live_time: int = 259200
+
+# Position target: sử dụng để đi đến target
+# Sử dụng với hàm move_to_pos
 var target: Vector2 = Vector2.ZERO
+
+# Next state: sử dụng để lấy next_state sau khi kết thúc 1 action
 var next_state: int = -1
+
+# điều kiện để tạo sản phẩm
+# nếu thời gian đã sống >= 1/3 thời gian sống
+var can_create_product: bool = false
 
 
 func _ready():
@@ -25,7 +42,17 @@ func _ready():
 
 
 func setup(start_time: int):
-	start_live_time = start_time
+	if start_time:
+		start_live_time = start_time
+	else:
+		start_live_time = int(Time.get_unix_time_from_system())
+
+	var lived_time = Time.get_unix_time_from_system() - start_live_time
+
+	# check điều kiện để có thể tạo sản phẩm(trứng)
+	if lived_time <= live_time / float(3):
+		can_create_product = true
+		_start_create_product()
 
 
 func move_to_pos():
@@ -78,8 +105,8 @@ func random_direction():
 
 
 func _on_live_timer_timeout():
-	var current_time = int(Time.get_unix_time_from_system() - start_live_time)
-	if current_time <= 0:
+	var lived_time = int(Time.get_unix_time_from_system() - start_live_time)
+	if lived_time <= 0:
 		die()
 
 
@@ -106,3 +133,7 @@ func _on_eat_timer_timeout():
 		state_timer.start()
 		energy_timer.start()
 		eat_timer.stop()
+
+
+func _start_create_product():
+	pass

@@ -11,7 +11,6 @@ display_name = "Cây rìu"
 icon = ExtResource("1_j8haw")
 weight = 1.0
 properties = {
-"max_damage": 12,
-"min_damage": 10
+"damage": 12
 }
 description = "Dùng để chặt cây"

@@ -8,7 +8,7 @@ var farming_layer: int = 0
 
 var land_tile_id: int = 0
 
-@onready var crop_scene = preload("res://scenes/resources/crops.tscn")
+@onready var crop_scene = preload("res://scenes/farm_entity/crops/crops.tscn")
 @onready var pine_tree_res = preload("res://scenes/resources/tree_animation/pine.tres")
 
 # Save farm tile
@@ -17,15 +17,13 @@ var land_tile_id: int = 0
 # start_time: time to start planting tree
 # hp: 100
 @export var farm_dic: Dictionary
-@export var construc: Dictionary = {}
-
 
 func _ready():
 	farm_dic = FarmEvents.farm_dic
 	FarmEvents.connect("on_hoe", _on_hoe)
 	FarmEvents.connect("on_watering", _on_watering)
 	FarmEvents.connect("on_plant", _on_plant)
-	FarmEvents.connect("on_harvest", _on_harvest)
+	FarmEvents.connect("on_harvest_crops", _on_harvest_crops)
 	FarmEvents.connect("on_chop", _on_chop_tree)
 	setup()
 
@@ -133,7 +131,7 @@ func _on_add_tree(tree: Resource):
 		set_tile_planted(tile_vec)
 
 
-func _on_harvest():
+func _on_harvest_crops():
 	var tile_vec: Vector2i = local_to_map(get_global_mouse_position())
 	var key = "{0},{1}".format([tile_vec.x, tile_vec.y])
 	var tile = farm_dic.get(key)

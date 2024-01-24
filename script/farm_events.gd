@@ -4,8 +4,10 @@ extends Node
 signal on_hoe
 signal on_watering
 signal on_plant(seed)
-signal on_harvest
+signal on_harvest_crops
 signal on_chop(dmg: int)
+signal on_add_chicken_egg(amount: int)
+signal on_add_duck_egg(amount: int)
 
 var farm_dic = {
 	"10,5": {"planted": true, "seed": "tomato", "start_time": 1705157790.92894, "hp": 100},

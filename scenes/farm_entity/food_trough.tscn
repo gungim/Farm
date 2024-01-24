@@ -1,16 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://dltctpow5j600"]
 
-[ext_resource type="Script" path="res://scenes/farm_world/trough.gd" id="1_8des4"]
-[ext_resource type="Texture2D" uid="uid://bvugblwuilp4m" path="res://sprite/map/food_trough.png" id="2_f467r"]
+[ext_resource type="Script" path="res://scenes/farm_entity/trough.gd" id="1_2a8n2"]
+[ext_resource type="Texture2D" uid="uid://bvugblwuilp4m" path="res://sprite/map/food_trough.png" id="2_p2p6w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5211"]
 size = Vector2(14, 32)
 
 [node name="FoodTrough" type="StaticBody2D"]
-script = ExtResource("1_8des4")
+script = ExtResource("1_2a8n2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_m5211")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Trough"]]
-texture = ExtResource("2_f467r")
+texture = ExtResource("2_p2p6w")

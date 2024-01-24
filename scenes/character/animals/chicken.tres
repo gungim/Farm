@@ -1,0 +1,63 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://bm3het8xpwaaw"]
+
+[ext_resource type="Texture2D" uid="uid://c5py77qxj4eox" path="res://sprite/animals/chicken.png" id="1_dwgkh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shdm1"]
+atlas = ExtResource("1_dwgkh")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n15et"]
+atlas = ExtResource("1_dwgkh")
+region = Rect2(0, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2yui"]
+atlas = ExtResource("1_dwgkh")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g07h0"]
+atlas = ExtResource("1_dwgkh")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jy1jp"]
+atlas = ExtResource("1_dwgkh")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trhva"]
+atlas = ExtResource("1_dwgkh")
+region = Rect2(0, 96, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shdm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n15et")
+}],
+"loop": true,
+"name": &"Eat",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2yui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g07h0")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jy1jp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trhva")
+}],
+"loop": true,
+"name": &"Spawn",
+"speed": 3.0
+}]

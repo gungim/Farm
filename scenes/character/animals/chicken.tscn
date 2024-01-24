@@ -1,15 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cecmhjsxnob4w"]
+[gd_scene load_steps=9 format=3 uid="uid://btreeqf3ni1i4"]
 
-[ext_resource type="PackedScene" uid="uid://b3keuf1aeixhq" path="res://scenes/character/animals/animal.tscn" id="1_g4xey"]
-[ext_resource type="SpriteFrames" uid="uid://d24kigsl31w4q" path="res://scenes/character/animals/pig.tres" id="2_bbcon"]
-[ext_resource type="Script" path="res://scenes/character/animals/pig.gd" id="3_d7671"]
+[ext_resource type="PackedScene" uid="uid://b3keuf1aeixhq" path="res://scenes/character/animals/animal.tscn" id="1_jv55s"]
+[ext_resource type="Script" path="res://scenes/character/animals/chicken.gd" id="2_d5p0a"]
+[ext_resource type="SpriteFrames" uid="uid://bm3het8xpwaaw" path="res://scenes/character/animals/chicken.tres" id="2_ty05q"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4sdx0"]
-radius = 6.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_srwhi"]
+radius = 8.0
 
-[sub_resource type="Animation" id="Animation_ycaa4"]
+[sub_resource type="Animation" id="Animation_i1t4f"]
 resource_name = "Idle"
-length = 0.3
+length = 0.2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -20,7 +21,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"Idle"]
+"values": [&"Spawn"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -29,15 +30,16 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 1, 2]
+"values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_86pqw"]
+[sub_resource type="Animation" id="Animation_2s3pv"]
 resource_name = "Move"
-length = 0.3
+length = 0.2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -57,13 +59,13 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 1, 2]
+"values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_m6wt6"]
+[sub_resource type="Animation" id="Animation_w2n4s"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -75,7 +77,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"Idle"]
+"values": [&"Move"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -90,29 +92,36 @@ tracks/1/keys = {
 "values": [0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vf5yl"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fdbd0"]
 _data = {
-"Idle": SubResource("Animation_ycaa4"),
-"Move": SubResource("Animation_86pqw"),
-"RESET": SubResource("Animation_m6wt6")
+"Idle": SubResource("Animation_i1t4f"),
+"Move": SubResource("Animation_2s3pv"),
+"RESET": SubResource("Animation_w2n4s")
 }
 
-[node name="Pig" instance=ExtResource("1_g4xey")]
-script = ExtResource("3_d7671")
+[node name="Chicken" instance=ExtResource("1_jv55s")]
+script = ExtResource("2_d5p0a")
+MAX_SPEED = 15
 HP = 100
 
 [node name="CollisionShape2D" parent="." index="0"]
-shape = SubResource("CircleShape2D_4sdx0")
+shape = SubResource("CircleShape2D_srwhi")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
-sprite_frames = ExtResource("2_bbcon")
-animation = &"Idle"
+sprite_frames = ExtResource("2_ty05q")
+animation = &"Move"
+autoplay = "Move"
 
 [node name="AnimationPlayer" parent="." index="3"]
 root_node = NodePath("..")
+autoplay = "Idle"
 libraries = {
-"": SubResource("AnimationLibrary_vf5yl")
+"": SubResource("AnimationLibrary_fdbd0")
 }
 
 [node name="StateTimer" parent="." index="5"]
 autostart = false
+
+[node name="EggTimer" type="Timer" parent="." index="8"]
+
+[connection signal="timeout" from="EggTimer" to="." method="_on_egg_timer_timeout"]
