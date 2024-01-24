@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scenes/character/animals/pig.gd" id="3_d7671"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4sdx0"]
-radius = 6.0
+radius = 7.0
 
 [sub_resource type="Animation" id="Animation_ycaa4"]
 resource_name = "Idle"

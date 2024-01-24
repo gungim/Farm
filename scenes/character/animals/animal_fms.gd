@@ -9,7 +9,7 @@ func _init():
 
 
 func _ready():
-	set_state(states.random_move)
+	set_state(states.idle)
 
 
 func _state_logic(_detal: float) -> void:
@@ -23,14 +23,15 @@ func _state_logic(_detal: float) -> void:
 func _get_transition() -> int:
 	match state:
 		states.move_to_pos:
-			if owner.HP == owner.MAX_HP:
+			if owner.velocity.length() < 10:
 				return states.idle
 		states.eat:
 			if owner.HP == owner.MAX_HP:
 				owner.state_timer.start()
 				return states.random_move
-		# _:
-		# 	owner.state_timer.start()
+		states.random_move:
+			if owner.velocity.length() < 10:
+				return states.idle
 
 	return -1
 
@@ -49,6 +50,7 @@ func random_state() -> int:
 	var cop_states = states
 	if owner.HP >= owner.MAX_HP / 3:
 		cop_states.erase(cop_states.eat)
+	cop_states.erase(cop_states.move_to_pos)
 
 	var key: String = cop_states.keys()[randi() % cop_states.size()]
 	return states[key]

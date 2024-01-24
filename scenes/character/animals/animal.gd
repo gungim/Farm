@@ -56,7 +56,7 @@ func setup(start_time: int):
 
 
 func move_to_pos():
-	if position.distance_to(target) > 16:
+	if position.distance_to(target) > 22:
 		mov_direction = position.direction_to(target)
 	else:
 		match next_state:
@@ -137,3 +137,7 @@ func _on_eat_timer_timeout():
 
 func _start_create_product():
 	pass
+
+
+func _on_egg_timer_timeout():
+	pass  # Replace with function body.

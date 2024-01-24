@@ -10,6 +10,7 @@ func _ready():
 
 
 func _process(_delta):
+	print_debug(velocity)
 	if velocity <= Vector2.ZERO:
 		animated.flip_h = true
 	else:

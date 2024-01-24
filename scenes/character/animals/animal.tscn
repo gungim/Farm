@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://djof5io4wy5s5" path="res://scenes/character/Character.tscn" id="1_8f6l6"]
 [ext_resource type="Script" path="res://scenes/character/animals/animal.gd" id="2_wjkyi"]
-[ext_resource type="Script" path="res://scenes/character/animals/animnal_fms.gd" id="3_gjbdi"]
+[ext_resource type="Script" path="res://scenes/character/animals/animal_fms.gd" id="3_0ue4v"]
 
 [node name="Animal" instance=ExtResource("1_8f6l6")]
 script = ExtResource("2_wjkyi")
@@ -17,7 +17,7 @@ visibility_layer = 15
 animation = &""
 
 [node name="FiniteStateMachine" parent="." index="2"]
-script = ExtResource("3_gjbdi")
+script = ExtResource("3_0ue4v")
 
 [node name="AnimationPlayer" parent="." index="3"]
 root_node = NodePath("")

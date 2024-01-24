@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://dltctpow5j600" path="res://scenes/farm_entity/food_trough.tscn" id="22_b1h2y"]
 [ext_resource type="PackedScene" uid="uid://cecmhjsxnob4w" path="res://scenes/character/animals/pig.tscn" id="23_xpedb"]
 [ext_resource type="PackedScene" uid="uid://bgcb2a5f6ccqv" path="res://scenes/farm_entity/nest/chicken_nest.tscn" id="24_xxo6i"]
-[ext_resource type="PackedScene" uid="uid://btreeqf3ni1i4" path="res://scenes/character/animals/chicken.tscn" id="25_a2y8w"]
+[ext_resource type="PackedScene" uid="uid://bktubuuhamvmn" path="res://scenes/character/animals/chicken.tscn" id="25_a2y8w"]
 [ext_resource type="PackedScene" uid="uid://hk25uk1el2v4" path="res://scenes/farm_entity/nest/duck_nest.tscn" id="25_sn675"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a270r"]
@@ -612,10 +612,10 @@ position = Vector2(888, 110)
 position = Vector2(985, 158)
 
 [node name="FoodTrough" parent="." groups=["Trough"] instance=ExtResource("22_b1h2y")]
-position = Vector2(976, 261)
+position = Vector2(921, 251)
 
 [node name="Pig" parent="." instance=ExtResource("23_xpedb")]
-position = Vector2(652, 261)
+position = Vector2(998, 215)
 HP = 6
 
 [node name="DuckNest" parent="." instance=ExtResource("25_sn675")]
@@ -625,4 +625,4 @@ position = Vector2(1111, 201)
 position = Vector2(1115, 241)
 
 [node name="Chicken" parent="." instance=ExtResource("25_a2y8w")]
-position = Vector2(1067, 199)
+position = Vector2(1070, 117)

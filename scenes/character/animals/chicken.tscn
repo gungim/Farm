@@ -1,15 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://btreeqf3ni1i4"]
+[gd_scene load_steps=8 format=3 uid="uid://bktubuuhamvmn"]
 
 [ext_resource type="PackedScene" uid="uid://b3keuf1aeixhq" path="res://scenes/character/animals/animal.tscn" id="1_jv55s"]
-[ext_resource type="Script" path="res://scenes/character/animals/chicken.gd" id="2_d5p0a"]
 [ext_resource type="SpriteFrames" uid="uid://bm3het8xpwaaw" path="res://scenes/character/animals/chicken.tres" id="2_ty05q"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_srwhi"]
-radius = 8.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_7i1ej"]
+radius = 6.0
 
-[sub_resource type="Animation" id="Animation_i1t4f"]
+[sub_resource type="Animation" id="Animation_rbx2i"]
 resource_name = "Idle"
-length = 0.2
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -21,7 +20,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"Spawn"]
+"values": [&"Idle"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -30,97 +29,89 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_2s3pv"]
+[sub_resource type="Animation" id="Animation_m1ujk"]
 resource_name = "Move"
-length = 0.2
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"Move"]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
 
-[sub_resource type="Animation" id="Animation_w2n4s"]
+[sub_resource type="Animation" id="Animation_nawnv"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Move"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Move"]
+}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fdbd0"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t5ioy"]
 _data = {
-"Idle": SubResource("Animation_i1t4f"),
-"Move": SubResource("Animation_2s3pv"),
-"RESET": SubResource("Animation_w2n4s")
+"Idle": SubResource("Animation_rbx2i"),
+"Move": SubResource("Animation_m1ujk"),
+"RESET": SubResource("Animation_nawnv")
 }
 
 [node name="Chicken" instance=ExtResource("1_jv55s")]
-script = ExtResource("2_d5p0a")
-MAX_SPEED = 15
-HP = 100
 
 [node name="CollisionShape2D" parent="." index="0"]
-shape = SubResource("CircleShape2D_srwhi")
+shape = SubResource("CircleShape2D_7i1ej")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = ExtResource("2_ty05q")
 animation = &"Move"
-autoplay = "Move"
 
 [node name="AnimationPlayer" parent="." index="3"]
 root_node = NodePath("..")
-autoplay = "Idle"
 libraries = {
-"": SubResource("AnimationLibrary_fdbd0")
+"": SubResource("AnimationLibrary_t5ioy")
 }
-
-[node name="StateTimer" parent="." index="5"]
-autostart = false
 
 [node name="EggTimer" type="Timer" parent="." index="8"]
 
