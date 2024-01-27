@@ -4,7 +4,7 @@ extends FSM
 func _init():
 	_add_state("idle")
 	_add_state("move")
-	_add_state("move_to_tile")
+	_add_state("move_to_pos")
 
 
 func _ready():
@@ -15,7 +15,7 @@ func _state_logic(_delta: float) -> void:
 	if state == states.idle or state == states.move:
 		owner.get_input()
 		owner.move()
-	elif state == states.move_to_tile:
+	elif state == states.move_to_pos:
 		owner.move_to_target()
 		owner.move()
 
@@ -28,7 +28,7 @@ func _get_transition() -> int:
 		states.move:
 			if owner.velocity.length() < 10:
 				return states.idle
-		states.move_to_tile:
+		states.move_to_pos:
 			if owner.velocity.length() < 10:
 				return states.idle
 	return -1
@@ -40,5 +40,5 @@ func _enter_state(_previus_state: int, _new_state: int) -> void:
 			animation_player.play("Idle")
 		states.move:
 			animation_player.play("Move")
-		states.move_to_tile:
+		states.move_to_pos:
 			animation_player.play("Move")

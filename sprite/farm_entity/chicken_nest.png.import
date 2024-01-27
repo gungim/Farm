@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvugblwuilp4m"
-path="res://.godot/imported/food_trough.png-56b63a78f4f9cc3b679d0e980752cc20.ctex"
+uid="uid://luhxbn3r6fpr"
+path="res://.godot/imported/chicken_nest.png-ab5791d38928e8021a4c34ee367adb0a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/map/food_trough.png"
-dest_files=["res://.godot/imported/food_trough.png-56b63a78f4f9cc3b679d0e980752cc20.ctex"]
+source_file="res://sprite/farm_entity/chicken_nest.png"
+dest_files=["res://.godot/imported/chicken_nest.png-ab5791d38928e8021a4c34ee367adb0a.ctex"]
 
 [params]
 

@@ -5,13 +5,11 @@
 [ext_resource type="Script" path="res://scenes/character/animals/animal_fms.gd" id="3_0ue4v"]
 
 [node name="Animal" instance=ExtResource("1_8f6l6")]
+collision_layer = 8
+collision_mask = 13
 script = ExtResource("2_wjkyi")
 live_time = 259200
 MAX_SPEED = 20
-
-[node name="CollisionShape2D" parent="." index="0"]
-light_mask = 8
-visibility_layer = 15
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 animation = &""

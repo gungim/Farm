@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5wxcyat7ihbi"
-path="res://.godot/imported/tileset - simplified transparent.png-8f2fbe27d4992444a3aa43514658c073.ctex"
+uid="uid://f3hrlu2jsc00"
+path="res://.godot/imported/world_map.png-aecfd6fbe4f4eb1eaac5a8fcb84740d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/map/tileset - simplified transparent.png"
-dest_files=["res://.godot/imported/tileset - simplified transparent.png-8f2fbe27d4992444a3aa43514658c073.ctex"]
+source_file="res://sprite/map/world_map.png"
+dest_files=["res://.godot/imported/world_map.png-aecfd6fbe4f4eb1eaac5a8fcb84740d6.ctex"]
 
 [params]
 

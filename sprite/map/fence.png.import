@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://basuv1lrohfkq"
-path="res://.godot/imported/tileset - simplified.png-c2173e040f19dc77646296cf5a6fd866.ctex"
+uid="uid://dpelo4ywxmv4f"
+path="res://.godot/imported/fence.png-2c16e5cb61872a8e26dcbe0094eed5a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/map/tileset - simplified.png"
-dest_files=["res://.godot/imported/tileset - simplified.png-c2173e040f19dc77646296cf5a6fd866.ctex"]
+source_file="res://sprite/map/fence.png"
+dest_files=["res://.godot/imported/fence.png-2c16e5cb61872a8e26dcbe0094eed5a0.ctex"]
 
 [params]
 

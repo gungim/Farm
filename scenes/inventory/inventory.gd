@@ -4,7 +4,7 @@ class_name Inventory
 signal updated_slot(index: int)
 signal slot_added(slot_index: int)
 
-@export var slots: Array[Slot] = []
+var slots: Array[Slot] = []
 @export var amount_slot: int = 40
 
 # Using 10 last element for hotbar
@@ -14,7 +14,7 @@ signal slot_added(slot_index: int)
 func setup():
 	for i in amount_slot + amount_hotbar:
 		var slot_obj = Slot.new()
-		slots.append(slot_obj)
+		slots.push_back(slot_obj)
 
 
 func set_slot(item: InventoryItem, index: int):
@@ -39,6 +39,12 @@ func add_item(item: InventoryItem, amount: int = 1):
 			break
 
 
+func get_slot(index: int = 0) -> Resource:
+	if index >= slots.size() and index < 0:
+		return null
+	return slots[index]
+
+
 func add_item_at(item: InventoryItem, amount: int, slot_index: int) -> int:
 	if slot_index >= slots.size() and slot_index < 0:
 		return amount
@@ -57,7 +63,7 @@ func add_item_at(item: InventoryItem, amount: int, slot_index: int) -> int:
 	return remaining_amount
 
 
-func update_slot(slot: Slot):
+func update_slot(slot: Resource):
 	var slot_index = slots.find(slot)
 	if slot_index >= slots.size() and slot_index < 0:
 		return

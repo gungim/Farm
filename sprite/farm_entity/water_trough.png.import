@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://desd6bgmmx383"
-path="res://.godot/imported/duck_nest.png-bf518b108e6e51240cd8d673eabbcf9f.ctex"
+uid="uid://h8f5c43h08ph"
+path="res://.godot/imported/water_trough.png-25a96945c9a5fb2218b7ba675d471f00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/map/duck_nest.png"
-dest_files=["res://.godot/imported/duck_nest.png-bf518b108e6e51240cd8d673eabbcf9f.ctex"]
+source_file="res://sprite/farm_entity/water_trough.png"
+dest_files=["res://.godot/imported/water_trough.png-25a96945c9a5fb2218b7ba675d471f00.ctex"]
 
 [params]
 

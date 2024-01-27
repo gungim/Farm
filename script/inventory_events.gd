@@ -78,5 +78,5 @@ func _on_add_item(item: InventoryItem, amount: int = 1):
 	inventory.add_item(item, amount)
 
 
-func _on_update_slot(item: Slot):
+func _on_update_slot(item: Resource):
 	inventory.update_slot(item)

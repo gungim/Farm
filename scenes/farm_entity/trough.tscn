@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://h5xwe0kc7433"]
+
+[ext_resource type="Script" path="res://scenes/farm_entity/trough.gd" id="1_wbbgr"]
+
+[node name="Trough" type="StaticBody2D" groups=["Trough"]]
+collision_layer = 8
+collision_mask = 12
+script = ExtResource("1_wbbgr")

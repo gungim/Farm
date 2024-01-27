@@ -31,7 +31,7 @@ func setup_slots():
 		slot_obj.gui_input.connect(_on_slot_gui_input.bind(inventory.amount_slot + i))
 		slots.append(slot_obj)
 		container.add_child(slots[i])
-		slot_obj.update_info_slot(inventory.slots[inventory.amount_slot + i])
+		slot_obj.update_info_slot(inventory.get_slot(inventory.amount_slot + i))
 
 
 # chỉ chấp nhận slot_index >= inventory.amount_slot

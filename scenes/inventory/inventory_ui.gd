@@ -40,13 +40,13 @@ func _on_updated_slot(slot_index: int):
 			if slot_index < inventory.amount_slot
 			else slot_index - inventory.amount_slot - 1
 		)
-		slots[index].update_info_slot(inventory.slots[slot_index])
+		slots[index].update_info_slot(inventory.get_slot(slot_index))
 
 
 func _on_slot_gui_input(event: InputEvent, index):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			slot = inventory.slots[index]
+			slot = inventory.get_slot(index)
 			InventoryEvents.emit_signal("on_item_select", slot)
 
 			if not InventoryEvents.equipped and slot.item:
@@ -54,7 +54,7 @@ func _on_slot_gui_input(event: InputEvent, index):
 			elif InventoryEvents.equipped:
 				inventory.swap_item(InventoryEvents.slot_index, index)
 				InventoryEvents.emit_signal("on_item_unpicked")
-	
+
 	if event is InputEventMouseMotion:
-		slot = inventory.slots[index]
+		slot = inventory.get_slot(index)
 		InventoryEvents.emit_signal("on_item_select", slot)

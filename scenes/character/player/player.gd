@@ -11,6 +11,7 @@ var farm_state = null
 var current_slot_selected: Slot
 
 @onready var equipment: Equipment = $Equipment
+@onready var agent: NavigationAgent2D = $NavigationAgent2D
 
 
 func _ready():
@@ -26,7 +27,8 @@ func _input(event):
 			target = get_global_mouse_position()
 
 			if PlayerEvents.allow_other_action and position.distance_to(target) > 32:
-				fsm.set_state(fsm.states.move_to_tile)
+				agent.target_position = target
+				fsm.set_state(fsm.states.move_to_pos)
 
 			elif current_slot_selected:
 				match farm_state:
@@ -57,8 +59,22 @@ func _process(_delta):
 		animated.flip_h = false
 
 
+# Sử dụng tương tự hàm move
 func move_to_target():
-	mov_direction = position.direction_to(target)
+	var next_path = agent.get_next_path_position()
+
+	var new_dir: Vector2 = global_position.direction_to(next_path)
+
+	if agent.avoidance_enabled:
+		agent.set_velocity(velocity)
+	else:
+		_on_navigation_agent_2d_velocity_computed(velocity)
+
+	if agent.is_navigation_finished():
+		mov_direction = Vector2.ZERO
+		fsm.set_state(fsm.states.idle)
+		return
+	mov_direction = new_dir
 
 
 func _on_cancel_all_action():
@@ -130,3 +146,7 @@ func _on_hold_item(slot: Slot):
 			hold_item()
 	else:
 		hold_item()
+
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity):
+	mov_direction = safe_velocity
