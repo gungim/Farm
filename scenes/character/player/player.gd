@@ -31,17 +31,26 @@ func _input(event):
 				fsm.set_state(fsm.states.move_to_pos)
 
 			elif current_slot_selected:
-				match farm_state:
-					GlobalEvents.tool_actions.PLANT:
-						plant_tree()
-					GlobalEvents.tool_actions.HOE:
-						FarmEvents.emit_signal("on_hoe")
-					GlobalEvents.tool_actions.WATERING:
-						FarmEvents.emit_signal("on_watering")
-					GlobalEvents.tool_actions.HARVEST:
-						harvest_crops()
-					GlobalEvents.tool_actions.CHOP:
-						chop_tree()
+				var item = current_slot_selected.item
+
+				if item is ProductionItem:
+					var actions = item.action
+					if actions[0] == GlobalEvents.product_actions.BUILD:
+						build_barn()
+				elif item is SeedItem:
+					plant_tree()
+
+				elif item is ToolItem:
+					var action = item.action
+					match action:
+						GlobalEvents.tool_actions.HOE:
+							FarmEvents.emit_signal("on_hoe")
+						GlobalEvents.tool_actions.WATERING:
+							FarmEvents.emit_signal("on_watering")
+						GlobalEvents.tool_actions.HARVEST:
+							harvest_crops()
+						GlobalEvents.tool_actions.CHOP:
+							chop_tree()
 
 	if event is InputEventKey:
 		if event.keycode == KEY_SPACE and event.pressed:
@@ -124,6 +133,11 @@ func chop_tree():
 	FarmEvents.emit_signal("on_chop", dmg)
 
 
+# Action xây chuồng
+func build_barn():
+	FarmEvents.emit_signal("on_build_barn")
+
+
 # using when click on hotbar
 func _on_use_item(slot: Slot):
 	if slot and slot.item:
@@ -135,16 +149,7 @@ func _on_use_item(slot: Slot):
 
 func _on_hold_item(slot: Slot):
 	current_slot_selected = slot
-	if slot and slot.item:
-		var item = slot.item
-
-		if item is ToolItem:
-			var action = slot.item.action
-			farm_state = action
-		elif item is SeedItem:
-			farm_state = GlobalEvents.tool_actions.PLANT
-			hold_item()
-	else:
+	if slot and slot.item is SeedItem:
 		hold_item()
 
 

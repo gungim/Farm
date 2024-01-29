@@ -1,4 +1,4 @@
-extends TileMap
+extends Node
 class_name FarmTileMap
 
 enum ACTIONS { HOE, PLANT, WATERING, FOOD, HARVEST }
@@ -10,6 +10,8 @@ var land_tile_id: int = 0
 
 @onready var crop_scene = preload("res://scenes/farm_entity/crops/crops.tscn")
 @onready var pine_tree_res = preload("res://scenes/resources/tree_animation/pine.tres")
+@onready var tilemap: TileMap = $FarmTileMap
+@onready var entity: Node =  $Entity
 
 # Save farm tile
 # planted: true if tile is planted
@@ -18,6 +20,7 @@ var land_tile_id: int = 0
 # hp: 100
 @export var farm_dic: Dictionary
 
+
 func _ready():
 	farm_dic = FarmEvents.farm_dic
 	FarmEvents.connect("on_hoe", _on_hoe)
@@ -25,6 +28,7 @@ func _ready():
 	FarmEvents.connect("on_plant", _on_plant)
 	FarmEvents.connect("on_harvest_crops", _on_harvest_crops)
 	FarmEvents.connect("on_chop", _on_chop_tree)
+	FarmEvents.connect("on_build_barn", _on_build_barn)
 	setup()
 
 
@@ -32,14 +36,16 @@ func setup():
 	for key in farm_dic:
 		var tile_vec: Vector2i = key_to_vecter(key)
 		var tile = farm_dic[key]
-		if tile:
-			set_tile_planted(tile_vec)
+		if not tile:
+			return
 
-		if tile["planted"]:
+		set_tile_planted(tile_vec)
+
+		if tile["use"] == "plant":
 			# spawn crop scene and add to current tile
 			var obj_scene: Crop = crop_scene.instantiate()
-			add_child(obj_scene)
-			obj_scene.position = map_to_local(tile_vec) - Vector2(0, 5)
+			entity.add_child(obj_scene)
+			obj_scene.position = tilemap.map_to_local(tile_vec) - Vector2(0, 5)
 			obj_scene.id = key
 
 			var seed_res = get_resource(tile["seed"])
@@ -55,19 +61,23 @@ func setup():
 
 
 func _on_hoe():
-	var tile_vec: Vector2i = local_to_map(get_global_mouse_position())
+	var tile_vec: Vector2i = tilemap.local_to_map(tilemap.get_global_mouse_position())
 	var key = "{0},{1}".format([tile_vec.x, tile_vec.y])
 	var tile = farm_dic.get(key)
 	if not tile:
 		set_tile_planted(tile_vec)
-		farm_dic[key] = {"planted": false, "water_status": "Short"}
+		farm_dic[key] = {"use": "plant", "water_status": "Short"}
 
 
 func _on_watering():
-	var tile_vec: Vector2i = local_to_map(get_global_mouse_position())
+	var tile_vec: Vector2i = tilemap.local_to_map(tilemap.get_global_mouse_position())
 	var key = "{0},{1}".format([tile_vec.x, tile_vec.y])
 	var tile = farm_dic.get(key)
-	if tile:
+
+	if not tile:
+		return
+
+	if tile["use"] == "plant":
 		set_cell_water_tile(tile_vec, "Full")
 		tile["water_status"] = "Full"
 		farm_dic[key] = tile
@@ -78,17 +88,20 @@ func _on_plant(seed_slot: Slot):
 	if not seed_slot or not seed_slot.item:
 		return
 
-	var tile_vec: Vector2i = local_to_map(get_global_mouse_position())
+	var tile_vec: Vector2i = tilemap.local_to_map(tilemap.get_global_mouse_position())
 	var key = "{0},{1}".format([tile_vec.x, tile_vec.y])
 	var tile = farm_dic.get(key)
 
-	if tile and not tile["planted"]:
+	if not tile:
+		return
+
+	if tile["use"] == "plant":
 		if seed_slot.item is SeedItem and seed_slot.amount > 0:
 			var start_time = Time.get_unix_time_from_system()
 			set_tile_planted(tile_vec)
 
 			# Update type to PLANTED and set seed type, start_time
-			tile["planted"] = true
+			tile["use"] = "plant"
 			tile["seed"] = seed_slot.item.resource_name
 			tile["start_time"] = start_time
 			tile["hp"] = 100
@@ -98,9 +111,9 @@ func _on_plant(seed_slot: Slot):
 			var obj_scene: Crop = crop_scene.instantiate()
 			var seed_res = get_resource(tile["seed"])
 			var sprite_frames = get_sprite_frames(tile["seed"])
-			add_child(obj_scene)
+			entity.add_child(obj_scene)
 			obj_scene.setup(start_time, seed_res.time_range, sprite_frames, seed_res.harvest_action)
-			obj_scene.position = map_to_local(tile_vec) - Vector2(0, 5)
+			obj_scene.position = tilemap.map_to_local(tile_vec) - Vector2(0, 5)
 			obj_scene.id = key
 
 			# Update inventory when plant success
@@ -109,13 +122,13 @@ func _on_plant(seed_slot: Slot):
 
 
 func _on_add_tree(tree: Resource):
-	var tile_vec: Vector2i = local_to_map(get_global_mouse_position())
+	var tile_vec: Vector2i = tilemap.local_to_map(tilemap.get_global_mouse_position())
 	var key = "{0},{1}".format([tile_vec.x, tile_vec.y])
 	var tile = farm_dic.get(key)
 
 	if not tile:
 		tile = {}
-		tile["planted"] = true
+		tile["use"] = "plant"
 		tile["seed"] = tree.resource_name
 		tile["start_time"] = 00
 		tile["hp"] = 100
@@ -123,20 +136,23 @@ func _on_add_tree(tree: Resource):
 
 		var obj_scene: Crop = crop_scene.instantiate()
 		var sprite_frames = tree
-		add_child(obj_scene)
+		entity.add_child(obj_scene)
 		obj_scene.setup(00, 00, sprite_frames, 1)
-		obj_scene.position = map_to_local(tile_vec) - Vector2(0, 5)
+		obj_scene.position = tilemap.map_to_local(tile_vec) - Vector2(0, 5)
 		obj_scene.id = key
 
 		set_tile_planted(tile_vec)
 
 
 func _on_harvest_crops():
-	var tile_vec: Vector2i = local_to_map(get_global_mouse_position())
+	var tile_vec: Vector2i = tilemap.local_to_map(tilemap.get_global_mouse_position())
 	var key = "{0},{1}".format([tile_vec.x, tile_vec.y])
 	var tile = farm_dic.get(key)
 
-	if tile and check_harvestable_tile(tile):
+	if not tile:
+		return
+
+	if tile["use"] == "plant" and check_harvestable_tile(tile):
 		var seed_res = get_resource(tile["seed"])
 
 		# Add product to inventory
@@ -150,11 +166,14 @@ func _on_harvest_crops():
 
 
 func _on_chop_tree(dmg: int):
-	var tile_vec: Vector2i = local_to_map(get_global_mouse_position())
+	var tile_vec: Vector2i = tilemap.local_to_map(tilemap.get_global_mouse_position())
 	var key = "{0},{1}".format([tile_vec.x, tile_vec.y])
 	var tile = farm_dic.get(key)
 
-	if tile and check_harvestable_tile(tile):
+	if not tile:
+		return
+
+	if tile["use"] == "plant" and check_harvestable_tile(tile):
 		var seed_res = get_resource(tile["seed"])
 		tile["hp"] -= dmg
 
@@ -177,12 +196,25 @@ func _on_chop_tree(dmg: int):
 					break
 		# remove crop scene after harvest
 
+
+func _on_build_barn():
+	var tile_vec: Vector2i = tilemap.local_to_map(tilemap.get_global_mouse_position())
+	var key = "{0},{1}".format([tile_vec.x, tile_vec.y])
+	var tile = farm_dic.get(key)
+
+	if not tile:
+		tile = {}
+		tile["use"] = "build"
+		farm_dic[key] = tile
+		BetterTerrain.set_cell(tilemap, 1, tile_vec, 0)
+
+
 func set_cell_water_tile(tile_vec, status):
 	match status:
 		"Full":
-			set_cell(farming_layer, tile_vec, land_tile_id, Vector2i(1, 0), 0)
+			tilemap.set_cell(farming_layer, tile_vec, land_tile_id, Vector2i(1, 0), 0)
 		"Short":
-			set_cell(farming_layer, tile_vec, land_tile_id, Vector2i(2, 0), 0)
+			tilemap.set_cell(farming_layer, tile_vec, land_tile_id, Vector2i(2, 0), 0)
 
 
 # key have the form "{10},{20}"
@@ -202,7 +234,7 @@ func get_resource(seed_name: String) -> SeedItem:
 
 
 func set_tile_planted(tile: Vector2i):
-	set_cell(farming_layer, tile, land_tile_id, Vector2i(1, 0), 0)
+	tilemap.set_cell(farming_layer, tile, land_tile_id, Vector2i(1, 0), 0)
 
 
 # kiểm tra 1 tile có thể thu hoạch hay chưa
@@ -211,7 +243,7 @@ func check_harvestable_tile(tile: Dictionary) -> bool:
 	if not tile:
 		return false
 	var current_time = Time.get_unix_time_from_system()
-	if tile and tile["planted"]:
+	if tile["use"] == "plant":
 		var start_time = tile["start_time"]
 		var seed_res = get_resource(tile["seed"])
 		if current_time >= start_time + seed_res.time_range:

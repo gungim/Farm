@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c5qthjynhslhw"]
+[gd_scene load_steps=39 format=3 uid="uid://c5qthjynhslhw"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_4slol"]
 [ext_resource type="PackedScene" uid="uid://m2ib88feldcx" path="res://scenes/character/player/Player.tscn" id="1_t8u0s"]
@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://c5ayinf4o0shd" path="res://scenes/inventory/item/weapone/sickle.tres" id="15_gwabm"]
 [ext_resource type="Resource" uid="uid://rv633fxgl4l7" path="res://scenes/inventory/item/weapone/sword.tres" id="16_qa200"]
 [ext_resource type="Resource" uid="uid://p2cbnvdnp3hr" path="res://scenes/inventory/item/weapone/sprinkler.tres" id="17_1irrw"]
+[ext_resource type="Resource" uid="uid://co7nobtgx55oq" path="res://scenes/inventory/item/products/wood_panel.tres" id="20_5mhns"]
 [ext_resource type="PackedScene" uid="uid://cecmhjsxnob4w" path="res://scenes/character/animals/pig.tscn" id="23_xpedb"]
 [ext_resource type="PackedScene" uid="uid://h5xwe0kc7433" path="res://scenes/farm_entity/trough.tscn" id="24_80prl"]
 [ext_resource type="PackedScene" uid="uid://bgcb2a5f6ccqv" path="res://scenes/farm_entity/nest/chicken_nest.tscn" id="24_xxo6i"]
@@ -41,6 +42,10 @@ texture = ExtResource("4_ni44n")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 0
+3:0/0/terrains_peering_bit/right_side = 0
+3:0/0/terrains_peering_bit/bottom_side = 0
 3:0/0/metadata/_better_terrain = {
 0: [0],
 4: [0],
@@ -51,6 +56,10 @@ texture = ExtResource("4_ni44n")
 "type": 0
 }
 5:0/0 = 0
+5:0/0/terrain_set = 0
+5:0/0/terrain = 0
+5:0/0/terrains_peering_bit/bottom_side = 0
+5:0/0/terrains_peering_bit/left_side = 0
 5:0/0/metadata/_better_terrain = {
 4: [0],
 8: [0],
@@ -70,6 +79,11 @@ texture = ExtResource("4_ni44n")
 1:1/0 = 0
 2:1/0 = 0
 3:1/0 = 0
+3:1/0/terrain_set = 0
+3:1/0/terrain = 0
+3:1/0/terrains_peering_bit/bottom_left_corner = 0
+3:1/0/terrains_peering_bit/left_side = 0
+3:1/0/terrains_peering_bit/top_left_corner = 0
 3:1/0/metadata/_better_terrain = {
 4: [0],
 7: [0],
@@ -80,6 +94,11 @@ texture = ExtResource("4_ni44n")
 }
 4:1/0 = 0
 5:1/0 = 0
+5:1/0/terrain_set = 0
+5:1/0/terrain = 0
+5:1/0/terrains_peering_bit/right_side = 0
+5:1/0/terrains_peering_bit/bottom_right_corner = 0
+5:1/0/terrains_peering_bit/top_right_corner = 0
 5:1/0/metadata/_better_terrain = {
 0: [0],
 3: [0],
@@ -97,18 +116,30 @@ texture = ExtResource("4_ni44n")
 1:2/0 = 0
 2:2/0 = 0
 3:2/0 = 0
+3:2/0/terrain_set = 0
+3:2/0/terrain = 0
+3:2/0/terrains_peering_bit/right_side = 0
+3:2/0/terrains_peering_bit/top_side = 0
 3:2/0/metadata/_better_terrain = {
 0: [0],
 12: [0],
 "type": 0
 }
 4:2/0 = 0
+4:2/0/terrain_set = 0
+4:2/0/terrain = 0
+4:2/0/terrains_peering_bit/right_side = 0
+4:2/0/terrains_peering_bit/left_side = 0
 4:2/0/metadata/_better_terrain = {
 0: [0],
 8: [0],
 "type": 0
 }
 5:2/0 = 0
+5:2/0/terrain_set = 0
+5:2/0/terrain = 0
+5:2/0/terrains_peering_bit/left_side = 0
+5:2/0/terrains_peering_bit/top_side = 0
 5:2/0/metadata/_better_terrain = {
 8: [0],
 12: [0],
@@ -117,10 +148,18 @@ texture = ExtResource("4_ni44n")
 6:2/0 = 0
 7:2/0 = 0
 0:3/0 = 0
+0:3/0/terrain_set = 0
+0:3/0/terrain = 0
+0:3/0/terrains_peering_bit/right_side = 0
+0:3/0/terrains_peering_bit/left_side = 0
 0:3/0/metadata/_better_terrain = {
 "type": -2
 }
 1:3/0 = 0
+1:3/0/terrain_set = 0
+1:3/0/terrain = 0
+1:3/0/terrains_peering_bit/right_side = 0
+1:3/0/terrains_peering_bit/left_side = 0
 2:3/0 = 0
 2:3/0/metadata/_better_terrain = {
 "type": -2
@@ -149,7 +188,13 @@ texture = ExtResource("4_ni44n")
 "type": 3
 }
 3:4/0 = 0
+3:4/0/terrain_set = 0
+3:4/0/terrain = 0
+3:4/0/terrains_peering_bit/right_side = 0
 4:4/0 = 0
+4:4/0/terrain_set = 0
+4:4/0/terrain = 0
+4:4/0/terrains_peering_bit/left_side = 0
 5:4/0 = 0
 6:4/0 = 0
 7:4/0 = 0
@@ -360,6 +405,9 @@ texture = ExtResource("4_ni44n")
 }
 
 [sub_resource type="TileSet" id="TileSet_ikw3l"]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Barn"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_3yyt5")
 sources/1 = SubResource("TileSetAtlasSource_5ufx2")
 metadata/_better_terrain = {
@@ -989,16 +1037,18 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 y_sort_enabled = true
 script = ExtResource("1_4slol")
 
-[node name="FarmTileMap" type="TileMap" parent="." groups=["FarmMap"]]
-y_sort_enabled = true
+[node name="Farm" type="Node" parent="."]
+script = ExtResource("7_mbaal")
+
+[node name="FarmTileMap" type="TileMap" parent="Farm" groups=["FarmMap"]]
 position = Vector2(1, -6)
 tile_set = SubResource("TileSet_ikw3l")
 format = 2
 layer_0/name = "Faming"
-layer_1/name = "Fence"
-layer_1/z_index = 1
+layer_1/name = "Construction"
 layer_1/tile_data = PackedInt32Array()
-script = ExtResource("7_mbaal")
+
+[node name="Entity" type="Node" parent="Farm"]
 
 [node name="WorldTileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_lwh5n")
@@ -1016,15 +1066,14 @@ layer_3/tile_data = PackedInt32Array()
 script = ExtResource("3_fq5b3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="InventorySys" parent="CanvasLayer" instance=ExtResource("8_0gjac")]
-items = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource("8_7c5hj"), ExtResource("9_8glbp"), ExtResource("10_5tfeu"), ExtResource("11_sle63"), ExtResource("12_pry2q"), ExtResource("13_hi4wt"), ExtResource("14_1oi7g"), ExtResource("15_gwabm"), ExtResource("16_qa200"), ExtResource("17_1irrw")])
+items = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource("8_7c5hj"), ExtResource("9_8glbp"), ExtResource("10_5tfeu"), ExtResource("11_sle63"), ExtResource("12_pry2q"), ExtResource("13_hi4wt"), ExtResource("14_1oi7g"), ExtResource("15_gwabm"), ExtResource("16_qa200"), ExtResource("17_1irrw"), ExtResource("20_5mhns")])
 
 [node name="PlayerEnergy" parent="CanvasLayer" instance=ExtResource("9_hc3hb")]
 offset_right = 231.0
 
-[node name="Entity" type="Node2D" parent="."]
+[node name="Entity" type="Node2D" parent="." groups=["Entity"]]
 y_sort_enabled = true
 
 [node name="Player" parent="Entity" groups=["Player"] instance=ExtResource("1_t8u0s")]

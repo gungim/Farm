@@ -22,10 +22,15 @@ PlayerEvents="*res://script/player_events.gd"
 InventoryEvents="*res://script/inventory_events.gd"
 FarmEvents="*res://script/farm_events.gd"
 UiEvents="*res://script/ui_events.gd"
+BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 
 [display]
 
 window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")
 
 [input]
 
