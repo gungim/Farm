@@ -1048,7 +1048,8 @@ layer_0/name = "Faming"
 layer_1/name = "Construction"
 layer_1/tile_data = PackedInt32Array()
 
-[node name="Entity" type="Node" parent="Farm"]
+[node name="Entity" type="Node2D" parent="Farm"]
+y_sort_enabled = true
 
 [node name="WorldTileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_lwh5n")

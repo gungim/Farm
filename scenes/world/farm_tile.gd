@@ -11,7 +11,7 @@ var land_tile_id: int = 0
 @onready var crop_scene = preload("res://scenes/farm_entity/crops/crops.tscn")
 @onready var pine_tree_res = preload("res://scenes/resources/tree_animation/pine.tres")
 @onready var tilemap: TileMap = $FarmTileMap
-@onready var entity: Node =  $Entity
+@onready var entity: Node = $Entity
 
 # Save farm tile
 # planted: true if tile is planted
@@ -39,25 +39,17 @@ func setup():
 		if not tile:
 			return
 
-		set_tile_planted(tile_vec)
-
 		if tile["use"] == "plant":
-			# spawn crop scene and add to current tile
-			var obj_scene: Crop = crop_scene.instantiate()
-			entity.add_child(obj_scene)
-			obj_scene.position = tilemap.map_to_local(tile_vec) - Vector2(0, 5)
-			obj_scene.id = key
-
-			var seed_res = get_resource(tile["seed"])
-			var sprite_frames = get_sprite_frames(tile["seed"])
-
-			obj_scene.setup(
-				tile["start_time"], seed_res.time_range, sprite_frames, seed_res.harvest_action
-			)
+			spawn_crop_node(tile_vec, tile["seed"], tile["start_time"])
 
 		# Update water status
-		var water_status = tile.get("water_status")
-		set_cell_water_tile(tile_vec, water_status)
+		if tile["use"] == "plant":
+			var water_status = tile.get("water_status")
+			if not water_status:
+				water_status = "Short"
+			set_cell_watered(tile_vec, water_status)
+		elif tile["use"] == "build":
+			set_cell_builded(tile_vec)
 
 
 func _on_hoe():
@@ -65,7 +57,7 @@ func _on_hoe():
 	var key = "{0},{1}".format([tile_vec.x, tile_vec.y])
 	var tile = farm_dic.get(key)
 	if not tile:
-		set_tile_planted(tile_vec)
+		set_cell_watered(tile_vec, "Shhort")
 		farm_dic[key] = {"use": "plant", "water_status": "Short"}
 
 
@@ -78,7 +70,7 @@ func _on_watering():
 		return
 
 	if tile["use"] == "plant":
-		set_cell_water_tile(tile_vec, "Full")
+		set_cell_watered(tile_vec, "Full")
 		tile["water_status"] = "Full"
 		farm_dic[key] = tile
 
@@ -98,7 +90,6 @@ func _on_plant(seed_slot: Slot):
 	if tile["use"] == "plant":
 		if seed_slot.item is SeedItem and seed_slot.amount > 0:
 			var start_time = Time.get_unix_time_from_system()
-			set_tile_planted(tile_vec)
 
 			# Update type to PLANTED and set seed type, start_time
 			tile["use"] = "plant"
@@ -107,14 +98,8 @@ func _on_plant(seed_slot: Slot):
 			tile["hp"] = 100
 			farm_dic[key] = tile
 
-			# Spawn crop scene at tile vec
-			var obj_scene: Crop = crop_scene.instantiate()
-			var seed_res = get_resource(tile["seed"])
-			var sprite_frames = get_sprite_frames(tile["seed"])
-			entity.add_child(obj_scene)
-			obj_scene.setup(start_time, seed_res.time_range, sprite_frames, seed_res.harvest_action)
-			obj_scene.position = tilemap.map_to_local(tile_vec) - Vector2(0, 5)
-			obj_scene.id = key
+			spawn_crop_node(tile_vec, tile["seed"], start_time)
+			set_cell_watered(tile_vec, "Short")
 
 			# Update inventory when plant success
 			seed_slot.amount -= 1
@@ -134,14 +119,8 @@ func _on_add_tree(tree: Resource):
 		tile["hp"] = 100
 		farm_dic[key] = tile
 
-		var obj_scene: Crop = crop_scene.instantiate()
-		var sprite_frames = tree
-		entity.add_child(obj_scene)
-		obj_scene.setup(00, 00, sprite_frames, 1)
-		obj_scene.position = tilemap.map_to_local(tile_vec) - Vector2(0, 5)
-		obj_scene.id = key
-
-		set_tile_planted(tile_vec)
+		spawn_crop_node(tile_vec, tile["seed"], 0)
+		set_cell_watered(tile_vec, "Short")
 
 
 func _on_harvest_crops():
@@ -209,12 +188,32 @@ func _on_build_barn():
 		BetterTerrain.set_cell(tilemap, 1, tile_vec, 0)
 
 
-func set_cell_water_tile(tile_vec, status):
+# Nếu ô đã được tưới nước hoặc trồng, thì set tile đã tưới
+func set_cell_watered(pos: Vector2i, status: String):
 	match status:
 		"Full":
-			tilemap.set_cell(farming_layer, tile_vec, land_tile_id, Vector2i(1, 0), 0)
+			tilemap.set_cell(farming_layer, pos, land_tile_id, Vector2i(1, 0), 0)
 		"Short":
-			tilemap.set_cell(farming_layer, tile_vec, land_tile_id, Vector2i(2, 0), 0)
+			tilemap.set_cell(farming_layer, pos, land_tile_id, Vector2i(2, 0), 0)
+
+
+func set_cell_builded(pos: Vector2i):
+	BetterTerrain.set_cell(tilemap, 1, pos, 0)
+
+
+# sinh crop scene
+func spawn_crop_node(pos: Vector2i, seed_name: String, start_time: int):
+	var id = "{0},{1}".format([pos.x, pos.y])
+
+	var obj_scene: Crop = crop_scene.instantiate()
+	entity.add_child(obj_scene)
+	obj_scene.position = tilemap.map_to_local(pos)
+	obj_scene.id = id
+
+	var seed_res = get_resource(seed_name)
+	var sprite_frames = get_sprite_frames(seed_name)
+
+	obj_scene.setup(start_time, seed_res.time_range, sprite_frames, seed_res.harvest_action)
 
 
 # key have the form "{10},{20}"
