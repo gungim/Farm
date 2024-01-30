@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://p1ykhh521wfy"]
+[gd_scene load_steps=5 format=3 uid="uid://p1ykhh521wfy"]
 
 [ext_resource type="Script" path="res://scenes/farm_entity/crops/crops.gd" id="1_0vhn0"]
+[ext_resource type="SpriteFrames" uid="uid://kisrgugksnvd" path="res://scenes/resources/tree_animation/pine.tres" id="3_o7cn1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iu78k"]
 radius = 7.0
@@ -16,6 +17,7 @@ script = ExtResource("1_0vhn0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
+sprite_frames = ExtResource("3_o7cn1")
 animation = &"1"
 autoplay = "1"
 

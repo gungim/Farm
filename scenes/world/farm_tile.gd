@@ -1,24 +1,28 @@
-extends Node
-class_name FarmTileMap
+extends Node2D
+class_name Farm
 
 enum ACTIONS { HOE, PLANT, WATERING, FOOD, HARVEST }
 
 # farming layer
 var farming_layer: int = 0
+# Layer cho các công trình
+var construction_layer: int = 1
 
+# Tile id
 var land_tile_id: int = 0
+
+# Biến lưu trữ pos của tile trong farm_tile
+var farm_dic: Dictionary
+
+enum lake_layer { LAKE = 1, SIDE = 0 }
+
+enum terrains { FENCE = 0, SMALL_FENCE = 1, WOOD_FENCE = 2, WOOD2_FENCE = 3 }
 
 @onready var crop_scene = preload("res://scenes/farm_entity/crops/crops.tscn")
 @onready var pine_tree_res = preload("res://scenes/resources/tree_animation/pine.tres")
-@onready var tilemap: TileMap = $FarmTileMap
+@onready var farm_map: TileMap = $FarmMap
+@onready var lake_map: TileMap = $LakeMap
 @onready var entity: Node = $Entity
-
-# Save farm tile
-# planted: true if tile is planted
-# water_status: Full, Mid, Short
-# start_time: time to start planting tree
-# hp: 100
-@export var farm_dic: Dictionary
 
 
 func _ready():
@@ -34,43 +38,46 @@ func _ready():
 
 func setup():
 	for key in farm_dic:
-		var tile_vec: Vector2i = key_to_vecter(key)
+		var tile_pos: Vector2i = key_to_vecter(key)
 		var tile = farm_dic[key]
 		if not tile:
 			return
 
 		if tile["use"] == "plant":
-			spawn_crop_node(tile_vec, tile["seed"], tile["start_time"])
+			spawn_crop_node(tile_pos, tile["seed"], tile["start_time"])
 
 		# Update water status
 		if tile["use"] == "plant":
 			var water_status = tile.get("water_status")
 			if not water_status:
 				water_status = "Short"
-			set_cell_watered(tile_vec, water_status)
+			set_cell_watered(tile_pos, water_status)
 		elif tile["use"] == "build":
-			set_cell_builded(tile_vec)
+			set_cell_builded(tile_pos)
+	
+	setup_lake()
 
 
+# ------------------------ Func for farm ---------------------------------
 func _on_hoe():
-	var tile_vec: Vector2i = tilemap.local_to_map(tilemap.get_global_mouse_position())
-	var key = "{0},{1}".format([tile_vec.x, tile_vec.y])
+	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
+	var key = "{0},{1}".format([tile_pos.x, tile_pos.y])
 	var tile = farm_dic.get(key)
 	if not tile:
-		set_cell_watered(tile_vec, "Shhort")
+		set_cell_watered(tile_pos, "Short")
 		farm_dic[key] = {"use": "plant", "water_status": "Short"}
 
 
 func _on_watering():
-	var tile_vec: Vector2i = tilemap.local_to_map(tilemap.get_global_mouse_position())
-	var key = "{0},{1}".format([tile_vec.x, tile_vec.y])
+	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
+	var key = "{0},{1}".format([tile_pos.x, tile_pos.y])
 	var tile = farm_dic.get(key)
 
 	if not tile:
 		return
 
 	if tile["use"] == "plant":
-		set_cell_watered(tile_vec, "Full")
+		set_cell_watered(tile_pos, "Full")
 		tile["water_status"] = "Full"
 		farm_dic[key] = tile
 
@@ -80,8 +87,8 @@ func _on_plant(seed_slot: Slot):
 	if not seed_slot or not seed_slot.item:
 		return
 
-	var tile_vec: Vector2i = tilemap.local_to_map(tilemap.get_global_mouse_position())
-	var key = "{0},{1}".format([tile_vec.x, tile_vec.y])
+	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
+	var key = "{0},{1}".format([tile_pos.x, tile_pos.y])
 	var tile = farm_dic.get(key)
 
 	if not tile:
@@ -98,8 +105,8 @@ func _on_plant(seed_slot: Slot):
 			tile["hp"] = 100
 			farm_dic[key] = tile
 
-			spawn_crop_node(tile_vec, tile["seed"], start_time)
-			set_cell_watered(tile_vec, "Short")
+			spawn_crop_node(tile_pos, tile["seed"], start_time)
+			set_cell_watered(tile_pos, "Short")
 
 			# Update inventory when plant success
 			seed_slot.amount -= 1
@@ -107,8 +114,8 @@ func _on_plant(seed_slot: Slot):
 
 
 func _on_add_tree(tree: Resource):
-	var tile_vec: Vector2i = tilemap.local_to_map(tilemap.get_global_mouse_position())
-	var key = "{0},{1}".format([tile_vec.x, tile_vec.y])
+	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
+	var key = "{0},{1}".format([tile_pos.x, tile_pos.y])
 	var tile = farm_dic.get(key)
 
 	if not tile:
@@ -119,13 +126,13 @@ func _on_add_tree(tree: Resource):
 		tile["hp"] = 100
 		farm_dic[key] = tile
 
-		spawn_crop_node(tile_vec, tile["seed"], 0)
-		set_cell_watered(tile_vec, "Short")
+		spawn_crop_node(tile_pos, tile["seed"], 0)
+		set_cell_watered(tile_pos, "Short")
 
 
 func _on_harvest_crops():
-	var tile_vec: Vector2i = tilemap.local_to_map(tilemap.get_global_mouse_position())
-	var key = "{0},{1}".format([tile_vec.x, tile_vec.y])
+	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
+	var key = "{0},{1}".format([tile_pos.x, tile_pos.y])
 	var tile = farm_dic.get(key)
 
 	if not tile:
@@ -145,8 +152,8 @@ func _on_harvest_crops():
 
 
 func _on_chop_tree(dmg: int):
-	var tile_vec: Vector2i = tilemap.local_to_map(tilemap.get_global_mouse_position())
-	var key = "{0},{1}".format([tile_vec.x, tile_vec.y])
+	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
+	var key = "{0},{1}".format([tile_pos.x, tile_pos.y])
 	var tile = farm_dic.get(key)
 
 	if not tile:
@@ -177,28 +184,33 @@ func _on_chop_tree(dmg: int):
 
 
 func _on_build_barn():
-	var tile_vec: Vector2i = tilemap.local_to_map(tilemap.get_global_mouse_position())
-	var key = "{0},{1}".format([tile_vec.x, tile_vec.y])
+	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
+	var key = "{0},{1}".format([tile_pos.x, tile_pos.y])
 	var tile = farm_dic.get(key)
 
 	if not tile:
 		tile = {}
 		tile["use"] = "build"
 		farm_dic[key] = tile
-		BetterTerrain.set_cell(tilemap, 1, tile_vec, 0)
+
+		set_cell_builded(tile_pos)
+
+
+# ------------------------ Func help for farm ---------------------------------
 
 
 # Nếu ô đã được tưới nước hoặc trồng, thì set tile đã tưới
 func set_cell_watered(pos: Vector2i, status: String):
 	match status:
 		"Full":
-			tilemap.set_cell(farming_layer, pos, land_tile_id, Vector2i(1, 0), 0)
+			farm_map.set_cell(farming_layer, pos, land_tile_id, Vector2i(1, 0), 0)
 		"Short":
-			tilemap.set_cell(farming_layer, pos, land_tile_id, Vector2i(2, 0), 0)
+			farm_map.set_cell(farming_layer, pos, land_tile_id, Vector2i(2, 0), 0)
 
 
 func set_cell_builded(pos: Vector2i):
-	BetterTerrain.set_cell(tilemap, 1, pos, 0)
+	BetterTerrain.set_cell(farm_map, construction_layer, pos, terrains.FENCE)
+	BetterTerrain.update_terrain_cell(farm_map, construction_layer, pos, true)
 
 
 # sinh crop scene
@@ -207,7 +219,7 @@ func spawn_crop_node(pos: Vector2i, seed_name: String, start_time: int):
 
 	var obj_scene: Crop = crop_scene.instantiate()
 	entity.add_child(obj_scene)
-	obj_scene.position = tilemap.map_to_local(pos)
+	obj_scene.position = farm_map.map_to_local(pos)
 	obj_scene.id = id
 
 	var seed_res = get_resource(seed_name)
@@ -233,7 +245,7 @@ func get_resource(seed_name: String) -> SeedItem:
 
 
 func set_tile_planted(tile: Vector2i):
-	tilemap.set_cell(farming_layer, tile, land_tile_id, Vector2i(1, 0), 0)
+	farm_map.set_cell(farming_layer, tile, land_tile_id, Vector2i(1, 0), 0)
 
 
 # kiểm tra 1 tile có thể thu hoạch hay chưa
@@ -269,10 +281,56 @@ func random_output(item: int, tile: Dictionary) -> int:
 	return ran_output
 
 
+# ------------------------ Func help lake ---------------------------------
+func setup_lake():
+	BetterTerrain.set_cells(lake_map, lake_layer.LAKE, FarmEvents.lake_arr, lake_layer.LAKE)
+	BetterTerrain.update_terrain_cells(lake_map, lake_layer.LAKE, FarmEvents.lake_arr)
+	
+	setup_side_lake()
+# ------------------------ Func help for lake ---------------------------------
+
+func setup_side_lake():
+	var lake_arr = FarmEvents.lake_arr
+	var lake_side_arr: Array[Vector2i] = []
+	for pos in lake_arr:
+		lake_side_arr.push_back(pos)
+
+		var top_pos = pos +  Vector2i(0, -1)
+		var left_pos = pos +  Vector2i(-1, 0)
+		var righ_pos = pos +  Vector2i(1, 0)
+		var bottom_pos = pos +  Vector2i(0, 1)
+		var top_left_pos = pos + Vector2i(-1, 1)
+		var top_right_pos = pos + Vector2i(1, 1)
+		var bottom_left_pos = pos + Vector2i(-1, -1)
+		var bottom_right_pos = pos + Vector2i(1, -1)
+
+		if not lake_arr.has(top_pos):
+			lake_side_arr.push_back(top_pos)
+		if not lake_arr.has(left_pos):
+			lake_side_arr.push_back(left_pos)
+		if not lake_arr.has(righ_pos):
+			lake_side_arr.push_back(righ_pos)
+		if not lake_arr.has(bottom_pos):
+			lake_side_arr.push_back(bottom_pos)
+
+		if not lake_arr.has(top_left_pos):
+			lake_side_arr.push_back(top_left_pos)
+		if not lake_arr.has(top_right_pos):
+			lake_side_arr.push_back(top_right_pos)
+		if not lake_arr.has(bottom_left_pos):
+			lake_side_arr.push_back(bottom_left_pos)
+		if not lake_arr.has(bottom_right_pos):
+			lake_side_arr.push_back(bottom_right_pos)
+
+	BetterTerrain.set_cells(lake_map, lake_layer.SIDE, lake_side_arr, lake_layer.SIDE)
+	BetterTerrain.update_terrain_cells(lake_map, lake_layer.SIDE, lake_side_arr)
+
+
 func _input(event):
 	if event is InputEventMouseButton:
 		# if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-		# 	_on_add_tree(pine_tree_res)
+		# 	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
+		# 	print_debug(tile_pos)
 
 		if event.button_index == MOUSE_BUTTON_MIDDLE and event.is_pressed():
 			print_debug(farm_dic)

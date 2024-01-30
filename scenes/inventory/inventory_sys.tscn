@@ -7,11 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://1ldwvhqrk5jb" path="res://scenes/inventory/handler_ui.tscn" id="4_gnhkf"]
 [ext_resource type="Resource" uid="uid://cprkft6h1dafq" path="res://scenes/inventory/item/weapone/hoe.tres" id="4_siyjc"]
 [ext_resource type="Resource" uid="uid://rv633fxgl4l7" path="res://scenes/inventory/item/weapone/sword.tres" id="4_yygpr"]
-[ext_resource type="Resource" uid="uid://bvkt88vl6n8hw" path="res://scenes/inventory/item/seeds/seed_tomato.tres" id="5_edsxu"]
+[ext_resource type="Resource" uid="uid://bvkt88vl6n8hw" path="res://scenes/inventory/item/seeds/tomato.tres" id="5_edsxu"]
 [ext_resource type="Resource" uid="uid://bs5ywmw61bvrp" path="res://scenes/inventory/item/products/tomato.tres" id="7_s6vib"]
 [ext_resource type="Resource" uid="uid://c5ayinf4o0shd" path="res://scenes/inventory/item/weapone/sickle.tres" id="7_xpx00"]
 [ext_resource type="PackedScene" uid="uid://c3qx1ngn7jsv8" path="res://scenes/inventory/hotbar/hotbar_ui.tscn" id="8_1dec4"]
-[ext_resource type="Resource" uid="uid://d180kfhexouf8" path="res://scenes/inventory/item/seeds/seed_potato.tres" id="11_sduik"]
+[ext_resource type="Resource" uid="uid://d180kfhexouf8" path="res://scenes/inventory/item/seeds/potato.tres" id="11_sduik"]
 
 [node name="InventorySys" type="Control" groups=["InventorySys"]]
 layout_mode = 3
