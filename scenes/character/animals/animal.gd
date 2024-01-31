@@ -40,6 +40,7 @@ func _ready():
 	state_timer.start()
 	live_timer.start()
 
+	setup(int(Time.get_unix_time_from_system()))
 
 func setup(start_time: int):
 	if start_time:
@@ -48,9 +49,10 @@ func setup(start_time: int):
 		start_live_time = int(Time.get_unix_time_from_system())
 
 	var lived_time = Time.get_unix_time_from_system() - start_live_time
-
+	if lived_time <= 0:
+		die()
 	# check điều kiện để có thể tạo sản phẩm(trứng)
-	if lived_time <= live_time / float(3):
+	elif lived_time <= live_time / float(3):
 		can_create_product = true
 		_start_create_product()
 

@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://ddb2bfp4m5kfb"
+
+[deps]
+
+files=["res://data/farm.use.translation", "res://data/farm.seed.translation", "res://data/farm.start.translation", "res://data/farm.hp.translation"]
+
+source_file="res://data/farm.csv"
+dest_files=["res://data/farm.use.translation", "res://data/farm.seed.translation", "res://data/farm.start.translation", "res://data/farm.hp.translation"]
+
+[params]
+
+compress=true
+delimiter=0

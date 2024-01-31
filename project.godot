@@ -30,7 +30,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")
+enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg", "res://addons/csv-data-importer/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg")
 
 [input]
 
@@ -91,8 +91,9 @@ test2={
 2d_navigation/layer_1="World"
 2d_physics/layer_2="Enemies"
 2d_physics/layer_3="Player"
-2d_physics/layer_4="Farm"
+2d_physics/layer_4="FarmEnemy"
 2d_physics/layer_5="WaterArea"
+2d_physics/layer_6="WaterSide"
 avoidance/layer_1="World"
 
 [rendering]

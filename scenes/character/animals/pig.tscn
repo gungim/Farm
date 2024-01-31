@@ -98,6 +98,8 @@ _data = {
 }
 
 [node name="Pig" instance=ExtResource("1_g4xey")]
+collision_layer = 2
+collision_mask = 31
 script = ExtResource("3_d7671")
 HP = 100
 

@@ -24,6 +24,9 @@ enum terrains { FENCE = 0, SMALL_FENCE = 1, WOOD_FENCE = 2, WOOD2_FENCE = 3 }
 @onready var lake_map: TileMap = $LakeMap
 @onready var entity: Node = $Entity
 
+const lake_file_path = "res://data/lake.save"
+const farm_file_path = "res://data/farm.csv"
+
 
 func _ready():
 	farm_dic = FarmEvents.farm_dic
@@ -34,6 +37,8 @@ func _ready():
 	FarmEvents.connect("on_chop", _on_chop_tree)
 	FarmEvents.connect("on_build_barn", _on_build_barn)
 	setup()
+
+	# var file = preload(farm_file_path).records
 
 
 func setup():
@@ -54,7 +59,7 @@ func setup():
 			set_cell_watered(tile_pos, water_status)
 		elif tile["use"] == "build":
 			set_cell_builded(tile_pos)
-	
+
 	setup_lake()
 
 
@@ -280,25 +285,32 @@ func random_output(item: int, tile: Dictionary) -> int:
 
 	return ran_output
 
+func load_farm():
+	# var data  = preload(farm_file_path)
+	# print_debug(data.records)
+	pass
 
 # ------------------------ Func help lake ---------------------------------
 func setup_lake():
-	BetterTerrain.set_cells(lake_map, lake_layer.LAKE, FarmEvents.lake_arr, lake_layer.LAKE)
-	BetterTerrain.update_terrain_cells(lake_map, lake_layer.LAKE, FarmEvents.lake_arr)
-	
-	setup_side_lake()
+	var lake_arr = load_lake()
+	BetterTerrain.set_cells(lake_map, lake_layer.LAKE, lake_arr, lake_layer.LAKE)
+	BetterTerrain.update_terrain_cells(lake_map, lake_layer.LAKE, lake_arr)
+
+	setup_side_lake(lake_arr)
+
+
 # ------------------------ Func help for lake ---------------------------------
 
-func setup_side_lake():
-	var lake_arr = FarmEvents.lake_arr
+
+func setup_side_lake(lake_arr:  Array[Vector2i]):
 	var lake_side_arr: Array[Vector2i] = []
 	for pos in lake_arr:
 		lake_side_arr.push_back(pos)
 
-		var top_pos = pos +  Vector2i(0, -1)
-		var left_pos = pos +  Vector2i(-1, 0)
-		var righ_pos = pos +  Vector2i(1, 0)
-		var bottom_pos = pos +  Vector2i(0, 1)
+		var top_pos = pos + Vector2i(0, -1)
+		var left_pos = pos + Vector2i(-1, 0)
+		var righ_pos = pos + Vector2i(1, 0)
+		var bottom_pos = pos + Vector2i(0, 1)
 		var top_left_pos = pos + Vector2i(-1, 1)
 		var top_right_pos = pos + Vector2i(1, 1)
 		var bottom_left_pos = pos + Vector2i(-1, -1)
@@ -326,6 +338,17 @@ func setup_side_lake():
 	BetterTerrain.update_terrain_cells(lake_map, lake_layer.SIDE, lake_side_arr)
 
 
+# ------------------------ Func help for file ---------------------------------
+func load_lake()-> Array[Vector2i]:
+	var file = FileAccess.open(lake_file_path, FileAccess.READ)
+	var data  =file.get_csv_line()
+	var arr: Array[Vector2i] = []
+	for item in data:
+		var split_text = item.split(",")
+		var vec = Vector2i(int(split_text[0]), int(split_text[1]))
+		arr.push_back(vec)
+	return arr
+
 func _input(event):
 	if event is InputEventMouseButton:
 		# if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
@@ -333,4 +356,4 @@ func _input(event):
 		# 	print_debug(tile_pos)
 
 		if event.button_index == MOUSE_BUTTON_MIDDLE and event.is_pressed():
-			print_debug(farm_dic)
+			load_farm()
