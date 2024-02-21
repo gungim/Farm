@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhw3pm2ignslv"]
+[gd_scene load_steps=6 format=3 uid="uid://dhw3pm2ignslv"]
 
 [ext_resource type="PackedScene" uid="uid://bd6et0mcmqp4k" path="res://scenes/character/animals/farm_animal.tscn" id="1_smk2k"]
-[ext_resource type="SpriteFrames" uid="uid://bm3het8xpwaaw" path="res://scenes/character/animals/chicken.tres" id="2_ty05q"]
+[ext_resource type="SpriteFrames" uid="uid://bm3het8xpwaaw" path="res://scenes/character/animals/animation/chicken.tres" id="2_ty05q"]
+[ext_resource type="PackedScene" uid="uid://bospn5j5sts1s" path="res://scenes/character/animals/spawn_egg_component.tscn" id="3_mfoea"]
 
 [sub_resource type="Animation" id="Animation_p65p1"]
 resource_name = "Idle"
@@ -21,3 +22,7 @@ animation = &"Eat"
 libraries = {
 "": SubResource("AnimationLibrary_4nmuy")
 }
+
+[node name="SpawnEggComponent" parent="." index="7" instance=ExtResource("3_mfoea")]
+wait_time = 30
+stored = "ChickenNest"

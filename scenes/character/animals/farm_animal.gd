@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name FarmAnima
+class_name FarmAnimal
 
 @export var MAX_SPEED = 10
 @export var ACCELERATION = 40
@@ -11,8 +11,12 @@ class_name FarmAnima
 @onready var hp_timer: Timer = $HpTimer
 @onready var state_timer: Timer = $StateTimer
 @onready var sensor_area: Area2D = $SensorArea
+@onready var live_time: int = 64  # Hours
+
 var mov_direction: Vector2 = Vector2.ZERO
 var FRICTION = 0.15
+var lived_time: int = 720  # Seconds
+var time_to_start_spawn_product: int = 32  # Hours
 
 
 func _ready():
@@ -83,7 +87,7 @@ func _on_place_marker_state_physics_processing(_delta):
 
 func _on_eating_state_entered():
 	HP = MAX_HP
-	
+
 	state_timer.start()
 	await state_timer.timeout
 
@@ -96,7 +100,12 @@ func _on_sensor_area_entered(area: Area2D):
 	var node = area
 	if area.owner:
 		node = area.owner
-	
+
 	if node.is_in_group("Trough"):
 		state.send_event("moved_trough")
 
+
+func check_can_create_product() -> bool:
+	if lived_time >= time_to_start_spawn_product * 60 * 60:
+		return true
+	return false
