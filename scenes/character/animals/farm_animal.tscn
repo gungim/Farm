@@ -1,0 +1,119 @@
+[gd_scene load_steps=8 format=3 uid="uid://bd6et0mcmqp4k"]
+
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="1_e5sge"]
+[ext_resource type="Script" path="res://scenes/character/animals/farm_animal.gd" id="1_ocv57"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="3_0dj7f"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="4_aml7g"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="5_drnav"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fd00u"]
+radius = 7.07107
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rcxfg"]
+radius = 23.0217
+
+[node name="FarmAnimal" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 65
+script = ExtResource("1_ocv57")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fd00u")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("1_e5sge")
+track_in_editor = true
+
+[node name="Root" type="Node" parent="StateChart"]
+script = ExtResource("3_0dj7f")
+initial_state = NodePath("Initializing")
+
+[node name="Initializing" type="Node" parent="StateChart/Root"]
+script = ExtResource("4_aml7g")
+
+[node name="Transition" type="Node" parent="StateChart/Root/Initializing"]
+script = ExtResource("5_drnav")
+to = NodePath("../../Idle")
+event = &"initialized"
+
+[node name="Idle" type="Node" parent="StateChart/Root"]
+script = ExtResource("4_aml7g")
+
+[node name="On Next Marker" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("5_drnav")
+to = NodePath("../../Traveling/Place Marker")
+event = &"place_marker_setted"
+
+[node name="On Next Trough" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("5_drnav")
+to = NodePath("../../Traveling/Place Marker")
+event = &"food_marker_setted"
+
+[node name="On Random Direction" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("5_drnav")
+to = NodePath("../../Traveling/Travel")
+event = &"random_direction_setted"
+
+[node name="Traveling" type="Node" parent="StateChart/Root"]
+script = ExtResource("3_0dj7f")
+initial_state = NodePath("Travel")
+
+[node name="Navigation Finish" type="Node" parent="StateChart/Root/Traveling"]
+script = ExtResource("5_drnav")
+to = NodePath("../../Idle")
+event = &"navigation_finished"
+
+[node name="Place Marker" type="Node" parent="StateChart/Root/Traveling"]
+script = ExtResource("4_aml7g")
+
+[node name="Return Travel" type="Node" parent="StateChart/Root/Traveling/Place Marker"]
+script = ExtResource("5_drnav")
+to = NodePath("../../Travel")
+event = &"navigation_finished"
+
+[node name="Moved Trough" type="Node" parent="StateChart/Root/Traveling/Place Marker"]
+script = ExtResource("5_drnav")
+to = NodePath("../../../Eating")
+event = &"moved_trough"
+
+[node name="Travel" type="Node" parent="StateChart/Root/Traveling"]
+script = ExtResource("4_aml7g")
+
+[node name="Return Idle" type="Node" parent="StateChart/Root/Traveling/Travel"]
+script = ExtResource("5_drnav")
+to = NodePath("../../../Idle")
+event = &"random_move_ended"
+
+[node name="Eating" type="Node" parent="StateChart/Root"]
+script = ExtResource("4_aml7g")
+
+[node name="Transition" type="Node" parent="StateChart/Root/Eating"]
+script = ExtResource("5_drnav")
+to = NodePath("../../Idle")
+event = &"finished_eating"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+animation = &""
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="HpTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="StateTimer" type="Timer" parent="."]
+
+[node name="SensorArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SensorArea"]
+shape = SubResource("CircleShape2D_rcxfg")
+
+[connection signal="state_entered" from="StateChart/Root/Idle" to="." method="_on_idle_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/Root/Idle" to="." method="_on_idle_state_physics_processing"]
+[connection signal="state_physics_processing" from="StateChart/Root/Traveling/Place Marker" to="." method="_on_place_marker_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/Root/Traveling/Travel" to="." method="_on_travel_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/Root/Traveling/Travel" to="." method="_on_travel_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/Root/Eating" to="." method="_on_eating_state_entered"]
+[connection signal="timeout" from="HpTimer" to="." method="_on_hp_timer_timeout"]
+[connection signal="area_entered" from="SensorArea" to="." method="_on_sensor_area_entered"]

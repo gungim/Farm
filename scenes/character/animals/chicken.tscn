@@ -1,120 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://bktubuuhamvmn"]
+[gd_scene load_steps=5 format=3 uid="uid://dhw3pm2ignslv"]
 
-[ext_resource type="PackedScene" uid="uid://b3keuf1aeixhq" path="res://scenes/character/animals/animal.tscn" id="1_jv55s"]
+[ext_resource type="PackedScene" uid="uid://bd6et0mcmqp4k" path="res://scenes/character/animals/farm_animal.tscn" id="1_smk2k"]
 [ext_resource type="SpriteFrames" uid="uid://bm3het8xpwaaw" path="res://scenes/character/animals/chicken.tres" id="2_ty05q"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7i1ej"]
-radius = 6.0
-
-[sub_resource type="Animation" id="Animation_rbx2i"]
+[sub_resource type="Animation" id="Animation_p65p1"]
 resource_name = "Idle"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Idle"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
 
-[sub_resource type="Animation" id="Animation_m1ujk"]
-resource_name = "Move"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Move"]
-}
-
-[sub_resource type="Animation" id="Animation_nawnv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Move"]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_t5ioy"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4nmuy"]
 _data = {
-"Idle": SubResource("Animation_rbx2i"),
-"Move": SubResource("Animation_m1ujk"),
-"RESET": SubResource("Animation_nawnv")
+"Idle": SubResource("Animation_p65p1")
 }
 
-[node name="Chicken" instance=ExtResource("1_jv55s")]
-collision_layer = 2
-collision_mask = 31
+[node name="Chicken" instance=ExtResource("1_smk2k")]
 
-[node name="CollisionShape2D" parent="." index="0"]
-shape = SubResource("CircleShape2D_7i1ej")
-
-[node name="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" parent="." index="3"]
 sprite_frames = ExtResource("2_ty05q")
-animation = &"Move"
+animation = &"Eat"
 
-[node name="AnimationPlayer" parent="." index="3"]
-root_node = NodePath("..")
+[node name="AnimationPlayer" parent="." index="4"]
 libraries = {
-"": SubResource("AnimationLibrary_t5ioy")
+"": SubResource("AnimationLibrary_4nmuy")
 }
-
-[node name="EggTimer" type="Timer" parent="." index="8"]
-
-[connection signal="timeout" from="EggTimer" to="." method="_on_egg_timer_timeout"]

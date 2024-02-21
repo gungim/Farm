@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtfkpdejvmlk5"]
+
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="2_a15bd"]
+[ext_resource type="PackedScene" uid="uid://h5xwe0kc7433" path="res://scenes/farm_entity/trough.tscn" id="3_kg4rq"]
+[ext_resource type="PackedScene" uid="uid://dhw3pm2ignslv" path="res://scenes/character/animals/chicken.tscn" id="4_tmnfw"]
+[ext_resource type="PackedScene" uid="uid://m2ib88feldcx" path="res://scenes/character/player/Player.tscn" id="5_m6cnk"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_djchj"]
+vertices = PackedVector2Array(1140, 638, 13, 637, 9, 11, 1139, 11)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1152, 0, 0, 0, 0, 648, 1152, 648)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="TestWorld" type="Node2D"]
+
+[node name="StateChartDebugger" parent="." instance=ExtResource("2_a15bd")]
+offset_left = 589.0
+offset_right = 1149.0
+offset_bottom = 384.0
+
+[node name="Player" parent="." instance=ExtResource("5_m6cnk")]
+position = Vector2(313, 182)
+
+[node name="Trough" parent="." instance=ExtResource("3_kg4rq")]
+position = Vector2(93, 169)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_djchj")
+
+[node name="Chicken" parent="." instance=ExtResource("4_tmnfw")]
+position = Vector2(192, 166)

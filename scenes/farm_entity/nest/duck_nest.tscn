@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bnrm1oseudwi5" path="res://scenes/farm_entity/nest/nest_egg.tscn" id="1_iep87"]
 [ext_resource type="Script" path="res://scenes/farm_entity/nest/duck_nest.gd" id="2_ulgf5"]
-[ext_resource type="Texture2D" uid="uid://desd6bgmmx383" path="res://sprite/map/duck_nest.png" id="3_88by6"]
+[ext_resource type="Texture2D" uid="uid://desd6bgmmx383" path="res://sprite/farm_entity/duck_nest.png" id="3_88by6"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gm7cy"]
 blend_mode = 1

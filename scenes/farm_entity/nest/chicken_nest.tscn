@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bnrm1oseudwi5" path="res://scenes/farm_entity/nest/nest_egg.tscn" id="1_fe21u"]
 [ext_resource type="Script" path="res://scenes/farm_entity/nest/chicken_nest.gd" id="2_fajif"]
-[ext_resource type="Texture2D" uid="uid://luhxbn3r6fpr" path="res://sprite/map/chicken_nest.png" id="3_5ov5a"]
+[ext_resource type="Texture2D" uid="uid://luhxbn3r6fpr" path="res://sprite/farm_entity/chicken_nest.png" id="3_5ov5a"]
 
 [node name="ChickenNest" instance=ExtResource("1_fe21u")]
 script = ExtResource("2_fajif")

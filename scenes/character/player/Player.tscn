@@ -1,12 +1,15 @@
-[gd_scene load_steps=33 format=3 uid="uid://m2ib88feldcx"]
+[gd_scene load_steps=37 format=3 uid="uid://m2ib88feldcx"]
 
-[ext_resource type="PackedScene" uid="uid://djof5io4wy5s5" path="res://scenes/character/Character.tscn" id="1_j08dx"]
 [ext_resource type="Script" path="res://scenes/character/player/player.gd" id="2_50726"]
 [ext_resource type="Texture2D" uid="uid://cr04120uh51dw" path="res://sprite/character/farm.png" id="3_flg6l"]
-[ext_resource type="Script" path="res://scenes/character/player/player_fsm.gd" id="4_8v4u7"]
 [ext_resource type="Texture2D" uid="uid://do1ftmdbxr5hp" path="res://sprite/character/body.png" id="4_ctard"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="7_at5kf"]
 [ext_resource type="Texture2D" uid="uid://de2d0d7jpuqfo" path="res://sprite/tool/sword_icon.png" id="7_edl82"]
 [ext_resource type="Script" path="res://scenes/character/player/equipment.gd" id="7_p4s8h"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="8_tksww"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="9_3x38q"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="10_ybbvh"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="11_w1rjg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vhuvf"]
 radius = 5.0
@@ -320,33 +323,33 @@ _data = {
 "Use": SubResource("Animation_u3is3")
 }
 
-[node name="Player" instance=ExtResource("1_j08dx")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_cte6g"]
+radius = 60.6712
+
+[node name="Player" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 25
 script = ExtResource("2_50726")
 
-[node name="CollisionShape2D" parent="." index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 10)
 shape = SubResource("CapsuleShape2D_vhuvf")
 
-[node name="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 2
 sprite_frames = SubResource("SpriteFrames_2x8gn")
 animation = &"Move"
 
-[node name="FiniteStateMachine" parent="." index="2"]
-script = ExtResource("4_8v4u7")
-
-[node name="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_uhg31")
 }
+autoplay = "default"
 
-[node name="WeaponAnimation" type="AnimationPlayer" parent="." index="4"]
-
-[node name="Equipment" type="Node2D" parent="." index="5"]
+[node name="Equipment" type="Node2D" parent="."]
 script = ExtResource("7_p4s8h")
 
-[node name="TextureRect" type="TextureRect" parent="Equipment" index="0"]
+[node name="TextureRect" type="TextureRect" parent="Equipment"]
 custom_minimum_size = Vector2(16, 16)
 offset_left = -8.0
 offset_top = -20.0
@@ -354,17 +357,63 @@ offset_right = 8.0
 offset_bottom = -4.0
 texture = ExtResource("7_edl82")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Equipment" index="1"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Equipment"]
 libraries = {
 "": SubResource("AnimationLibrary_prmue")
 }
 
-[node name="Camera2D" type="Camera2D" parent="." index="6"]
+[node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="7"]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 radius = 109.46
 avoidance_layers = 15
 avoidance_mask = 15
 debug_enabled = true
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_cte6g")
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("7_at5kf")
+
+[node name="ParallelState" type="Node" parent="StateChart"]
+script = ExtResource("8_tksww")
+
+[node name="Root" type="Node" parent="StateChart/ParallelState"]
+script = ExtResource("9_3x38q")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/ParallelState/Root"]
+script = ExtResource("10_ybbvh")
+
+[node name="Place Marker" type="Node" parent="StateChart/ParallelState/Root/Idle"]
+script = ExtResource("11_w1rjg")
+to = NodePath("../../Movement")
+event = &"place_marker_setted"
+
+[node name="Farming" type="Node" parent="StateChart/ParallelState/Root/Idle"]
+script = ExtResource("11_w1rjg")
+to = NodePath("../../Farm")
+event = &"farming"
+
+[node name="Movement" type="Node" parent="StateChart/ParallelState/Root"]
+script = ExtResource("10_ybbvh")
+
+[node name="Move To Place" type="Node" parent="StateChart/ParallelState/Root/Movement"]
+script = ExtResource("11_w1rjg")
+to = NodePath("../../Idle")
+event = &"navigation_finished"
+
+[node name="Farm" type="Node" parent="StateChart/ParallelState/Root"]
+script = ExtResource("10_ybbvh")
+
+[node name="On Farm" type="Node" parent="StateChart/ParallelState/Root/Farm"]
+script = ExtResource("11_w1rjg")
+to = NodePath("../../Idle")
+event = &"farm_finished"
+
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="state_physics_processing" from="StateChart/ParallelState/Root/Movement" to="." method="_on_movement_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/ParallelState/Root/Farm" to="." method="_on_farm_state_entered"]

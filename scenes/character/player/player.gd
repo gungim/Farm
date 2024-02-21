@@ -1,22 +1,28 @@
-extends Character
+extends CharacterBody2D
 class_name Player
 
 # Signal được phát khi HP của player bị thay đổi
 signal updated_hp
 
-var target: Vector2 = Vector2.ZERO
 # using to check player can farm
 
 var farm_state = null
 var current_slot_selected: Slot
+var mov_direction: Vector2 = Vector2.ZERO
+var FRICTION = 0.15
+
+@export var MAX_SPEED = 100
+@export var MAX_HP = 100
+@export var ACCELERATION = 40
+@export var HP: int = 10
 
 @onready var equipment: Equipment = $Equipment
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
+@onready var state: StateChart = $StateChart
+@onready var animated: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _ready():
-	change_hp(0)
-	PlayerEvents.connect("on_cancel_all_action", _on_cancel_all_action)
 	PlayerEvents.connect("on_use_item", _on_use_item)
 	PlayerEvents.connect("on_hold_item", _on_hold_item)
 
@@ -24,37 +30,19 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			target = get_global_mouse_position()
+			var target = get_global_mouse_position()
 
-			if PlayerEvents.allow_other_action and position.distance_to(target) > 32:
+			if position.distance_to(target) > 32:
 				agent.target_position = target
-				fsm.set_state(fsm.states.move_to_pos)
+				state.send_event("place_marker_setted")
+			else:
+				state.send_event("farming")
 
-			elif current_slot_selected:
-				var item = current_slot_selected.item
 
-				if item is ProductionItem:
-					var actions = item.action
-					if actions[0] == GlobalEvents.product_actions.BUILD:
-						build_barn()
-				elif item is SeedItem:
-					plant_tree()
-
-				elif item is ToolItem:
-					var action = item.action
-					match action:
-						GlobalEvents.tool_actions.HOE:
-							FarmEvents.emit_signal("on_hoe")
-						GlobalEvents.tool_actions.WATERING:
-							FarmEvents.emit_signal("on_watering")
-						GlobalEvents.tool_actions.HARVEST:
-							harvest_crops()
-						GlobalEvents.tool_actions.CHOP:
-							chop_tree()
-
-	if event is InputEventKey:
-		if event.keycode == KEY_SPACE and event.pressed:
-			PlayerEvents.emit_signal("on_use_item")
+#
+#if event is InputEventKey:
+#if event.keycode == KEY_SPACE and event.pressed:
+#PlayerEvents.emit_signal("on_use_item")
 
 
 func get_input():
@@ -81,14 +69,8 @@ func move_to_target():
 
 	if agent.is_navigation_finished():
 		mov_direction = Vector2.ZERO
-		fsm.set_state(fsm.states.idle)
 		return
 	mov_direction = new_dir
-
-
-func _on_cancel_all_action():
-	mov_direction = Vector2.ZERO
-	fsm.set_state(fsm.states.idle)
 
 
 func change_hp(value: int):
@@ -117,27 +99,6 @@ func eat_food():
 		update_equipment_item()
 
 
-func plant_tree():
-	FarmEvents.emit_signal("on_plant", current_slot_selected)
-	update_equipment_item()
-
-
-func harvest_crops():
-	FarmEvents.emit_signal("on_harvest")
-
-
-func chop_tree():
-	var item = current_slot_selected.item
-	var damage = item.properties["damage"]
-	var dmg: int = randi_range(damage - 2, damage + 2)
-	FarmEvents.emit_signal("on_chop", dmg)
-
-
-# Action xây chuồng
-func build_barn():
-	FarmEvents.emit_signal("on_build_barn")
-
-
 # using when click on hotbar
 func _on_use_item(slot: Slot):
 	if slot and slot.item:
@@ -155,3 +116,51 @@ func _on_hold_item(slot: Slot):
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	mov_direction = safe_velocity
+
+
+func _on_movement_state_physics_processing(_delta):
+	var target_pos = agent.get_next_path_position()
+	if position.distance_to(target_pos) >= 32:
+		mov_direction = target_pos - global_position
+		move()
+	else:
+		state.send_event("navigation_finished")
+
+
+func move():
+	mov_direction = mov_direction.normalized()
+	velocity += mov_direction * ACCELERATION
+	velocity = velocity.limit_length(MAX_SPEED)
+	velocity = lerp(velocity, Vector2.ZERO, FRICTION)
+	move_and_slide()
+
+
+func _on_chop_state_entered():
+	var item = current_slot_selected.item
+	var damage = item.properties["damage"]
+	var dmg: int = randi_range(damage - 2, damage + 2)
+	FarmEvents.emit_signal("on_chop", dmg)
+
+
+func _on_farm_state_entered():
+	var item = current_slot_selected.item
+
+	if item is ProductionItem:
+		var actions = item.action
+		if actions[0] == GlobalEvents.product_actions.BUILD:
+			FarmEvents.emit_signal("on_build_barn")
+	elif item is SeedItem:
+		FarmEvents.emit_signal("on_plant", current_slot_selected)
+		update_equipment_item()
+
+	elif item is ToolItem:
+		var action = item.action
+		match action:
+			GlobalEvents.tool_actions.HOE:
+				FarmEvents.emit_signal("on_hoe")
+			GlobalEvents.tool_actions.WATERING:
+				FarmEvents.emit_signal("on_watering")
+			GlobalEvents.tool_actions.HARVEST:
+				FarmEvents.emit_signal("on_harvest")
+			GlobalEvents.tool_actions.CHOP:
+				pass
