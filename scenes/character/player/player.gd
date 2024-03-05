@@ -27,29 +27,16 @@ func _ready():
 	PlayerEvents.connect("on_hold_item", _on_hold_item)
 
 
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			var target = get_global_mouse_position()
-
-			if position.distance_to(target) > 32:
-				agent.target_position = target
-				state.send_event("place_marker_setted")
-			else:
-				state.send_event("farming")
-
-
-#
-#if event is InputEventKey:
-#if event.keycode == KEY_SPACE and event.pressed:
-#PlayerEvents.emit_signal("on_use_item")
-
-
 func get_input():
 	mov_direction = Input.get_vector("left", "right", "up", "down")
 
 
 func _process(_delta):
+	get_input()
+
+	if mov_direction != Vector2.ZERO:
+		move()
+
 	if velocity <= Vector2.ZERO:
 		animated.flip_h = true
 	else:
@@ -142,8 +129,12 @@ func _on_chop_state_entered():
 	FarmEvents.emit_signal("on_chop", dmg)
 
 
-func _on_farm_state_entered():
+func using_item():
+	if not current_slot_selected:
+		return
 	var item = current_slot_selected.item
+	if not item:
+		return
 
 	if item is ProductionItem:
 		var actions = item.action
@@ -163,4 +154,5 @@ func _on_farm_state_entered():
 			GlobalEvents.tool_actions.HARVEST:
 				FarmEvents.emit_signal("on_harvest")
 			GlobalEvents.tool_actions.CHOP:
-				pass
+				var dmg = item.properties["damage"]
+				FarmEvents.emit_signal("on_chop", dmg)

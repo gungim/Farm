@@ -19,7 +19,7 @@ enum lake_layer { LAKE = 1, SIDE = 0 }
 enum terrains { FENCE = 0, SMALL_FENCE = 1, WOOD_FENCE = 2, WOOD2_FENCE = 3 }
 
 @onready var crop_scene = preload("res://scenes/farm_entity/crops/crops.tscn")
-@onready var pine_tree_res = preload("res://scenes/resources/tree_animation/pine.tres")
+@onready var wood_tree = preload("res://scenes/farm_entity/tree/wood_tree.tscn")
 @onready var farm_map: TileMap = $FarmMap
 @onready var lake_map: TileMap = $LakeMap
 @onready var entity: Node = $Entity
@@ -49,10 +49,13 @@ func setup():
 			return
 
 		if tile["use"] == "plant":
-			spawn_crop_node(tile_pos, tile["seed"], tile["start_time"])
-
-		# Update water status
-		if tile["use"] == "plant":
+			var seed_name = tile["seed"]
+			var start_time = tile["start_time"]
+			if seed_name == "pine":
+				spawn_wood_tree(tile_pos, seed_name, start_time)
+			else:
+				spawn_crop_node(tile_pos, seed_name, start_time)
+			# Update water status
 			var water_status = tile.get("water_status")
 			if not water_status:
 				water_status = "Short"
@@ -65,6 +68,7 @@ func setup():
 
 # ------------------------ Func for farm ---------------------------------
 func _on_hoe():
+	print_debug("hoe")
 	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
 	var key = "{0},{1}".format([tile_pos.x, tile_pos.y])
 	var tile = farm_dic.get(key)
@@ -151,12 +155,13 @@ func _on_harvest_crops():
 			var ran_output = random_output(item.amount, tile)
 			InventoryEvents.emit_signal("on_add_item", item.res, ran_output)
 		# remove crop scene after harvest
-		for child in get_children():
+		for child in entity.get_children():
 			if child.id == key:
 				child.queue_free()
 
 
 func _on_chop_tree(dmg: int):
+	print_debug("on_chop")
 	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
 	var key = "{0},{1}".format([tile_pos.x, tile_pos.y])
 	var tile = farm_dic.get(key)
@@ -174,14 +179,14 @@ func _on_chop_tree(dmg: int):
 				var ran_output = random_output(item.amount, tile)
 				InventoryEvents.emit_signal("on_add_item", item.res, ran_output)
 
-			for child in get_children():
+			for child in entity.get_children():
 				if child.id == key:
 					child.kill()
 					break
 		else:
 			farm_dic[key] = tile
 
-			for child in get_children():
+			for child in entity.get_children():
 				if child.id == key:
 					child.chop()
 					break
@@ -231,6 +236,18 @@ func spawn_crop_node(pos: Vector2i, seed_name: String, start_time: int):
 	var sprite_frames = get_sprite_frames(seed_name)
 
 	obj_scene.setup(start_time, seed_res.time_range, sprite_frames, seed_res.harvest_action)
+
+
+# sinh wood_tree
+func spawn_wood_tree(pos: Vector2i, seed_name: String, start_time: int):
+	var id = "{0},{1}".format([pos.x, pos.y])
+
+	var obj_scene: WoodTree = wood_tree.instantiate()
+	entity.add_child(obj_scene)
+	obj_scene.position = farm_map.map_to_local(pos)
+	obj_scene.id = id
+
+	obj_scene.setup(start_time, seed_name)
 
 
 # key have the form "{10},{20}"
@@ -285,10 +302,12 @@ func random_output(item: int, tile: Dictionary) -> int:
 
 	return ran_output
 
+
 func load_farm():
 	# var data  = preload(farm_file_path)
 	# print_debug(data.records)
 	pass
+
 
 # ------------------------ Func help lake ---------------------------------
 func setup_lake():
@@ -302,7 +321,7 @@ func setup_lake():
 # ------------------------ Func help for lake ---------------------------------
 
 
-func setup_side_lake(lake_arr:  Array[Vector2i]):
+func setup_side_lake(lake_arr: Array[Vector2i]):
 	var lake_side_arr: Array[Vector2i] = []
 	for pos in lake_arr:
 		lake_side_arr.push_back(pos)
@@ -339,9 +358,9 @@ func setup_side_lake(lake_arr:  Array[Vector2i]):
 
 
 # ------------------------ Func help for file ---------------------------------
-func load_lake()-> Array[Vector2i]:
+func load_lake() -> Array[Vector2i]:
 	var file = FileAccess.open(lake_file_path, FileAccess.READ)
-	var data  =file.get_csv_line()
+	var data = file.get_csv_line()
 	var arr: Array[Vector2i] = []
 	for item in data:
 		var split_text = item.split(",")
@@ -349,11 +368,13 @@ func load_lake()-> Array[Vector2i]:
 		arr.push_back(vec)
 	return arr
 
+
 func _input(event):
-	if event is InputEventMouseButton:
+	pass
+	# if event is InputEventMouseButton:
 		# if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		# 	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
 		# 	print_debug(tile_pos)
 
-		if event.button_index == MOUSE_BUTTON_MIDDLE and event.is_pressed():
-			load_farm()
+		# if event.button_index == MOUSE_BUTTON_MIDDLE and event.is_pressed():
+		# 	load_farm()

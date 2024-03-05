@@ -1,0 +1,58 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://kisrgugksnvd"]
+
+[ext_resource type="Texture2D" uid="uid://k52axvpo7mvm" path="res://sprite/trees/tree_big.png" id="1_oxa42"]
+[ext_resource type="Texture2D" uid="uid://dct7p46ml61y2" path="res://sprite/trees/pine_tree.png" id="2_ppj6t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nb38s"]
+atlas = ExtResource("1_oxa42")
+region = Rect2(144, 0, 18, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xphy"]
+atlas = ExtResource("2_ppj6t")
+region = Rect2(0, 0, 15, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdmeu"]
+atlas = ExtResource("1_oxa42")
+region = Rect2(192, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfsro"]
+atlas = ExtResource("2_ppj6t")
+region = Rect2(15, 0, 15, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7whxr"]
+atlas = ExtResource("2_ppj6t")
+region = Rect2(30, 0, 15, 32)
+
+[resource]
+resource_name = "pine"
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nb38s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xphy")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdmeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfsro")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7whxr")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}]
