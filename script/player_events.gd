@@ -25,9 +25,9 @@ func _on_allow_other_action(value: bool):
 	allow_other_action = value
 
 
-func _on_equipped_item(item):
+func _on_equipped_item(_item):
 	pass
 
 
-func _on_unequipped_item(item):
+func _on_unequipped_item(_item):
 	pass

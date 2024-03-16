@@ -156,3 +156,30 @@ func using_item():
 			GlobalEvents.tool_actions.CHOP:
 				var dmg = item.properties["damage"]
 				FarmEvents.emit_signal("on_chop", dmg)
+
+
+func check_farm_state(key: String) -> int:
+	if not current_slot_selected:
+		return -1
+	var item = current_slot_selected.item
+	if not item:
+		return -1
+	if not item is ToolItem:
+		return -1
+
+	var tool_action = item.action
+
+	match key:
+		"chop":
+			if tool_action == GlobalEvents.tool_actions.CHOP:
+				return item.properties.get("damage")
+			return -1
+		_:
+			return -1
+
+func play_animation(animation_name):
+	pass
+	animated.play(animation_name)
+
+func cancel_farm():
+	animated.stop()

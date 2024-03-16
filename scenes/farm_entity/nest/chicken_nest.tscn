@@ -7,5 +7,7 @@
 [node name="ChickenNest" groups=["ChickenNest"] instance=ExtResource("1_fe21u")]
 script = ExtResource("2_fajif")
 
-[node name="Sprite2D" parent="." index="1"]
+[node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_5ov5a")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

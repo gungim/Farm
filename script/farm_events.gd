@@ -4,7 +4,7 @@ extends Node
 signal on_hoe
 signal on_watering
 signal on_plant(seed)
-signal on_harvest_crops
+signal on_harvested
 signal on_chop(dmg: int)
 signal on_add_chicken_egg(amount: int)
 signal on_add_duck_egg(amount: int)

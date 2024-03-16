@@ -326,7 +326,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_cte6g"]
 radius = 60.6712
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 4
 collision_mask = 25
 script = ExtResource("2_50726")
@@ -381,25 +381,47 @@ script = ExtResource("7_at5kf")
 [node name="ParallelState" type="Node" parent="StateChart"]
 script = ExtResource("8_tksww")
 
-[node name="Root" type="Node" parent="StateChart/ParallelState"]
+[node name="Moving" type="Node" parent="StateChart/ParallelState"]
 script = ExtResource("9_3x38q")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateChart/ParallelState/Root"]
+[node name="Idle" type="Node" parent="StateChart/ParallelState/Moving"]
 script = ExtResource("10_ybbvh")
 
-[node name="Place Marker" type="Node" parent="StateChart/ParallelState/Root/Idle"]
+[node name="Place Marker" type="Node" parent="StateChart/ParallelState/Moving/Idle"]
 script = ExtResource("11_w1rjg")
 to = NodePath("../../Movement")
 event = &"place_marker_setted"
 
-[node name="Movement" type="Node" parent="StateChart/ParallelState/Root"]
+[node name="Movement" type="Node" parent="StateChart/ParallelState/Moving"]
 script = ExtResource("10_ybbvh")
 
-[node name="Move To Place" type="Node" parent="StateChart/ParallelState/Root/Movement"]
+[node name="Move To Place" type="Node" parent="StateChart/ParallelState/Moving/Movement"]
 script = ExtResource("11_w1rjg")
 to = NodePath("../../Idle")
 event = &"navigation_finished"
 
+[node name="Farm" type="Node" parent="StateChart/ParallelState"]
+script = ExtResource("9_3x38q")
+initial_state = NodePath("Default")
+
+[node name="Chop" type="Node" parent="StateChart/ParallelState/Farm"]
+script = ExtResource("10_ybbvh")
+
+[node name="Setted" type="Node" parent="StateChart/ParallelState/Farm/Chop"]
+script = ExtResource("11_w1rjg")
+
+[node name="Sprinklers" type="Node" parent="StateChart/ParallelState/Farm"]
+script = ExtResource("10_ybbvh")
+
+[node name="Setted" type="Node" parent="StateChart/ParallelState/Farm/Sprinklers"]
+script = ExtResource("11_w1rjg")
+
+[node name="Default" type="Node" parent="StateChart/ParallelState/Farm"]
+script = ExtResource("10_ybbvh")
+
+[node name="Setted" type="Node" parent="StateChart/ParallelState/Farm/Default"]
+script = ExtResource("11_w1rjg")
+
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
-[connection signal="state_physics_processing" from="StateChart/ParallelState/Root/Movement" to="." method="_on_movement_state_physics_processing"]
+[connection signal="state_physics_processing" from="StateChart/ParallelState/Moving/Movement" to="." method="_on_movement_state_physics_processing"]

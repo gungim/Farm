@@ -1,4 +1,4 @@
-extends Control
+extends CanvasGroup
 class_name InventorySys
 
 @export var inventory: Inventory

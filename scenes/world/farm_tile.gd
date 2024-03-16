@@ -18,7 +18,7 @@ enum lake_layer { LAKE = 1, SIDE = 0 }
 
 enum terrains { FENCE = 0, SMALL_FENCE = 1, WOOD_FENCE = 2, WOOD2_FENCE = 3 }
 
-@onready var crop_scene = preload("res://scenes/farm_entity/crops/crops.tscn")
+@onready var crop_scene = preload("res://scenes/farm_entity/tree/crop_tree.tscn")
 @onready var wood_tree = preload("res://scenes/farm_entity/tree/wood_tree.tscn")
 @onready var farm_map: TileMap = $FarmMap
 @onready var lake_map: TileMap = $LakeMap
@@ -33,7 +33,7 @@ func _ready():
 	FarmEvents.connect("on_hoe", _on_hoe)
 	FarmEvents.connect("on_watering", _on_watering)
 	FarmEvents.connect("on_plant", _on_plant)
-	FarmEvents.connect("on_harvest_crops", _on_harvest_crops)
+	FarmEvents.connect("on_harvested", _on_harvested)
 	FarmEvents.connect("on_chop", _on_chop_tree)
 	FarmEvents.connect("on_build_barn", _on_build_barn)
 	setup()
@@ -51,10 +51,13 @@ func setup():
 		if tile["use"] == "plant":
 			var seed_name = tile["seed"]
 			var start_time = tile["start_time"]
+			var hp = tile["hp"]
+			if hp <= 0:
+				continue
 			if seed_name == "pine":
-				spawn_wood_tree(tile_pos, seed_name, start_time)
+				spawn_wood_tree(tile_pos, seed_name, start_time, key, hp)
 			else:
-				spawn_crop_node(tile_pos, seed_name, start_time)
+				spawn_crop_node(tile_pos, seed_name, start_time, key, hp)
 			# Update water status
 			var water_status = tile.get("water_status")
 			if not water_status:
@@ -114,7 +117,7 @@ func _on_plant(seed_slot: Slot):
 			tile["hp"] = 100
 			farm_dic[key] = tile
 
-			spawn_crop_node(tile_pos, tile["seed"], start_time)
+			spawn_crop_node(tile_pos, tile["seed"], start_time, start_time, 100)
 			set_cell_watered(tile_pos, "Short")
 
 			# Update inventory when plant success
@@ -128,36 +131,23 @@ func _on_add_tree(tree: Resource):
 	var tile = farm_dic.get(key)
 
 	if not tile:
+		var time = Time.get_unix_time_from_system()
+
 		tile = {}
 		tile["use"] = "plant"
 		tile["seed"] = tree.resource_name
-		tile["start_time"] = 00
+		tile["start_time"] = time
 		tile["hp"] = 100
 		farm_dic[key] = tile
 
-		spawn_crop_node(tile_pos, tile["seed"], 0)
+		spawn_crop_node(tile_pos, tile["seed"], time, key, 100)
 		set_cell_watered(tile_pos, "Short")
 
 
-func _on_harvest_crops():
-	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
-	var key = "{0},{1}".format([tile_pos.x, tile_pos.y])
-	var tile = farm_dic.get(key)
-
-	if not tile:
-		return
-
-	if tile["use"] == "plant" and check_harvestable_tile(tile):
-		var seed_res = get_resource(tile["seed"])
-
-		# Add product to inventory
-		for item in seed_res.product:
-			var ran_output = random_output(item.amount, tile)
-			InventoryEvents.emit_signal("on_add_item", item.res, ran_output)
-		# remove crop scene after harvest
-		for child in entity.get_children():
-			if child.id == key:
-				child.queue_free()
+func _on_harvested(key: String):
+	var item = farm_dic.get(key)
+	if item:
+		farm_dic.erase(key)
 
 
 func _on_chop_tree(dmg: int):
@@ -224,30 +214,33 @@ func set_cell_builded(pos: Vector2i):
 
 
 # sinh crop scene
-func spawn_crop_node(pos: Vector2i, seed_name: String, start_time: int):
-	var id = "{0},{1}".format([pos.x, pos.y])
+func spawn_crop_node(pos: Vector2i, seed_name: String, start_time: int, key: String, hp):
+	var id = ""
+	if key:
+		id = key
+	else:
+		id = "{0},{1}".format([pos.x, pos.y])
 
-	var obj_scene: Crop = crop_scene.instantiate()
+	var obj_scene: CropTree = crop_scene.instantiate()
 	entity.add_child(obj_scene)
 	obj_scene.position = farm_map.map_to_local(pos)
-	obj_scene.id = id
 
-	var seed_res = get_resource(seed_name)
-	var sprite_frames = get_sprite_frames(seed_name)
-
-	obj_scene.setup(start_time, seed_res.time_range, sprite_frames, seed_res.harvest_action)
+	obj_scene.setup(start_time, seed_name, id, hp)
 
 
 # sinh wood_tree
-func spawn_wood_tree(pos: Vector2i, seed_name: String, start_time: int):
-	var id = "{0},{1}".format([pos.x, pos.y])
+func spawn_wood_tree(pos: Vector2i, seed_name: String, start_time: int, key: String, hp):
+	var id = ""
+	if key:
+		id = key
+	else:
+		id = "{0},{1}".format([pos.x, pos.y])
 
 	var obj_scene: WoodTree = wood_tree.instantiate()
 	entity.add_child(obj_scene)
 	obj_scene.position = farm_map.map_to_local(pos)
-	obj_scene.id = id
 
-	obj_scene.setup(start_time, seed_name)
+	obj_scene.setup(start_time, seed_name, id, hp)
 
 
 # key have the form "{10},{20}"
@@ -367,14 +360,3 @@ func load_lake() -> Array[Vector2i]:
 		var vec = Vector2i(int(split_text[0]), int(split_text[1]))
 		arr.push_back(vec)
 	return arr
-
-
-func _input(event):
-	pass
-	# if event is InputEventMouseButton:
-		# if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-		# 	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
-		# 	print_debug(tile_pos)
-
-		# if event.button_index == MOUSE_BUTTON_MIDDLE and event.is_pressed():
-		# 	load_farm()

@@ -6,9 +6,10 @@
 radius = 9.05539
 
 [node name="NestEgg" type="StaticBody2D"]
+input_pickable = true
 script = ExtResource("1_brxf3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_galjg")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]

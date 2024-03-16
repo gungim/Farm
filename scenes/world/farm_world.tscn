@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c5qthjynhslhw"]
+[gd_scene load_steps=28 format=3 uid="uid://c5qthjynhslhw"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_rtydu"]
 [ext_resource type="Texture2D" uid="uid://f3hrlu2jsc00" path="res://sprite/map/world_map.png" id="2_qpuf5"]
@@ -9,19 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dpelo4ywxmv4f" path="res://sprite/map/fence.png" id="7_dbfk2"]
 [ext_resource type="Texture2D" uid="uid://dh7a1e4y2hlaf" path="res://sprite/map/lakeside.png" id="8_p5hml"]
 [ext_resource type="Texture2D" uid="uid://df8n352gwa07n" path="res://sprite/map/lake_map.png" id="9_jcpfl"]
-[ext_resource type="PackedScene" uid="uid://b4wpyocjendwe" path="res://scenes/inventory/inventory_sys.tscn" id="10_iqd6m"]
-[ext_resource type="Resource" uid="uid://bw50ugnsstvr0" path="res://scenes/inventory/item/products/potato.tres" id="11_v042g"]
-[ext_resource type="Resource" uid="uid://bs5ywmw61bvrp" path="res://scenes/inventory/item/products/tomato.tres" id="12_d51hl"]
-[ext_resource type="Resource" uid="uid://bourwnadihaei" path="res://scenes/inventory/item/seeds/pine.tres" id="13_hng0b"]
-[ext_resource type="Resource" uid="uid://d180kfhexouf8" path="res://scenes/inventory/item/seeds/potato.tres" id="14_ppgay"]
-[ext_resource type="Resource" uid="uid://bvkt88vl6n8hw" path="res://scenes/inventory/item/seeds/tomato.tres" id="15_ybucn"]
-[ext_resource type="Resource" uid="uid://caqbvffnohpl" path="res://scenes/inventory/item/weapone/axe.tres" id="16_nf3i5"]
-[ext_resource type="Resource" uid="uid://cprkft6h1dafq" path="res://scenes/inventory/item/weapone/hoe.tres" id="17_h2hme"]
-[ext_resource type="Resource" uid="uid://c5ayinf4o0shd" path="res://scenes/inventory/item/weapone/sickle.tres" id="18_7aimy"]
-[ext_resource type="Resource" uid="uid://rv633fxgl4l7" path="res://scenes/inventory/item/weapone/sword.tres" id="19_q083r"]
-[ext_resource type="Resource" uid="uid://p2cbnvdnp3hr" path="res://scenes/inventory/item/weapone/sprinkler.tres" id="20_ui7su"]
-[ext_resource type="Resource" uid="uid://co7nobtgx55oq" path="res://scenes/inventory/item/products/wood_panel.tres" id="21_qvomh"]
-[ext_resource type="PackedScene" uid="uid://d4kuh6e4x0md1" path="res://scenes/ui/player_energy.tscn" id="22_oq80j"]
+[ext_resource type="PackedScene" uid="uid://cs0y1kjlqxjyi" path="res://scenes/ui/default_ui.tscn" id="10_k18b4"]
 [ext_resource type="PackedScene" uid="uid://m2ib88feldcx" path="res://scenes/character/player/Player.tscn" id="23_oah11"]
 [ext_resource type="PackedScene" uid="uid://hk25uk1el2v4" path="res://scenes/farm_entity/nest/duck_nest.tscn" id="25_hquls"]
 [ext_resource type="PackedScene" uid="uid://bgcb2a5f6ccqv" path="res://scenes/farm_entity/nest/chicken_nest.tscn" id="26_1qb8k"]
@@ -2846,25 +2834,18 @@ layer_1/tile_data = PackedInt32Array()
 [node name="Entity" type="Node2D" parent="Farm"]
 y_sort_enabled = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="InventorySys" parent="CanvasLayer" instance=ExtResource("10_iqd6m")]
-items = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource("11_v042g"), ExtResource("12_d51hl"), ExtResource("13_hng0b"), ExtResource("14_ppgay"), ExtResource("15_ybucn"), ExtResource("16_nf3i5"), ExtResource("17_h2hme"), ExtResource("18_7aimy"), ExtResource("19_q083r"), ExtResource("20_ui7su"), ExtResource("21_qvomh")])
-
-[node name="PlayerEnergy" parent="CanvasLayer" instance=ExtResource("22_oq80j")]
-offset_right = 231.0
-
 [node name="Entity" type="Node2D" parent="." groups=["Entity"]]
 y_sort_enabled = true
 
-[node name="Player" parent="Entity" groups=["Player"] instance=ExtResource("23_oah11")]
+[node name="Player" parent="Entity" instance=ExtResource("23_oah11")]
 position = Vector2(759, 261)
 
 [node name="DuckNest" parent="Entity" instance=ExtResource("25_hquls")]
 position = Vector2(647, 71)
+input_pickable = false
 
 [node name="ChickenNest" parent="Entity" instance=ExtResource("26_1qb8k")]
-position = Vector2(647, 46)
+position = Vector2(647, 41)
 
 [node name="Trough2" parent="Entity" instance=ExtResource("28_yhbij")]
 position = Vector2(647, 143)
@@ -2907,9 +2888,10 @@ shape = SubResource("RectangleShape2D_gx3bk")
 texture = ExtResource("30_kabis")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_gs8vu")
 constrain_avoidance = true
+
+[node name="DefaultUI" parent="." instance=ExtResource("10_k18b4")]
 
 [editable path="Entity/Trough2"]
 [editable path="Entity/Trough3"]

@@ -13,23 +13,25 @@
 [ext_resource type="PackedScene" uid="uid://c3qx1ngn7jsv8" path="res://scenes/inventory/hotbar/hotbar_ui.tscn" id="8_1dec4"]
 [ext_resource type="Resource" uid="uid://d180kfhexouf8" path="res://scenes/inventory/item/seeds/potato.tres" id="11_sduik"]
 
-[node name="InventorySys" type="Control" groups=["InventorySys"]]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="InventorySys" type="CanvasGroup" groups=["InventorySys"]]
 script = ExtResource("1_rbv83")
 inventory = ExtResource("2_4wxvh")
 items = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource("3_l2bqp"), ExtResource("4_siyjc"), ExtResource("4_yygpr"), ExtResource("7_s6vib"), ExtResource("7_xpx00"), ExtResource("5_edsxu"), ExtResource("11_sduik")])
 
-[node name="PlayerInventory" parent="." instance=ExtResource("2_jcuye")]
-visible = false
-layout_mode = 1
-
 [node name="HandlerUI" parent="." instance=ExtResource("4_gnhkf")]
-layout_mode = 1
 
 [node name="HotbarUI" parent="." instance=ExtResource("8_1dec4")]
-layout_mode = 1
+offset_top = 331.0
+offset_bottom = 331.0
+size_flags_vertical = 4
+
+[node name="PlayerInventory" parent="." instance=ExtResource("2_jcuye")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_vertical = 0

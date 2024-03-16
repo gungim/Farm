@@ -1,7 +1,7 @@
-extends Control
+extends MarginContainer
 class_name PlayerEnergy
 
-@onready var hp_bar: ProgressBar = $MarginContainer/VBoxContainer/HBoxContainer/HP
+@onready var hp_bar: ProgressBar = $VBoxContainer/HBoxContainer/HP
 @onready var player: Player
 
 

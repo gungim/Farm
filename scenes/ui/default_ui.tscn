@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs0y1kjlqxjyi"]
+
+[ext_resource type="PackedScene" uid="uid://b4wpyocjendwe" path="res://scenes/inventory/inventory_sys.tscn" id="1_tspu5"]
+[ext_resource type="PackedScene" uid="uid://d4kuh6e4x0md1" path="res://scenes/ui/player_energy.tscn" id="13_5q1dj"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="PlayerEnergy" parent="." instance=ExtResource("13_5q1dj")]
+
+[node name="InventorySys" parent="." instance=ExtResource("1_tspu5")]
+position = Vector2(592, 315)
