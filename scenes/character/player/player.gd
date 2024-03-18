@@ -151,11 +151,6 @@ func using_item():
 				FarmEvents.emit_signal("on_hoe")
 			GlobalEvents.tool_actions.WATERING:
 				FarmEvents.emit_signal("on_watering")
-			GlobalEvents.tool_actions.HARVEST:
-				FarmEvents.emit_signal("on_harvest")
-			GlobalEvents.tool_actions.CHOP:
-				var dmg = item.properties["damage"]
-				FarmEvents.emit_signal("on_chop", dmg)
 
 
 func check_farm_state(key: String) -> int:

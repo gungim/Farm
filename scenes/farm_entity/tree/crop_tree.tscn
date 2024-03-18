@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cysc35nqgjisa"]
+[gd_scene load_steps=6 format=3 uid="uid://cysc35nqgjisa"]
 
 [ext_resource type="PackedScene" uid="uid://c5f3q7jfo2hns" path="res://scenes/farm_entity/tree/farm_tree.tscn" id="1_s3q30"]
 [ext_resource type="Script" path="res://scenes/farm_entity/tree/crop_tree.gd" id="2_vac58"]
 [ext_resource type="SpriteFrames" uid="uid://byiyd1iboi0dd" path="res://scenes/farm_entity/resource/tomato.tres" id="3_02181"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4plqx"]
+radius = 7.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_a7l20"]
 font_size = 12
@@ -10,9 +13,16 @@ font_size = 12
 [node name="CropTree" instance=ExtResource("1_s3q30")]
 script = ExtResource("2_vac58")
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="PlaceSprite2D" parent="." index="0"]
+frame = 1
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(0, -5)
 sprite_frames = ExtResource("3_02181")
 animation = &"3"
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_4plqx")
 
 [node name="Label" type="Label" parent="." index="3"]
 offset_left = -24.0

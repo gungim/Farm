@@ -50,4 +50,4 @@ func _on_mouse_exited():
 
 
 func _harvest():
-	print_debug("Harvest")
+	kill()

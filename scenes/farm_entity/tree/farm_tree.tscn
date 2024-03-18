@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5f3q7jfo2hns"]
+[gd_scene load_steps=3 format=3 uid="uid://c5f3q7jfo2hns"]
 
 [ext_resource type="Script" path="res://scenes/farm_entity/tree/farm_tree.gd" id="1_bt551"]
+[ext_resource type="Texture2D" uid="uid://1ccubohjejau" path="res://sprite/map/misc.png" id="2_yldpq"]
 
 [node name="FarmTree" type="StaticBody2D"]
 script = ExtResource("1_bt551")
+
+[node name="PlaceSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yldpq")
+hframes = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 animation = &""

@@ -62,7 +62,6 @@ func setup():
 			var water_status = tile.get("water_status")
 			if not water_status:
 				water_status = "Short"
-			set_cell_watered(tile_pos, water_status)
 		elif tile["use"] == "build":
 			set_cell_builded(tile_pos)
 
@@ -76,7 +75,6 @@ func _on_hoe():
 	var key = "{0},{1}".format([tile_pos.x, tile_pos.y])
 	var tile = farm_dic.get(key)
 	if not tile:
-		set_cell_watered(tile_pos, "Short")
 		farm_dic[key] = {"use": "plant", "water_status": "Short"}
 
 
@@ -89,7 +87,6 @@ func _on_watering():
 		return
 
 	if tile["use"] == "plant":
-		set_cell_watered(tile_pos, "Full")
 		tile["water_status"] = "Full"
 		farm_dic[key] = tile
 
@@ -118,7 +115,6 @@ func _on_plant(seed_slot: Slot):
 			farm_dic[key] = tile
 
 			spawn_crop_node(tile_pos, tile["seed"], start_time, start_time, 100)
-			set_cell_watered(tile_pos, "Short")
 
 			# Update inventory when plant success
 			seed_slot.amount -= 1
@@ -141,7 +137,6 @@ func _on_add_tree(tree: Resource):
 		farm_dic[key] = tile
 
 		spawn_crop_node(tile_pos, tile["seed"], time, key, 100)
-		set_cell_watered(tile_pos, "Short")
 
 
 func _on_harvested(key: String):
@@ -197,16 +192,6 @@ func _on_build_barn():
 
 
 # ------------------------ Func help for farm ---------------------------------
-
-
-# Nếu ô đã được tưới nước hoặc trồng, thì set tile đã tưới
-func set_cell_watered(pos: Vector2i, status: String):
-	match status:
-		"Full":
-			farm_map.set_cell(farming_layer, pos, land_tile_id, Vector2i(1, 0), 0)
-		"Short":
-			farm_map.set_cell(farming_layer, pos, land_tile_id, Vector2i(2, 0), 0)
-
 
 func set_cell_builded(pos: Vector2i):
 	BetterTerrain.set_cell(farm_map, construction_layer, pos, terrains.FENCE)
