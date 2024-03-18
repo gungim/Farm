@@ -2,12 +2,9 @@
 
 [ext_resource type="Script" path="res://scenes/inventory/handler_ui.gd" id="1_e4aok"]
 
-[node name="HandlerUI" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="HandlerUI" type="Node2D"]
+z_index = 4
 script = ExtResource("1_e4aok")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)

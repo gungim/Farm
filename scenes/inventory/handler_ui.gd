@@ -1,26 +1,26 @@
-extends Control
+extends Node2D
 class_name HandlerUI
 
-@onready var texture: TextureRect = $TextureRect
+@onready var sprite: Sprite2D= $Sprite2D
 
 
 func _ready():
-	texture.visible = false
+	sprite.visible = false
 	InventoryEvents.connect("on_item_picked", _on_item_picked)
 	InventoryEvents.connect("on_item_unpicked", _on_item_unpicked)
 
 
 func _on_item_picked(slot: Slot, _index):
-	texture.texture = slot.item.icon
-	texture.visible = true
-	texture.position = get_global_mouse_position()
+	sprite.texture = slot.item.icon
+	sprite.visible = true
+	position = get_global_mouse_position()
 
 
 func _on_item_unpicked():
-	texture.visible = false
-	texture.texture = null
-	texture.position = Vector2.ZERO
+	sprite.visible = false
+	sprite.texture = null
+	position = Vector2.ZERO
 
 
 func _physics_process(_delta):
-	texture.position = get_global_mouse_position()
+	position = get_global_mouse_position()

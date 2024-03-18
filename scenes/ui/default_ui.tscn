@@ -8,4 +8,3 @@
 [node name="PlayerEnergy" parent="." instance=ExtResource("13_5q1dj")]
 
 [node name="InventorySys" parent="." instance=ExtResource("1_tspu5")]
-position = Vector2(592, 315)

@@ -1,4 +1,4 @@
-extends CanvasGroup
+extends Node
 class_name InventorySys
 
 @export var inventory: Inventory
