@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ProductionItem" load_steps=3 format=3 uid="uid://b8hctjqjv5ar8"]
+
+[ext_resource type="Texture2D" uid="uid://d2pbnw7ey3sfg" path="res://sprite/natura/rice.png" id="1_nfta2"]
+[ext_resource type="Script" path="res://scenes/inventory/item/products/product_item.gd" id="2_2arg1"]
+
+[resource]
+script = ExtResource("2_2arg1")
+action = Array[int]([20])
+max_stack = 999
+display_name = "Gạo"
+icon = ExtResource("1_nfta2")
+weight = 1.0
+properties = {
+"healing": 12
+}
+description = "Củ khoai, có thể dùng để hồi máu"

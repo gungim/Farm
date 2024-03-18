@@ -50,4 +50,5 @@ func _on_mouse_exited():
 
 
 func _harvest():
+	player.play_animation("harvest")
 	kill()
