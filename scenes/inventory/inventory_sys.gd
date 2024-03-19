@@ -1,21 +1,16 @@
 extends Node
 class_name InventorySys
 
-@export var inventory: Inventory
 @export var items: Array[InventoryItem] = []
-@onready var hotbar_ui: HotbarUI = $HotbarUI
+@export var inventory: Inventory
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	inventory.setup()
-	if inventory:
-		InventoryEvents.emit_signal("on_connect_inventory", inventory)
-	hotbar_ui.setup_slots()
-	add_default_item()
+	add_items()
 
 
-func add_default_item():
+func add_items():
+	if not inventory:
+		return
 	for item in items:
-		if item:
-			inventory.add_item(item)
+		inventory.add_item(item, 1)

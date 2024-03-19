@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cshpbmasl7yuv"]
+
+[ext_resource type="Script" path="res://scenes/inventory/core/hotbar_grid.gd" id="1_0b0kn"]
+
+[node name="HotbarGrid" type="GridContainer"]
+script = ExtResource("1_0b0kn")

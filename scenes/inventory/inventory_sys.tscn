@@ -1,7 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://b4wpyocjendwe"]
 
 [ext_resource type="Script" path="res://scenes/inventory/inventory_sys.gd" id="1_rbv83"]
-[ext_resource type="Resource" uid="uid://bqmtwlv4wv3os" path="res://scenes/inventory/inventory.tres" id="2_4wxvh"]
 [ext_resource type="PackedScene" uid="uid://crxgnlr5pwebb" path="res://scenes/inventory/player_inventory.tscn" id="2_jcuye"]
 [ext_resource type="Resource" uid="uid://caqbvffnohpl" path="res://scenes/inventory/item/weapone/axe.tres" id="3_l2bqp"]
 [ext_resource type="PackedScene" uid="uid://1ldwvhqrk5jb" path="res://scenes/inventory/handler_ui.tscn" id="4_gnhkf"]
@@ -11,12 +10,13 @@
 [ext_resource type="Resource" uid="uid://bs5ywmw61bvrp" path="res://scenes/inventory/item/products/tomato.tres" id="7_s6vib"]
 [ext_resource type="Resource" uid="uid://c5ayinf4o0shd" path="res://scenes/inventory/item/weapone/sickle.tres" id="7_xpx00"]
 [ext_resource type="PackedScene" uid="uid://c3qx1ngn7jsv8" path="res://scenes/inventory/hotbar/hotbar_ui.tscn" id="8_1dec4"]
+[ext_resource type="Resource" uid="uid://bqmtwlv4wv3os" path="res://scenes/inventory/db/inventory.tres" id="9_chaj0"]
 [ext_resource type="Resource" uid="uid://d180kfhexouf8" path="res://scenes/inventory/item/seeds/potato.tres" id="11_sduik"]
 
 [node name="InventorySys" type="Node" groups=["InventorySys"]]
 script = ExtResource("1_rbv83")
-inventory = ExtResource("2_4wxvh")
 items = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource("3_l2bqp"), ExtResource("4_siyjc"), ExtResource("4_yygpr"), ExtResource("7_s6vib"), ExtResource("7_xpx00"), ExtResource("5_edsxu"), ExtResource("11_sduik")])
+inventory = ExtResource("9_chaj0")
 
 [node name="HandlerUI" parent="." instance=ExtResource("4_gnhkf")]
 
@@ -24,3 +24,12 @@ items = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource
 size_flags_vertical = 4
 
 [node name="PlayerInventory" parent="." instance=ExtResource("2_jcuye")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4

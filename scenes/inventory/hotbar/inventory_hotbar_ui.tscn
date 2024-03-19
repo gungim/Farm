@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ycq0lwpp0q71"]
+[gd_scene load_steps=4 format=3 uid="uid://ycq0lwpp0q71"]
 
 [ext_resource type="Script" path="res://scenes/inventory/hotbar/inventory_hotbar_ui.gd" id="1_h2xsa"]
-[ext_resource type="PackedScene" uid="uid://ctsafsvkkxj8o" path="res://scenes/inventory/slot_ui.tscn" id="2_i1hbd"]
+[ext_resource type="PackedScene" uid="uid://cshpbmasl7yuv" path="res://scenes/inventory/grid/hotbar_grid.tscn" id="2_diyrn"]
+[ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://scenes/inventory/db/hotbar.tres" id="3_wh2pr"]
 
 [node name="InventoryHotbarUI" type="Control"]
 custom_minimum_size = Vector2(52, 52)
@@ -22,11 +23,7 @@ offset_right = 54.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HotbarGrid" parent="MarginContainer" instance=ExtResource("2_diyrn")]
 layout_mode = 2
-
-[node name="SlotUI" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_i1hbd")]
-layout_mode = 2
-
-[node name="SlotUI2" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_i1hbd")]
-layout_mode = 2
+columns = 10
+inventory = ExtResource("3_wh2pr")

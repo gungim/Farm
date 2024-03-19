@@ -6,9 +6,10 @@
 [node name="SlotInfoUI" type="Control"]
 custom_minimum_size = Vector2(333, 333)
 layout_mode = 3
-anchors_preset = 0
-offset_right = 333.0
-offset_bottom = 283.0
+anchor_right = 0.289
+anchor_bottom = 0.514
+offset_right = 0.071991
+offset_bottom = -50.072
 script = ExtResource("1_moxls")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]

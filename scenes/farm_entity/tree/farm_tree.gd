@@ -112,5 +112,5 @@ func add_product_to_inventory():
 	if not seed_res.product:
 		return
 
-	for item in seed_res.product:
-		InventoryEvents.emit_signal("on_add_item", item.res, item.amount)
+	# for item in seed_res.product:
+		# InventoryEvents.emit_signal("on_add_item", item.res, item.amount)

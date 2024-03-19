@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbfg6rpm73fsk"]
+
+[ext_resource type="Script" path="res://scenes/inventory/core/items_grid.gd" id="1_imsd0"]
+
+[node name="ItemsGrid" type="GridContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_imsd0")

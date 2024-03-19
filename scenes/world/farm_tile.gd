@@ -118,7 +118,7 @@ func _on_plant(seed_slot: Slot):
 
 			# Update inventory when plant success
 			seed_slot.amount -= 1
-			InventoryEvents.emit_signal("on_update_slot", seed_slot)
+			# InventoryEvents.emit_signal("on_update_slot", seed_slot)
 
 
 func _on_add_tree(tree: Resource):
@@ -162,7 +162,7 @@ func _on_chop_tree(dmg: int):
 			# Add product to inventory
 			for item in seed_res.product:
 				var ran_output = random_output(item.amount, tile)
-				InventoryEvents.emit_signal("on_add_item", item.res, ran_output)
+				# InventoryEvents.emit_signal("on_add_item", item.res, ran_output)
 
 			for child in entity.get_children():
 				if child.id == key:

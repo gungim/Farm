@@ -1,34 +1,32 @@
-[gd_scene load_steps=7 format=3 uid="uid://crxgnlr5pwebb"]
+[gd_scene load_steps=9 format=3 uid="uid://crxgnlr5pwebb"]
 
 [ext_resource type="Script" path="res://scenes/inventory/player_inventory.gd" id="1_k25nm"]
 [ext_resource type="Texture2D" uid="uid://di1e0pui75log" path="res://sprite/ui/BG.png" id="2_vlijd"]
-[ext_resource type="PackedScene" uid="uid://buv1fklidltje" path="res://scenes/inventory/inventory_ui.tscn" id="3_qgber"]
-[ext_resource type="PackedScene" uid="uid://ycq0lwpp0q71" path="res://scenes/inventory/hotbar/inventory_hotbar_ui.tscn" id="3_xol17"]
+[ext_resource type="PackedScene" uid="uid://ycq0lwpp0q71" path="res://scenes/inventory/hotbar/inventory_hotbar_ui.tscn" id="3_0qigw"]
 [ext_resource type="PackedScene" uid="uid://daos5f2wbh6j4" path="res://scenes/inventory/slot_info_ui.tscn" id="4_h0ufk"]
+[ext_resource type="Texture2D" uid="uid://brrr2wttetm13" path="res://sprite/ui/GUI_4x copy 2.png" id="4_pgjm0"]
+[ext_resource type="PackedScene" uid="uid://2e65nrw0y5jn" path="res://scenes/inventory/grid/inventory_grid.tscn" id="5_e0uas"]
 [ext_resource type="Texture2D" uid="uid://b4yom5fp4im3c" path="res://sprite/ui/GUI_4x copy 5.png" id="5_hua32"]
+[ext_resource type="Resource" uid="uid://bqmtwlv4wv3os" path="res://scenes/inventory/db/inventory.tres" id="6_facbc"]
 
 [node name="PlayerInventory" type="Control"]
 layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_k25nm")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -227.5
+offset_right = 350.0
+offset_bottom = 227.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_k25nm")
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
@@ -45,7 +43,7 @@ text = "Inventory
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="InventoryHotbarUI" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_xol17")]
+[node name="InventoryHotbarUI" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_0qigw")]
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
@@ -60,21 +58,60 @@ theme_override_constants/margin_bottom = 5
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="SlotsContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_qgber")]
+[node name="SlotContainer" type="Control" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(351, 333)
 layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/SlotContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_pgjm0")
+region_rect = Rect2(0, 0, 96, 96)
+patch_margin_left = 13
+patch_margin_top = 13
+patch_margin_right = 13
+patch_margin_bottom = 13
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/SlotContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 13
+theme_override_constants/margin_right = 13
+theme_override_constants/margin_bottom = 13
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/SlotContainer/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="InventoryGrid" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/SlotContainer/MarginContainer/ScrollContainer" instance=ExtResource("5_e0uas")]
+layout_mode = 2
+columns = 6
+inventory = ExtResource("6_facbc")
 
 [node name="ItemInfo" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("4_h0ufk")]
 layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -369.0
-offset_top = -244.0
-offset_right = 368.0
-offset_bottom = 243.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -364.5
+offset_top = -243.5
+offset_right = 364.5
+offset_bottom = 243.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_hua32")
