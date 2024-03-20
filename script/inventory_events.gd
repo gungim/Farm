@@ -18,9 +18,6 @@ signal on_open_inventory(value)
 # set for open inventory or close
 var is_open_inventory: bool = false
 
-# Using for swap item from slot_index(current index) and target index
-var slot_index: int = -1
-var slot: Slot = null
 var equipped: bool = false
 var player: Player
 
@@ -36,19 +33,15 @@ func _ready():
 
 
 func _on_item_picked(item: Slot, index: int):
-	slot = item
-	slot_index = index
-	equipped = true
+	pass
 
 
 func _on_item_unpicked():
-	slot = null
-	slot_index = -1
-	equipped = false
+	pass
 
 
 func _on_item_select(item: Slot):
-	slot = item
+	pass
 
 
 func _on_open_inventory(value: bool):
@@ -58,3 +51,15 @@ func _on_open_inventory(value: bool):
 	else:
 		PlayerEvents.emit_signal("on_cancel_all_action")
 	PlayerEvents.emit_signal("on_allow_other_action", !value)
+
+
+func move_between_inventory(from: Inventory, from_index: int, to: Inventory, to_index: int):
+	var slot: Slot = from.get_slot(from_index)
+	var item = slot.item
+	var amount = slot.amount
+
+	var amount_no_added = to.add_item_at(item, amount, to_index)
+	if amount_no_added == 0:
+		from.remove_at(from_index)
+	else:
+		from.add_item_at(item, amount_no_added, from_index)

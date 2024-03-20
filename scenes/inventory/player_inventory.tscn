@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://crxgnlr5pwebb"]
+[gd_scene load_steps=10 format=3 uid="uid://crxgnlr5pwebb"]
 
 [ext_resource type="Script" path="res://scenes/inventory/player_inventory.gd" id="1_k25nm"]
 [ext_resource type="Texture2D" uid="uid://di1e0pui75log" path="res://sprite/ui/BG.png" id="2_vlijd"]
-[ext_resource type="PackedScene" uid="uid://ycq0lwpp0q71" path="res://scenes/inventory/hotbar/inventory_hotbar_ui.tscn" id="3_0qigw"]
+[ext_resource type="PackedScene" uid="uid://cshpbmasl7yuv" path="res://scenes/inventory/grid/hotbar_grid.tscn" id="3_ghmmo"]
 [ext_resource type="PackedScene" uid="uid://daos5f2wbh6j4" path="res://scenes/inventory/slot_info_ui.tscn" id="4_h0ufk"]
+[ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://scenes/inventory/db/hotbar.tres" id="4_p7ccm"]
 [ext_resource type="Texture2D" uid="uid://brrr2wttetm13" path="res://sprite/ui/GUI_4x copy 2.png" id="4_pgjm0"]
 [ext_resource type="PackedScene" uid="uid://2e65nrw0y5jn" path="res://scenes/inventory/grid/inventory_grid.tscn" id="5_e0uas"]
 [ext_resource type="Texture2D" uid="uid://b4yom5fp4im3c" path="res://sprite/ui/GUI_4x copy 5.png" id="5_hua32"]
@@ -43,8 +44,28 @@ text = "Inventory
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="InventoryHotbarUI" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_0qigw")]
+[node name="Hotbar" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Hotbar"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -54.0
+offset_top = -52.0
+offset_right = 54.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HotbarGrid" parent="MarginContainer/VBoxContainer/Hotbar/MarginContainer" instance=ExtResource("3_ghmmo")]
+layout_mode = 2
+columns = 10
+inventory = ExtResource("4_p7ccm")
+type = "hotbar"
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_direction = 2
@@ -97,6 +118,7 @@ vertical_scroll_mode = 3
 layout_mode = 2
 columns = 6
 inventory = ExtResource("6_facbc")
+type = "inventory"
 
 [node name="ItemInfo" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("4_h0ufk")]
 layout_mode = 2

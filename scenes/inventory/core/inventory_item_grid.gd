@@ -2,9 +2,8 @@ extends GridContainer
 class_name InventoryItemGrid
 
 @export var inventory: Inventory = null
-
+@export var type: String
 @onready var slot_scene = preload("res://scenes/inventory/slot_ui.tscn")
-
 
 var slot: Slot = null
 
@@ -20,7 +19,7 @@ func setup_inventory():
 		return
 
 	inventory.setup()
-	inventory.connect("updated_slot", _on_updated_slot.bind())
+	inventory.connect("updated_slot", _on_updated_slot)
 	setup_slots()
 
 
@@ -32,8 +31,8 @@ func setup_slots():
 	for i in inventory.amount:
 		var slot_obj = slot_scene.instantiate()
 
-		slot_obj.gui_input.connect(_on_slot_gui_input.bind(i))
-		slot_obj.mouse_entered.connect(_on_slot_mouse_entered.bind(i))
+		slot_obj.inventory = inventory
+		slot_obj.index = i
 
 		slots.append(slot_obj)
 		add_child(slots[i])
@@ -42,11 +41,3 @@ func setup_slots():
 
 func _on_updated_slot(slot_index: int):
 	slots[slot_index].update_info_slot(inventory.get_slot(slot_index))
-
-
-func _on_slot_gui_input(_event: InputEvent, _index: int):
-	pass
-
-
-func _on_slot_mouse_entered(_index: int):
-	pass
