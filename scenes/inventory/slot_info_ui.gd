@@ -1,4 +1,4 @@
-extends Control
+extends PanelContainer
 class_name SlotInfoUI
 
 @onready var container: VBoxContainer = $MarginContainer/ScrollContainer/VBoxContainer

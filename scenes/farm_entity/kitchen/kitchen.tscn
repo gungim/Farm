@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca1ewmo85dvnf"]
+
+[ext_resource type="Script" path="res://scenes/farm_entity/kitchen/kitchen.gd" id="1_ggsuj"]
+[ext_resource type="PackedScene" uid="uid://d168am3t0qc75" path="res://scenes/farm_entity/kitchen/chef.tscn" id="2_f3h80"]
+[ext_resource type="PackedScene" uid="uid://dfp21eoudxvoq" path="res://scenes/farm_entity/kitchen/kitchen_menu.tscn" id="3_cuxai"]
+
+[node name="Kitchen" type="Node2D"]
+script = ExtResource("1_ggsuj")
+
+[node name="Chef" parent="." instance=ExtResource("2_f3h80")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="KitchenMenu" parent="CanvasLayer" instance=ExtResource("3_cuxai")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0

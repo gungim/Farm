@@ -1,14 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://crxgnlr5pwebb"]
+[gd_scene load_steps=12 format=3 uid="uid://crxgnlr5pwebb"]
 
 [ext_resource type="Script" path="res://scenes/inventory/player_inventory.gd" id="1_k25nm"]
 [ext_resource type="Texture2D" uid="uid://di1e0pui75log" path="res://sprite/ui/BG.png" id="2_vlijd"]
 [ext_resource type="PackedScene" uid="uid://cshpbmasl7yuv" path="res://scenes/inventory/grid/hotbar_grid.tscn" id="3_ghmmo"]
 [ext_resource type="PackedScene" uid="uid://daos5f2wbh6j4" path="res://scenes/inventory/slot_info_ui.tscn" id="4_h0ufk"]
 [ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://scenes/inventory/db/hotbar.tres" id="4_p7ccm"]
-[ext_resource type="Texture2D" uid="uid://brrr2wttetm13" path="res://sprite/ui/GUI_4x copy 2.png" id="4_pgjm0"]
 [ext_resource type="PackedScene" uid="uid://2e65nrw0y5jn" path="res://scenes/inventory/grid/inventory_grid.tscn" id="5_e0uas"]
 [ext_resource type="Texture2D" uid="uid://b4yom5fp4im3c" path="res://sprite/ui/GUI_4x copy 5.png" id="5_hua32"]
 [ext_resource type="Resource" uid="uid://bqmtwlv4wv3os" path="res://scenes/inventory/db/inventory.tres" id="6_facbc"]
+[ext_resource type="PackedScene" uid="uid://ctsafsvkkxj8o" path="res://scenes/inventory/slot_ui.tscn" id="6_nqvlm"]
+[ext_resource type="Texture2D" uid="uid://cn8rq3wcxjhjm" path="res://sprite/ui/11.png" id="7_n8lqd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d2dxv"]
 
 [node name="PlayerInventory" type="Control"]
 layout_mode = 3
@@ -44,66 +47,65 @@ text = "Inventory
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Hotbar" type="Control" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(52, 52)
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Hotbar"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -54.0
-offset_top = -52.0
-offset_right = 54.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(0, 71)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("7_n8lqd")
+region_rect = Rect2(0, 0, 158, 191)
+patch_margin_left = 11
+patch_margin_top = 24
+patch_margin_right = 11
+patch_margin_bottom = 11
 
-[node name="HotbarGrid" parent="MarginContainer/VBoxContainer/Hotbar/MarginContainer" instance=ExtResource("3_ghmmo")]
+[node name="MarginContainer" type="VSplitContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HotbarGrid" parent="MarginContainer/VBoxContainer/MarginContainer2/MarginContainer" instance=ExtResource("3_ghmmo")]
 layout_mode = 2
 columns = 10
 inventory = ExtResource("4_p7ccm")
 type = "hotbar"
 
+[node name="SlotUI" parent="MarginContainer/VBoxContainer/MarginContainer2/MarginContainer/HotbarGrid" instance=ExtResource("6_nqvlm")]
+layout_mode = 2
+
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_direction = 2
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 5
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
+theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HSplitContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="SlotContainer" type="Control" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(351, 333)
+[node name="SlotContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_d2dxv")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/SlotContainer"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_pgjm0")
-region_rect = Rect2(0, 0, 96, 96)
-patch_margin_left = 13
-patch_margin_top = 13
-patch_margin_right = 13
-patch_margin_bottom = 13
+layout_mode = 2
+texture = ExtResource("7_n8lqd")
+region_rect = Rect2(0, 0, 158, 191)
+patch_margin_left = 11
+patch_margin_top = 24
+patch_margin_right = 11
+patch_margin_bottom = 11
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/SlotContainer"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/margin_left = 13
 theme_override_constants/margin_top = 13
 theme_override_constants/margin_right = 13
@@ -121,6 +123,7 @@ inventory = ExtResource("6_facbc")
 type = "inventory"
 
 [node name="ItemInfo" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("4_h0ufk")]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]

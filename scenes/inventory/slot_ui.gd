@@ -5,10 +5,6 @@ class_name SlotUI
 @onready var amount_label: Label = $Amount
 @onready var label: TextureRect = $Panel/TextureRect
 
-@onready var type_label = {
-	"default": preload("res://sprite/ui/generic-rpg-ui-inventario01.png"),
-	"selected": preload("res://sprite/ui/generic-rpg-ui-inventario02.png"),
-}
 
 var inventory: Inventory
 var index: int
@@ -16,7 +12,7 @@ var slot: Slot
 
 
 func _ready():
-	label.texture = type_label["default"]
+	pass
 
 
 func update_info_slot(new_slot: Slot):
@@ -34,6 +30,9 @@ func clear_info():
 
 
 func _get_drag_data(_at_position):
+	if not slot or not slot.item:
+		return
+
 	var data = {"inventory": inventory, "slot_index": index}
 
 	var drag_texture = TextureRect.new()
@@ -50,8 +49,8 @@ func _get_drag_data(_at_position):
 
 
 func _can_drop_data(_at_position, _data):
-	if not slot:
-		return false
+	# if not slot:
+	# 	return false
 	return true
 
 

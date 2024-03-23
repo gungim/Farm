@@ -1,0 +1,149 @@
+[gd_scene load_steps=8 format=3 uid="uid://dfp21eoudxvoq"]
+
+[ext_resource type="Script" path="res://scenes/farm_entity/kitchen/kitchen_menu.gd" id="1_fbwjo"]
+[ext_resource type="PackedScene" uid="uid://wbhjka623xeu" path="res://scenes/farm_entity/kitchen/kitchen_item.tscn" id="2_56pae"]
+[ext_resource type="Texture2D" uid="uid://cn8rq3wcxjhjm" path="res://sprite/ui/11.png" id="2_akqtb"]
+[ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="3_c77p3"]
+[ext_resource type="Texture2D" uid="uid://brrr2wttetm13" path="res://sprite/ui/GUI_4x copy 2.png" id="3_ghv51"]
+[ext_resource type="Texture2D" uid="uid://bpttxlnhum2y2" path="res://sprite/ui/1.png" id="6_2j024"]
+[ext_resource type="Texture2D" uid="uid://bt1mgb3u1hsby" path="res://sprite/ui/2.png" id="7_l7d3s"]
+
+[node name="KitchenMenu" type="Control"]
+layout_mode = 3
+anchor_left = 0.226
+anchor_top = 0.159
+anchor_right = 0.715
+anchor_bottom = 0.792
+offset_left = 315.648
+offset_top = 220.968
+offset_right = -247.68
+offset_bottom = -189.216
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_fbwjo")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -314.0
+offset_top = -206.0
+offset_right = 249.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_akqtb")
+region_rect = Rect2(0, 0, 159, 191)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
+layout_mode = 0
+offset_left = -304.0
+offset_top = -190.0
+offset_right = 239.0
+offset_bottom = 178.0
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="VSplitContainer/AspectRatioContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_c77p3")
+text = "MENU CÁC MÓN"
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VSplitContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="VSplitContainer/HSplitContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VSplitContainer/HSplitContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VSplitContainer/HSplitContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="VSplitContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer"]
+layout_direction = 2
+layout_mode = 2
+columns = 6
+
+[node name="KitchenItem" parent="VSplitContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_56pae")]
+layout_mode = 2
+
+[node name="KitchenItem2" parent="VSplitContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_56pae")]
+layout_mode = 2
+
+[node name="KitchenItem3" parent="VSplitContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_56pae")]
+layout_mode = 2
+
+[node name="KitchenItem4" parent="VSplitContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_56pae")]
+layout_mode = 2
+
+[node name="KitchenItem5" parent="VSplitContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_56pae")]
+layout_mode = 2
+
+[node name="KitchenItem6" parent="VSplitContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_56pae")]
+layout_mode = 2
+
+[node name="KitchenItem7" parent="VSplitContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_56pae")]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VSplitContainer/HSplitContainer/PanelContainer2"]
+layout_mode = 2
+texture = ExtResource("3_ghv51")
+draw_center = false
+region_rect = Rect2(0, 0, 96, 96)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 17
+patch_margin_bottom = 15
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="VSplitContainer/HSplitContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VSplitContainer/HSplitContainer/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("3_ghv51")
+draw_center = false
+region_rect = Rect2(0, 0, 96, 96)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 17
+patch_margin_bottom = 15
+
+[node name="MarginContainer" type="MarginContainer" parent="VSplitContainer/HSplitContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="Label" type="Label" parent="VSplitContainer/HSplitContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="CloseButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 248.0
+offset_top = -204.0
+offset_right = 290.0
+offset_bottom = -162.0
+texture_normal = ExtResource("6_2j024")
+texture_pressed = ExtResource("7_l7d3s")
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

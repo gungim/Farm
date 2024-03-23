@@ -1,38 +1,27 @@
 [gd_scene load_steps=3 format=3 uid="uid://daos5f2wbh6j4"]
 
 [ext_resource type="Script" path="res://scenes/inventory/slot_info_ui.gd" id="1_moxls"]
-[ext_resource type="Texture2D" uid="uid://brrr2wttetm13" path="res://sprite/ui/GUI_4x copy 2.png" id="2_qpk83"]
+[ext_resource type="Texture2D" uid="uid://cn8rq3wcxjhjm" path="res://sprite/ui/11.png" id="2_quup7"]
 
-[node name="SlotInfoUI" type="Control"]
-custom_minimum_size = Vector2(333, 333)
-layout_mode = 3
-anchor_right = 0.289
-anchor_bottom = 0.514
-offset_right = 0.071991
-offset_bottom = -50.072
+[node name="SlotInfoUI" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_moxls")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_qpk83")
-region_rect = Rect2(0, 0, 96, 96)
-patch_margin_left = 13
-patch_margin_top = 13
-patch_margin_right = 13
-patch_margin_bottom = 13
+layout_mode = 2
+texture = ExtResource("2_quup7")
+region_rect = Rect2(0, 0, 158, 191)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/margin_left = 13
 theme_override_constants/margin_top = 13
 theme_override_constants/margin_right = 13

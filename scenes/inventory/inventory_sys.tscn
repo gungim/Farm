@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://b4wpyocjendwe"]
+[gd_scene load_steps=12 format=3 uid="uid://b4wpyocjendwe"]
 
 [ext_resource type="Script" path="res://scenes/inventory/inventory_sys.gd" id="1_rbv83"]
 [ext_resource type="PackedScene" uid="uid://crxgnlr5pwebb" path="res://scenes/inventory/player_inventory.tscn" id="2_jcuye"]
 [ext_resource type="Resource" uid="uid://caqbvffnohpl" path="res://scenes/inventory/item/weapone/axe.tres" id="3_l2bqp"]
-[ext_resource type="PackedScene" uid="uid://1ldwvhqrk5jb" path="res://scenes/inventory/handler_ui.tscn" id="4_gnhkf"]
 [ext_resource type="Resource" uid="uid://cprkft6h1dafq" path="res://scenes/inventory/item/weapone/hoe.tres" id="4_siyjc"]
 [ext_resource type="Resource" uid="uid://rv633fxgl4l7" path="res://scenes/inventory/item/weapone/sword.tres" id="4_yygpr"]
 [ext_resource type="Resource" uid="uid://bvkt88vl6n8hw" path="res://scenes/inventory/item/seeds/tomato.tres" id="5_edsxu"]
@@ -18,12 +17,11 @@ script = ExtResource("1_rbv83")
 items = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource("3_l2bqp"), ExtResource("4_siyjc"), ExtResource("4_yygpr"), ExtResource("7_s6vib"), ExtResource("7_xpx00"), ExtResource("5_edsxu"), ExtResource("11_sduik")])
 inventory = ExtResource("9_chaj0")
 
-[node name="HandlerUI" parent="." instance=ExtResource("4_gnhkf")]
-
 [node name="HotbarUI" parent="." instance=ExtResource("8_1dec4")]
 size_flags_vertical = 4
 
 [node name="PlayerInventory" parent="." instance=ExtResource("2_jcuye")]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

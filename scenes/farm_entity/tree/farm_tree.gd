@@ -98,7 +98,7 @@ func _input_event(_viewport, event, _shape_idx):
 func kill():
 	FarmEvents.emit_signal("on_harvested", id)
 	player.cancel_farm()
-	add_product_to_inventory()
+	_add_product_to_inventory()
 	queue_free()
 
 
@@ -108,9 +108,5 @@ func check_completed() -> bool:
 	return false
 
 
-func add_product_to_inventory():
-	if not seed_res.product:
-		return
-
-	# for item in seed_res.product:
-		# InventoryEvents.emit_signal("on_add_item", item.res, item.amount)
+func _add_product_to_inventory():
+	pass
