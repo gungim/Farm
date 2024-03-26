@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://b0j6jmu5gq6vg"]
+
+[ext_resource type="Texture2D" uid="uid://syoa7wgwm8q5" path="res://sprite/items/fruit/grape.png" id="1_g5upn"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_n51sh"]
+
+[resource]
+script = ExtResource("2_n51sh")
+max_stack = 999
+display_name = "Chùm nho"
+icon = ExtResource("1_g5upn")
+weight = 1.0
+properties = {}
+description = "Chùm nho"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cmjqx6arp8ta1"]
+
+[ext_resource type="Texture2D" uid="uid://b2k1g7elql6km" path="res://sprite/items/fruit/coconut.png" id="1_nln6t"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_ynbre"]
+
+[resource]
+script = ExtResource("2_ynbre")
+max_stack = 999
+display_name = "Sọ dừa"
+icon = ExtResource("1_nln6t")
+weight = 1.0
+properties = {}
+description = "Sọ dừa"

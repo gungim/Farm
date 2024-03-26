@@ -1,14 +1,13 @@
-[gd_resource type="Resource" script_class="ProductionItem" load_steps=3 format=3 uid="uid://b8hctjqjv5ar8"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://b8hctjqjv5ar8"]
 
-[ext_resource type="Texture2D" uid="uid://d2pbnw7ey3sfg" path="res://sprite/natura/rice.png" id="1_nfta2"]
-[ext_resource type="Script" path="res://scenes/inventory/item/products/product_item.gd" id="2_2arg1"]
+[ext_resource type="Texture2D" uid="uid://d2pbnw7ey3sfg" path="res://sprite/items/fruit/rice.png" id="1_7mrym"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="1_ok4tj"]
 
 [resource]
-script = ExtResource("2_2arg1")
-action = Array[int]([20])
+script = ExtResource("1_ok4tj")
 max_stack = 999
 display_name = "Gạo"
-icon = ExtResource("1_nfta2")
+icon = ExtResource("1_7mrym")
 weight = 1.0
 properties = {
 "healing": 12

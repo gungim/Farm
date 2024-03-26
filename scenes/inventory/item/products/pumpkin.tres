@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://d1fttt2wuyhaw"]
+
+[ext_resource type="Texture2D" uid="uid://b57pbyu2io3v8" path="res://sprite/items/fruit/pumpkin.png" id="1_5ui3w"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_hrgbq"]
+
+[resource]
+script = ExtResource("2_hrgbq")
+max_stack = 999
+display_name = "Quả bí đỏ"
+icon = ExtResource("1_5ui3w")
+weight = 1.0
+properties = {
+"healing": 12
+}
+description = "Quả bí đỏ"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cb6qj42pcwmmj"]
+
+[ext_resource type="Texture2D" uid="uid://dfvxmgw3oufxn" path="res://sprite/items/fruit/chili_peppers.png" id="1_rrj7k"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_vjedb"]
+
+[resource]
+script = ExtResource("2_vjedb")
+max_stack = 999
+display_name = "Quả ớt"
+icon = ExtResource("1_rrj7k")
+weight = 1.0
+properties = {}
+description = "Quả ớt"

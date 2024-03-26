@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://clmgfqunl8q8a"]
+
+[ext_resource type="Texture2D" uid="uid://d3c43awnws1l1" path="res://sprite/items/food/fried_chiken.png" id="1_h6nu1"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_8ca50"]
+
+[resource]
+script = ExtResource("2_8ca50")
+max_stack = 999
+display_name = "Gà nướng"
+icon = ExtResource("1_h6nu1")
+weight = 1.0
+properties = {}
+description = "Gà nướng"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://b7aqqj4bew00d"]
+
+[ext_resource type="Texture2D" uid="uid://c0umsn7tt1cfu" path="res://sprite/items/food/ice_cream.png" id="1_j628s"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_3q51j"]
+
+[resource]
+script = ExtResource("2_3q51j")
+max_stack = 999
+display_name = "Kem"
+icon = ExtResource("1_j628s")
+weight = 1.0
+properties = {}
+description = "Kem"

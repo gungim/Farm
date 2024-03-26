@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3qx1ngn7jsv8"]
+[gd_scene load_steps=5 format=3 uid="uid://c3qx1ngn7jsv8"]
 
 [ext_resource type="Script" path="res://scenes/inventory/hotbar/hotbar_ui.gd" id="1_3dg5y"]
-[ext_resource type="PackedScene" uid="uid://dagg412nmu41a" path="res://scenes/inventory/hotbar/hotbar_slot_ui.tscn" id="2_k5ar8"]
+[ext_resource type="PackedScene" uid="uid://2e65nrw0y5jn" path="res://scenes/inventory/grid/inventory_grid.tscn" id="2_gjrmu"]
+[ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://scenes/inventory/db/hotbar.tres" id="3_de44e"]
+[ext_resource type="Texture2D" uid="uid://cn8rq3wcxjhjm" path="res://sprite/ui/11.png" id="4_cjupx"]
 
 [node name="HotbarUI" type="Control"]
 layout_mode = 3
@@ -16,24 +18,39 @@ size_flags_horizontal = 4
 mouse_force_pass_scroll_events = false
 script = ExtResource("1_3dg5y")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -54.0
-offset_top = -52.0
-offset_right = 54.0
+offset_left = -25.0
+offset_top = -50.0
+offset_right = 25.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+texture = ExtResource("4_cjupx")
+region_rect = Rect2(0, 0, 159, 191)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
 
-[node name="SlotUI" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_k5ar8")]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 9
 
-[node name="SlotUI2" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_k5ar8")]
+[node name="InventoryGrid" parent="PanelContainer/MarginContainer" instance=ExtResource("2_gjrmu")]
 layout_mode = 2
+columns = 10
+inventory = ExtResource("3_de44e")
+type = "hotbar"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://50dxspre0imw"]
+
+[ext_resource type="Texture2D" uid="uid://o0qy2q2ic4em" path="res://sprite/items/fruit/asparagus.png" id="1_oplfd"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_8gjd4"]
+
+[resource]
+script = ExtResource("2_8gjd4")
+max_stack = 999
+display_name = "Măng tây"
+icon = ExtResource("1_oplfd")
+weight = 1.0
+properties = {}
+description = "Măng tây"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://0x8k3e5mbb3m"]
+
+[ext_resource type="Texture2D" uid="uid://d0nxnx5y2lotj" path="res://sprite/items/fruit/squash.png" id="1_d2djs"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_i3cuq"]
+
+[resource]
+script = ExtResource("2_i3cuq")
+max_stack = 999
+display_name = "Bí đao"
+icon = ExtResource("1_d2djs")
+weight = 1.0
+properties = {
+"healing": 12
+}
+description = "Bí đao"

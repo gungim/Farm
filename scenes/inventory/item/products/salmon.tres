@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://jjfau06yr31r"]
+
+[ext_resource type="Texture2D" uid="uid://dk2dmx6cif0q2" path="res://sprite/items/food/salmon.png" id="1_umill"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_g0fb6"]
+
+[resource]
+script = ExtResource("2_g0fb6")
+max_stack = 999
+display_name = "Cá hồi"
+icon = ExtResource("1_umill")
+weight = 1.0
+properties = {
+"healing": 12
+}
+description = "Cá hồi"

@@ -22,3 +22,7 @@ func _on_mouse_exited():
 
 func _on_mouse_entered():
 	PlayerEvents.emit_signal("on_allow_other_action", false)
+
+
+func _can_drop_data(_at_position, _data):
+	return false

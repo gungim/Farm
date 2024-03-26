@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://duyrv7c7jt075"]
+
+[ext_resource type="Texture2D" uid="uid://fairq1re3b0o" path="res://sprite/items/food/chicken_thighs.png" id="1_4q2ax"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_sse85"]
+
+[resource]
+script = ExtResource("2_sse85")
+max_stack = 999
+display_name = "Đùi gà nướng"
+icon = ExtResource("1_4q2ax")
+weight = 1.0
+properties = {}
+description = "Đùi gà nướng"

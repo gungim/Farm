@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://rv633fxgl4l7"]
+
+[ext_resource type="Texture2D" uid="uid://cvknmyc6jgen1" path="res://sprite/items/tool/sickle_icon.png" id="1_783jb"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="1_io3s5"]
+
+[resource]
+script = ExtResource("1_io3s5")
+max_stack = 1
+display_name = "Thanh kiếm"
+icon = ExtResource("1_783jb")
+weight = 1.0
+properties = {}
+description = "Thanh kiếm"

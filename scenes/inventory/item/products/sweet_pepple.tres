@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://dgdkwirfqqwyv"]
+
+[ext_resource type="Texture2D" uid="uid://c11jou2jbs7vk" path="res://sprite/items/fruit/sweet_pepple.png" id="1_n8bsm"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_y1srb"]
+
+[resource]
+script = ExtResource("2_y1srb")
+max_stack = 999
+display_name = "Ớt ngọt"
+icon = ExtResource("1_n8bsm")
+weight = 1.0
+properties = {
+"healing": 12
+}
+description = "ớt ngọt"

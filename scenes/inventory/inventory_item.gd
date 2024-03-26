@@ -23,7 +23,7 @@ class_name InventoryItem
 @export var icon: Texture2D
 
 ## Item weight in float
-@export var weight: float
+@export var weight: int
 
 ## Item custom properties
 ## type of item: tool, weapon, seed, food

@@ -1,14 +1,13 @@
-[gd_resource type="Resource" script_class="ProductionItem" load_steps=3 format=3 uid="uid://djhj56v5kwi1v"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://djhj56v5kwi1v"]
 
-[ext_resource type="Texture2D" uid="uid://bvotjc17bcaw6" path="res://sprite/natura/wood.png" id="1_wtebb"]
-[ext_resource type="Script" path="res://scenes/inventory/item/products/product_item.gd" id="2_5anhy"]
+[ext_resource type="Texture2D" uid="uid://otgp717y2oj5" path="res://sprite/items/wood.png" id="1_jad6d"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="1_wphhm"]
 
 [resource]
-script = ExtResource("2_5anhy")
-action = Array[int]([0])
+script = ExtResource("1_wphhm")
 max_stack = 999
 display_name = "Khúc gỗ"
-icon = ExtResource("1_wtebb")
+icon = ExtResource("1_jad6d")
 weight = 1.0
 properties = {}
-description = "Khối gỗ, lấy được từ chặt cây"
+description = "Khúc gỗ, lấy được từ chặt cây"

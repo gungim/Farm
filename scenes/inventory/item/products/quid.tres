@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://c8h3qtpiyqcxd"]
+
+[ext_resource type="Texture2D" uid="uid://b1wdaykjq6yfa" path="res://sprite/items/food/quid.png" id="1_8tyc0"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_88b3s"]
+
+[resource]
+script = ExtResource("2_88b3s")
+max_stack = 999
+display_name = "Mực nướng"
+icon = ExtResource("1_8tyc0")
+weight = 1.0
+properties = {
+"healing": 12
+}
+description = "Mực nướng"

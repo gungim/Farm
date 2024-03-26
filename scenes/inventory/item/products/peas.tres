@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://vhqb7i7tnqo6"]
+
+[ext_resource type="Texture2D" uid="uid://ldqlbbttagna" path="res://sprite/items/fruit/peas.png" id="1_y3te4"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_tjkux"]
+
+[resource]
+script = ExtResource("2_tjkux")
+max_stack = 999
+display_name = "Đậu hà lan"
+icon = ExtResource("1_y3te4")
+weight = 1.0
+properties = {}
+description = "Đậu hà lan"

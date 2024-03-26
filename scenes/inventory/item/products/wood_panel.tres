@@ -1,14 +1,13 @@
-[gd_resource type="Resource" script_class="ProductionItem" load_steps=3 format=3 uid="uid://co7nobtgx55oq"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://co7nobtgx55oq"]
 
-[ext_resource type="Texture2D" uid="uid://cl0m22dmsbkvr" path="res://sprite/natura/wood_panel.png" id="1_ciomp"]
-[ext_resource type="Script" path="res://scenes/inventory/item/products/product_item.gd" id="2_ojdqo"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="1_ltitp"]
+[ext_resource type="Texture2D" uid="uid://cl0m22dmsbkvr" path="res://sprite/items/wood_panel.png" id="1_n61fn"]
 
 [resource]
-script = ExtResource("2_ojdqo")
-action = Array[int]([18])
+script = ExtResource("1_ltitp")
 max_stack = 999
 display_name = "Tấm gỗ"
-icon = ExtResource("1_ciomp")
+icon = ExtResource("1_n61fn")
 weight = 1.0
 properties = {}
 description = "Tấm gỗ, được lấy khi xẻ gỗ"

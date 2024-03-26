@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cqtfnkvncpy8h"]
+
+[ext_resource type="Texture2D" uid="uid://cj4jvudbgeoa7" path="res://sprite/items/fruit/papaya.png" id="1_18has"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_tp2dv"]
+
+[resource]
+script = ExtResource("2_tp2dv")
+max_stack = 999
+display_name = "Quả đu đủ"
+icon = ExtResource("1_18has")
+weight = 1.0
+properties = {}
+description = "Quả đu đủ"

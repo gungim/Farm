@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cprkft6h1dafq"]
+
+[ext_resource type="Texture2D" uid="uid://cm4hxagctc07y" path="res://sprite/items/tool/axe.png" id="1_7jx45"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="1_ljic4"]
+
+[resource]
+script = ExtResource("1_ljic4")
+max_stack = 1
+display_name = "Cái cuốc"
+icon = ExtResource("1_7jx45")
+weight = 1.0
+properties = {
+"farm": "axe"
+}
+description = "Dùng để cuốc đất, trông cây"

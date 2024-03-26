@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://w5foa75lskl0"]
+
+[ext_resource type="Texture2D" uid="uid://cnb7eqaybie1y" path="res://sprite/items/fruit/purple_cabbage.png" id="1_ik67q"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_u4p7e"]
+
+[resource]
+script = ExtResource("2_u4p7e")
+max_stack = 999
+display_name = "Bắp cải tím"
+icon = ExtResource("1_ik67q")
+weight = 1.0
+properties = {
+"healing": 12
+}
+description = "Bắp cải tím"

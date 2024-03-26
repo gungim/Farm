@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://bh3wi7nr5wu6f"]
+
+[ext_resource type="Texture2D" uid="uid://kbujrbygbri8" path="res://sprite/items/fruit/watermelon.png" id="1_e0cfa"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_fa6tw"]
+
+[resource]
+script = ExtResource("2_fa6tw")
+max_stack = 999
+display_name = "Dưa hấu"
+icon = ExtResource("1_e0cfa")
+weight = 1.0
+properties = {}
+description = "Dưa hấu"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://bs5hacs4uvqtx"]
+
+[ext_resource type="Texture2D" uid="uid://bmryfypbpssiu" path="res://sprite/items/food/chicken_wing.png" id="1_qpxyw"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_2v50x"]
+
+[resource]
+script = ExtResource("2_2v50x")
+max_stack = 999
+display_name = "Cánh gà nướng"
+icon = ExtResource("1_qpxyw")
+weight = 1.0
+properties = {}
+description = "Cánh gà nướngs"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cq3kxe4mnawvq"]
+
+[ext_resource type="Texture2D" uid="uid://c2pckw8uf0hyf" path="res://sprite/items/food/cheese.png" id="1_l320e"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_or1ks"]
+
+[resource]
+script = ExtResource("2_or1ks")
+max_stack = 999
+display_name = "Phô mai"
+icon = ExtResource("1_l320e")
+weight = 1.0
+properties = {}
+description = "Phô mai, được làm từ sữa"

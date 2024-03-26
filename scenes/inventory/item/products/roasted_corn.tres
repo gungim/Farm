@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://px3av8cppeow"]
+
+[ext_resource type="Texture2D" uid="uid://b7qli2frjast3" path="res://sprite/items/fruit/roasted_corn.png" id="1_hmscr"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_sgsxh"]
+
+[resource]
+script = ExtResource("2_sgsxh")
+max_stack = 999
+display_name = "Bắp ngô"
+icon = ExtResource("1_hmscr")
+weight = 1.0
+properties = {
+"healing": 12
+}
+description = "Bắp ngô"

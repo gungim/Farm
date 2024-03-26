@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://caqbvffnohpl"]
+
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="1_g360l"]
+[ext_resource type="Texture2D" uid="uid://cm4hxagctc07y" path="res://sprite/items/tool/axe.png" id="1_yes8l"]
+
+[resource]
+script = ExtResource("1_g360l")
+max_stack = 1
+display_name = "Cây rìu"
+icon = ExtResource("1_yes8l")
+weight = 1.0
+properties = {
+"damage": 12
+}
+description = "Dùng để chặt cây"

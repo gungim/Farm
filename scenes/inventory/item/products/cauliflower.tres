@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://c3v2apuxqdstj"]
+
+[ext_resource type="Texture2D" uid="uid://lexi44h818wj" path="res://sprite/items/fruit/cauliflower.png" id="1_pg2fd"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_topnx"]
+
+[resource]
+script = ExtResource("2_topnx")
+max_stack = 999
+display_name = "Xúp lơ"
+icon = ExtResource("1_pg2fd")
+weight = 1.0
+properties = {}
+description = "Xúp lơ"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://dx3rynf3v5vco"]
+
+[ext_resource type="Texture2D" uid="uid://sqliptu2pnyx" path="res://sprite/items/food/lizard_tail.png" id="1_sxae3"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_f5jts"]
+
+[resource]
+script = ExtResource("2_f5jts")
+max_stack = 999
+display_name = "Đuôi thằn lằn"
+icon = ExtResource("1_sxae3")
+weight = 1.0
+properties = {
+"healing": 12
+}
+description = "Đuôi thằn lằn"

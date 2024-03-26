@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://t42oio42aqia"]
+
+[ext_resource type="Texture2D" uid="uid://iwedhgglxdum" path="res://sprite/items/fruit/egg_plant.png" id="1_kleg8"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_2v0t0"]
+
+[resource]
+script = ExtResource("2_2v0t0")
+max_stack = 999
+display_name = "Cà tím"
+icon = ExtResource("1_kleg8")
+weight = 1.0
+properties = {}
+description = "Cà tím"

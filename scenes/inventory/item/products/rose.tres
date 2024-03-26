@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://bwv0yoc5q8edv"]
+
+[ext_resource type="Texture2D" uid="uid://dcf3n6gnrtj1d" path="res://sprite/items/fruit/rose.png" id="1_b560i"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_68kwg"]
+
+[resource]
+script = ExtResource("2_68kwg")
+max_stack = 999
+display_name = "Hoa hồng"
+icon = ExtResource("1_b560i")
+weight = 1.0
+properties = {
+"healing": 12
+}
+description = "Hoa hồng"

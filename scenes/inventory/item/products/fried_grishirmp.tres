@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://du85ln3q7lm1c"]
+
+[ext_resource type="Texture2D" uid="uid://b6hfm4dwo5maq" path="res://sprite/items/food/fried_grishirmp.png" id="1_yaqyu"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_ioe1r"]
+
+[resource]
+script = ExtResource("2_ioe1r")
+max_stack = 999
+display_name = "Tôm nướng"
+icon = ExtResource("1_yaqyu")
+weight = 1.0
+properties = {}
+description = "Tôm nướng"

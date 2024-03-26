@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://c5ayinf4o0shd"]
+
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="1_a2qpb"]
+[ext_resource type="Texture2D" uid="uid://2jhvxnvw51ac" path="res://sprite/items/tool/sickle.png" id="1_wjxcy"]
+
+[resource]
+script = ExtResource("1_a2qpb")
+max_stack = 1
+display_name = "Cái liềm"
+icon = ExtResource("1_wjxcy")
+weight = 1
+properties = {}
+description = "Dung để thu hoạch cây trồng"

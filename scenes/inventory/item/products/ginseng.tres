@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://c8vpog820ilr5"]
+
+[ext_resource type="Texture2D" uid="uid://b02hwd1phv863" path="res://sprite/items/fruit/ginseng.png" id="1_ibfpg"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_3qfm2"]
+
+[resource]
+script = ExtResource("2_3qfm2")
+max_stack = 999
+display_name = "Củ nhân sâm"
+icon = ExtResource("1_ibfpg")
+weight = 1.0
+properties = {}
+description = "Củ nhân sâm"

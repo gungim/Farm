@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cjtsidijqhrt7"]
+
+[ext_resource type="Texture2D" uid="uid://81yfre5pxo4l" path="res://sprite/items/fruit/onion.png" id="1_xpfao"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_ypcj8"]
+
+[resource]
+script = ExtResource("2_ypcj8")
+max_stack = 999
+display_name = "Hành tây"
+icon = ExtResource("1_xpfao")
+weight = 1.0
+properties = {}
+description = "Hành tây"

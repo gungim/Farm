@@ -1,14 +1,13 @@
-[gd_resource type="Resource" script_class="ProductionItem" load_steps=3 format=3 uid="uid://bw50ugnsstvr0"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://d180kfhexouf8"]
 
-[ext_resource type="Texture2D" uid="uid://5q7uk7p5v45n" path="res://sprite/crops/potato_icon.png" id="1_ygdvu"]
-[ext_resource type="Script" path="res://scenes/inventory/item/products/product_item.gd" id="2_2arg1"]
+[ext_resource type="Texture2D" uid="uid://12hmdy1j5ktl" path="res://sprite/items/fruit/potato.png" id="1_1y7o2"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="1_v7a5b"]
 
 [resource]
-script = ExtResource("2_2arg1")
-action = Array[int]([0])
+script = ExtResource("1_v7a5b")
 max_stack = 999
 display_name = "Củ khoai"
-icon = ExtResource("1_ygdvu")
+icon = ExtResource("1_1y7o2")
 weight = 1.0
 properties = {
 "healing": 12

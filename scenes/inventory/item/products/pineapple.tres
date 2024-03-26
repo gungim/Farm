@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://p2my2njc2xx4"]
+
+[ext_resource type="Texture2D" uid="uid://cavttqabl2hgj" path="res://sprite/items/fruit/pineapple.png" id="1_ybpj0"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_e431h"]
+
+[resource]
+script = ExtResource("2_e431h")
+max_stack = 999
+display_name = "Quả dứa"
+icon = ExtResource("1_ybpj0")
+weight = 1.0
+properties = {}
+description = "Quả dứa"

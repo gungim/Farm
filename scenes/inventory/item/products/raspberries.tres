@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cgthsxa75l5u3"]
+
+[ext_resource type="Texture2D" uid="uid://c78sp1v4nc78y" path="res://sprite/items/fruit/raspberries.png" id="1_ytcx7"]
+[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_7w3ky"]
+
+[resource]
+script = ExtResource("2_7w3ky")
+max_stack = 999
+display_name = "Quả mâm xôi"
+icon = ExtResource("1_ytcx7")
+weight = 1.0
+properties = {
+"healing": 12
+}
+description = "Quả mâm xôi"
