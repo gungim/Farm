@@ -1,15 +1,17 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://b8hctjqjv5ar8"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://b8hctjqjv5ar8"]
 
 [ext_resource type="Texture2D" uid="uid://d2pbnw7ey3sfg" path="res://sprite/items/fruit/rice.png" id="1_7mrym"]
-[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="1_ok4tj"]
+[ext_resource type="Resource" uid="uid://b3v2t6odfep0f" path="res://scenes/inventory/db/categories/food.tres" id="1_c71r7"]
+[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="3_8mnup"]
 
 [resource]
-script = ExtResource("1_ok4tj")
+script = ExtResource("3_8mnup")
 max_stack = 999
 display_name = "Gạo"
 icon = ExtResource("1_7mrym")
-weight = 1.0
+weight = 1
 properties = {
 "healing": 12
 }
-description = "Củ khoai, có thể dùng để hồi máu"
+description = "Gạo"
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_c71r7")])

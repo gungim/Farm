@@ -1,15 +1,17 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cgthsxa75l5u3"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://cgthsxa75l5u3"]
 
+[ext_resource type="Resource" uid="uid://b3v2t6odfep0f" path="res://scenes/inventory/db/categories/food.tres" id="1_uo0g0"]
 [ext_resource type="Texture2D" uid="uid://c78sp1v4nc78y" path="res://sprite/items/fruit/raspberries.png" id="1_ytcx7"]
-[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_7w3ky"]
+[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="3_xaiuj"]
 
 [resource]
-script = ExtResource("2_7w3ky")
+script = ExtResource("3_xaiuj")
 max_stack = 999
 display_name = "Quả mâm xôi"
 icon = ExtResource("1_ytcx7")
-weight = 1.0
+weight = 1
 properties = {
 "healing": 12
 }
 description = "Quả mâm xôi"
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_uo0g0")])

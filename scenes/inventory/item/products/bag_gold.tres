@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://d20htb0ds7qhl"]
+
+[ext_resource type="Texture2D" uid="uid://bpekaug5caclp" path="res://sprite/items/bag_gold.png" id="1_7uijj"]
+[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="2_ktk4b"]
+
+[resource]
+script = ExtResource("2_ktk4b")
+max_stack = 999
+display_name = "Túi vàng"
+icon = ExtResource("1_7uijj")
+weight = 1
+properties = {}
+description = "Túi vàng"
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([])

@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://rv633fxgl4l7"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://rv633fxgl4l7"]
 
 [ext_resource type="Texture2D" uid="uid://cvknmyc6jgen1" path="res://sprite/items/tool/sickle_icon.png" id="1_783jb"]
-[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="1_io3s5"]
+[ext_resource type="Resource" uid="uid://fm437bw8plha" path="res://scenes/inventory/db/categories/weapon.tres" id="1_i7oon"]
+[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="3_rctjf"]
 
 [resource]
-script = ExtResource("1_io3s5")
+script = ExtResource("3_rctjf")
 max_stack = 1
 display_name = "Thanh kiếm"
 icon = ExtResource("1_783jb")
-weight = 1.0
+weight = 1
 properties = {}
 description = "Thanh kiếm"
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_i7oon")])

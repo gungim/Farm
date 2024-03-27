@@ -1,13 +1,17 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cim43qkffliy4"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://cim43qkffliy4"]
 
+[ext_resource type="Resource" uid="uid://b3v2t6odfep0f" path="res://scenes/inventory/db/categories/food.tres" id="1_0w0kk"]
 [ext_resource type="Texture2D" uid="uid://cx4pitapd3f7j" path="res://sprite/items/fruit/cherry.png" id="1_4fn1n"]
-[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_nkxp6"]
+[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="3_kcme3"]
 
 [resource]
-script = ExtResource("2_nkxp6")
+script = ExtResource("3_kcme3")
 max_stack = 999
 display_name = "Cherry"
 icon = ExtResource("1_4fn1n")
-weight = 1.0
-properties = {}
+weight = 1
+properties = {
+"healing": 12
+}
 description = "Cherry"
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_0w0kk")])

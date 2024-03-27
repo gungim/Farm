@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://co44tujvqdhw0"
-path="res://.godot/imported/row-1-column-7.png-0f7107f5b94b29e5d2cfa9e19ffae8b1.ctex"
+uid="uid://wo00iug0a7bx"
+path="res://.godot/imported/seed_tomato.png-2250bb8ba6eca6ab961e4752d3600667.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/items/row-1-column-7.png"
-dest_files=["res://.godot/imported/row-1-column-7.png-0f7107f5b94b29e5d2cfa9e19ffae8b1.ctex"]
+source_file="res://sprite/items/seed/seed_tomato.png"
+dest_files=["res://.godot/imported/seed_tomato.png-2250bb8ba6eca6ab961e4752d3600667.ctex"]
 
 [params]
 

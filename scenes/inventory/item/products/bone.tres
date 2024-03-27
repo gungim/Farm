@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://k61td2jusdab"]
+
+[ext_resource type="Texture2D" uid="uid://besbtasngbijw" path="res://sprite/items/bone.png" id="1_ba8nq"]
+[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="2_4hwp5"]
+
+[resource]
+script = ExtResource("2_4hwp5")
+max_stack = 999
+display_name = "Khúc xương"
+icon = ExtResource("1_ba8nq")
+weight = 1
+properties = {}
+description = "Khúc xương"
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([])

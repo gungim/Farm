@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Category" load_steps=2 format=3 uid="uid://bb5g758ehaoao"]
+
+[ext_resource type="Script" path="res://scenes/inventory/db/categories/category.gd" id="1_6hlg8"]
+
+[resource]
+script = ExtResource("1_6hlg8")
+display_name = "Giống cây"
+name = "seed"

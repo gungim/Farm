@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7h561rvtbyje"
-path="res://.godot/imported/row-9-column-5.png-243c6c9bb0a96db71d224c00f907eded.ctex"
+uid="uid://cbv1bp3yhredt"
+path="res://.godot/imported/hoe.png-fe7c62b52bc992ecad23e70e6ab4f83a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/items/row-9-column-5.png"
-dest_files=["res://.godot/imported/row-9-column-5.png-243c6c9bb0a96db71d224c00f907eded.ctex"]
+source_file="res://sprite/items/tool/hoe.png"
+dest_files=["res://.godot/imported/hoe.png-fe7c62b52bc992ecad23e70e6ab4f83a.ctex"]
 
 [params]
 

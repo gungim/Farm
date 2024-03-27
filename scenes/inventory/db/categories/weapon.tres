@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Category" load_steps=2 format=3 uid="uid://fm437bw8plha"]
+
+[ext_resource type="Script" path="res://scenes/inventory/db/categories/category.gd" id="1_4uu2i"]
+
+[resource]
+script = ExtResource("1_4uu2i")
+display_name = "Vũ khí"
+name = "weapone"

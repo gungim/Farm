@@ -1,13 +1,17 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://bs5hacs4uvqtx"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://bs5hacs4uvqtx"]
 
+[ext_resource type="Resource" uid="uid://b3v2t6odfep0f" path="res://scenes/inventory/db/categories/food.tres" id="1_cmyse"]
 [ext_resource type="Texture2D" uid="uid://bmryfypbpssiu" path="res://sprite/items/food/chicken_wing.png" id="1_qpxyw"]
-[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_2v50x"]
+[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="3_fbaop"]
 
 [resource]
-script = ExtResource("2_2v50x")
+script = ExtResource("3_fbaop")
 max_stack = 999
 display_name = "Cánh gà nướng"
 icon = ExtResource("1_qpxyw")
-weight = 1.0
-properties = {}
+weight = 1
+properties = {
+"healing": 12
+}
 description = "Cánh gà nướngs"
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_cmyse")])

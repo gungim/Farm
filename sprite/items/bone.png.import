@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://besbtasngbijw"
-path="res://.godot/imported/row-8-column-9.png-05cb8d8d22c73820b2e4f6ef93908dee.ctex"
+path="res://.godot/imported/bone.png-c6273bdc11f142d64e58b2350c51c5a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/items/row-8-column-9.png"
-dest_files=["res://.godot/imported/row-8-column-9.png-05cb8d8d22c73820b2e4f6ef93908dee.ctex"]
+source_file="res://sprite/items/bone.png"
+dest_files=["res://.godot/imported/bone.png-c6273bdc11f142d64e58b2350c51c5a8.ctex"]
 
 [params]
 

@@ -30,3 +30,5 @@ class_name InventoryItem
 @export var properties: Dictionary = {}
 
 @export var description: String
+
+@export var categories: Array[Category]

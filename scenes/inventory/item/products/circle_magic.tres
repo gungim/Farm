@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://bqd08dygg6761"]
+
+[ext_resource type="Texture2D" uid="uid://vkjo8wagravl" path="res://sprite/items/circle_magic.png" id="1_fcfdn"]
+[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="2_wpbhu"]
+
+[resource]
+script = ExtResource("2_wpbhu")
+max_stack = 999
+display_name = "Quả cầu phép"
+icon = ExtResource("1_fcfdn")
+weight = 1
+properties = {}
+description = "Quả cầu phép"
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([])

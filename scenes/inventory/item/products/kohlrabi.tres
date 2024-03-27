@@ -1,13 +1,17 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://dp36t6sxfhpra"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://dp36t6sxfhpra"]
 
 [ext_resource type="Texture2D" uid="uid://mu6ss38pc2dr" path="res://sprite/items/fruit/kohlrabi.png" id="1_7htax"]
-[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="2_6v7ky"]
+[ext_resource type="Resource" uid="uid://b3v2t6odfep0f" path="res://scenes/inventory/db/categories/food.tres" id="1_xx4me"]
+[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="3_tm7jr"]
 
 [resource]
-script = ExtResource("2_6v7ky")
+script = ExtResource("3_tm7jr")
 max_stack = 999
 display_name = "Củ xu hào"
 icon = ExtResource("1_7htax")
-weight = 1.0
-properties = {}
+weight = 1
+properties = {
+"healing": 12
+}
 description = "Củ xu hào"
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_xx4me")])

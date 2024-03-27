@@ -50,5 +50,13 @@ func _on_mouse_exited():
 
 
 func _harvest():
-	player.play_animation("harvest")
-	kill()
+	if not player:
+		return
+
+	if not check_completed():
+		return
+
+	var player_can_harvest = player.check_farm_state("harvest")
+	if player_can_harvest == 0:
+		player.play_animation("harvest")
+		kill()

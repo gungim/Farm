@@ -26,3 +26,8 @@ func _on_mouse_entered():
 
 func _can_drop_data(_at_position, _data):
 	return false
+
+
+func _pressed():
+	print_debug("Select item")
+	PlayerEvents.emit_signal("on_select_hotbar_slot", slot)

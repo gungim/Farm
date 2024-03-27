@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n6iw7si0bvf8"
-path="res://.godot/imported/seed_potato.png-bd715abbec2a1fe551ef31c7d0247245.ctex"
+uid="uid://c3b742fbyu41m"
+path="res://.godot/imported/gold_bar.png-6011bca7aecf4f5e9e22c03825af0558.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/crops/seed_potato.png"
-dest_files=["res://.godot/imported/seed_potato.png-bd715abbec2a1fe551ef31c7d0247245.ctex"]
+source_file="res://sprite/items/gold_bar.png"
+dest_files=["res://.godot/imported/gold_bar.png-6011bca7aecf4f5e9e22c03825af0558.ctex"]
 
 [params]
 

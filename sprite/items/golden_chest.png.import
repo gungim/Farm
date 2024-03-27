@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3b742fbyu41m"
-path="res://.godot/imported/row-10-column-8.png-fb8c8ec9152cf037cb7c9080dfd20212.ctex"
+uid="uid://b7h561rvtbyje"
+path="res://.godot/imported/golden_chest.png-8a9b61afc440808d7e2938839e7294c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/items/row-10-column-8.png"
-dest_files=["res://.godot/imported/row-10-column-8.png-fb8c8ec9152cf037cb7c9080dfd20212.ctex"]
+source_file="res://sprite/items/golden_chest.png"
+dest_files=["res://.godot/imported/golden_chest.png-8a9b61afc440808d7e2938839e7294c9.ctex"]
 
 [params]
 

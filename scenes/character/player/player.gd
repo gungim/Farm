@@ -16,7 +16,6 @@ var FRICTION = 0.15
 @export var ACCELERATION = 40
 @export var HP: int = 10
 
-@onready var equipment: Equipment = $Equipment
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 @onready var state: StateChart = $StateChart
 @onready var animated: AnimatedSprite2D = $AnimatedSprite2D
@@ -24,7 +23,22 @@ var FRICTION = 0.15
 
 func _ready():
 	PlayerEvents.connect("on_use_item", _on_use_item)
-	PlayerEvents.connect("on_hold_item", _on_hold_item)
+	PlayerEvents.connect("on_select_hotbar_slot", _on_select_hotbar_slot)
+
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			var mouse_position = get_global_mouse_position()
+			if position.distance_squared_to(mouse_position) >= 40:
+				pass
+			else:
+				var action_type = get_item_property("action_type")
+				match action_type:
+					"hoe":
+						FarmEvents.emit_signal("on_hoe", mouse_position)
+					_:
+						pass
 
 
 func get_input():
@@ -67,14 +81,8 @@ func change_hp(value: int):
 	updated_hp.emit(HP)
 
 
-func hold_item():
-	equipment.update_item(current_slot_selected)
-
-
-func update_equipment_item():
-	if current_slot_selected.amount <= 0:
-		current_slot_selected = null
-		equipment.update_item(current_slot_selected)
+func _on_select_hotbar_slot(slot: Slot):
+	current_slot_selected = slot
 
 
 func eat_food():
@@ -83,7 +91,6 @@ func eat_food():
 	if HP < MAX_HP:
 		change_hp(properties.healing)
 		current_slot_selected.amount -= 1
-		update_equipment_item()
 
 
 # using when click on hotbar
@@ -93,12 +100,6 @@ func _on_use_item(slot: Slot):
 		match action:
 			GlobalEvents.product_actions.FOOD:
 				eat_food()
-
-
-func _on_hold_item(slot: Slot):
-	current_slot_selected = slot
-	if slot and slot.item is SeedItem:
-		hold_item()
 
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
@@ -122,59 +123,64 @@ func move():
 	move_and_slide()
 
 
-func _on_chop_state_entered():
-	var item = current_slot_selected.item
-	var damage = item.properties["damage"]
-	var dmg: int = randi_range(damage - 2, damage + 2)
-	FarmEvents.emit_signal("on_chop", dmg)
-
-
-func using_item():
-	if not current_slot_selected:
-		return
-	var item = current_slot_selected.item
-	if not item:
-		return
-
-	if item is ProductionItem:
-		var actions = item.action
-		if actions[0] == GlobalEvents.product_actions.BUILD:
-			FarmEvents.emit_signal("on_build_barn")
-	elif item is SeedItem:
-		FarmEvents.emit_signal("on_plant", current_slot_selected)
-		update_equipment_item()
-
-	elif item is ToolItem:
-		var action = item.action
-		match action:
-			GlobalEvents.tool_actions.HOE:
-				FarmEvents.emit_signal("on_hoe")
-			GlobalEvents.tool_actions.WATERING:
-				FarmEvents.emit_signal("on_watering")
-
-
+# if current_slot_selected
+# kiểm tra current_slot_selected có properties action không
+# nếu k có action return -1
+# nếu có thì return properties damage
+# hoặc return 0
+# với giá trị == 0 thì sẽ thực hiện nhừng hàng động k cần tool damage(thu hoạch)
 func check_farm_state(key: String) -> int:
 	if not current_slot_selected:
 		return -1
-	var item = current_slot_selected.item
-	if not item:
-		return -1
-	if not item is ToolItem:
+
+	var check_is_tool = check_item_is_tool()
+	if check_is_tool == -1:
 		return -1
 
-	var tool_action = item.action
+	var action_type = get_item_property("action_type")
+	if action_type == -1:
+		return -1
 
 	match key:
 		"chop":
-			if tool_action == GlobalEvents.tool_actions.CHOP:
-				return item.properties.get("damage")
+			var damage = get_item_property("damage")
+			if action_type == key:
+				return damage
+			return 0
+		"harvest":
+			if action_type == key:
+				return 0
 			return -1
 		_:
 			return -1
 
+
+# Trả về -1 nếu k có category = tool.tres
+func check_item_is_tool() -> int:
+	var item = current_slot_selected.item
+	var tool_res = load("res://scenes/inventory/db/categories/tool.tres")
+	var check_is_tool = item.categories.check_item.find(tool_res)
+
+	if check_is_tool == -1:
+		return -1
+
+	return check_is_tool
+
+
+# Trả về -1 nếu k có property_name
+func get_item_property(property_name: String):
+	var property = current_slot_selected.item.properties.get(property_name)
+
+	if not property:
+		return -1
+
+	return property
+
+
 func play_animation(animation_name):
-	pass
+	return
 	animated.play(animation_name)
+
 
 func cancel_farm():
 	animated.stop()

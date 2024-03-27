@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cegt7io6t008k"]
+
+[ext_resource type="Texture2D" uid="uid://hupkhbhkk8k0" path="res://sprite/items/diamond.png" id="1_bntuw"]
+[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="2_6eikh"]
+
+[resource]
+script = ExtResource("2_6eikh")
+max_stack = 999
+display_name = "Kim cương"
+icon = ExtResource("1_bntuw")
+weight = 1
+properties = {}
+description = "Kim cương"
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([])

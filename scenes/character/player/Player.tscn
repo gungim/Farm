@@ -1,11 +1,9 @@
-[gd_scene load_steps=37 format=3 uid="uid://m2ib88feldcx"]
+[gd_scene load_steps=31 format=3 uid="uid://m2ib88feldcx"]
 
 [ext_resource type="Script" path="res://scenes/character/player/player.gd" id="2_50726"]
 [ext_resource type="Texture2D" uid="uid://cr04120uh51dw" path="res://sprite/character/farm.png" id="3_flg6l"]
 [ext_resource type="Texture2D" uid="uid://do1ftmdbxr5hp" path="res://sprite/character/body.png" id="4_ctard"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="7_at5kf"]
-[ext_resource type="Texture2D" uid="uid://de2d0d7jpuqfo" path="res://sprite/tool/sword_icon.png" id="7_edl82"]
-[ext_resource type="Script" path="res://scenes/character/player/equipment.gd" id="7_p4s8h"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="8_tksww"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="9_3x38q"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="10_ybbvh"]
@@ -281,48 +279,6 @@ _data = {
 "RESET": SubResource("Animation_q7xeh")
 }
 
-[sub_resource type="Animation" id="Animation_kgnq8"]
-resource_name = "Chop"
-
-[sub_resource type="Animation" id="Animation_gb5ul"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-8, -20)]
-}
-
-[sub_resource type="Animation" id="Animation_u3is3"]
-resource_name = "Use"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-8, -20), Vector2(-8, -22)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_prmue"]
-_data = {
-"Chop": SubResource("Animation_kgnq8"),
-"RESET": SubResource("Animation_gb5ul"),
-"Use": SubResource("Animation_u3is3")
-}
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_cte6g"]
 radius = 60.6712
 
@@ -345,22 +301,6 @@ libraries = {
 "": SubResource("AnimationLibrary_uhg31")
 }
 autoplay = "default"
-
-[node name="Equipment" type="Node2D" parent="."]
-script = ExtResource("7_p4s8h")
-
-[node name="TextureRect" type="TextureRect" parent="Equipment"]
-custom_minimum_size = Vector2(16, 16)
-offset_left = -8.0
-offset_top = -20.0
-offset_right = 8.0
-offset_bottom = -4.0
-texture = ExtResource("7_edl82")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Equipment"]
-libraries = {
-"": SubResource("AnimationLibrary_prmue")
-}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

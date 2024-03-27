@@ -10,7 +10,7 @@ func _harvest():
 		return
 
 	var tool_dmg = player.check_farm_state("chop")
-	if tool_dmg > 0 and check_completed:
+	if tool_dmg > 0 and check_completed():
 		player.play_animation("chop")
 		HP -= tool_dmg
 

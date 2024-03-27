@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wo00iug0a7bx"
-path="res://.godot/imported/seed_tomato.png-79521c3b7d803cd3b0c6a7d9ef6ddb12.ctex"
+uid="uid://n6iw7si0bvf8"
+path="res://.godot/imported/seed_potato.png-6ca9c9f578a85666eb7eb144824fa074.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/crops/seed_tomato.png"
-dest_files=["res://.godot/imported/seed_tomato.png-79521c3b7d803cd3b0c6a7d9ef6ddb12.ctex"]
+source_file="res://sprite/items/seed/seed_potato.png"
+dest_files=["res://.godot/imported/seed_potato.png-6ca9c9f578a85666eb7eb144824fa074.ctex"]
 
 [params]
 

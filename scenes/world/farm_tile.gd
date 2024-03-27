@@ -1,16 +1,14 @@
 extends Node2D
 class_name Farm
 
-enum ACTIONS { HOE, PLANT, WATERING, FOOD, HARVEST }
+enum ACTIONS { HOE, PLANT, WATERING, FOOD}
 
 # farming layer
 var farming_layer: int = 0
 # Layer cho các công trình
 var construction_layer: int = 1
-
 # Tile id
 var land_tile_id: int = 0
-
 # Biến lưu trữ pos của tile trong farm_tile
 var farm_dic: Dictionary
 
@@ -33,10 +31,8 @@ func _ready():
 	FarmEvents.connect("on_hoe", _on_hoe)
 	FarmEvents.connect("on_watering", _on_watering)
 	FarmEvents.connect("on_plant", _on_plant)
-	FarmEvents.connect("on_harvested", _on_harvested)
-	FarmEvents.connect("on_chop", _on_chop_tree)
 	FarmEvents.connect("on_build_barn", _on_build_barn)
-	setup()
+	# setup()
 
 	# var file = preload(farm_file_path).records
 
@@ -69,13 +65,12 @@ func setup():
 
 
 # ------------------------ Func for farm ---------------------------------
-func _on_hoe():
-	print_debug("hoe")
-	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
+func _on_hoe(pos: Vector2):
+	var tile_pos: Vector2i = farm_map.local_to_map(pos)
 	var key = "{0},{1}".format([tile_pos.x, tile_pos.y])
 	var tile = farm_dic.get(key)
 	if not tile:
-		farm_dic[key] = {"use": "plant", "water_status": "Short"}
+		farm_dic[key] = {"use": "hoe", "water_status": "Short"}
 
 
 func _on_watering():
@@ -86,7 +81,7 @@ func _on_watering():
 	if not tile:
 		return
 
-	if tile["use"] == "plant":
+	if tile["use"] == "hoe":
 		tile["water_status"] = "Full"
 		farm_dic[key] = tile
 
@@ -104,21 +99,20 @@ func _on_plant(seed_slot: Slot):
 		return
 
 	if tile["use"] == "plant":
-		if seed_slot.item is SeedItem and seed_slot.amount > 0:
-			var start_time = Time.get_unix_time_from_system()
+		var start_time = Time.get_unix_time_from_system()
 
-			# Update type to PLANTED and set seed type, start_time
-			tile["use"] = "plant"
-			tile["seed"] = seed_slot.item.resource_name
-			tile["start_time"] = start_time
-			tile["hp"] = 100
-			farm_dic[key] = tile
+		# Update type to PLANTED and set seed type, start_time
+		tile["use"] = "plant"
+		tile["seed"] = seed_slot.item.resource_name
+		tile["start_time"] = start_time
+		tile["hp"] = 100
+		farm_dic[key] = tile
 
-			spawn_crop_node(tile_pos, tile["seed"], start_time, start_time, 100)
+		spawn_crop_node(tile_pos, tile["seed"], start_time, start_time, 100)
 
-			# Update inventory when plant success
-			seed_slot.amount -= 1
-			# InventoryEvents.emit_signal("on_update_slot", seed_slot)
+		# Update inventory when plant success
+		seed_slot.amount -= 1
+		# InventoryEvents.emit_signal("on_update_slot", seed_slot)
 
 
 func _on_add_tree(tree: Resource):
@@ -139,44 +133,6 @@ func _on_add_tree(tree: Resource):
 		spawn_crop_node(tile_pos, tile["seed"], time, key, 100)
 
 
-func _on_harvested(key: String):
-	var item = farm_dic.get(key)
-	if item:
-		farm_dic.erase(key)
-
-
-func _on_chop_tree(dmg: int):
-	print_debug("on_chop")
-	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
-	var key = "{0},{1}".format([tile_pos.x, tile_pos.y])
-	var tile = farm_dic.get(key)
-
-	if not tile:
-		return
-
-	if tile["use"] == "plant" and check_harvestable_tile(tile):
-		var seed_res = get_resource(tile["seed"])
-		tile["hp"] -= dmg
-
-		if tile["hp"] <= 0:
-			# Add product to inventory
-			for item in seed_res.product:
-				var ran_output = random_output(item.amount, tile)
-				# InventoryEvents.emit_signal("on_add_item", item.res, ran_output)
-
-			for child in entity.get_children():
-				if child.id == key:
-					child.kill()
-					break
-		else:
-			farm_dic[key] = tile
-
-			for child in entity.get_children():
-				if child.id == key:
-					child.chop()
-					break
-		# remove crop scene after harvest
-
 
 func _on_build_barn():
 	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
@@ -192,6 +148,7 @@ func _on_build_barn():
 
 
 # ------------------------ Func help for farm ---------------------------------
+
 
 func set_cell_builded(pos: Vector2i):
 	BetterTerrain.set_cell(farm_map, construction_layer, pos, terrains.FENCE)
@@ -240,26 +197,12 @@ func get_sprite_frames(sprite_name: String) -> SpriteFrames:
 
 
 # return seed resource from name
-func get_resource(seed_name: String) -> SeedItem:
+func get_resource(seed_name: String) -> Resource:
 	return load("res://scenes/inventory/item/seeds/" + seed_name + ".tres")
 
 
 func set_tile_planted(tile: Vector2i):
 	farm_map.set_cell(farming_layer, tile, land_tile_id, Vector2i(1, 0), 0)
-
-
-# kiểm tra 1 tile có thể thu hoạch hay chưa
-# tile in farm_dic
-func check_harvestable_tile(tile: Dictionary) -> bool:
-	if not tile:
-		return false
-	var current_time = Time.get_unix_time_from_system()
-	if tile["use"] == "plant":
-		var start_time = tile["start_time"]
-		var seed_res = get_resource(tile["seed"])
-		if current_time >= start_time + seed_res.time_range:
-			return true
-	return false
 
 
 # Tính toán ngẫu nhiên sản lượng khi thu hoạch cây,

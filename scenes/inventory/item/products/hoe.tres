@@ -1,15 +1,17 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cprkft6h1dafq"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://cprkft6h1dafq"]
 
-[ext_resource type="Texture2D" uid="uid://cm4hxagctc07y" path="res://sprite/items/tool/axe.png" id="1_7jx45"]
-[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="1_ljic4"]
+[ext_resource type="Resource" uid="uid://cupypm7nuakd3" path="res://scenes/inventory/db/categories/tool.tres" id="1_13d6c"]
+[ext_resource type="Texture2D" uid="uid://cbv1bp3yhredt" path="res://sprite/items/tool/hoe.png" id="2_k0sqe"]
+[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="3_41njg"]
 
 [resource]
-script = ExtResource("1_ljic4")
+script = ExtResource("3_41njg")
 max_stack = 1
 display_name = "Cái cuốc"
-icon = ExtResource("1_7jx45")
-weight = 1.0
+icon = ExtResource("2_k0sqe")
+weight = 1
 properties = {
-"farm": "axe"
+"action_type": "hoe"
 }
 description = "Dùng để cuốc đất, trông cây"
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_13d6c")])

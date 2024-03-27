@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4wpyocjendwe"]
+[gd_scene load_steps=11 format=3 uid="uid://b4wpyocjendwe"]
 
 [ext_resource type="Script" path="res://scenes/inventory/inventory_sys.gd" id="1_rbv83"]
 [ext_resource type="PackedScene" uid="uid://crxgnlr5pwebb" path="res://scenes/inventory/player_inventory.tscn" id="2_jcuye"]
@@ -6,7 +6,6 @@
 [ext_resource type="Resource" uid="uid://cprkft6h1dafq" path="res://scenes/inventory/item/products/hoe.tres" id="4_siyjc"]
 [ext_resource type="Resource" uid="uid://rv633fxgl4l7" path="res://scenes/inventory/item/products/sword.tres" id="4_yygpr"]
 [ext_resource type="Resource" uid="uid://bvkt88vl6n8hw" path="res://scenes/inventory/item/products/tomato.tres" id="5_edsxu"]
-[ext_resource type="Resource" uid="uid://bvkt88vl6n8hw" path="res://scenes/inventory/item/products/tomato.tres" id="7_s6vib"]
 [ext_resource type="Resource" uid="uid://c5ayinf4o0shd" path="res://scenes/inventory/item/products/sickle.tres" id="7_xpx00"]
 [ext_resource type="PackedScene" uid="uid://c3qx1ngn7jsv8" path="res://scenes/inventory/hotbar/hotbar_ui.tscn" id="8_1dec4"]
 [ext_resource type="Resource" uid="uid://bqmtwlv4wv3os" path="res://scenes/inventory/db/inventory.tres" id="9_chaj0"]
@@ -14,7 +13,7 @@
 
 [node name="InventorySys" type="Node" groups=["InventorySys"]]
 script = ExtResource("1_rbv83")
-items = Array[Resource("res://scenes/inventory/inventory_item.gd")]([ExtResource("3_l2bqp"), ExtResource("4_siyjc"), ExtResource("4_yygpr"), ExtResource("7_s6vib"), ExtResource("7_xpx00"), ExtResource("5_edsxu"), ExtResource("11_sduik")])
+items = Array[Resource("res://scenes/inventory/db/inventory_item.gd")]([ExtResource("3_l2bqp"), ExtResource("4_siyjc"), ExtResource("4_yygpr"), ExtResource("5_edsxu"), ExtResource("7_xpx00"), ExtResource("5_edsxu"), ExtResource("11_sduik")])
 inventory = ExtResource("9_chaj0")
 
 [node name="HotbarUI" parent="." instance=ExtResource("8_1dec4")]

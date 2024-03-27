@@ -1,13 +1,14 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://co7nobtgx55oq"]
 
-[ext_resource type="Script" path="res://scenes/inventory/inventory_item.gd" id="1_ltitp"]
-[ext_resource type="Texture2D" uid="uid://cl0m22dmsbkvr" path="res://sprite/items/wood_panel.png" id="1_n61fn"]
+[ext_resource type="Texture2D" uid="uid://ddx0p2dcivgly" path="res://sprite/items/wood_panel.png" id="1_n61fn"]
+[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="2_rrowt"]
 
 [resource]
-script = ExtResource("1_ltitp")
+script = ExtResource("2_rrowt")
 max_stack = 999
 display_name = "Tấm gỗ"
 icon = ExtResource("1_n61fn")
-weight = 1.0
+weight = 1
 properties = {}
 description = "Tấm gỗ, được lấy khi xẻ gỗ"
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([])
