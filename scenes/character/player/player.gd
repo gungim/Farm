@@ -1,3 +1,4 @@
+# FIX dev
 extends CharacterBody2D
 class_name Player
 
@@ -30,15 +31,12 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			var mouse_position = get_global_mouse_position()
-			if position.distance_squared_to(mouse_position) >= 40:
+			if position.distance_to(mouse_position) >= 40:
 				pass
 			else:
-				var action_type = get_item_property("action_type")
-				match action_type:
-					"hoe":
+				if current_slot_selected:
+					if check_item_by_key("tool"):
 						FarmEvents.emit_signal("on_hoe", mouse_position)
-					_:
-						pass
 
 
 func get_input():
@@ -133,8 +131,8 @@ func check_farm_state(key: String) -> int:
 	if not current_slot_selected:
 		return -1
 
-	var check_is_tool = check_item_is_tool()
-	if check_is_tool == -1:
+	var check_is_tool = check_item_by_key("tool")
+	if not check_is_tool:
 		return -1
 
 	var action_type = get_item_property("action_type")
@@ -156,15 +154,21 @@ func check_farm_state(key: String) -> int:
 
 
 # Trả về -1 nếu k có category = tool.tres
-func check_item_is_tool() -> int:
+func check_item_by_key(key: String) -> bool:
+	var tool_res = load("res://scenes/inventory/db/categories/" + key + ".tres")
+	if not tool_res:
+		return false
+
 	var item = current_slot_selected.item
-	var tool_res = load("res://scenes/inventory/db/categories/tool.tres")
-	var check_is_tool = item.categories.check_item.find(tool_res)
+	if not item.categories:
+		return false
+
+	var check_is_tool = item.categories.find(tool_res)
 
 	if check_is_tool == -1:
-		return -1
+		return false
 
-	return check_is_tool
+	return true
 
 
 # Trả về -1 nếu k có property_name

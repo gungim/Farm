@@ -10,6 +10,8 @@ max_stack = 999
 display_name = "Hạt giống cà chua"
 icon = ExtResource("1_omu3r")
 weight = 1
-properties = {}
+properties = {
+"seed_type": "agriculture"
+}
 description = "Hạt giống cà chua"
 categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_8pp58")])

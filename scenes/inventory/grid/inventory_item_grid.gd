@@ -3,7 +3,7 @@ class_name InventoryItemGrid
 
 @export var inventory: Inventory = null
 @export var type: String
-@onready var slot_scene = preload("res://scenes/inventory/slot_ui.tscn")
+@export var slot_scene: PackedScene
 
 var slot: Slot = null
 
@@ -11,6 +11,8 @@ var slots: Array[SlotUI] = []
 
 
 func _ready():
+	if not slot_scene:
+		slot_scene = load("res://scenes/inventory/slot_ui.tscn")
 	setup_inventory()
 
 

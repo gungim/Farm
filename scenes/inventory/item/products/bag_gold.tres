@@ -9,6 +9,8 @@ max_stack = 999
 display_name = "Túi vàng"
 icon = ExtResource("1_7uijj")
 weight = 1
-properties = {}
+properties = {
+"gold": 34
+}
 description = "Túi vàng"
 categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([])

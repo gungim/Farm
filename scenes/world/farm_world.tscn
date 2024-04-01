@@ -2815,7 +2815,6 @@ layer_3/tile_data = PackedInt32Array(196640, 131072, 0, 589855, 0, 1, 655391, 0,
 script = ExtResource("4_stgf1")
 
 [node name="Farm" type="Node2D" parent="."]
-y_sort_enabled = true
 script = ExtResource("5_ghdh3")
 
 [node name="FarmMap" type="TileMap" parent="Farm" groups=["FarmMap"]]

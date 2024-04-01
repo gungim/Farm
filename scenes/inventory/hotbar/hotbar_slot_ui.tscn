@@ -1,22 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dagg412nmu41a"]
+[gd_scene load_steps=3 format=3 uid="uid://dn7ciiu27hnis"]
 
 [ext_resource type="PackedScene" uid="uid://ctsafsvkkxj8o" path="res://scenes/inventory/slot_ui.tscn" id="1_bcgac"]
-[ext_resource type="Texture2D" uid="uid://bmk3ivo0qe23j" path="res://sprite/BoxSelector.png" id="2_3b5lo"]
 [ext_resource type="Script" path="res://scenes/inventory/hotbar/hotbar_slot_ui.gd" id="2_dsglv"]
 
-[node name="HotbarSlotUI" instance=ExtResource("1_bcgac")]
+[node name="SlotUI" instance=ExtResource("1_bcgac")]
 script = ExtResource("2_dsglv")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="." index="3"]
-custom_minimum_size = Vector2(52, 52)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_3b5lo")
-patch_margin_left = 5
-patch_margin_top = 6
-patch_margin_right = 5
-patch_margin_bottom = 6
-
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

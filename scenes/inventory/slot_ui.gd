@@ -37,7 +37,7 @@ func _get_drag_data(_at_position):
 
 	var drag_texture = TextureRect.new()
 	drag_texture.texture = slot.item.icon
-	drag_texture.set_size(Vector2(70, 70))
+	drag_texture.set_size(Vector2(40, 40))
 
 	var control = Control.new()
 	control.add_child(drag_texture)

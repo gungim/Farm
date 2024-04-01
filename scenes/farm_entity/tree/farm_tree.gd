@@ -39,11 +39,10 @@ func setup_stages(
 	stages.push_back(completed_time)
 
 
-func setup(start_time: int, seed_name: String, key: String, hp: int):
+func setup(start_time: int, seed_name: String,  hp: int):
 	if not seed_name:
 		return
 
-	id = key
 	HP = hp
 
 	var sprite_frames = load("res://scenes/farm_entity/resource/" + seed_name + ".tres")

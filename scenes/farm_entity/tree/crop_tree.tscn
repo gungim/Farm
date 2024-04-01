@@ -13,15 +13,12 @@ font_size = 12
 [node name="CropTree" instance=ExtResource("1_s3q30")]
 script = ExtResource("2_vac58")
 
-[node name="PlaceSprite2D" parent="." index="0"]
-frame = 1
-
-[node name="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(0, -5)
 sprite_frames = ExtResource("3_02181")
 animation = &"3"
 
-[node name="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_4plqx")
 
 [node name="Label" type="Label" parent="." index="3"]
