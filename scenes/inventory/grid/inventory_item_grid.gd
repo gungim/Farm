@@ -26,9 +26,7 @@ func setup_inventory():
 
 
 func setup_slots():
-	for child in get_children():
-		child.queue_free()
-	slots.clear()
+	reset()
 
 	for i in inventory.amount:
 		var slot_obj = slot_scene.instantiate()
@@ -43,3 +41,9 @@ func setup_slots():
 
 func _on_updated_slot(slot_index: int):
 	slots[slot_index].update_info_slot(inventory.get_slot(slot_index))
+
+
+func reset():
+	for child in get_children():
+		child.queue_free()
+	slots.clear()

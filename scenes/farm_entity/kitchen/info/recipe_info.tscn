@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://ymrqv2xigrq2"]
+
+[ext_resource type="Script" path="res://scenes/farm_entity/kitchen/info/recipe_info.gd" id="1_7x2cb"]
+[ext_resource type="Texture2D" uid="uid://bpttxlnhum2y2" path="res://sprite/ui/1.png" id="2_xxveq"]
+[ext_resource type="Script" path="res://scenes/inventory/grid/inventory_item_grid.gd" id="3_6oi62"]
+[ext_resource type="Resource" uid="uid://sdd1luqb08lg" path="res://scenes/farm_entity/kitchen/info/recipe.tres" id="4_sc6ql"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vss8i"]
+
+[node name="RecipeInfo" type="MarginContainer"]
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 264.0
+offset_bottom = 154.0
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+script = ExtResource("1_7x2cb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Weo, bạn muốn nấu món này ư"
+label_settings = SubResource("LabelSettings_vss8i")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_xxveq")
+
+[node name="RecipeIcon" type="TextureRect" parent="VBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Nguyên liệu"
+label_settings = SubResource("LabelSettings_vss8i")
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 6
+script = ExtResource("3_6oi62")
+inventory = ExtResource("4_sc6ql")
+type = "recipe"

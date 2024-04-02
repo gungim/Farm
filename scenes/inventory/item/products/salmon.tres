@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://jjfau06yr31r"]
 
 [ext_resource type="Resource" uid="uid://b3v2t6odfep0f" path="res://scenes/inventory/db/categories/food.tres" id="1_7hbkm"]
-[ext_resource type="Texture2D" uid="uid://dk2dmx6cif0q2" path="res://sprite/items/food/salmon.png" id="1_umill"]
+[ext_resource type="Texture2D" uid="uid://omgq4atbst3j" path="res://sprite/items/food/salmon.png" id="1_umill"]
 [ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="3_te3gf"]
 
 [resource]

@@ -7,4 +7,6 @@ signal on_add_chicken_egg(amount: int)
 signal on_add_duck_egg(amount: int)
 signal on_build_barn
 
+signal kitchen_select_item(item: KitchenRecipe)
+
 var farm_dic = {}

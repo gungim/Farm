@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://d2gbpwmggt6nt"]
+
+[ext_resource type="Resource" uid="uid://b3v2t6odfep0f" path="res://scenes/inventory/db/categories/food.tres" id="1_osko2"]
+[ext_resource type="Texture2D" uid="uid://8q7jmn1nq3ue" path="res://sprite/items/food/bacon.png" id="2_j5rrj"]
+[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="3_quo2n"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("3_quo2n")
+max_stack = 999
+display_name = "Thịt xông khói"
+icon = ExtResource("2_j5rrj")
+weight = 1
+properties = {
+"healing": 12
+}
+description = "Thịt xông khói"
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_osko2")])

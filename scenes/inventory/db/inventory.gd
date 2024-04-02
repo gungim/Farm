@@ -55,3 +55,8 @@ func get_item_in_slot(slot_index: int) -> InventoryItem:
 	if slot_index >= slots.size() and slot_index < 0:
 		return
 	return slots[slot_index].item
+
+
+func clear():
+	for i in amount:
+		remove_at(i)

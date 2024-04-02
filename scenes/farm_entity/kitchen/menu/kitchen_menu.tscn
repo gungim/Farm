@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfp21eoudxvoq"]
+[gd_scene load_steps=9 format=3 uid="uid://dfp21eoudxvoq"]
 
-[ext_resource type="Script" path="res://scenes/farm_entity/kitchen/kitchen_menu.gd" id="1_fbwjo"]
-[ext_resource type="PackedScene" uid="uid://wbhjka623xeu" path="res://scenes/farm_entity/kitchen/kitchen_item.tscn" id="2_56pae"]
+[ext_resource type="Script" path="res://scenes/farm_entity/kitchen/menu/kitchen_menu.gd" id="1_fbwjo"]
 [ext_resource type="Texture2D" uid="uid://cn8rq3wcxjhjm" path="res://sprite/ui/11.png" id="2_akqtb"]
 [ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="3_c77p3"]
 [ext_resource type="Texture2D" uid="uid://brrr2wttetm13" path="res://sprite/ui/GUI_4x copy 2.png" id="3_ghv51"]
+[ext_resource type="Script" path="res://scenes/farm_entity/kitchen/menu/kitchen_grid.gd" id="4_l8mld"]
 [ext_resource type="Texture2D" uid="uid://bpttxlnhum2y2" path="res://sprite/ui/1.png" id="6_2j024"]
+[ext_resource type="PackedScene" uid="uid://ymrqv2xigrq2" path="res://scenes/farm_entity/kitchen/info/recipe_info.tscn" id="6_d6y0d"]
 [ext_resource type="Texture2D" uid="uid://bt1mgb3u1hsby" path="res://sprite/ui/2.png" id="7_l7d3s"]
 
 [node name="KitchenMenu" type="Control"]
@@ -80,27 +81,7 @@ vertical_scroll_mode = 3
 layout_direction = 2
 layout_mode = 2
 columns = 6
-
-[node name="KitchenItem" parent="VSplitContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_56pae")]
-layout_mode = 2
-
-[node name="KitchenItem2" parent="VSplitContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_56pae")]
-layout_mode = 2
-
-[node name="KitchenItem3" parent="VSplitContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_56pae")]
-layout_mode = 2
-
-[node name="KitchenItem4" parent="VSplitContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_56pae")]
-layout_mode = 2
-
-[node name="KitchenItem5" parent="VSplitContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_56pae")]
-layout_mode = 2
-
-[node name="KitchenItem6" parent="VSplitContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_56pae")]
-layout_mode = 2
-
-[node name="KitchenItem7" parent="VSplitContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_56pae")]
-layout_mode = 2
+script = ExtResource("4_l8mld")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="VSplitContainer/HSplitContainer/PanelContainer2"]
 layout_mode = 2
@@ -127,14 +108,7 @@ patch_margin_top = 12
 patch_margin_right = 17
 patch_margin_bottom = 15
 
-[node name="MarginContainer" type="MarginContainer" parent="VSplitContainer/HSplitContainer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 7
-theme_override_constants/margin_top = 7
-theme_override_constants/margin_right = 7
-theme_override_constants/margin_bottom = 7
-
-[node name="Label" type="Label" parent="VSplitContainer/HSplitContainer/PanelContainer/MarginContainer"]
+[node name="RecipeInfo" parent="VSplitContainer/HSplitContainer/PanelContainer" instance=ExtResource("6_d6y0d")]
 layout_mode = 2
 
 [node name="CloseButton" type="TextureButton" parent="."]
