@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_4hwp5")
 max_stack = 999
+name = "bone"
 display_name = "Khúc xương"
 icon = ExtResource("1_ba8nq")
 weight = 1

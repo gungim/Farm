@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_brr41")
 max_stack = 1
+name = "axe"
 display_name = "Cây rìu"
 icon = ExtResource("1_yes8l")
 weight = 1

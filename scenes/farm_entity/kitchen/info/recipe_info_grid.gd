@@ -1,0 +1,2 @@
+extends InventoryItemGrid
+class_name RecipeInfoGrid

@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_m58sv")
 max_stack = 999
+name = "ice_cream"
 display_name = "Kem"
 icon = ExtResource("1_j628s")
 weight = 1

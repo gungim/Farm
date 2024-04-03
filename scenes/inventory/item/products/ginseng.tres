@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_7gmxo")
 max_stack = 999
+name = "ginseng"
 display_name = "Củ nhân sâm"
 icon = ExtResource("1_ibfpg")
 weight = 1

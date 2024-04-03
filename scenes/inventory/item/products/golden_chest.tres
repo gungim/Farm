@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_saouv")
 max_stack = 999
+name = "golden_chest"
 display_name = "Rương vàng"
 icon = ExtResource("1_mwb2x")
 weight = 1

@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_fbaop")
 max_stack = 999
+name = "chiken_wing"
 display_name = "Cánh gà nướng"
 icon = ExtResource("1_qpxyw")
 weight = 1

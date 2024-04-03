@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_gm5tc")
 max_stack = 999
+name = "slice_watermelon"
 display_name = "Miếng dưa hấu"
 icon = ExtResource("1_3fp6e")
 weight = 1

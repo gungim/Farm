@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_xaiuj")
 max_stack = 999
+name = "raspberries"
 display_name = "Quả mâm xôi"
 icon = ExtResource("1_ytcx7")
 weight = 1

@@ -1,5 +1,5 @@
 extends GridContainer
-class_name Kitchen_Grid
+class_name KitchenGrid
 
 @onready var item_scene = load("res://scenes/farm_entity/kitchen/kitchen_item.tscn")
 
@@ -7,29 +7,18 @@ class_name Kitchen_Grid
 
 var max_item: int = 40
 
-var cooking_recipe = [
-	{
-		"id": "1",
-		"name": "Rice",
-		"icon": load("res://scenes/inventory/item/products/rice.tres"),
-		"raw_material":
-		[
-			load("res://scenes/inventory/item/products/rice.tres"),
-			load("res://scenes/inventory/item/products/rice.tres")
-		],
-		"description": "Cơm"
-	}
-]
-
 var recipe = [
 	load("res://scenes/farm_entity/kitchen/db/apple_pie.tres"),
 	load("res://scenes/farm_entity/kitchen/db/bacon.tres"),
 ]
 
-var current_thread: int = 0
+var thread_used: int = 0
+
+var current_recipe: KitchenRecipe
 
 
 func _ready():
+	FarmEvents.connect("start_cooking", _on_start_cooking)
 	setup()
 
 
@@ -56,6 +45,7 @@ func item_pressed(item):
 	FarmEvents.emit_signal("kitchen_select_item", item)
 
 
-func start_cooking(_recipe):
-	if current_thread >= max_thread:
-		current_thread += 1
+func _on_start_cooking(item: KitchenRecipe):
+	if item == current_recipe:
+		if thread_used <= max_thread:
+			thread_used += 1

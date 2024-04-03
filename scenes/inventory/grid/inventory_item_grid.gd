@@ -5,8 +5,9 @@ class_name InventoryItemGrid
 @export var type: String
 @export var slot_scene: PackedScene
 
-var slot: Slot = null
+@onready var show_item_name: bool = false
 
+var slot: Slot = null
 var slots: Array[SlotUI] = []
 
 
@@ -29,7 +30,7 @@ func setup_slots():
 	reset()
 
 	for i in inventory.amount:
-		var slot_obj = slot_scene.instantiate()
+		var slot_obj: SlotUI = slot_scene.instantiate()
 
 		slot_obj.inventory = inventory
 		slot_obj.index = i
@@ -37,6 +38,7 @@ func setup_slots():
 		slots.append(slot_obj)
 		add_child(slots[i])
 		slot_obj.update_info_slot(null)
+		slot_obj.show_item_name = show_item_name
 
 
 func _on_updated_slot(slot_index: int):

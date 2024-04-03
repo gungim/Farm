@@ -16,6 +16,8 @@ class_name InventoryItem
 ## Maximum amount of this item within an [Inventory] slot
 @export var max_stack := 0
 
+@export var name: String
+
 ##
 @export var display_name: String
 

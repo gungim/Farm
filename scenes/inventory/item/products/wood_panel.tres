@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_rrowt")
 max_stack = 999
+name = "wood_panel"
 display_name = "Tấm gỗ"
 icon = ExtResource("1_n61fn")
 weight = 1

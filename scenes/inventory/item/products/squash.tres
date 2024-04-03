@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_rqmb5")
 max_stack = 999
+name = "squash"
 display_name = "Bí đao"
 icon = ExtResource("1_d2djs")
 weight = 1

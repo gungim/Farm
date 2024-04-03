@@ -1,9 +1,11 @@
+# TODO: hiển thị tên của vật phẩm
+
 extends TextureButton
 class_name SlotUI
 
 @onready var icon: TextureRect = $Icon
-@onready var amount_label: Label = $Amount
-@onready var label: TextureRect = $Panel/TextureRect
+@onready var amount_label: Label = $AmountLabel
+@onready var show_item_name: bool = false
 
 
 var inventory: Inventory

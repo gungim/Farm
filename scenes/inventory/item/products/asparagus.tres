@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_jrego")
 max_stack = 999
+name = "asparagus"
 display_name = "Măng tây"
 icon = ExtResource("1_oplfd")
 weight = 1

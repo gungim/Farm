@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_1xrr0")
 max_stack = 999
+name = "cheese"
 display_name = "Phô mai"
 icon = ExtResource("1_l320e")
 weight = 1

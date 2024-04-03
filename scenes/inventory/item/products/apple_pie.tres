@@ -8,6 +8,7 @@
 resource_local_to_scene = true
 script = ExtResource("3_75aef")
 max_stack = 999
+name = "apple_pie"
 display_name = "Bánh táo"
 icon = ExtResource("2_onqtc")
 weight = 1

@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_hwu63")
 max_stack = 999
+name = "cauliflower"
 display_name = "Xúp lơ"
 icon = ExtResource("1_pg2fd")
 weight = 1

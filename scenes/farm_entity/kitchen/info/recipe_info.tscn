@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://ymrqv2xigrq2"]
+[gd_scene load_steps=7 format=3 uid="uid://ymrqv2xigrq2"]
 
 [ext_resource type="Script" path="res://scenes/farm_entity/kitchen/info/recipe_info.gd" id="1_7x2cb"]
+[ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="2_hktnl"]
+[ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://scenes/inventory/db/hotbar.tres" id="2_srf6b"]
 [ext_resource type="Texture2D" uid="uid://bpttxlnhum2y2" path="res://sprite/ui/1.png" id="2_xxveq"]
-[ext_resource type="Script" path="res://scenes/inventory/grid/inventory_item_grid.gd" id="3_6oi62"]
-[ext_resource type="Resource" uid="uid://sdd1luqb08lg" path="res://scenes/farm_entity/kitchen/info/recipe.tres" id="4_sc6ql"]
+[ext_resource type="PackedScene" uid="uid://ddqnbu767gnl0" path="res://scenes/farm_entity/kitchen/info/recipe_info_grid.tscn" id="5_nv70g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vss8i"]
+font = ExtResource("2_hktnl")
 
 [node name="RecipeInfo" type="MarginContainer"]
 offset_left = 7.0
@@ -13,10 +15,11 @@ offset_top = 7.0
 offset_right = 264.0
 offset_bottom = 154.0
 theme_override_constants/margin_left = 7
-theme_override_constants/margin_top = 7
+theme_override_constants/margin_top = 17
 theme_override_constants/margin_right = 7
 theme_override_constants/margin_bottom = 7
 script = ExtResource("1_7x2cb")
+hotbar_db = ExtResource("2_srf6b")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -48,16 +51,39 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
+[node name="TimeLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Nguyên liệu"
 label_settings = SubResource("LabelSettings_vss8i")
 horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Nguyên liệu để hoàn thành món này"
+label_settings = SubResource("LabelSettings_vss8i")
+horizontal_alignment = 1
+
+[node name="RecipeInfoGrid" parent="VBoxContainer" instance=ExtResource("5_nv70g")]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 columns = 6
-script = ExtResource("3_6oi62")
-inventory = ExtResource("4_sc6ql")
-type = "recipe"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CancelButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hktnl")
+text = "Huỷ"
+
+[node name="StartButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(101, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hktnl")
+text = "Bắt đầu nấu"
+icon_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

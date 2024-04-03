@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_wpbhu")
 max_stack = 999
+name = "circle_magic"
 display_name = "Quả cầu phép"
 icon = ExtResource("1_fcfdn")
 weight = 1

@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_sxd3g")
 max_stack = 999
+name = "grilled_beef"
 display_name = "Thịt bò nướng"
 icon = ExtResource("1_6b4ge")
 weight = 1

@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_rctjf")
 max_stack = 1
+name = "sword"
 display_name = "Thanh kiếm"
 icon = ExtResource("1_783jb")
 weight = 1
