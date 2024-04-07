@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b4wpyocjendwe"]
+[gd_scene load_steps=17 format=3 uid="uid://b4wpyocjendwe"]
 
 [ext_resource type="Script" path="res://scenes/inventory/inventory_sys.gd" id="1_rbv83"]
 [ext_resource type="PackedScene" uid="uid://crxgnlr5pwebb" path="res://scenes/inventory/player_inventory.tscn" id="2_jcuye"]
@@ -11,13 +11,16 @@
 [ext_resource type="Resource" uid="uid://bvo01esi8kbfi" path="res://scenes/inventory/item/products/seed_potato.tres" id="8_lla2o"]
 [ext_resource type="Resource" uid="uid://bqmtwlv4wv3os" path="res://scenes/inventory/db/inventory.tres" id="9_chaj0"]
 [ext_resource type="Resource" uid="uid://cy3lribpxfo0m" path="res://scenes/inventory/item/products/seed_tomato.tres" id="9_wrg4c"]
+[ext_resource type="Resource" uid="uid://ch6nk44gn24jj" path="res://scenes/inventory/item/products/sliced_beef.tres" id="10_pj18k"]
+[ext_resource type="Resource" uid="uid://b8hctjqjv5ar8" path="res://scenes/inventory/item/products/rice.tres" id="11_nyhd6"]
 [ext_resource type="Resource" uid="uid://d180kfhexouf8" path="res://scenes/inventory/item/products/potato.tres" id="11_sduik"]
 [ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://scenes/inventory/db/hotbar.tres" id="11_v767g"]
+[ext_resource type="Resource" uid="uid://bwprlyip4hj0i" path="res://scenes/inventory/item/products/apple.tres" id="12_slfk1"]
 
 [node name="InventorySys" type="Node" groups=["InventorySys"]]
 script = ExtResource("1_rbv83")
 items = Array[Resource("res://scenes/inventory/db/inventory_item.gd")]([ExtResource("3_l2bqp"), ExtResource("4_yygpr"), ExtResource("5_edsxu"), ExtResource("7_xpx00"), ExtResource("5_edsxu"), ExtResource("11_sduik")])
-items_hotbar = Array[Resource("res://scenes/inventory/db/inventory_item.gd")]([ExtResource("9_wrg4c"), ExtResource("8_lla2o"), ExtResource("4_siyjc")])
+items_hotbar = Array[Resource("res://scenes/inventory/db/inventory_item.gd")]([ExtResource("9_wrg4c"), ExtResource("8_lla2o"), ExtResource("4_siyjc"), ExtResource("10_pj18k"), ExtResource("11_nyhd6"), ExtResource("12_slfk1")])
 inventory = ExtResource("9_chaj0")
 hotbar = ExtResource("11_v767g")
 

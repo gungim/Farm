@@ -1,4 +1,3 @@
-# TODO: Chức năng nấu ăn
 extends MarginContainer
 class_name KitchenItemInfo
 
@@ -14,13 +13,13 @@ var recipe_item_added: bool = false
 
 
 func _ready():
-	FarmEvents.connect("kitchen_select_item", _kitchen_select_item)
+	FarmEvents.connect("recipe_select_item", _recipe_select_item)
+	FarmEvents.connect("start_cooking_success", _on_start_cooking_success)
 	visible = false
 	start_button.disabled = true
 
 
-# TODO: hiển thị số lượng
-func _kitchen_select_item(item: KitchenRecipe):
+func _recipe_select_item(item: KitchenRecipe):
 	raw_material_grid.inventory.clear()
 	raw_material_grid.reset()
 
@@ -46,7 +45,7 @@ func _kitchen_select_item(item: KitchenRecipe):
 
 
 func _on_cancel_button_pressed():
-	FarmEvents.emit_signal("kitchen_select_item", null)
+	FarmEvents.emit_signal("recipe_select_item", null)
 	current_recipe = null
 
 
@@ -54,6 +53,17 @@ func _on_start_button_pressed():
 	FarmEvents.emit_signal("start_cooking", current_recipe)
 
 
+# remove all item of recipe ingredients
+func _on_start_cooking_success(recipe: KitchenRecipe):
+	for item in recipe.ingredients:
+		for db_index in hotbar_db.slots.size():
+			if hotbar_db.slots[db_index].item and hotbar_db.slots[db_index].item.name == item.name:
+				var remaining_amount = hotbar_db.update_amount_slot(db_index, -1)
+				if remaining_amount == 0:
+					break
+
+
+# kiểm tra các items ở trong hotbar có đủ số lượng cần thiết để làm current_recipe không
 func check_db():
 	if not hotbar_db or not current_recipe:
 		return
@@ -69,6 +79,7 @@ func check_db():
 		if filter_slot.size() > 0:
 			var total_amount = filter_slot.reduce(func(sum, i): return sum + i.amount, 0)
 			quantity_available.push_back(total_amount)
+
 			if total_amount >= 1:
 				arr_valid.push_back(true)
 			else:
@@ -85,5 +96,3 @@ func check_db():
 		start_button.disabled = false
 
 
-func _item_drop_data(_pos, data):
-	pass

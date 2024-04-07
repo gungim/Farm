@@ -10,8 +10,23 @@ func get_slot(index: int = 0) -> Slot:
 	return slots[index]
 
 
-func update_slot(slot_index: int):
-	updated_slot.emit(slot_index)
+func update_amount_slot(slot_index: int, slot_amount: int) -> int:
+	if slot_index >= slots.size() and slot_index < 0:
+		return slot_amount
+
+	var max_stack = slots[slot_index].item.max_stack
+	var total_amount = slots[slot_index].amount + slot_amount
+
+	var inserted_amount = total_amount if total_amount <= max_stack else max_stack
+	var remaining_amount = 0 if total_amount <= max_stack else total_amount - max_stack
+
+	if inserted_amount <= 0:
+		remove_at(slot_index)
+	else:
+		slots[slot_index].amount = inserted_amount
+		updated_slot.emit(slot_index)
+
+	return remaining_amount
 
 
 func get_slot_amount(index: int) -> int:
@@ -60,3 +75,5 @@ func get_item_in_slot(slot_index: int) -> InventoryItem:
 func clear():
 	for i in amount:
 		remove_at(i)
+	
+	amount = 0

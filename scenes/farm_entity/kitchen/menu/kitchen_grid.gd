@@ -3,8 +3,6 @@ class_name KitchenGrid
 
 @onready var item_scene = load("res://scenes/farm_entity/kitchen/kitchen_item.tscn")
 
-@export var max_thread: int = 1
-
 var max_item: int = 40
 
 var recipe = [
@@ -12,13 +10,10 @@ var recipe = [
 	load("res://scenes/farm_entity/kitchen/db/bacon.tres"),
 ]
 
-var thread_used: int = 0
-
 var current_recipe: KitchenRecipe
 
 
 func _ready():
-	FarmEvents.connect("start_cooking", _on_start_cooking)
 	setup()
 
 
@@ -42,10 +37,6 @@ func setup():
 
 
 func item_pressed(item):
-	FarmEvents.emit_signal("kitchen_select_item", item)
+	FarmEvents.emit_signal("recipe_select_item", item)
 
 
-func _on_start_cooking(item: KitchenRecipe):
-	if item == current_recipe:
-		if thread_used <= max_thread:
-			thread_used += 1

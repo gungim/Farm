@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d168am3t0qc75" path="res://scenes/farm_entity/kitchen/chef.tscn" id="2_f3h80"]
 [ext_resource type="PackedScene" uid="uid://dfp21eoudxvoq" path="res://scenes/farm_entity/kitchen/menu/kitchen_menu.tscn" id="3_l1ucd"]
 
-[node name="Kitchen" type="Node2D"]
+[node name="Kitchen" type="Node2D" groups=["Kitchen"]]
 script = ExtResource("1_ggsuj")
 
 [node name="Chef" parent="." instance=ExtResource("2_f3h80")]

@@ -1,4 +1,3 @@
-# TODO: hiển thị tên của vật phẩm
 
 extends TextureButton
 class_name SlotUI

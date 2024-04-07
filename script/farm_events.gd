@@ -8,7 +8,11 @@ signal on_add_duck_egg(amount: int)
 signal on_build_barn
 
 # Emit when item in menu of kitchen menu clicked
-signal kitchen_select_item(item: KitchenRecipe)
+signal recipe_select_item(item: KitchenRecipe)
+# Emit when cooking action succes
+signal start_cooking_success(recipe: KitchenRecipe)
+# Emit when cooking finished
+signal cooking_finished
 
 # Emit when button start cooking clicked
 signal start_cooking(item: KitchenRecipe)

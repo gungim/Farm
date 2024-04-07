@@ -13,5 +13,5 @@ display_name = "Bánh táo"
 description = "Bánh táo"
 icon = ExtResource("1_p6onf")
 ingredients = Array[Resource("res://scenes/inventory/db/inventory_item.gd")]([ExtResource("2_rlrge"), ExtResource("3_rnv1h")])
-cooking_time = 120
+cooking_time = 620
 finished_product = ExtResource("1_uaf8e")

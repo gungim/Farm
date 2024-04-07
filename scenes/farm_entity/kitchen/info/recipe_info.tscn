@@ -10,10 +10,11 @@
 font = ExtResource("2_hktnl")
 
 [node name="RecipeInfo" type="MarginContainer"]
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 264.0
-offset_bottom = 154.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 7
 theme_override_constants/margin_top = 17
 theme_override_constants/margin_right = 7
