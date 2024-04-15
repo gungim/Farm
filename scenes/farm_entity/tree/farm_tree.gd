@@ -17,11 +17,14 @@ var seed_res: Resource
 @export var id: String
 @export var HP: int = 0
 
+@export var time_label_visible: bool = false
+
 
 func _ready():
 	input_pickable = true
 	player = get_tree().get_first_node_in_group("Player")
 	_setup()
+	time_label.visible = time_label_visible
 
 
 func _setup():
@@ -76,7 +79,6 @@ func setup(start_time: int, item: InventoryItem, hp: int):
 
 		timer.start()
 		animated.play(str(0))
-	print_debug(stages)
 
 
 func _on_timer_timeout():

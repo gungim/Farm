@@ -37,7 +37,12 @@ func create_plant_node(item: InventoryItem):
 
 	var start_time = Time.get_unix_time_from_system()
 
-	var node = plant_scene.instantiate()
+	var node: FarmTree = plant_scene.instantiate()
+
+	match seed_type:
+		"agriculture":
+			node.time_label_visible = true
+
 	add_child(node)
 	planted = true
 	node.setup(start_time, item, 100)
