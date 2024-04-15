@@ -45,13 +45,7 @@ func setup():
 			return
 
 		if tile["use"] == "hoe":
-			var seed_name = tile["seed"]
-			var start_time = tile["start_time"]
-			var hp = tile["hp"]
-			if hp <= 0:
-				continue
 
-				spawn_crop_node(tile_pos, seed_name, start_time, key, hp)
 			# Update water status
 			var water_status = tile.get("water_status")
 			if not water_status:
@@ -113,21 +107,6 @@ func spawn_hoe_node(pos: Vector2i):
 	var obj_scene: HoePlace = hoe_place_scene.instantiate()
 	entity.add_child(obj_scene)
 	obj_scene.position = farm_map.map_to_local(pos)
-
-
-# sinh crop scene
-func spawn_crop_node(pos: Vector2i, seed_name: String, start_time: int, key: String, hp):
-	var id = ""
-	if key:
-		id = key
-	else:
-		id = "{0},{1}".format([pos.x, pos.y])
-
-	var obj_scene: CropTree = crop_scene.instantiate()
-	entity.add_child(obj_scene)
-	obj_scene.position = farm_map.map_to_local(pos)
-
-	obj_scene.setup(start_time, seed_name, hp)
 
 
 # key have the form "{10},{20}"

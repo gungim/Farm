@@ -35,7 +35,7 @@ func _input(event):
 				pass
 			else:
 				if current_slot_selected:
-					if check_item_by_key("tool"):
+					if check_item_by_category("tool"):
 						FarmEvents.emit_signal("on_hoe", mouse_position)
 
 
@@ -131,7 +131,7 @@ func check_farm_state(key: String) -> int:
 	if not current_slot_selected:
 		return -1
 
-	var check_is_tool = check_item_by_key("tool")
+	var check_is_tool = check_item_by_category("tool")
 	if not check_is_tool:
 		return -1
 
@@ -154,7 +154,7 @@ func check_farm_state(key: String) -> int:
 
 
 # Trả về -1 nếu k có category = tool.tres
-func check_item_by_key(key: String) -> bool:
+func check_item_by_category(key: String) -> bool:
 	var tool_res = load("res://scenes/inventory/db/categories/" + key + ".tres")
 	if not tool_res:
 		return false

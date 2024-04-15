@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5f3q7jfo2hns"]
+[gd_scene load_steps=4 format=3 uid="uid://c5f3q7jfo2hns"]
 
 [ext_resource type="Script" path="res://scenes/farm_entity/tree/farm_tree.gd" id="1_bt551"]
+[ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="2_ly0xi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dm1t6"]
+font = ExtResource("2_ly0xi")
 
 [node name="FarmTree" type="StaticBody2D"]
 input_pickable = true
@@ -12,3 +16,13 @@ animation = &""
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -26.0
+offset_right = 20.0
+offset_bottom = -10.0
+text = "00:00:00"
+label_settings = SubResource("LabelSettings_dm1t6")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

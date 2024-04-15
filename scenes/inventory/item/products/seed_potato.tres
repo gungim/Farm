@@ -12,6 +12,7 @@ display_name = "Hạt giống khoai tây"
 icon = ExtResource("1_gf31v")
 weight = 1
 properties = {
+"completed_time": 60,
 "seed_type": "agriculture"
 }
 description = "Hạt giống khoai tây"

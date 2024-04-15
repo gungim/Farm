@@ -3,13 +3,16 @@ class_name FarmTree
 
 var current_time: int = 0
 var completed_time: int = 0
+
 var stages: Array = []
+var current_state_index: int = 0
+
 var player: Player
 var seed_res: Resource
 
 @onready var animated: AnimatedSprite2D = $AnimatedSprite2D
-@onready var place_sprite: Sprite2D = $PlaceSprite2D
 @onready var timer: Timer = $Timer
+@onready var time_label: Label = $Label
 
 @export var id: String
 @export var HP: int = 0
@@ -39,18 +42,23 @@ func setup_stages(
 	stages.push_back(completed_time)
 
 
-func setup(start_time: int, seed_name: String,  hp: int):
-	if not seed_name:
+# TODO: chức năng trồng cây
+func setup(start_time: int, item: InventoryItem, hp: int):
+	if not item:
 		return
 
 	HP = hp
+	seed_res = item
 
-	var sprite_frames = load("res://scenes/farm_entity/resource/" + seed_name + ".tres")
-	seed_res = load("res://scenes/inventory/item/seeds/" + seed_name + ".tres")
-
-	# Thời gian để cây trưởng thành
-	completed_time = seed_res.time_range
+	# setup animation
+	var sprite_name = seed_res.name.get_slice("_", 1)
+	var sprite_frames: SpriteFrames = load(
+		"res://scenes/farm_entity/resource/" + sprite_name + ".tres"
+	)
 	animated.sprite_frames = sprite_frames
+
+	# setup time
+	completed_time = seed_res.properties["completed_time"]
 	current_time = int(Time.get_unix_time_from_system() - start_time)
 
 	setup_stages(sprite_frames)
@@ -58,32 +66,39 @@ func setup(start_time: int, seed_name: String,  hp: int):
 	if current_time < 0 or current_time > completed_time:
 		animated.play(str(stages.size() - 1))
 	else:
+		while true:
+			if current_state_index == stages.size():
+				break
+			if current_time >= stages[current_state_index]:
+				break
+			else:
+				current_state_index += 1
+
 		timer.start()
 		animated.play(str(0))
-
-	place_sprite.frame = 0
+	print_debug(stages)
 
 
 func _on_timer_timeout():
 	current_time += 1
 
-	if current_time > stages[-1]:
-		animated.play(str(stages.size() - 1))
+	if current_state_index == stages.size():
+		time_label.visible = false
 		timer.stop()
-	elif current_time <= stages[1]:
-		animated.play(str(0))
-	else:
-		for i in range(1, stages.size()):
-			if current_time <= stages[i]:
-				animated.play(str(i - 1))
-				break
+	elif current_time >= stages[current_state_index]:
+		current_state_index += 1
+
+	animated.play(str(current_state_index))
+	time_label.text = GlobalEvents.format_time(completed_time - current_time)
 
 
 func _harvest():
 	pass
 
+
 func _mouse_right_event():
 	pass
+
 
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:

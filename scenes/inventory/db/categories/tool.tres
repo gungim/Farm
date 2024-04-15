@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_bmk87")
-display_name = ""
+display_name = "Công cụ"
+name = "tool"
