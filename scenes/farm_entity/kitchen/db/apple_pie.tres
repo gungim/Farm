@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="KitchenRecipe" load_steps=6 format=3 uid="uid://cmy6knoevu1md"]
 
 [ext_resource type="Texture2D" uid="uid://cpbd4sbkmgg3a" path="res://sprite/items/food/apple_pie.png" id="1_p6onf"]
-[ext_resource type="Resource" uid="uid://bs0fwlxapd226" path="res://scenes/inventory/item/products/apple_pie.tres" id="1_uaf8e"]
+[ext_resource type="Resource" uid="uid://bs0fwlxapd226" path="res://scenes/inventory/db/items/apple_pie.tres" id="1_uaf8e"]
 [ext_resource type="Script" path="res://scenes/farm_entity/kitchen/kitchen_recipe.gd" id="2_l0rds"]
-[ext_resource type="Resource" uid="uid://bwprlyip4hj0i" path="res://scenes/inventory/item/products/apple.tres" id="2_rlrge"]
-[ext_resource type="Resource" uid="uid://b8hctjqjv5ar8" path="res://scenes/inventory/item/products/rice.tres" id="3_rnv1h"]
+[ext_resource type="Resource" uid="uid://bwprlyip4hj0i" path="res://scenes/inventory/db/items/apple.tres" id="2_rlrge"]
+[ext_resource type="Resource" uid="uid://b8hctjqjv5ar8" path="res://scenes/inventory/db/items/rice.tres" id="3_rnv1h"]
 
 [resource]
 script = ExtResource("2_l0rds")

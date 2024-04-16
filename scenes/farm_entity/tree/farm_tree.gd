@@ -18,6 +18,9 @@ var seed_res: Resource
 @export var HP: int = 0
 
 @export var time_label_visible: bool = false
+@export var can_harvest: bool = false
+
+signal on_harvested
 
 
 func _ready():
@@ -45,7 +48,6 @@ func setup_stages(
 	stages.push_back(completed_time)
 
 
-# TODO: chức năng trồng cây
 func setup(start_time: int, item: InventoryItem, hp: int):
 	if not item:
 		return
@@ -67,6 +69,7 @@ func setup(start_time: int, item: InventoryItem, hp: int):
 	setup_stages(sprite_frames)
 
 	if current_time < 0 or current_time > completed_time:
+		can_harvest = true
 		animated.play(str(stages.size() - 1))
 	else:
 		while true:
@@ -86,6 +89,7 @@ func _on_timer_timeout():
 
 	if current_state_index == stages.size():
 		time_label.visible = false
+		can_harvest = true
 		timer.stop()
 	elif current_time >= stages[current_state_index]:
 		current_state_index += 1
@@ -115,13 +119,8 @@ func kill():
 	FarmEvents.emit_signal("on_harvested", id)
 	player.cancel_farm()
 	_add_product_to_inventory()
+	emit_signal("on_harvested")
 	queue_free()
-
-
-func check_completed() -> bool:
-	if current_time >= completed_time:
-		return true
-	return false
 
 
 func _add_product_to_inventory():

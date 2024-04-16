@@ -5,16 +5,17 @@ class_name WoodTree
 
 var farm_state: String = "chop"
 
+
 # Hàm này sử dụng để thực hiện việc thu hoạch
+# TODO: chức năng thu hoạch cây thân gỗ
 func _harvest():
-	if not player:
+	if not player and not can_harvest:
 		return
 
 	var tool_dmg = player.check_farm_state(farm_state)
-	if tool_dmg > 0 and check_completed():
+	if tool_dmg > 0:
 		player.play_animation(farm_state)
 		HP -= tool_dmg
 
 	if HP <= 0:
 		kill()
-

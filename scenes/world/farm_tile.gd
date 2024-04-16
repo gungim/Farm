@@ -120,11 +120,6 @@ func get_sprite_frames(sprite_name: String) -> SpriteFrames:
 	return load("res://scenes/resources/tree_animation/" + sprite_name + ".tres")
 
 
-# return seed resource from name
-func get_resource(seed_name: String) -> Resource:
-	return load("res://scenes/inventory/item/seeds/" + seed_name + ".tres")
-
-
 # Tính toán ngẫu nhiên sản lượng khi thu hoạch cây,
 # Sản lượng đượng tính ngẫu nhiên xung quanh default_output
 func random_output(item: int, tile: Dictionary) -> int:

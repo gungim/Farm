@@ -44,10 +44,16 @@ func create_plant_node(item: InventoryItem):
 			node.time_label_visible = true
 
 	add_child(node)
-	planted = true
 	node.setup(start_time, item, 100)
+	node.connect("on_harvested", _on_harvested)
+
+	planted = true
 
 	input_pickable = false
+
+
+func _on_harvested():
+	planted = false
 
 
 func _input_event(_viewport, event, _shape_idx):
