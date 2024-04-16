@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://daos5f2wbh6j4"]
 
-[ext_resource type="Script" path="res://scenes/inventory/slot_info_ui.gd" id="1_moxls"]
+[ext_resource type="Script" path="res://scenes/inventory/item_info/slot_info_ui.gd" id="1_moxls"]
 [ext_resource type="Texture2D" uid="uid://cn8rq3wcxjhjm" path="res://sprite/ui/11.png" id="2_quup7"]
 
 [node name="SlotInfoUI" type="PanelContainer"]
