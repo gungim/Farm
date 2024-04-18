@@ -1,2 +1,2 @@
-extends InventoryGrid
+extends InventoryItemGrid
 class_name InventoryHotbarGrid
