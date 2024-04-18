@@ -33,6 +33,7 @@ InventoryEvents="*res://script/inventory_events.gd"
 FarmEvents="*res://script/farm_events.gd"
 UiEvents="*res://script/ui_events.gd"
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
+HotbarEvents="*res://script/hotbar_events.gd"
 
 [display]
 

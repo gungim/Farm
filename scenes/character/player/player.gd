@@ -159,6 +159,8 @@ func check_farm_state(key: String) -> int:
 
 # Trả về -1 nếu k có category = tool.tres
 func check_item_by_category(key: String) -> bool:
+	if not current_slot_selected:
+		return false
 	var tool_res = load("res://scenes/inventory/db/categories/" + key + ".tres")
 	if not tool_res:
 		return false
@@ -196,4 +198,6 @@ func cancel_farm():
 
 func _on_plant_tree_success():
 	current_slot_selected.amount -= 1
-	FarmEvents.emit_signal("update_amount_slot", current_slot_index, -1)
+	if current_slot_selected.amount <= 0:
+		current_slot_selected = null
+	HotbarEvents.emit_signal("update_amount_slot", current_slot_index, -1)

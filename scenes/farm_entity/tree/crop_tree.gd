@@ -15,3 +15,13 @@ func _harvest():
 	if player_can_harvest == 0:
 		player.play_animation("harvest")
 		kill()
+		_add_product_to_inventory()
+
+func _add_product_to_inventory():
+	var products: SeedProducts = seed_res.properties["products"]
+	if not products:
+		return
+
+	for item in products.items:
+		print_debug("Dev")
+		InventoryEvents.emit_signal("add_item", item, 1)

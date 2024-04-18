@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SeedProducts" load_steps=3 format=3 uid="uid://xigg30mv1465"]
+
+[ext_resource type="Script" path="res://scenes/farm_entity/seed/seed_product.gd" id="1_4bl42"]
+[ext_resource type="Resource" uid="uid://bvkt88vl6n8hw" path="res://scenes/inventory/db/items/tomato.tres" id="1_guvs4"]
+
+[resource]
+script = ExtResource("1_4bl42")
+items = Array[Resource("res://scenes/inventory/db/inventory_item.gd")]([ExtResource("1_guvs4")])

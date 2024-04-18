@@ -58,7 +58,7 @@ func setup(start_time: int, item: InventoryItem, hp: int):
 	# setup animation
 	var sprite_name = seed_res.name.get_slice("_", 1)
 	var sprite_frames: SpriteFrames = load(
-		"res://scenes/farm_entity/resource/" + sprite_name + ".tres"
+		"res://scenes/farm_entity/tree_animations/" + sprite_name + ".tres"
 	)
 	animated.sprite_frames = sprite_frames
 
@@ -118,7 +118,6 @@ func _input_event(_viewport, event, _shape_idx):
 func kill():
 	FarmEvents.emit_signal("on_harvested", id)
 	player.cancel_farm()
-	_add_product_to_inventory()
 	emit_signal("on_harvested")
 	queue_free()
 

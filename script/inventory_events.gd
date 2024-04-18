@@ -3,6 +3,8 @@ extends Node
 # Signal called when open/close inventory
 signal on_open_inventory(value)
 
+signal add_item(item: InventoryItem, amount: int)
+
 # set for open inventory or close
 var is_open_inventory: bool = false
 
