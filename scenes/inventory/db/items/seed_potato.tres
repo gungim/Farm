@@ -12,8 +12,8 @@ display_name = "Hạt giống khoai tây"
 icon = ExtResource("1_gf31v")
 weight = 1
 properties = {
-"completed_time": 60,
-"seed_type": "agriculture"
+"completed_time": 10,
+"seed_type": "forestry"
 }
 description = "Hạt giống khoai tây"
 categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_ggqcs")])

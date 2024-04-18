@@ -7,14 +7,17 @@ class_name InventoryItemGrid
 
 @onready var show_item_name: bool = false
 
-var slot: Slot = null
 var slots: Array[SlotUI] = []
+
+func _setup():
+	pass
 
 
 func _ready():
 	if not slot_scene:
 		slot_scene = load("res://scenes/inventory/slot_ui.tscn")
 	setup_inventory()
+	_setup()
 
 
 func setup_inventory():

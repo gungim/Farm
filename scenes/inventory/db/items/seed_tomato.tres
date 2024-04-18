@@ -12,7 +12,7 @@ display_name = "Hạt giống cà chua"
 icon = ExtResource("1_omu3r")
 weight = 1
 properties = {
-"completed_time": 360,
+"completed_time": 10,
 "seed_type": "agriculture"
 }
 description = "Hạt giống cà chua"

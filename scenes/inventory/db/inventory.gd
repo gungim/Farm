@@ -29,6 +29,13 @@ func update_amount_slot(slot_index: int, slot_amount: int) -> int:
 	return remaining_amount
 
 
+func decrement_amount(slot_index: int, slot_amount: int):
+	if slot_index >= slots.size() and slot_index < 0:
+		return
+	slots[slot_index].amount -= slot_amount
+	updated_slot.emit(slot_index)
+
+
 func get_slot_amount(index: int) -> int:
 	if index >= slots.size():
 		return 0
@@ -75,5 +82,5 @@ func get_item_in_slot(slot_index: int) -> InventoryItem:
 func clear():
 	for i in amount:
 		remove_at(i)
-	
+
 	amount = 0

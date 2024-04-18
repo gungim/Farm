@@ -50,6 +50,7 @@ func create_plant_node(item: InventoryItem):
 	planted = true
 
 	input_pickable = false
+	FarmEvents.emit_signal("plant_tree_success")
 
 
 func _on_harvested():

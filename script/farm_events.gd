@@ -7,6 +7,9 @@ signal on_add_chicken_egg(amount: int)
 signal on_add_duck_egg(amount: int)
 signal on_build_barn
 
+signal plant_tree_success
+signal update_amount_slot(slot_index: int, amount: int)
+
 # Emit when item in menu of kitchen menu clicked
 signal recipe_select_item(item: KitchenRecipe)
 # Emit when cooking action succes

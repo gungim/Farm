@@ -12,7 +12,7 @@ display_name = "Cây rìu"
 icon = ExtResource("1_yes8l")
 weight = 1
 properties = {
-"action_type": "axe",
+"action_type": "chop",
 "damage": 12
 }
 description = "Dùng để chặt cây"

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://c3qx1ngn7jsv8"]
 
 [ext_resource type="Script" path="res://scenes/inventory/hotbar/hotbar_ui.gd" id="1_3dg5y"]
-[ext_resource type="PackedScene" uid="uid://2e65nrw0y5jn" path="res://scenes/inventory/grid/inventory_grid.tscn" id="2_gjrmu"]
 [ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://scenes/inventory/db/hotbar.tres" id="3_de44e"]
+[ext_resource type="PackedScene" uid="uid://cshpbmasl7yuv" path="res://scenes/inventory/grid/hotbar_grid.tscn" id="3_q8nt2"]
 [ext_resource type="Texture2D" uid="uid://cn8rq3wcxjhjm" path="res://sprite/ui/11.png" id="4_cjupx"]
 [ext_resource type="PackedScene" uid="uid://dn7ciiu27hnis" path="res://scenes/inventory/hotbar/hotbar_slot_ui.tscn" id="5_pp8d8"]
 
@@ -50,7 +50,7 @@ theme_override_constants/margin_top = 9
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 9
 
-[node name="InventoryGrid" parent="PanelContainer/MarginContainer" instance=ExtResource("2_gjrmu")]
+[node name="HotbarGrid" parent="PanelContainer/MarginContainer" instance=ExtResource("3_q8nt2")]
 layout_mode = 2
 columns = 10
 inventory = ExtResource("3_de44e")

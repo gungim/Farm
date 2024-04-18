@@ -8,7 +8,7 @@ signal on_cancel_all_action
 
 signal on_allow_other_action(value)
 
-signal on_select_hotbar_slot(slot: Slot)
+signal on_select_hotbar_slot(slot: Slot, index: int)
 
 var items: Array[InventoryItem] = []
 
@@ -19,7 +19,3 @@ func _ready():
 
 func _on_allow_other_action(value: bool):
 	allow_other_action = value
-
-
-
-

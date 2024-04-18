@@ -9,6 +9,8 @@ signal updated_hp
 
 var farm_state = null
 var current_slot_selected: Slot
+var current_slot_index: int
+
 var mov_direction: Vector2 = Vector2.ZERO
 var FRICTION = 0.15
 
@@ -25,6 +27,7 @@ var FRICTION = 0.15
 func _ready():
 	PlayerEvents.connect("on_use_item", _on_use_item)
 	PlayerEvents.connect("on_select_hotbar_slot", _on_select_hotbar_slot)
+	FarmEvents.connect("plant_tree_success", _on_plant_tree_success)
 
 
 func _input(event):
@@ -79,8 +82,9 @@ func change_hp(value: int):
 	updated_hp.emit(HP)
 
 
-func _on_select_hotbar_slot(slot: Slot):
+func _on_select_hotbar_slot(slot: Slot, index: int):
 	current_slot_selected = slot
+	current_slot_index = index
 
 
 func eat_food():
@@ -136,7 +140,7 @@ func check_farm_state(key: String) -> int:
 		return -1
 
 	var action_type = get_item_property("action_type")
-	if action_type == -1:
+	if not action_type:
 		return -1
 
 	match key:
@@ -188,3 +192,8 @@ func play_animation(animation_name):
 
 func cancel_farm():
 	animated.stop()
+
+
+func _on_plant_tree_success():
+	current_slot_selected.amount -= 1
+	FarmEvents.emit_signal("update_amount_slot", current_slot_index, -1)

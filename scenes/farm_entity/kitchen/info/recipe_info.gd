@@ -58,7 +58,7 @@ func _on_start_cooking_success(recipe: KitchenRecipe):
 	for item in recipe.ingredients:
 		for db_index in hotbar_db.slots.size():
 			if hotbar_db.slots[db_index].item and hotbar_db.slots[db_index].item.name == item.name:
-				var remaining_amount = hotbar_db.update_amount_slot(db_index, -1)
+				var remaining_amount = FarmEvents.emit_signal("update_amount_slot", db_index, -1)
 				if remaining_amount == 0:
 					break
 
@@ -94,5 +94,3 @@ func check_db():
 		start_button.disabled = true
 	else:
 		start_button.disabled = false
-
-
