@@ -1,0 +1,2 @@
+extends InventoryGrid
+class_name InventoryHotbarGrid

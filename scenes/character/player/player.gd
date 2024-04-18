@@ -200,4 +200,5 @@ func _on_plant_tree_success():
 	current_slot_selected.amount -= 1
 	if current_slot_selected.amount <= 0:
 		current_slot_selected = null
+
 	HotbarEvents.emit_signal("update_amount_slot", current_slot_index, -1)
