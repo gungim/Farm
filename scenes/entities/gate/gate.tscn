@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://du3jnhnwonuaq"]
+
+[ext_resource type="Script" path="res://scenes/entities/gate/gate.gd" id="1_hoouq"]
+[ext_resource type="Texture2D" uid="uid://cxt8ciprou7yn" path="res://sprite/map/gate.png" id="1_j12rx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kbigf"]
+size = Vector2(14, 7)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_hoouq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_j12rx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, 42.5)
+shape = SubResource("RectangleShape2D_kbigf")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(41, 42)
+shape = SubResource("RectangleShape2D_kbigf")

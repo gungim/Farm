@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b4wpyocjendwe"]
+[gd_scene load_steps=20 format=3 uid="uid://b4wpyocjendwe"]
 
 [ext_resource type="Script" path="res://scenes/inventory/inventory_sys.gd" id="1_rbv83"]
 [ext_resource type="PackedScene" uid="uid://crxgnlr5pwebb" path="res://scenes/inventory/player_inventory.tscn" id="2_jcuye"]
@@ -6,10 +6,13 @@
 [ext_resource type="Resource" uid="uid://cprkft6h1dafq" path="res://scenes/inventory/db/items/hoe.tres" id="4_siyjc"]
 [ext_resource type="Resource" uid="uid://rv633fxgl4l7" path="res://scenes/inventory/db/items/sword.tres" id="4_yygpr"]
 [ext_resource type="Resource" uid="uid://bvkt88vl6n8hw" path="res://scenes/inventory/db/items/tomato.tres" id="5_edsxu"]
+[ext_resource type="Resource" uid="uid://djhj56v5kwi1v" path="res://scenes/inventory/db/items/wood.tres" id="7_gk2ah"]
 [ext_resource type="Resource" uid="uid://c5ayinf4o0shd" path="res://scenes/inventory/db/items/sickle.tres" id="7_xpx00"]
 [ext_resource type="PackedScene" uid="uid://c3qx1ngn7jsv8" path="res://scenes/inventory/hotbar/hotbar_ui.tscn" id="8_1dec4"]
+[ext_resource type="Resource" uid="uid://co7nobtgx55oq" path="res://scenes/inventory/db/items/wood_panel.tres" id="8_88j1t"]
 [ext_resource type="Resource" uid="uid://bvo01esi8kbfi" path="res://scenes/inventory/db/items/seed_potato.tres" id="8_lla2o"]
 [ext_resource type="Resource" uid="uid://bqmtwlv4wv3os" path="res://scenes/inventory/db/inventory.tres" id="9_chaj0"]
+[ext_resource type="Resource" uid="uid://sd0kk0lai0a8" path="res://scenes/inventory/db/items/gate.tres" id="9_kh7u3"]
 [ext_resource type="Resource" uid="uid://cy3lribpxfo0m" path="res://scenes/inventory/db/items/seed_tomato.tres" id="9_wrg4c"]
 [ext_resource type="Resource" uid="uid://ch6nk44gn24jj" path="res://scenes/inventory/db/items/sliced_beef.tres" id="10_pj18k"]
 [ext_resource type="Resource" uid="uid://b8hctjqjv5ar8" path="res://scenes/inventory/db/items/rice.tres" id="11_nyhd6"]
@@ -19,7 +22,7 @@
 
 [node name="InventorySys" type="Node" groups=["InventorySys"]]
 script = ExtResource("1_rbv83")
-items = Array[Resource("res://scenes/inventory/db/inventory_item.gd")]([ExtResource("3_l2bqp"), ExtResource("4_yygpr"), ExtResource("5_edsxu"), ExtResource("7_xpx00"), ExtResource("5_edsxu"), ExtResource("11_sduik")])
+items = Array[Resource("res://scenes/inventory/db/inventory_item.gd")]([ExtResource("3_l2bqp"), ExtResource("4_yygpr"), ExtResource("5_edsxu"), ExtResource("7_xpx00"), ExtResource("5_edsxu"), ExtResource("11_sduik"), ExtResource("7_gk2ah"), ExtResource("8_88j1t"), ExtResource("9_kh7u3")])
 items_hotbar = Array[Resource("res://scenes/inventory/db/inventory_item.gd")]([ExtResource("9_wrg4c"), ExtResource("8_lla2o"), ExtResource("4_siyjc"), ExtResource("10_pj18k"), ExtResource("11_nyhd6"), ExtResource("12_slfk1")])
 inventory = ExtResource("9_chaj0")
 hotbar = ExtResource("11_v767g")

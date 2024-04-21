@@ -12,11 +12,8 @@ var farm_dic: Dictionary
 
 enum lake_layer { LAKE = 1, SIDE = 0 }
 
-enum terrains { FENCE = 0, SMALL_FENCE = 1, WOOD_FENCE = 2, WOOD2_FENCE = 3 }
+enum terrains { FENCE = 0 }
 
-@onready var crop_scene = preload("res://scenes/farm_entity/tree/crop_tree.tscn")
-@onready var wood_tree = preload("res://scenes/farm_entity/tree/wood_tree.tscn")
-@onready var farm_scene = preload("res://scenes/farm_entity/tree/farm_tree.tscn")
 @onready var hoe_place_scene = preload("res://scenes/farm_entity/tree/hoe_place.tscn")
 
 @onready var farm_map: TileMap = $FarmMap
@@ -30,29 +27,14 @@ const farm_file_path = "res://data/farm.csv"
 func _ready():
 	farm_dic = FarmEvents.farm_dic
 	FarmEvents.connect("on_hoe", _on_hoe)
-	FarmEvents.connect("on_watering", _on_watering)
-	FarmEvents.connect("on_build_barn", _on_build_barn)
+	FarmEvents.connect("on_build_fence", _on_build_fence)
+	FarmEvents.connect("on_build_gate", _on_build_gate)
 	# setup()
 
 	# var file = preload(farm_file_path).records
 
 
 func setup():
-	for key in farm_dic:
-		var tile_pos: Vector2i = key_to_vecter(key)
-		var tile = farm_dic[key]
-		if not tile:
-			return
-
-		if tile["use"] == "hoe":
-
-			# Update water status
-			var water_status = tile.get("water_status")
-			if not water_status:
-				water_status = "Short"
-		elif tile["use"] == "build":
-			set_cell_builded(tile_pos)
-
 	setup_lake()
 
 
@@ -67,20 +49,8 @@ func _on_hoe(pos: Vector2):
 		spawn_hoe_node(tile_pos)
 
 
-func _on_watering():
-	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
-	var key = "{0},{1}".format([tile_pos.x, tile_pos.y])
-	var tile = farm_dic.get(key)
-
-	if not tile:
-		return
-
-	if tile["use"] == "hoe":
-		tile["water_status"] = "Full"
-		farm_dic[key] = tile
-
-
-func _on_build_barn():
+# -------------------- Func for build construction -----------------------
+func _on_build_fence():
 	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
 	var key = "{0},{1}".format([tile_pos.x, tile_pos.y])
 	var tile = farm_dic.get(key)
@@ -90,17 +60,23 @@ func _on_build_barn():
 		tile["use"] = "build"
 		farm_dic[key] = tile
 
-		set_cell_builded(tile_pos)
+		BetterTerrain.set_cell(farm_map, construction_layer, tile_pos, terrains.FENCE)
+		BetterTerrain.update_terrain_cell(farm_map, construction_layer, tile_pos, true)
+
+
+func _on_build_gate():
+	print_debug("Build")
+	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
+	var gate_scene = load("res://scenes/entities/gate/gate.tscn")
+	var obj_pos = Vector2i(farm_map.map_to_local(tile_pos)) - Vector2i(24, 38)
+	var obj = gate_scene.instantiate()
+	entity.add_child(obj)
+	obj.position = obj_pos
 
 
 # ------------------------ Func help for farm ---------------------------------
 func set_tile_hoeed(tile: Vector2i):
 	farm_map.set_cell(farming_layer, tile, land_tile_id, Vector2i(1, 0), 0)
-
-
-func set_cell_builded(pos: Vector2i):
-	BetterTerrain.set_cell(farm_map, construction_layer, pos, terrains.FENCE)
-	BetterTerrain.update_terrain_cell(farm_map, construction_layer, pos, true)
 
 
 func spawn_hoe_node(pos: Vector2i):

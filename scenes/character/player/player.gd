@@ -36,9 +36,15 @@ func _input(event):
 			if position.distance_to(mouse_position) >= 40:
 				pass
 			else:
-				if current_slot_selected:
-					if check_item_by_category("tool"):
-						FarmEvents.emit_signal("on_hoe", mouse_position)
+				if check_item_by_category("tool"):
+					FarmEvents.emit_signal("on_hoe", mouse_position)
+				elif check_item_by_category("build"):
+					var construction = get_item_property("construction")
+					match construction:
+						"fence":
+							FarmEvents.emit_signal("on_build_fence")
+						"gate":
+							FarmEvents.emit_signal("on_build_gate")
 
 
 func get_input():
@@ -156,6 +162,15 @@ func check_farm_state(key: String) -> int:
 			return -1
 
 
+func check_item_by_property(key: String) -> bool:
+	if not current_slot_selected:
+		return false
+
+	if not get_item_property(key):
+		return false
+	return true
+
+
 # Trả về -1 nếu k có category = tool.tres
 func check_item_by_category(key: String) -> bool:
 	if not current_slot_selected:
@@ -181,7 +196,7 @@ func get_item_property(property_name: String):
 	var property = current_slot_selected.item.properties.get(property_name)
 
 	if not property:
-		return -1
+		return
 
 	return property
 
