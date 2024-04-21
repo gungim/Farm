@@ -4,7 +4,6 @@ class_name Player
 
 # Signal được phát khi HP của player bị thay đổi
 signal updated_hp
-
 # using to check player can farm
 
 var farm_state = null

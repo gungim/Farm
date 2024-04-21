@@ -48,6 +48,13 @@ func setup_stages(
 	stages.push_back(completed_time)
 
 
+func setup_with_seed_name(start_time: int, seed_name: String, hp: int):
+	if not seed_name:
+		return
+	var res = load("res://scenes/inventory/db/items/" + seed_name + ".tres")
+	setup(start_time, res, hp)
+
+
 func setup(start_time: int, item: InventoryItem, hp: int):
 	if not item:
 		return

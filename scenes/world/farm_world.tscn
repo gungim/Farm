@@ -2888,9 +2888,10 @@ shape = SubResource("RectangleShape2D_gx3bk")
 texture = ExtResource("30_kabis")
 
 [node name="Kitchen" parent="Entity" instance=ExtResource("16_f7vsv")]
-position = Vector2(431, 38)
+position = Vector2(635, 245)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_gs8vu")
 constrain_avoidance = true
 
