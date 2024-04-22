@@ -12,6 +12,7 @@ class_name FarmAnimal
 @onready var state_timer: Timer = $StateTimer
 @onready var sensor_area: Area2D = $SensorArea
 @onready var live_time: int = 64  # Hours
+@onready var hp_label: ProgressBar = $HPLabel
 
 var mov_direction: Vector2 = Vector2.ZERO
 var FRICTION = 0.15
@@ -27,6 +28,9 @@ func _ready():
 	state.send_event.call_deferred("initialized")
 	sensor_area.visible = false
 	mov_direction = random_direction()
+
+	hp_label.value = HP
+	hp_label.max_value = MAX_HP
 
 
 func random_direction() -> Vector2:
@@ -65,6 +69,8 @@ func _on_travel_state_entered():
 
 func _on_hp_timer_timeout():
 	HP -= 1
+
+	hp_label.value = HP
 	if HP <= 10:
 		hp_timer.stop()
 		state_timer.stop()
@@ -94,6 +100,7 @@ func _on_eating_state_entered():
 	hp_timer.start()
 	state.send_event("finished_eating")
 	sensor_area.visible = false
+
 
 
 func _on_sensor_area_entered(area: Area2D):

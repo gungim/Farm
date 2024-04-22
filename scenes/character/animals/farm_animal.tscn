@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bd6et0mcmqp4k"]
+[gd_scene load_steps=10 format=3 uid="uid://bd6et0mcmqp4k"]
 
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="1_e5sge"]
 [ext_resource type="Script" path="res://scenes/character/animals/farm_animal.gd" id="1_ocv57"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="3_0dj7f"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="4_aml7g"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="5_drnav"]
+[ext_resource type="StyleBox" uid="uid://ds1p3lfgwjufd" path="res://style/hp_progress/bg.tres" id="6_w285l"]
+[ext_resource type="StyleBox" uid="uid://dkak2tnk6qkrv" path="res://style/hp_progress/fill.tres" id="7_qwy77"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fd00u"]
 radius = 7.07107
@@ -108,6 +110,20 @@ autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SensorArea"]
 shape = SubResource("CircleShape2D_rcxfg")
+
+[node name="HPLabel" type="ProgressBar" parent="."]
+clip_contents = true
+offset_left = -33.0
+offset_top = -38.0
+offset_right = 33.0
+offset_bottom = -29.0
+tooltip_text = "
+"
+theme_override_styles/background = ExtResource("6_w285l")
+theme_override_styles/fill = ExtResource("7_qwy77")
+step = 1.0
+value = 58.0
+show_percentage = false
 
 [connection signal="state_entered" from="StateChart/Root/Idle" to="." method="_on_idle_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/Root/Idle" to="." method="_on_idle_state_physics_processing"]
