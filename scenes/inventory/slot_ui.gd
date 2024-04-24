@@ -2,6 +2,7 @@
 extends TextureButton
 class_name SlotUI
 
+@onready var bg: TextureRect = $Bg
 @onready var icon: TextureRect = $Icon
 @onready var amount_label: Label = $AmountLabel
 @onready var show_item_name: bool = false
@@ -18,6 +19,11 @@ func _ready():
 
 func update_info_slot(new_slot: Slot):
 	slot = new_slot
+
+	var tween = create_tween()
+	tween.tween_property(bg, "scale", Vector2(1.04, 1.04), 0.4)
+	tween.tween_property(bg, "scale", Vector2(1, 1), 0.3)
+
 	if slot != null and slot.item != null:
 		icon.texture = slot.item.icon
 		amount_label.text = str(slot.amount) if slot.amount >= 2 else ""

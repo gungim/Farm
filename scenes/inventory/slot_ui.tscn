@@ -5,14 +5,18 @@
 
 [node name="SlotUI" type="TextureButton"]
 custom_minimum_size = Vector2(52, 52)
+layout_direction = 1
+anchors_preset = -1
 offset_right = 52.0
 offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(26, 26)
+size_flags_horizontal = 6
 mouse_default_cursor_shape = 2
 script = ExtResource("1_whwry")
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="Bg" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
