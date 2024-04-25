@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://8q7jmn1nq3ue" path="res://sprite/items/food/bacon.png" id="1_1f13f"]
 [ext_resource type="Resource" uid="uid://d2gbpwmggt6nt" path="res://scenes/inventory/db/items/bacon.tres" id="1_kbhep"]
 [ext_resource type="Resource" uid="uid://ch6nk44gn24jj" path="res://scenes/inventory/db/items/sliced_beef.tres" id="2_f2qea"]
-[ext_resource type="Script" path="res://scenes/farm_entity/kitchen/kitchen_recipe.gd" id="2_o6twt"]
+[ext_resource type="Script" path="res://scenes/entities/npc/kitchen/kitchen_recipe.gd" id="2_o6twt"]
 
 [resource]
 script = ExtResource("2_o6twt")

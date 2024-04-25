@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c5qthjynhslhw"]
+[gd_scene load_steps=24 format=3 uid="uid://c5qthjynhslhw"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_rtydu"]
 [ext_resource type="Texture2D" uid="uid://f3hrlu2jsc00" path="res://sprite/map/world_map.png" id="2_qpuf5"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://dh7a1e4y2hlaf" path="res://sprite/map/lakeside.png" id="8_p5hml"]
 [ext_resource type="Texture2D" uid="uid://df8n352gwa07n" path="res://sprite/map/lake_map.png" id="9_jcpfl"]
 [ext_resource type="PackedScene" uid="uid://cs0y1kjlqxjyi" path="res://scenes/ui/default_ui.tscn" id="10_k18b4"]
-[ext_resource type="PackedScene" uid="uid://ca1ewmo85dvnf" path="res://scenes/farm_entity/kitchen/kitchen.tscn" id="16_f7vsv"]
 [ext_resource type="PackedScene" uid="uid://m2ib88feldcx" path="res://scenes/character/player/Player.tscn" id="23_oah11"]
 [ext_resource type="PackedScene" uid="uid://hk25uk1el2v4" path="res://scenes/farm_entity/nest/duck_nest.tscn" id="25_hquls"]
 [ext_resource type="PackedScene" uid="uid://bgcb2a5f6ccqv" path="res://scenes/farm_entity/nest/chicken_nest.tscn" id="26_1qb8k"]
@@ -2305,9 +2304,6 @@ shape = SubResource("RectangleShape2D_gx3bk")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Entity/Trough4"]
 texture = ExtResource("30_kabis")
-
-[node name="Kitchen" parent="Entity" instance=ExtResource("16_f7vsv")]
-position = Vector2(635, 245)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false

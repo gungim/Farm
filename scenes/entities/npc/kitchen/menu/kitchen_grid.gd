@@ -1,13 +1,13 @@
 extends GridContainer
 class_name KitchenGrid
 
-@onready var item_scene = load("res://scenes/farm_entity/kitchen/kitchen_item.tscn")
+@onready var item_scene = load("res://scenes/entities/npc/kitchen/kitchen_item.tscn")
 
 var max_item: int = 40
 
 var recipe = [
-	load("res://scenes/farm_entity/kitchen/db/apple_pie.tres"),
-	load("res://scenes/farm_entity/kitchen/db/bacon.tres"),
+	load("res://scenes/entities/npc/kitchen/db/apple_pie.tres"),
+	load("res://scenes/entities/npc/kitchen/db/bacon.tres"),
 ]
 
 var current_recipe: KitchenRecipe
@@ -38,5 +38,3 @@ func setup():
 
 func item_pressed(item):
 	FarmEvents.emit_signal("recipe_select_item", item)
-
-

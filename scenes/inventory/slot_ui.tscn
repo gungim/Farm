@@ -6,7 +6,6 @@
 [node name="SlotUI" type="TextureButton"]
 custom_minimum_size = Vector2(52, 52)
 layout_direction = 1
-anchors_preset = -1
 offset_right = 52.0
 offset_bottom = 52.0
 grow_horizontal = 2

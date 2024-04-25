@@ -1,10 +1,10 @@
-extends Control
+extends HSplitContainer
 class_name KitchenMenu
 
 var current_cooking: Cooking
 
 @onready
-var kitchen_cooking: KitchenCooking = $VSplitContainer/HSplitContainer/TabContainer/CookingTab/MarginContainer
+var kitchen_cooking: KitchenCooking = $TabContainer/CookingTab/MarginContainer
 
 @export var max_thread: int = 1
 

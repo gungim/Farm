@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtfkpdejvmlk5"]
+[gd_scene load_steps=10 format=3 uid="uid://dtfkpdejvmlk5"]
 
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="2_a15bd"]
 [ext_resource type="PackedScene" uid="uid://h5xwe0kc7433" path="res://scenes/farm_entity/trough.tscn" id="3_kg4rq"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://m2ib88feldcx" path="res://scenes/character/player/Player.tscn" id="5_m6cnk"]
 [ext_resource type="PackedScene" uid="uid://bgcb2a5f6ccqv" path="res://scenes/farm_entity/nest/chicken_nest.tscn" id="5_usuxe"]
 [ext_resource type="PackedScene" uid="uid://cs0y1kjlqxjyi" path="res://scenes/ui/default_ui.tscn" id="6_v1ceo"]
+[ext_resource type="PackedScene" uid="uid://yk88124h8iqj" path="res://scenes/entities/npc/farm_store_npc.tscn" id="7_rkrsj"]
+[ext_resource type="PackedScene" uid="uid://cgiuwxfh21bhm" path="res://scenes/entities/npc/kitchen/chef_npc.tscn" id="8_bopov"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_djchj"]
 vertices = PackedVector2Array(1140, 638, 13, 637, 9, 11, 1139, 11)
@@ -38,3 +40,9 @@ position = Vector2(192, 166)
 position = Vector2(135, 305)
 
 [node name="DefaultUI" parent="." instance=ExtResource("6_v1ceo")]
+
+[node name="FarmStoreNPC" parent="." instance=ExtResource("7_rkrsj")]
+position = Vector2(255, 362)
+
+[node name="ChefNPC" parent="." instance=ExtResource("8_bopov")]
+position = Vector2(274, 224)

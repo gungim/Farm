@@ -1,17 +1,17 @@
 [gd_scene load_steps=14 format=3 uid="uid://dfp21eoudxvoq"]
 
-[ext_resource type="Script" path="res://scenes/farm_entity/kitchen/menu/kitchen_menu.gd" id="1_fbwjo"]
+[ext_resource type="Script" path="res://scenes/entities/npc/kitchen/menu/kitchen_menu.gd" id="1_fbwjo"]
 [ext_resource type="Texture2D" uid="uid://cn8rq3wcxjhjm" path="res://sprite/ui/11.png" id="2_akqtb"]
 [ext_resource type="Resource" uid="uid://bqmtwlv4wv3os" path="res://scenes/inventory/db/inventory.tres" id="2_y17wg"]
 [ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="3_c77p3"]
 [ext_resource type="Texture2D" uid="uid://brrr2wttetm13" path="res://sprite/ui/GUI_4x copy 2.png" id="3_ghv51"]
-[ext_resource type="Script" path="res://scenes/farm_entity/kitchen/menu/kitchen_grid.gd" id="4_l8mld"]
+[ext_resource type="Script" path="res://scenes/entities/npc/kitchen/menu/kitchen_grid.gd" id="4_l8mld"]
 [ext_resource type="Texture2D" uid="uid://bpttxlnhum2y2" path="res://sprite/ui/1.png" id="6_2j024"]
-[ext_resource type="PackedScene" uid="uid://ymrqv2xigrq2" path="res://scenes/farm_entity/kitchen/info/recipe_info.tscn" id="6_d6y0d"]
-[ext_resource type="Script" path="res://scenes/farm_entity/kitchen/info/tab.gd" id="6_i70le"]
+[ext_resource type="PackedScene" uid="uid://ymrqv2xigrq2" path="res://scenes/entities/npc/kitchen/info/recipe_info.tscn" id="6_d6y0d"]
+[ext_resource type="Script" path="res://scenes/entities/npc/kitchen/info/tab.gd" id="6_i70le"]
 [ext_resource type="Texture2D" uid="uid://d1u6mk00ke18l" path="res://sprite/ui/3.png" id="6_wcrib"]
 [ext_resource type="Texture2D" uid="uid://bt1mgb3u1hsby" path="res://sprite/ui/2.png" id="7_l7d3s"]
-[ext_resource type="PackedScene" uid="uid://bg8clmr7r61h" path="res://scenes/farm_entity/kitchen/info/kitchen_cooking.tscn" id="9_cjmu4"]
+[ext_resource type="PackedScene" uid="uid://bg8clmr7r61h" path="res://scenes/entities/npc/kitchen/info/kitchen_cooking.tscn" id="9_cjmu4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1708s"]
 shadow_color = Color(0.25098, 0.25098, 0.25098, 0.105882)

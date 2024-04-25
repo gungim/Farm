@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://ymrqv2xigrq2"]
 
-[ext_resource type="Script" path="res://scenes/farm_entity/kitchen/info/recipe_info.gd" id="1_7x2cb"]
+[ext_resource type="Script" path="res://scenes/entities/npc/kitchen/info/recipe_info.gd" id="1_7x2cb"]
 [ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="2_hktnl"]
 [ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://scenes/inventory/db/hotbar.tres" id="2_srf6b"]
 [ext_resource type="Texture2D" uid="uid://bpttxlnhum2y2" path="res://sprite/ui/1.png" id="2_xxveq"]
-[ext_resource type="PackedScene" uid="uid://ddqnbu767gnl0" path="res://scenes/farm_entity/kitchen/info/recipe_info_grid.tscn" id="5_nv70g"]
+[ext_resource type="PackedScene" uid="uid://ddqnbu767gnl0" path="res://scenes/entities/npc/kitchen/info/recipe_info_grid.tscn" id="5_nv70g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vss8i"]
 font = ExtResource("2_hktnl")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bg8clmr7r61h"]
 
-[ext_resource type="Script" path="res://scenes/farm_entity/kitchen/info/kitchen_cooking.gd" id="1_d1nvv"]
+[ext_resource type="Script" path="res://scenes/entities/npc/kitchen/info/kitchen_cooking.gd" id="1_d1nvv"]
 [ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="1_fd837"]
 [ext_resource type="Texture2D" uid="uid://d1u6mk00ke18l" path="res://sprite/ui/3.png" id="2_r6o01"]
 

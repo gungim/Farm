@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://wbhjka623xeu"]
 
-[ext_resource type="Script" path="res://scenes/farm_entity/kitchen/kitchen_item.gd" id="1_5svts"]
+[ext_resource type="Script" path="res://scenes/entities/npc/kitchen/kitchen_item.gd" id="1_5svts"]
 [ext_resource type="Texture2D" uid="uid://bpttxlnhum2y2" path="res://sprite/ui/1.png" id="2_yt7ug"]
 
 [node name="KitchenItem" type="TextureButton"]
