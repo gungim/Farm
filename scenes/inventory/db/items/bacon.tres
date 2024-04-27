@@ -13,7 +13,9 @@ display_name = "Thịt xông khói"
 icon = ExtResource("2_j5rrj")
 weight = 1
 properties = {
-"healing": 12
+"healing": 12,
+"price": 30,
+"purchase": 20
 }
 description = "Thịt xông khói"
 categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_osko2")])

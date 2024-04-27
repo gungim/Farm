@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://m2ib88feldcx" path="res://scenes/character/player/Player.tscn" id="5_m6cnk"]
 [ext_resource type="PackedScene" uid="uid://bgcb2a5f6ccqv" path="res://scenes/farm_entity/nest/chicken_nest.tscn" id="5_usuxe"]
 [ext_resource type="PackedScene" uid="uid://cs0y1kjlqxjyi" path="res://scenes/ui/default_ui.tscn" id="6_v1ceo"]
-[ext_resource type="PackedScene" uid="uid://yk88124h8iqj" path="res://scenes/entities/npc/farm_store_npc.tscn" id="7_rkrsj"]
+[ext_resource type="PackedScene" uid="uid://yk88124h8iqj" path="res://scenes/entities/npc/store/farm_store_npc.tscn" id="7_rkrsj"]
 [ext_resource type="PackedScene" uid="uid://cgiuwxfh21bhm" path="res://scenes/entities/npc/kitchen/chef_npc.tscn" id="8_bopov"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_djchj"]

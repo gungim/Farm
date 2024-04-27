@@ -9,6 +9,7 @@ class_name InventoryItemGrid
 
 var slots: Array[SlotUI] = []
 
+
 func _setup():
 	pass
 
@@ -24,8 +25,8 @@ func setup_inventory():
 	if not inventory:
 		return
 
-	inventory.setup()
 	inventory.connect("updated_slot", _on_updated_slot)
+	inventory.setup()
 	setup_slots()
 
 
@@ -40,7 +41,9 @@ func setup_slots():
 
 		slots.append(slot_obj)
 		add_child(slots[i])
-		slot_obj.update_info_slot(null)
+
+		var slot: Slot = inventory.get_slot(i)
+		slot_obj.update_info_slot(slot)
 		slot_obj.show_item_name = show_item_name
 
 

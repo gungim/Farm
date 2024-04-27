@@ -12,7 +12,9 @@ display_name = "Thanh long"
 icon = ExtResource("1_6q4dv")
 weight = 1
 properties = {
-"healing": 12
+"healing": 12,
+"price": 30,
+"purchase": 20
 }
 description = "Thanh long"
 categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_w7gl5")])

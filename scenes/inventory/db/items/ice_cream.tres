@@ -12,7 +12,9 @@ display_name = "Kem"
 icon = ExtResource("1_j628s")
 weight = 1
 properties = {
-"healing": 12
+"healing": 12,
+"price": 30,
+"purchase": 20
 }
 description = "Kem"
 categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_3b2rk")])

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=7 format=3 uid="uid://wt177u4145wk"]
+
+[ext_resource type="Resource" uid="uid://co7nobtgx55oq" path="res://scenes/inventory/db/items/wood_panel.tres" id="1_44lpk"]
+[ext_resource type="Script" path="res://scenes/inventory/db/inventory.gd" id="1_sot1e"]
+[ext_resource type="Resource" uid="uid://djhj56v5kwi1v" path="res://scenes/inventory/db/items/wood.tres" id="2_dq03k"]
+[ext_resource type="Resource" uid="uid://bh3wi7nr5wu6f" path="res://scenes/inventory/db/items/watermelon.tres" id="3_10unw"]
+[ext_resource type="Resource" uid="uid://bvo01esi8kbfi" path="res://scenes/inventory/db/items/seed_potato.tres" id="4_c4qnf"]
+[ext_resource type="Resource" uid="uid://cy3lribpxfo0m" path="res://scenes/inventory/db/items/seed_tomato.tres" id="5_6jcgo"]
+
+[resource]
+script = ExtResource("1_sot1e")
+amount = 40
+items = Array[Resource("res://scenes/inventory/db/inventory_item.gd")]([ExtResource("1_44lpk"), ExtResource("2_dq03k"), ExtResource("3_10unw"), ExtResource("4_c4qnf"), ExtResource("5_6jcgo")])

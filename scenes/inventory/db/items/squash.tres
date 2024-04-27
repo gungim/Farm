@@ -12,7 +12,9 @@ display_name = "Bí đao"
 icon = ExtResource("1_d2djs")
 weight = 1
 properties = {
-"healing": 12
+"healing": 12,
+"price": 30,
+"purchase": 20
 }
 description = "Bí đao"
 categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_sgf2u")])

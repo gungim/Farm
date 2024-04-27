@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://ceyuey2tg2ea7"]
+
+[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="1_rxb5a"]
+[ext_resource type="Texture2D" uid="uid://0qplhldyo5xn" path="res://sprite/items/fruit/apple.png" id="1_ypgdt"]
+
+[resource]
+script = ExtResource("1_rxb5a")
+max_stack = 0
+name = "apple"
+display_name = "Táo"
+icon = ExtResource("1_ypgdt")
+weight = 0
+properties = {}
+description = ""
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([])

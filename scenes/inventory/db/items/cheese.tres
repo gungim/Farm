@@ -12,7 +12,9 @@ display_name = "Phô mai"
 icon = ExtResource("1_l320e")
 weight = 1
 properties = {
-"healing": 12
+"healing": 12,
+"price": 30,
+"purchase": 20
 }
 description = "Phô mai, được làm từ sữa"
 categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_jk734")])

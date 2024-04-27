@@ -14,7 +14,9 @@ icon = ExtResource("1_omu3r")
 weight = 1
 properties = {
 "completed_time": 10,
+"price": 30,
 "products": ExtResource("3_yynff"),
+"purchase": 20,
 "seed_type": "agriculture"
 }
 description = "Hạt giống cà chua"

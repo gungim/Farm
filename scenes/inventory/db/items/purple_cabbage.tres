@@ -12,7 +12,9 @@ display_name = "Bắp cải tím"
 icon = ExtResource("1_ik67q")
 weight = 1
 properties = {
-"healing": 12
+"healing": 12,
+"price": 30,
+"purchase": 20
 }
 description = "Bắp cải tím"
 categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_kgjcl")])
