@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://crxgnlr5pwebb"]
+[gd_scene load_steps=8 format=3 uid="uid://crxgnlr5pwebb"]
 
 [ext_resource type="Script" path="res://scenes/inventory/player_inventory.gd" id="1_k25nm"]
-[ext_resource type="PackedScene" uid="uid://xdncx22j3b52" path="res://scenes/inventory/grid/inventory_hotbar_grid.tscn" id="3_wh470"]
+[ext_resource type="Script" path="res://scenes/inventory/grid/inventory_grid.gd" id="3_25n8x"]
+[ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://scenes/inventory/db/hotbar.tres" id="4_5lpa0"]
 [ext_resource type="PackedScene" uid="uid://daos5f2wbh6j4" path="res://scenes/inventory/item_info/slot_info_ui.tscn" id="4_h0ufk"]
 [ext_resource type="PackedScene" uid="uid://2e65nrw0y5jn" path="res://scenes/inventory/grid/inventory_grid.tscn" id="5_e0uas"]
 [ext_resource type="Texture2D" uid="uid://cn8rq3wcxjhjm" path="res://sprite/ui/11.png" id="7_n8lqd"]
@@ -79,8 +80,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="InventoryHotbarGrid" parent="MarginContainer/VBoxContainer/MarginContainer2/MarginContainer" instance=ExtResource("3_wh470")]
+[node name="InventoryGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/MarginContainer"]
 layout_mode = 2
+columns = 10
+script = ExtResource("3_25n8x")
+inventory = ExtResource("4_5lpa0")
+type = "hotbar"
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_direction = 2
