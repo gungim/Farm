@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6m2hgo25o1tw"]
+
+[ext_resource type="Script" path="res://scenes/entities/npc/store/grid/farm_store_grid.gd" id="1_44qff"]
+[ext_resource type="Resource" uid="uid://wt177u4145wk" path="res://scenes/entities/npc/store/db/farm_store.tres" id="2_vskn3"]
+
+[node name="FarmStoreGrid" type="GridContainer"]
+script = ExtResource("1_44qff")
+inventory = ExtResource("2_vskn3")
+type = "farm_store"

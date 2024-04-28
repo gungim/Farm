@@ -39,6 +39,8 @@ func setup_slots():
 		slot_obj.inventory = inventory
 		slot_obj.index = i
 
+		slot_obj.pressed.connect(_on_item_pressed.bind(i))
+
 		slots.append(slot_obj)
 		add_child(slots[i])
 
@@ -55,3 +57,7 @@ func reset():
 	for child in get_children():
 		child.queue_free()
 	slots.clear()
+
+
+func _on_item_pressed(index: int):
+	pass

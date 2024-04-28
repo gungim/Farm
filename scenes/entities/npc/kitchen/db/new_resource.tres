@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=4 format=3 uid="uid://b4uy4gj8qwerv"]
+
+[ext_resource type="Script" path="res://scenes/inventory/core/inventory.gd" id="1_too2e"]
+[ext_resource type="Script" path="res://scenes/inventory/db/slot.gd" id="2_varf4"]
+
+[sub_resource type="Resource" id="Resource_5q67l"]
+script = ExtResource("2_varf4")
+amount = 0
+
+[resource]
+script = ExtResource("1_too2e")
+slots = Array[ExtResource("2_varf4")]([SubResource("Resource_5q67l")])
+amount = 40

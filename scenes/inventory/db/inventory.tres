@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Inventory" load_steps=11 format=3 uid="uid://bqmtwlv4wv3os"]
 
-[ext_resource type="Script" path="res://scenes/inventory/db/inventory.gd" id="1_7bh8v"]
+[ext_resource type="Script" path="res://scenes/inventory/core/inventory.gd" id="1_7bh8v"]
 [ext_resource type="Resource" uid="uid://rv633fxgl4l7" path="res://scenes/inventory/db/items/sword.tres" id="2_rjnfa"]
 [ext_resource type="Script" path="res://scenes/inventory/db/slot.gd" id="3_1csjg"]
 [ext_resource type="Resource" uid="uid://p2cbnvdnp3hr" path="res://scenes/inventory/db/items/sprinkler.tres" id="4_bg5ik"]
