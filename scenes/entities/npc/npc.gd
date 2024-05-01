@@ -10,10 +10,12 @@ func _ready():
 	menu.visible = false
 
 
-
-
-func _on_static_body_2d_input_event(_viewport:Node, event:InputEvent, _shape_idx:int):
+func _on_static_body_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 	if event is InputEventMouseButton:
 		if player.position.distance_to(position) <= 64:
 			if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 				menu.visible = true
+
+
+func _on_texture_button_pressed():
+	menu.visible = false

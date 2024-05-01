@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bq7hs1udtyav"]
+[gd_scene load_steps=6 format=3 uid="uid://bq7hs1udtyav"]
 
 [ext_resource type="Script" path="res://scenes/entities/npc/npc.gd" id="1_y5lgh"]
 [ext_resource type="Texture2D" uid="uid://cn8rq3wcxjhjm" path="res://sprite/ui/11.png" id="2_eaxhh"]
 [ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="3_caipq"]
+[ext_resource type="LabelSettings" uid="uid://bdbncs3huvmtp" path="res://style/labe_style.tres" id="4_4i577"]
+[ext_resource type="Texture2D" uid="uid://bpttxlnhum2y2" path="res://sprite/ui/1.png" id="5_sosl8"]
 
 [node name="NPC" type="Node2D"]
 script = ExtResource("1_y5lgh")
@@ -65,8 +67,18 @@ size_flags_horizontal = 4
 [node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/AspectRatioContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_caipq")
+label_settings = ExtResource("4_4i577")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer"]
 layout_mode = 2
 
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 920.24
+offset_top = 4.896
+offset_right = 960.24
+offset_bottom = 44.896
+texture_normal = ExtResource("5_sosl8")
+
 [connection signal="input_event" from="StaticBody2D" to="." method="_on_static_body_2d_input_event"]
+[connection signal="pressed" from="CanvasLayer/Control/TextureButton" to="." method="_on_texture_button_pressed"]

@@ -7,4 +7,5 @@ func _setup():
 
 
 func _on_add_item(item: InventoryItem, amount):
+	print_debug("Dev")
 	inventory.add_item(item, amount)

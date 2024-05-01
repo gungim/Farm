@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://ymrqv2xigrq2"]
+[gd_scene load_steps=9 format=3 uid="uid://ymrqv2xigrq2"]
 
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/info/recipe_info.gd" id="1_7x2cb"]
 [ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="2_hktnl"]
 [ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://scenes/inventory/db/hotbar.tres" id="2_srf6b"]
-[ext_resource type="Texture2D" uid="uid://bpttxlnhum2y2" path="res://sprite/ui/1.png" id="2_xxveq"]
+[ext_resource type="PackedScene" uid="uid://ckmbf7xea4x1t" path="res://scenes/ui/item.tscn" id="4_73mhw"]
 [ext_resource type="PackedScene" uid="uid://ddqnbu767gnl0" path="res://scenes/entities/npc/kitchen/info/recipe_info_grid.tscn" id="5_nv70g"]
+[ext_resource type="Texture2D" uid="uid://bqxc2orlv1h41" path="res://sprite/ui/disable_button.png" id="6_6d187"]
+[ext_resource type="Texture2D" uid="uid://dtpjum3svhnv2" path="res://sprite/ui/button.png" id="7_cdt1u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vss8i"]
 font = ExtResource("2_hktnl")
@@ -33,24 +35,8 @@ label_settings = SubResource("LabelSettings_vss8i")
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+[node name="Item" parent="VBoxContainer" instance=ExtResource("4_73mhw")]
 layout_mode = 2
-size_flags_horizontal = 4
-texture_normal = ExtResource("2_xxveq")
-
-[node name="RecipeIcon" type="TextureRect" parent="VBoxContainer/TextureButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="TimeLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -78,12 +64,17 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hktnl")
 text = "Huỷ"
+icon = ExtResource("6_6d187")
+flat = true
+icon_alignment = 1
 
 [node name="StartButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(101, 0)
+clip_contents = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hktnl")
-text = "Bắt đầu nấu"
+text = "Bắt đầu"
+icon = ExtResource("7_cdt1u")
+flat = true
 icon_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]

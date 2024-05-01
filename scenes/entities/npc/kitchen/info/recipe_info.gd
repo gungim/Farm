@@ -3,8 +3,8 @@ class_name KitchenItemInfo
 
 @onready var raw_material_grid: InventoryItemGrid = $VBoxContainer/RecipeInfoGrid
 
-@onready var recipe_texture: TextureRect = $VBoxContainer/TextureButton/RecipeIcon
 @onready var start_button: Button = $VBoxContainer/HBoxContainer/StartButton
+@onready var item_icon: ItemIcon = $VBoxContainer/Item
 
 @export var hotbar_db: Inventory
 
@@ -30,7 +30,7 @@ func _recipe_select_item(item: KitchenRecipe):
 
 		$VBoxContainer/Label.text = "Weo, bạn muốn nấu món " + item.display_name + " ư?"
 		$VBoxContainer/TimeLabel.text = "Thời gian: " + GlobalEvents.format_time(item.cooking_time)
-		recipe_texture.texture = item.icon
+		item_icon.set_icon(item.icon)
 
 		raw_material_grid.inventory.amount = item.ingredients.size()
 		raw_material_grid.setup_inventory()

@@ -45,7 +45,7 @@ func setup_slots():
 		add_child(slots[i])
 
 		var slot: Slot = inventory.get_slot(i)
-		slot_obj.update_info_slot(slot)
+		slot_obj.set_default_slot(slot)
 		slot_obj.show_item_name = show_item_name
 
 

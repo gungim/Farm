@@ -1,9 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://yk88124h8iqj"]
+[gd_scene load_steps=11 format=3 uid="uid://yk88124h8iqj"]
 
 [ext_resource type="PackedScene" uid="uid://bq7hs1udtyav" path="res://scenes/entities/npc/npc.tscn" id="1_147rt"]
 [ext_resource type="Script" path="res://scenes/entities/npc/store/farm_store_npc.gd" id="2_kjaab"]
 [ext_resource type="Texture2D" uid="uid://bk8aybyjrd6kh" path="res://sprite/character/farm_npc.png" id="3_vmjjv"]
 [ext_resource type="PackedScene" uid="uid://c6m2hgo25o1tw" path="res://scenes/entities/npc/store/grid/farm_store_grid.tscn" id="4_wc1sh"]
+[ext_resource type="Script" path="res://scenes/entities/npc/store/info_tab.gd" id="5_4r76x"]
+[ext_resource type="LabelSettings" uid="uid://bdbncs3huvmtp" path="res://style/labe_style.tres" id="5_bicfg"]
+[ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="6_pahoh"]
+[ext_resource type="PackedScene" uid="uid://ckmbf7xea4x1t" path="res://scenes/ui/item.tscn" id="7_e8vml"]
+[ext_resource type="Texture2D" uid="uid://dtpjum3svhnv2" path="res://sprite/ui/button.png" id="7_v5kmx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jljx5"]
 radius = 6.0
@@ -20,15 +25,46 @@ hframes = 9
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_jljx5")
 
-[node name="Control" parent="CanvasLayer" index="0"]
-visible = false
-
 [node name="Label" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/AspectRatioContainer" index="0"]
 text = "Cửa hàng nông trại"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer" index="0"]
+[node name="HBoxContainer" type="HSplitContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer" index="0"]
 layout_mode = 2
 
-[node name="FarmStoreGrid" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HBoxContainer" index="0" instance=ExtResource("4_wc1sh")]
+[node name="FarmStoreGrid" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HBoxContainer" index="0" node_paths=PackedStringArray("info_tab") instance=ExtResource("4_wc1sh")]
+clip_contents = true
 layout_mode = 2
 columns = 6
+info_tab = NodePath("../VBoxContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HBoxContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("5_4r76x")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HBoxContainer/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Chi tiết"
+label_settings = ExtResource("5_bicfg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Info" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HBoxContainer/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Item" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HBoxContainer/VBoxContainer/Info" index="0" instance=ExtResource("7_e8vml")]
+layout_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HBoxContainer/VBoxContainer/Info" index="1"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HBoxContainer/VBoxContainer/Info" index="2"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_pahoh")
+text = "Mua"
+icon = ExtResource("7_v5kmx")
+flat = true
+icon_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HBoxContainer/VBoxContainer/Info/Button" to="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HBoxContainer/VBoxContainer" method="_on_button_pressed"]
