@@ -2,15 +2,12 @@ extends MarginContainer
 class_name PlayerEnergy
 
 @onready var hp_bar: ProgressBar = $VBoxContainer/HBoxContainer/HP
-@onready var player: Player
 
 
 func _ready():
-	player = get_tree().get_first_node_in_group("Player")
-	if player:
-		hp_bar.value = player.HP
-		player.connect("updated_hp", _on_updated_hp)
+	PlayerEvents.connect("on_update_hp", _on_update_hp)
 
 
-func _on_updated_hp(value: int):
+func _on_update_hp(value: int):
+	print_debug(value)
 	hp_bar.value = value

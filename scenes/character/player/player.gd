@@ -1,58 +1,64 @@
 # FIX dev
-extends CharacterBody2D
+extends Character
 class_name Player
 
-# Signal được phát khi HP của player bị thay đổi
-signal updated_hp
 # using to check player can farm
 
 var farm_state = null
 var current_slot_selected: Slot
 var current_slot_index: int
 
-var mov_direction: Vector2 = Vector2.ZERO
-var FRICTION = 0.15
-
-@export var MAX_SPEED = 100
-@export var MAX_HP = 100
-@export var ACCELERATION = 40
-@export var HP: int = 10
+var can_move: bool = true
 
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 @onready var state: StateChart = $StateChart
-@onready var animated: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _ready():
 	PlayerEvents.connect("on_use_item", _on_use_item)
 	PlayerEvents.connect("on_select_hotbar_slot", _on_select_hotbar_slot)
 	FarmEvents.connect("plant_tree_success", _on_plant_tree_success)
+	PlayerEvents.connect("on_disable_player", _on_disable_player)
 
 
 func _input(event):
 	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			var mouse_position = get_global_mouse_position()
-			if position.distance_to(mouse_position) >= 40:
-				pass
-			else:
-				if check_item_by_category("tool"):
-					FarmEvents.emit_signal("on_hoe", mouse_position)
-				elif check_item_by_category("build"):
-					var construction = get_item_property("construction")
-					match construction:
-						"fence":
-							FarmEvents.emit_signal("on_build_fence")
-						"gate":
-							FarmEvents.emit_signal("on_build_gate")
+		if can_move:
+			if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+				var mouse_position = get_global_mouse_position()
+				if position.distance_to(mouse_position) >= 40:
+					agent.target_position = mouse_position
+					state.send_event("place_marker_setted")
+				else:
+					if check_item_by_category("tool"):
+						FarmEvents.emit_signal("on_hoe", mouse_position)
+					elif check_item_by_category("build"):
+						var construction = get_item_property("construction")
+						match construction:
+							"fence":
+								FarmEvents.emit_signal("on_build_fence")
+							"gate":
+								FarmEvents.emit_signal("on_build_gate")
 
 
+func change_hp(value: int):
+	HP += value
+	if HP >= MAX_HP:
+		HP = MAX_HP
+	PlayerEvents.emit_signal("on_update_hp", HP)
+
+
+func _on_disable_player(value):
+	can_move = !value
+
+
+# ---------------------- State ----------------------------
 func get_input():
-	mov_direction = Input.get_vector("left", "right", "up", "down")
+	return Input.get_vector("left", "right", "up", "down")
 
 
-func _process(_delta):
-	get_input()
+func _on_idle_state_physics_processing(_delta: float):
+	mov_direction = get_input()
 
 	if mov_direction != Vector2.ZERO:
 		move()
@@ -63,11 +69,17 @@ func _process(_delta):
 		animated.flip_h = false
 
 
-# Sử dụng tương tự hàm move
-func move_to_target():
-	var next_path = agent.get_next_path_position()
+func _on_navigation_agent_2d_velocity_computed(safe_velocity):
+	mov_direction = safe_velocity
 
+
+func _on_movement_state_physics_processing(_delta):
+	var next_path = agent.get_next_path_position()
 	var new_dir: Vector2 = global_position.direction_to(next_path)
+
+	if get_input() != Vector2.ZERO:
+		agent.target_position = position
+		state.send_event("navigation_finished")
 
 	if agent.avoidance_enabled:
 		agent.set_velocity(velocity)
@@ -76,58 +88,15 @@ func move_to_target():
 
 	if agent.is_navigation_finished():
 		mov_direction = Vector2.ZERO
+		state.send_event("navigation_finished")
 		return
 	mov_direction = new_dir
+	move()
 
 
-func change_hp(value: int):
-	HP += value
-	if HP >= MAX_HP:
-		HP = MAX_HP
-	updated_hp.emit(HP)
+#------------------------ End state ------------------
 
-
-func _on_select_hotbar_slot(slot: Slot, index: int):
-	current_slot_selected = slot
-	current_slot_index = index
-
-
-func eat_food():
-	var properties = current_slot_selected.item.properties
-
-	if HP < MAX_HP:
-		change_hp(properties.healing)
-		current_slot_selected.amount -= 1
-
-
-# using when click on hotbar
-func _on_use_item(slot: Slot):
-	if slot and slot.item:
-		var action = slot.item
-		match action:
-			GlobalEvents.product_actions.FOOD:
-				eat_food()
-
-
-func _on_navigation_agent_2d_velocity_computed(safe_velocity):
-	mov_direction = safe_velocity
-
-
-func _on_movement_state_physics_processing(_delta):
-	var target_pos = agent.get_next_path_position()
-	if position.distance_to(target_pos) >= 32:
-		mov_direction = target_pos - global_position
-		move()
-	else:
-		state.send_event("navigation_finished")
-
-
-func move():
-	mov_direction = mov_direction.normalized()
-	velocity += mov_direction * ACCELERATION
-	velocity = velocity.limit_length(MAX_SPEED)
-	velocity = lerp(velocity, Vector2.ZERO, FRICTION)
-	move_and_slide()
+# ----------------------- Inventory -------------------
 
 
 # if current_slot_selected
@@ -216,3 +185,27 @@ func _on_plant_tree_success():
 		current_slot_selected = null
 
 	HotbarEvents.emit_signal("update_amount_slot", current_slot_index, -1)
+
+
+func _on_select_hotbar_slot(slot: Slot, index: int):
+	current_slot_selected = slot
+	current_slot_index = index
+
+
+func eat_food():
+	var properties = current_slot_selected.item.properties
+
+	if HP < MAX_HP:
+		change_hp(properties.healing)
+		current_slot_selected.amount -= 1
+
+
+# using when click on hotbar
+func _on_use_item(slot: Slot):
+	if slot and slot.item:
+		var action = slot.item
+		match action:
+			GlobalEvents.product_actions.FOOD:
+				eat_food()
+
+# ---------------------- End Farm -------------------------------

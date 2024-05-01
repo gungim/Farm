@@ -19,7 +19,7 @@ func _ready():
 
 func _on_open_inventory(value: bool):
 	is_open_inventory = value
-	PlayerEvents.emit_signal("on_allow_other_action", !value)
+	PlayerEvents.emit_signal("on_disable_player", value)
 
 
 func move_between_inventory(from: Inventory, from_index: int, to: Inventory, to_index: int):
