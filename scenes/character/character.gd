@@ -11,7 +11,6 @@ var FRICTION = 0.15
 
 var mov_direction: Vector2 = Vector2.ZERO
 @onready var animated: AnimatedSprite2D = $AnimatedSprite2D
-@onready var fsm: FSM = $FiniteStateMachine
 
 
 func move():

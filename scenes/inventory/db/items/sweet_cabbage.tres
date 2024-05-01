@@ -13,8 +13,8 @@ icon = ExtResource("1_yxif7")
 weight = 1
 properties = {
 "healing": 20,
-"price": 30,
-"purchase": 20
+"purchase": 20,
+"sell": 30
 }
 description = "Cải ngọt"
 categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_gfh6h")])

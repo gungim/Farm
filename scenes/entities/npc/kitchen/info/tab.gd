@@ -1,6 +1,4 @@
 extends TabContainer
-class_name CookingInfoTab
-
 
 func _ready():
 	set_tab_title(0, "Chi tiết")

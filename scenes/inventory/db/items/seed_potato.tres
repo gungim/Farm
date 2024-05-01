@@ -13,9 +13,9 @@ icon = ExtResource("1_gf31v")
 weight = 1
 properties = {
 "completed_time": 10,
-"price": 30,
 "purchase": 20,
-"seed_type": "forestry"
+"seed_type": "forestry",
+"sell": 30
 }
 description = "Hạt giống khoai tây"
 categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_ggqcs")])

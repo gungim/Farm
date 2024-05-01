@@ -11,8 +11,8 @@ display_name = "Tấm gỗ"
 icon = ExtResource("1_n61fn")
 weight = 1
 properties = {
-"price": 30,
-"purchase": 20
+"purchase": 20,
+"sell": 30
 }
 description = "Tấm gỗ, được lấy khi xẻ gỗ"
 categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([])

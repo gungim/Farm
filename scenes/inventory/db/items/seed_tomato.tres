@@ -14,10 +14,10 @@ icon = ExtResource("1_omu3r")
 weight = 1
 properties = {
 "completed_time": 10,
-"price": 30,
 "products": ExtResource("3_yynff"),
 "purchase": 20,
-"seed_type": "agriculture"
+"seed_type": "agriculture",
+"sell": 30
 }
 description = "Hạt giống cà chua"
 categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_8pp58")])
