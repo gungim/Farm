@@ -113,6 +113,7 @@ icon_alignment = 1
 
 [node name="TabBar2" type="TabBar" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/TabContainer" index="2"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_pahoh")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/TabContainer/TabBar2" index="0"]
 layout_mode = 1
