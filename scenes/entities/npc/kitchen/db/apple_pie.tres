@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="KitchenRecipe" load_steps=6 format=3 uid="uid://cmy6knoevu1md"]
+[gd_resource type="Resource" script_class="Recipe" load_steps=6 format=3 uid="uid://b6mswewjukcex"]
 
+[ext_resource type="Resource" uid="uid://bs0fwlxapd226" path="res://scenes/inventory/db/items/apple_pie.tres" id="1_jbi56"]
 [ext_resource type="Texture2D" uid="uid://cpbd4sbkmgg3a" path="res://sprite/items/food/apple_pie.png" id="1_p6onf"]
-[ext_resource type="Resource" uid="uid://bs0fwlxapd226" path="res://scenes/inventory/db/items/apple_pie.tres" id="1_uaf8e"]
 [ext_resource type="Script" path="res://core/recipe.gd" id="2_l0rds"]
-[ext_resource type="Resource" uid="uid://bwprlyip4hj0i" path="res://scenes/inventory/db/items/apple.tres" id="2_rlrge"]
-[ext_resource type="Resource" uid="uid://b8hctjqjv5ar8" path="res://scenes/inventory/db/items/rice.tres" id="3_rnv1h"]
+[ext_resource type="Resource" uid="uid://bwprlyip4hj0i" path="res://scenes/inventory/db/items/apple.tres" id="3_dssws"]
+[ext_resource type="Resource" uid="uid://b8hctjqjv5ar8" path="res://scenes/inventory/db/items/rice.tres" id="4_5b4sh"]
 
 [resource]
 script = ExtResource("2_l0rds")
@@ -12,6 +12,6 @@ name = "apple_pie"
 display_name = "Bánh táo"
 description = "Bánh táo"
 icon = ExtResource("1_p6onf")
-ingredients = Array[Resource("res://scenes/inventory/db/inventory_item.gd")]([ExtResource("2_rlrge"), ExtResource("3_rnv1h")])
-time = 300
-finished_product = ExtResource("1_uaf8e")
+ingredients = Array[Resource("res://core/inventory/inventory_item.gd")]([ExtResource("3_dssws"), ExtResource("4_5b4sh")])
+time = 300.0
+finished_product = ExtResource("1_jbi56")

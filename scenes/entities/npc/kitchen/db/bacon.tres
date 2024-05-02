@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="KitchenRecipe" load_steps=5 format=3 uid="uid://hf4uyl0vl7al"]
+[gd_resource type="Resource" script_class="Recipe" load_steps=6 format=3 uid="uid://ba3xwnyxf68g"]
 
 [ext_resource type="Texture2D" uid="uid://8q7jmn1nq3ue" path="res://sprite/items/food/bacon.png" id="1_1f13f"]
-[ext_resource type="Resource" uid="uid://d2gbpwmggt6nt" path="res://scenes/inventory/db/items/bacon.tres" id="1_kbhep"]
-[ext_resource type="Resource" uid="uid://ch6nk44gn24jj" path="res://scenes/inventory/db/items/sliced_beef.tres" id="2_f2qea"]
+[ext_resource type="Resource" uid="uid://d2gbpwmggt6nt" path="res://scenes/inventory/db/items/bacon.tres" id="1_gy67p"]
 [ext_resource type="Script" path="res://core/recipe.gd" id="2_o6twt"]
+[ext_resource type="Resource" uid="uid://ch6nk44gn24jj" path="res://scenes/inventory/db/items/sliced_beef.tres" id="3_qpm3t"]
+[ext_resource type="Resource" uid="uid://v013qn1cjiju" path="res://scenes/inventory/db/items/straw_mushrooms.tres" id="4_cn6gf"]
 
 [resource]
 script = ExtResource("2_o6twt")
@@ -11,6 +12,6 @@ name = "bacon"
 display_name = "Thịt xông khói"
 description = "Thịt xông khói"
 icon = ExtResource("1_1f13f")
-ingredients = Array[Resource("res://scenes/inventory/db/inventory_item.gd")]([ExtResource("2_f2qea")])
-time = 400
-finished_product = ExtResource("1_kbhep")
+ingredients = Array[Resource("res://core/inventory/inventory_item.gd")]([ExtResource("3_qpm3t"), ExtResource("4_cn6gf")])
+time = 0.0
+finished_product = ExtResource("1_gy67p")

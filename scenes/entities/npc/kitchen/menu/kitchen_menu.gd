@@ -8,7 +8,7 @@ var current_cooking: Cooking
 
 var thread_used: int = 0
 
-@export var inventory: Inventory
+var inventory: Inventory
 
 
 func _ready():

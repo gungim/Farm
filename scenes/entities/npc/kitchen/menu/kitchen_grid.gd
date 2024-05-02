@@ -3,7 +3,7 @@ class_name KitchenGrid
 
 @onready var item_scene = load("res://scenes/entities/npc/kitchen/kitchen_item.tscn")
 
-@export var database: RecipeDB
+var database: RecipeDB
 
 
 func _ready():
