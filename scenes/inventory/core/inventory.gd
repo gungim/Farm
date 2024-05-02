@@ -44,13 +44,6 @@ func update_amount_slot(slot_index: int, slot_amount: int) -> int:
 	return remaining_amount
 
 
-func decrement_amount(slot_index: int, slot_amount: int):
-	if slot_index >= slots.size() and slot_index < 0:
-		return
-	slots[slot_index].amount -= slot_amount
-	updated_slot.emit(slot_index)
-
-
 func get_slot_amount(index: int) -> int:
 	if index >= slots.size():
 		return 0
@@ -101,34 +94,19 @@ func clear():
 	amount = 0
 
 
-func set_slot(slot: Slot, index: int):
+func add_slot_at(slot: Slot, index: int):
 	if index >= slots.size():
 		return
 	slots[index] = slot
 	updated_slot.emit(index)
 
 
-# Using with swap item or merge item
-func swap_item(first_index: int, second_index: int):
-	var first_slot = slots[first_index]
-	var second_slot = slots[second_index]
+func replace_slot_at(slot, index):
+	if index >= slots.size():
+		return
 
-	# if first item and second item equa, using merge
-	if first_slot.item == second_slot.item:
-		var total_amount = first_slot.amount + second_slot.amount
-		var max_item_stack = first_slot.item.max_stack
-		first_slot.amount = max_item_stack if total_amount > max_item_stack else total_amount
-		second_slot.amount = total_amount - max_item_stack if total_amount > max_item_stack else 0
-	else:
-		var temp_slot = first_slot
-		first_slot = second_slot
-		second_slot = temp_slot
-
-	slots[first_index] = first_slot
-	slots[second_index] = second_slot
-
-	updated_slot.emit(first_index)
-	updated_slot.emit(second_index)
+	slots[index] = slot
+	updated_slot.emit(index)
 
 
 func remove_at(slot_index: int):

@@ -23,12 +23,16 @@ func _on_open_inventory(value: bool):
 
 
 func move_between_inventory(from: Inventory, from_index: int, to: Inventory, to_index: int):
-	var slot: Slot = from.get_slot(from_index)
-	var item = slot.item
-	var amount = slot.amount
+	var from_slot: Slot = from.get_slot(from_index)
+	var to_slot: Slot = to.get_slot(to_index)
 
-	var amount_no_added = to.add_item_at(item, amount, to_index)
-	if amount_no_added == 0:
-		from.remove_at(from_index)
+	if to_slot.item != from_slot.item:
+		to.replace_slot_at(from_slot, to_index)
+		from.replace_slot_at(to_slot, from_index)
 	else:
-		from.add_item_at(item, amount_no_added, from_index)
+		var amount_no_added = to.add_item_at(from_slot.item, from_slot.amount, to_index)
+		if amount_no_added == 0:
+			from.remove_at(from_index)
+		else:
+			from.add_item(from_slot.item, amount_no_added)
+			from.add_item_at(from_slot.item, amount_no_added, from_index)

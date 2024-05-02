@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=11 format=3 uid="uid://bqmtwlv4wv3os"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=13 format=3 uid="uid://bqmtwlv4wv3os"]
 
 [ext_resource type="Script" path="res://scenes/inventory/core/inventory.gd" id="1_7bh8v"]
 [ext_resource type="Resource" uid="uid://rv633fxgl4l7" path="res://scenes/inventory/db/items/sword.tres" id="2_rjnfa"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://p2cbnvdnp3hr" path="res://scenes/inventory/db/items/sprinkler.tres" id="4_bg5ik"]
 [ext_resource type="Resource" uid="uid://c5ayinf4o0shd" path="res://scenes/inventory/db/items/sickle.tres" id="5_y2d6d"]
 [ext_resource type="Resource" uid="uid://cprkft6h1dafq" path="res://scenes/inventory/db/items/hoe.tres" id="6_wna2t"]
+[ext_resource type="Resource" uid="uid://co7nobtgx55oq" path="res://scenes/inventory/db/items/wood_panel.tres" id="7_i0vbi"]
 
 [sub_resource type="Resource" id="Resource_rge2o"]
 script = ExtResource("3_1csjg")
@@ -27,7 +28,12 @@ script = ExtResource("3_1csjg")
 amount = 1
 item = ExtResource("6_wna2t")
 
+[sub_resource type="Resource" id="Resource_m8ftu"]
+script = ExtResource("3_1csjg")
+amount = 99
+item = ExtResource("7_i0vbi")
+
 [resource]
 script = ExtResource("1_7bh8v")
-slots = Array[ExtResource("3_1csjg")]([SubResource("Resource_rge2o"), SubResource("Resource_jl5bn"), SubResource("Resource_qe7wu"), SubResource("Resource_wrcr2")])
-amount = null
+slots = Array[ExtResource("3_1csjg")]([SubResource("Resource_rge2o"), SubResource("Resource_jl5bn"), SubResource("Resource_qe7wu"), SubResource("Resource_wrcr2"), SubResource("Resource_m8ftu")])
+amount = 40
