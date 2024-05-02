@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Inventory" load_steps=11 format=3 uid="uid://b7tdj35yq1wur"]
 
-[ext_resource type="Script" path="res://scenes/inventory/core/inventory.gd" id="1_7bh8v"]
+[ext_resource type="Script" path="res://core/inventory/inventory.gd" id="1_7bh8v"]
 [ext_resource type="Resource" uid="uid://caqbvffnohpl" path="res://scenes/inventory/db/items/axe.tres" id="2_p6ylh"]
-[ext_resource type="Script" path="res://scenes/inventory/db/slot.gd" id="3_moxwi"]
+[ext_resource type="Script" path="res://core/inventory/slot.gd" id="3_moxwi"]
 [ext_resource type="Resource" uid="uid://bwprlyip4hj0i" path="res://scenes/inventory/db/items/apple.tres" id="4_pvnnt"]
 [ext_resource type="Resource" uid="uid://d2gbpwmggt6nt" path="res://scenes/inventory/db/items/bacon.tres" id="5_rp48n"]
 [ext_resource type="Resource" uid="uid://co7nobtgx55oq" path="res://scenes/inventory/db/items/wood_panel.tres" id="6_brntq"]

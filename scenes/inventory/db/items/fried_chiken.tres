@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d3c43awnws1l1" path="res://sprite/items/food/fried_chiken.png" id="1_h6nu1"]
 [ext_resource type="Resource" uid="uid://b3v2t6odfep0f" path="res://scenes/inventory/db/categories/food.tres" id="1_tsfak"]
-[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="3_gsfl5"]
+[ext_resource type="Script" path="res://core/inventory/inventory_item.gd" id="3_gsfl5"]
 
 [resource]
 script = ExtResource("3_gsfl5")

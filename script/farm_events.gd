@@ -13,13 +13,13 @@ signal on_build_gate
 signal plant_tree_success
 
 # Emit when item in menu of kitchen menu clicked
-signal recipe_select_item(item: KitchenRecipe)
+signal recipe_select_item(item: Recipe)
 # Emit when cooking action succes
-signal start_cooking_success(recipe: KitchenRecipe)
+signal start_cooking_success(recipe: Recipe)
 # Emit when cooking finished
 signal cooking_finished
 
 # Emit when button start cooking clicked
-signal start_cooking(item: KitchenRecipe)
+signal start_cooking(item: Recipe)
 
 var farm_dic = {}

@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Inventory" load_steps=7 format=3 uid="uid://wt177u4145wk"]
 
-[ext_resource type="Script" path="res://scenes/inventory/core/inventory.gd" id="1_sot1e"]
+[ext_resource type="Script" path="res://core/inventory/inventory.gd" id="1_sot1e"]
 [ext_resource type="Resource" uid="uid://co7nobtgx55oq" path="res://scenes/inventory/db/items/wood_panel.tres" id="2_0bm6j"]
-[ext_resource type="Script" path="res://scenes/inventory/db/slot.gd" id="3_qnlp6"]
+[ext_resource type="Script" path="res://core/inventory/slot.gd" id="3_qnlp6"]
 [ext_resource type="Resource" uid="uid://bh3wi7nr5wu6f" path="res://scenes/inventory/db/items/watermelon.tres" id="4_bc4xs"]
 
 [sub_resource type="Resource" id="Resource_6qwis"]

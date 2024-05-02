@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RecipeDB" load_steps=4 format=3 uid="uid://sdd1luqb08lg"]
+
+[ext_resource type="Script" path="res://core/recipe_db.gd" id="1_xost0"]
+[ext_resource type="Resource" uid="uid://cmy6knoevu1md" path="res://scenes/entities/npc/kitchen/db/apple_pie.tres" id="2_k4k13"]
+[ext_resource type="Resource" uid="uid://hf4uyl0vl7al" path="res://scenes/entities/npc/kitchen/db/bacon.tres" id="3_8718r"]
+
+[resource]
+script = ExtResource("1_xost0")
+slots = Array[Resource("res://core/recipe.gd")]([ExtResource("2_k4k13"), ExtResource("3_8718r")])

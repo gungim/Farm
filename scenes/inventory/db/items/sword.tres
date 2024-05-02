@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cvknmyc6jgen1" path="res://sprite/items/tool/sickle_icon.png" id="1_783jb"]
 [ext_resource type="Resource" uid="uid://fm437bw8plha" path="res://scenes/inventory/db/categories/weapon.tres" id="1_i7oon"]
-[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="3_rctjf"]
+[ext_resource type="Script" path="res://core/inventory/inventory_item.gd" id="3_rctjf"]
 
 [resource]
 script = ExtResource("3_rctjf")

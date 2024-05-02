@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://b2i3f12giruau"]
+
+[ext_resource type="Resource" uid="uid://cupypm7nuakd3" path="res://scenes/inventory/db/categories/tool.tres" id="1_xcc75"]
+[ext_resource type="Texture2D" uid="uid://nv2ney24nd3m" path="res://sprite/items/tool/axe_2.png" id="2_wclhr"]
+[ext_resource type="Script" path="res://core/inventory/inventory_item.gd" id="3_2xg4a"]
+
+[resource]
+script = ExtResource("3_2xg4a")
+max_stack = 1
+name = "axe"
+display_name = "Cây rìu[+2]"
+icon = ExtResource("2_wclhr")
+weight = 1
+properties = {
+"action_type": "chop",
+"damage": 24,
+"level": 2,
+"upgrade_time": 600
+}
+description = "Dùng để chặt cây\\nCấp 2"
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_xcc75")])

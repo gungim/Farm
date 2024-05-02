@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://cupypm7nuakd3" path="res://scenes/inventory/db/categories/tool.tres" id="1_vux7w"]
 [ext_resource type="Texture2D" uid="uid://c0q7b5emetq84" path="res://sprite/items/tool/watering_cans.png" id="1_yyxui"]
-[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="3_2mnuu"]
+[ext_resource type="Script" path="res://core/inventory/inventory_item.gd" id="3_2mnuu"]
 
 [resource]
 script = ExtResource("3_2mnuu")

@@ -8,8 +8,8 @@ func _ready():
 	FarmEvents.connect("start_cooking_success", _on_start_cooking_success)
 
 
-func _on_recipe_select_item(_item: KitchenRecipe):
+func _on_recipe_select_item(_item: Recipe):
 	current_tab = 0
 
-func _on_start_cooking_success(_recipe: KitchenRecipe):
+func _on_start_cooking_success(_recipe: Recipe):
 	current_tab = 1

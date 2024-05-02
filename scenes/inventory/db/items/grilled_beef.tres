@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://b3v2t6odfep0f" path="res://scenes/inventory/db/categories/food.tres" id="1_3shu7"]
 [ext_resource type="Texture2D" uid="uid://cx26levfik027" path="res://sprite/items/food/grilled_beef.png" id="1_6b4ge"]
-[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="3_sxd3g"]
+[ext_resource type="Script" path="res://core/inventory/inventory_item.gd" id="3_sxd3g"]
 
 [resource]
 script = ExtResource("3_sxd3g")

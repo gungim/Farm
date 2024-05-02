@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://b3v2t6odfep0f" path="res://scenes/inventory/db/categories/food.tres" id="1_vcryj"]
 [ext_resource type="Texture2D" uid="uid://cpbd4sbkmgg3a" path="res://sprite/items/food/apple_pie.png" id="2_onqtc"]
-[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="3_75aef"]
+[ext_resource type="Script" path="res://core/inventory/inventory_item.gd" id="3_75aef"]
 
 [resource]
 resource_local_to_scene = true

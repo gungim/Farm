@@ -1,5 +1,4 @@
 extends MarginContainer
-class_name KitchenItemInfo
 
 @onready var raw_material_grid: InventoryItemGrid = $VBoxContainer/RecipeInfoGrid
 
@@ -8,7 +7,7 @@ class_name KitchenItemInfo
 
 @export var hotbar_db: Inventory
 
-var current_recipe: KitchenRecipe
+var current_recipe: Recipe
 var recipe_item_added: bool = false
 
 
@@ -19,7 +18,7 @@ func _ready():
 	start_button.disabled = true
 
 
-func _recipe_select_item(item: KitchenRecipe):
+func _recipe_select_item(item: Recipe):
 	raw_material_grid.inventory.clear()
 	raw_material_grid.reset()
 
@@ -29,7 +28,7 @@ func _recipe_select_item(item: KitchenRecipe):
 		current_recipe = item
 
 		$VBoxContainer/Label.text = "Weo, bạn muốn nấu món " + item.display_name + " ư?"
-		$VBoxContainer/TimeLabel.text = "Thời gian: " + GlobalEvents.format_time(item.cooking_time)
+		$VBoxContainer/TimeLabel.text = "Thời gian: " + GlobalEvents.format_time(int(item.time))
 		item_icon.set_icon(item.icon)
 
 		raw_material_grid.inventory.amount = item.ingredients.size()
@@ -54,7 +53,7 @@ func _on_start_button_pressed():
 
 
 # remove all item of recipe ingredients
-func _on_start_cooking_success(recipe: KitchenRecipe):
+func _on_start_cooking_success(recipe: Recipe):
 	for item in recipe.ingredients:
 		for db_index in hotbar_db.slots.size():
 			if hotbar_db.slots[db_index].item and hotbar_db.slots[db_index].item.name == item.name:

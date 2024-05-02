@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://cupypm7nuakd3" path="res://scenes/inventory/db/categories/tool.tres" id="1_tbcc7"]
 [ext_resource type="Texture2D" uid="uid://cm4hxagctc07y" path="res://sprite/items/tool/axe.png" id="1_yes8l"]
-[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="3_brr41"]
+[ext_resource type="Script" path="res://core/inventory/inventory_item.gd" id="3_brr41"]
 
 [resource]
 script = ExtResource("3_brr41")
@@ -13,7 +13,9 @@ icon = ExtResource("1_yes8l")
 weight = 1
 properties = {
 "action_type": "chop",
-"damage": 12
+"damage": 12,
+"level": 1,
+"upgrade_time": 300
 }
 description = "Dùng để chặt cây"
 categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_tbcc7")])

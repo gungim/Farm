@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj3ag25um2a4k"]
+
+[ext_resource type="Script" path="res://scenes/entities/construction/smithy/smithy.gd" id="1_tdufi"]
+[ext_resource type="Texture2D" uid="uid://dy3plunrrdd6p" path="res://sprite/character/blacksmith.png" id="2_7cy15"]
+
+[node name="Smithy" type="Node2D"]
+script = ExtResource("1_tdufi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7cy15")
+hframes = 9

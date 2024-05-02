@@ -3,6 +3,6 @@ class_name Cooking
 
 @export var id: String
 
-@export var start_time: int
+@export var start_time: float
 
-@export var recipe: KitchenRecipe
+@export var recipe: Recipe

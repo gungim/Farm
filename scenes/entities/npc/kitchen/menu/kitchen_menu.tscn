@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfp21eoudxvoq"]
+[gd_scene load_steps=13 format=3 uid="uid://dfp21eoudxvoq"]
 
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/menu/kitchen_menu.gd" id="1_fbwjo"]
 [ext_resource type="Texture2D" uid="uid://cn8rq3wcxjhjm" path="res://sprite/ui/11.png" id="2_akqtb"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/menu/kitchen_grid.gd" id="4_l8mld"]
 [ext_resource type="PackedScene" uid="uid://ymrqv2xigrq2" path="res://scenes/entities/npc/kitchen/info/recipe_info.tscn" id="6_d6y0d"]
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/info/tab.gd" id="6_i70le"]
+[ext_resource type="Resource" path="res://scenes/entities/npc/kitchen/menu/recipe.tres" id="6_l41ro"]
 [ext_resource type="Texture2D" uid="uid://d1u6mk00ke18l" path="res://sprite/ui/3.png" id="6_wcrib"]
 [ext_resource type="PackedScene" uid="uid://bg8clmr7r61h" path="res://scenes/entities/npc/kitchen/info/kitchen_cooking.tscn" id="9_cjmu4"]
 
@@ -90,6 +91,7 @@ layout_direction = 2
 layout_mode = 2
 columns = 6
 script = ExtResource("4_l8mld")
+database = ExtResource("6_l41ro")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="VSplitContainer/HSplitContainer/PanelContainer2"]
 layout_mode = 2

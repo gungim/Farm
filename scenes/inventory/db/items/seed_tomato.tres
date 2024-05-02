@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://bb5g758ehaoao" path="res://scenes/inventory/db/categories/seed.tres" id="1_8pp58"]
 [ext_resource type="Texture2D" uid="uid://wo00iug0a7bx" path="res://sprite/items/seed/seed_tomato.png" id="1_omu3r"]
-[ext_resource type="Script" path="res://scenes/inventory/db/inventory_item.gd" id="3_7dbie"]
+[ext_resource type="Script" path="res://core/inventory/inventory_item.gd" id="3_7dbie"]
 [ext_resource type="Resource" uid="uid://xigg30mv1465" path="res://scenes/farm_entity/seed/tomato.tres" id="3_yynff"]
 
 [resource]

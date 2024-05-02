@@ -3,14 +3,7 @@ class_name KitchenGrid
 
 @onready var item_scene = load("res://scenes/entities/npc/kitchen/kitchen_item.tscn")
 
-var max_item: int = 40
-
-var recipe = [
-	load("res://scenes/entities/npc/kitchen/db/apple_pie.tres"),
-	load("res://scenes/entities/npc/kitchen/db/bacon.tres"),
-]
-
-var current_recipe: KitchenRecipe
+@export var database: RecipeDB
 
 
 func _ready():
@@ -18,22 +11,17 @@ func _ready():
 
 
 func setup():
+	database.setup()
 	for child in get_children():
 		child.queue_free()
 
-	for item in recipe:
+	for item in database.slots:
 		var obj: KitchenItem = item_scene.instantiate()
 
 		obj.pressed.connect(item_pressed.bind(item))
 
 		add_child(obj)
 		obj.update_info(item)
-
-	for index in max_item - recipe.size():
-		var obj: KitchenItem = item_scene.instantiate()
-
-		add_child(obj)
-		obj.update_info(null)
 
 
 func item_pressed(item):

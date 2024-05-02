@@ -1,16 +1,15 @@
 extends HSplitContainer
-class_name KitchenMenu
 
 var current_cooking: Cooking
 
-@onready
-var kitchen_cooking: KitchenCooking = $TabContainer/CookingTab/MarginContainer
+@onready var kitchen_cooking: KitchenCooking = $TabContainer/CookingTab/MarginContainer
 
 @export var max_thread: int = 1
 
 var thread_used: int = 0
 
 @export var inventory: Inventory
+
 
 func _ready():
 	FarmEvents.connect("start_cooking", _on_start_cooking)
@@ -22,7 +21,7 @@ func _on_close_button_pressed():
 	visible = false
 
 
-func _on_start_cooking_success(recipe: KitchenRecipe):
+func _on_start_cooking_success(recipe: Recipe):
 	if recipe:
 		var current_time = Time.get_unix_time_from_system()
 
@@ -36,7 +35,7 @@ func _on_start_cooking_success(recipe: KitchenRecipe):
 	kitchen_cooking.update(current_cooking)
 
 
-func _on_start_cooking(item: KitchenRecipe):
+func _on_start_cooking(item: Recipe):
 	if item and thread_used <= max_thread:
 		thread_used += 1
 		FarmEvents.emit_signal("start_cooking_success", item)
@@ -44,6 +43,6 @@ func _on_start_cooking(item: KitchenRecipe):
 
 func _on_cooking_finished():
 	thread_used -= 1
-	var product = current_cooking.recipe.finished_product
+	var product = current_cooking.finished_product
 
 	inventory.add_item(product, 1)
