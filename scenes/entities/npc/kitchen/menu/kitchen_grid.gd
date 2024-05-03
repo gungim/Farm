@@ -27,4 +27,4 @@ func setup():
 
 
 func item_pressed(item):
-	FarmEvents.emit_signal("recipe_select_item", item)
+	FarmEvents.emit_signal("recipe_select", item)

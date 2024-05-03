@@ -11,7 +11,6 @@ func _ready():
 
 
 func _on_update_hp(value: int):
-	print_debug(value)
 	hp_bar.value = value
 
 

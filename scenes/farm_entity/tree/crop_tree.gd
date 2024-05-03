@@ -23,5 +23,4 @@ func _add_product_to_inventory():
 		return
 
 	for item in products.items:
-		print_debug("Dev")
 		InventoryEvents.emit_signal("add_item", item, 1)

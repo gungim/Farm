@@ -25,12 +25,13 @@ func get_slot(index: int = 0) -> Slot:
 	return slots[index]
 
 
-func update_amount_slot(slot_index: int, slot_amount: int) -> int:
+# TODO: xử lý cho trường hợp số lượng thêm vào vượt quá max-stack
+func update_amount_slot(slot_index: int, amount_varies: int) -> int:
 	if slot_index >= slots.size() and slot_index < 0:
-		return slot_amount
+		return amount_varies
 
 	var max_stack = slots[slot_index].item.max_stack
-	var total_amount = slots[slot_index].amount + slot_amount
+	var total_amount = slots[slot_index].amount + amount_varies
 
 	var inserted_amount = total_amount if total_amount <= max_stack else max_stack
 	var remaining_amount = 0 if total_amount <= max_stack else total_amount - max_stack
@@ -87,6 +88,7 @@ func get_item_in_slot(slot_index: int) -> InventoryItem:
 	return slots[slot_index].item
 
 
+# Clear slots
 func clear():
 	for i in amount:
 		remove_at(i)
@@ -101,14 +103,37 @@ func add_slot_at(slot: Slot, index: int):
 	updated_slot.emit(index)
 
 
-func replace_slot_at(slot, index):
+func remove_item_with_amount(item_removed: InventoryItem, amount_removed: int) -> int:
+	var remaining_amount = 0
+	var index = 0
+
+	for slot in slots:
+		if slot.item && slot.item == item_removed:
+			remaining_amount = slot.amount - amount_removed
+
+			if remaining_amount >= 0:
+				slot.amount = remaining_amount
+				updated_slot.emit(index)
+				return 0
+			else:
+				slot.amount = 0
+				slot.item = null
+				updated_slot.emit(index)
+		index += 1
+
+	return remaining_amount
+
+
+# Sử dụng để thay thể 1 slot bằng 1 slot mới
+func replace_slot_at(new_slot: Slot, index: int):
 	if index >= slots.size():
 		return
 
-	slots[index] = slot
+	slots[index] = new_slot
 	updated_slot.emit(index)
 
 
+# xoá slot hiện tại
 func remove_at(slot_index: int):
 	slots[slot_index].amount = 0
 	slots[slot_index].item = null

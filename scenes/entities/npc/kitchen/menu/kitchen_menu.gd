@@ -36,7 +36,7 @@ func _on_start_cooking_success(recipe: Recipe):
 
 
 func _on_start_cooking(item: Recipe):
-	if item and thread_used <= max_thread:
+	if thread_used <= max_thread:
 		thread_used += 1
 		FarmEvents.emit_signal("start_cooking_success", item)
 

@@ -65,7 +65,6 @@ func _on_build_fence():
 
 
 func _on_build_gate():
-	print_debug("Build")
 	var tile_pos: Vector2i = farm_map.local_to_map(farm_map.get_global_mouse_position())
 	var gate_scene = load("res://scenes/entities/gate/gate.tscn")
 	var obj_pos = Vector2i(farm_map.map_to_local(tile_pos)) - Vector2i(24, 38)
@@ -117,7 +116,6 @@ func random_output(item: int, tile: Dictionary) -> int:
 
 func load_farm():
 	# var data  = preload(farm_file_path)
-	# print_debug(data.records)
 	pass
 
 
