@@ -1,0 +1,44 @@
+{
+  "hidden_columns": {
+    "res://scenes/farm_entity/kitchen/db/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://scenes/farm_entity/kitchen/recipe/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://scenes/farm_entity/seed/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://scenes/inventory/db/categories/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://scenes/inventory/db/items/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://scenes/inventory/item/products/": {
+      "max_stack": true,
+      "resource_local_to_scene": true,
+      "resource_name": true,
+      "resource_path": true
+    }
+  },
+  "recent_paths": [
+    "res://scenes/farm_entity/kitchen/db/",
+    "res://scenes/inventory/db/categories/",
+    "res://scenes/inventory/db/items/",
+    "res://scenes/farm_entity/seed/"
+  ],
+  "table_functions": {
+    "filter": [
+      "return true"
+    ],
+    "process": [
+      "return value"
+    ]
+  }
+}
