@@ -1,13 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://cgiuwxfh21bhm"]
+[gd_scene load_steps=14 format=3 uid="uid://cgiuwxfh21bhm"]
 
 [ext_resource type="PackedScene" uid="uid://bq7hs1udtyav" path="res://scenes/entities/npc/npc.tscn" id="1_gh4ss"]
 [ext_resource type="Texture2D" uid="uid://dx67xt7nn1vh2" path="res://sprite/character/chef_npc.png" id="2_o2huq"]
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/menu/kitchen_grid.gd" id="3_lsaa3"]
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/menu/kitchen_menu.gd" id="3_wkicd"]
 [ext_resource type="Texture2D" uid="uid://brrr2wttetm13" path="res://sprite/ui/GUI_4x copy 2.png" id="4_8dnsm"]
-[ext_resource type="Resource" uid="uid://bqmtwlv4wv3os" path="res://scenes/inventory/db/inventory.tres" id="4_dxrho"]
 [ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="5_20as3"]
-[ext_resource type="Resource" uid="uid://sdd1luqb08lg" path="res://scenes/entities/npc/kitchen/info/info.tres" id="6_5g4pk"]
+[ext_resource type="Resource" uid="uid://bl5vrv55mibwy" path="res://scenes/entities/npc/kitchen/menu/kitchent_recipe.tres" id="5_kn8bj"]
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/info/tab.gd" id="6_blgx5"]
 [ext_resource type="Texture2D" uid="uid://d1u6mk00ke18l" path="res://sprite/ui/3.png" id="7_avyrw"]
 [ext_resource type="PackedScene" uid="uid://ymrqv2xigrq2" path="res://scenes/entities/npc/kitchen/info/recipe_info.tscn" id="8_50w36"]
@@ -47,7 +46,6 @@ layout_mode = 2
 theme_override_constants/separation = 1
 collapsed = true
 script = ExtResource("3_wkicd")
-inventory = ExtResource("4_dxrho")
 
 [node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer" index="0"]
 layout_mode = 2
@@ -69,7 +67,7 @@ layout_direction = 2
 layout_mode = 2
 columns = 6
 script = ExtResource("3_lsaa3")
-database = ExtResource("6_5g4pk")
+database = ExtResource("5_kn8bj")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/PanelContainer2" index="1"]
 layout_mode = 2

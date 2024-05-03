@@ -1,10 +1,21 @@
-[gd_resource type="Resource" script_class="Recipe" load_steps=6 format=3 uid="uid://ba3xwnyxf68g"]
+[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3 uid="uid://ba3xwnyxf68g"]
 
 [ext_resource type="Texture2D" uid="uid://8q7jmn1nq3ue" path="res://sprite/items/food/bacon.png" id="1_1f13f"]
 [ext_resource type="Resource" uid="uid://d2gbpwmggt6nt" path="res://scenes/inventory/db/items/bacon.tres" id="1_gy67p"]
 [ext_resource type="Script" path="res://core/recipe.gd" id="2_o6twt"]
 [ext_resource type="Resource" uid="uid://ch6nk44gn24jj" path="res://scenes/inventory/db/items/sliced_beef.tres" id="3_qpm3t"]
+[ext_resource type="Script" path="res://core/inventory/slot.gd" id="4_1ryie"]
 [ext_resource type="Resource" uid="uid://v013qn1cjiju" path="res://scenes/inventory/db/items/straw_mushrooms.tres" id="4_cn6gf"]
+
+[sub_resource type="Resource" id="Resource_iinup"]
+script = ExtResource("4_1ryie")
+amount = 1
+item = ExtResource("3_qpm3t")
+
+[sub_resource type="Resource" id="Resource_3aat1"]
+script = ExtResource("4_1ryie")
+amount = 2
+item = ExtResource("4_cn6gf")
 
 [resource]
 script = ExtResource("2_o6twt")
@@ -12,6 +23,6 @@ name = "bacon"
 display_name = "Thịt xông khói"
 description = "Thịt xông khói"
 icon = ExtResource("1_1f13f")
-ingredients = Array[Resource("res://core/inventory/inventory_item.gd")]([ExtResource("3_qpm3t"), ExtResource("4_cn6gf")])
+ingredients = Array[ExtResource("4_1ryie")]([SubResource("Resource_iinup"), SubResource("Resource_3aat1")])
 time = 0.0
 finished_product = ExtResource("1_gy67p")

@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddqnbu767gnl0"]
-
-[ext_resource type="Script" path="res://scenes/entities/npc/kitchen/info/recipe_info_grid.gd" id="1_c6d8t"]
-[ext_resource type="Resource" uid="uid://sdd1luqb08lg" path="res://scenes/entities/npc/kitchen/info/info.tres" id="2_xfcxd"]
-
-[node name="RecipeInfoGrid" type="GridContainer"]
-script = ExtResource("1_c6d8t")
-inventory = ExtResource("2_xfcxd")
-type = "recipe"

@@ -110,8 +110,6 @@ func replace_slot_at(slot, index):
 
 
 func remove_at(slot_index: int):
-	if slot_index >= slots.size() and slot_index < 0:
-		return
 	slots[slot_index].amount = 0
 	slots[slot_index].item = null
 	updated_slot.emit(slot_index)

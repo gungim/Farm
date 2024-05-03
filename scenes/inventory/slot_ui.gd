@@ -6,6 +6,8 @@ class_name SlotUI
 @onready var amount_label: Label = $AmountLabel
 @onready var show_item_name: bool = false
 
+@export var drag_item: bool = true
+
 var inventory: Inventory
 var index: int
 var slot: Slot
@@ -60,7 +62,7 @@ func _get_drag_data(_at_position):
 func _can_drop_data(_at_position, _data):
 	# if not slot:
 	# 	return false
-	return true
+	return drag_item
 
 
 func _drop_data(_at_position, data):

@@ -3,7 +3,7 @@ class_name KitchenGrid
 
 @onready var item_scene = load("res://scenes/entities/npc/kitchen/kitchen_item.tscn")
 
-var database: RecipeDB
+@export var database: RecipeDB = null
 
 
 func _ready():
@@ -15,7 +15,9 @@ func setup():
 	for child in get_children():
 		child.queue_free()
 
-	for item in database.slots:
+	for i in database.amount:
+		var item = database.slots[i]
+
 		var obj: KitchenItem = item_scene.instantiate()
 
 		obj.pressed.connect(item_pressed.bind(item))
