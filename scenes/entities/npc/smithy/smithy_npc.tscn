@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3nhhksasc336"]
+
+[ext_resource type="PackedScene" uid="uid://bq7hs1udtyav" path="res://scenes/entities/npc/npc.tscn" id="1_5u521"]
+[ext_resource type="Texture2D" uid="uid://bmc8h54ahygi3" path="res://sprite/construction/house.png" id="2_0ktt5"]
+[ext_resource type="Texture2D" uid="uid://dy3plunrrdd6p" path="res://sprite/character/blacksmith.png" id="3_oefxf"]
+[ext_resource type="Script" path="res://scenes/entities/npc/smithy/grid.gd" id="4_ku8k8"]
+[ext_resource type="PackedScene" uid="uid://bt3gl1pvq782y" path="res://scenes/entities/npc/smithy/item.tscn" id="4_w8m66"]
+[ext_resource type="Resource" uid="uid://bujw6f3d02837" path="res://scenes/entities/npc/smithy/smithy_db.tres" id="5_k1lxy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lt2p7"]
+size = Vector2(68, 60)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3x8j7"]
+radius = 7.0
+
+[node name="SmithyNPC" instance=ExtResource("1_5u521")]
+
+[node name="House" type="StaticBody2D" parent="." index="0"]
+scale = Vector2(1.48, 1.48)
+
+[node name="Sprite2D" type="Sprite2D" parent="House" index="0"]
+position = Vector2(-3.8147e-06, -3.8147e-06)
+scale = Vector2(0.193073, 0.193073)
+texture = ExtResource("2_0ktt5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House" index="1"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_lt2p7")
+
+[node name="StaticBody2D" parent="." index="1"]
+position = Vector2(27, 60)
+
+[node name="Sprite2D" parent="StaticBody2D" index="0"]
+texture = ExtResource("3_oefxf")
+hframes = 9
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="1"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_3x8j7")
+
+[node name="Control" parent="CanvasLayer" index="0"]
+visible = false
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="VScrollBar" type="VScrollBar" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/ScrollContainer" index="0"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/ScrollContainer" index="1"]
+layout_mode = 2
+script = ExtResource("4_ku8k8")
+database = ExtResource("5_k1lxy")
+
+[node name="Panel" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/ScrollContainer/GridContainer" index="0" instance=ExtResource("4_w8m66")]
+layout_mode = 2

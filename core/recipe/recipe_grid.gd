@@ -1,12 +1,14 @@
 extends GridContainer
-class_name KitchenGrid
+class_name RecipeGrid
 
-@onready var item_scene = load("res://scenes/entities/npc/kitchen/kitchen_item.tscn")
+@export var slot_scene: PackedScene = null
 
 @export var database: RecipeDB = null
 
 
 func _ready():
+	if not slot_scene:
+		slot_scene = load("res://core/recipe/recipe_slot_ui.tscn")
 	setup()
 
 
@@ -18,13 +20,13 @@ func setup():
 	for i in database.amount:
 		var item = database.slots[i]
 
-		var obj: KitchenItem = item_scene.instantiate()
+		var obj: RecipeSlotUI = slot_scene.instantiate()
 
-		obj.pressed.connect(item_pressed.bind(item))
+		obj.pressed.connect(_item_pressed.bind(item))
 
 		add_child(obj)
 		obj.update_info(item)
 
 
-func item_pressed(item):
-	FarmEvents.emit_signal("recipe_select", item)
+func _item_pressed(_item):
+	pass

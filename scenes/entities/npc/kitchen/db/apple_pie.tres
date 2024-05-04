@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://bs0fwlxapd226" path="res://scenes/inventory/db/items/apple_pie.tres" id="1_jbi56"]
 [ext_resource type="Texture2D" uid="uid://cpbd4sbkmgg3a" path="res://sprite/items/food/apple_pie.png" id="1_p6onf"]
-[ext_resource type="Script" path="res://core/recipe.gd" id="2_l0rds"]
+[ext_resource type="Script" path="res://core/recipe/recipe.gd" id="2_l0rds"]
 [ext_resource type="Resource" uid="uid://bwprlyip4hj0i" path="res://scenes/inventory/db/items/apple.tres" id="3_dssws"]
 [ext_resource type="Resource" uid="uid://b8hctjqjv5ar8" path="res://scenes/inventory/db/items/rice.tres" id="4_5b4sh"]
 [ext_resource type="Script" path="res://core/inventory/slot.gd" id="4_eair5"]

@@ -85,7 +85,7 @@ func _on_hp_timer_timeout():
 func _on_place_marker_state_physics_processing(_delta):
 	var path_position = navigation_agent.get_next_path_position()
 	# and move towards it
-	velocity = (path_position - global_position).normalized() * MAX_SPEED
+	velocity = (path_position - position).normalized() * MAX_SPEED
 	move_and_slide()
 	if velocity.length() <= 5:
 		state.send_event("navigation_finished")

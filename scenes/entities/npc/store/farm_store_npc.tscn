@@ -24,15 +24,15 @@ height = 14.0
 [node name="FarmStoreNPC" instance=ExtResource("1_147rt")]
 script = ExtResource("2_kjaab")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." index="0"]
+[node name="House" type="StaticBody2D" parent="." index="0"]
 scale = Vector2(1.48, 1.48)
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" index="0"]
+[node name="Sprite2D" type="Sprite2D" parent="House" index="0"]
 position = Vector2(-3.8147e-06, -3.8147e-06)
 scale = Vector2(0.193073, 0.193073)
 texture = ExtResource("3_dwr0a")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House" index="1"]
 position = Vector2(0, 14)
 shape = SubResource("RectangleShape2D_ri7k3")
 

@@ -1,4 +1,4 @@
-extends Node2D
+extends NPC
 class_name Smithy
 
 @export var inventory: Inventory

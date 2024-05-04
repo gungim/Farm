@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dh7a1e4y2hlaf" path="res://sprite/map/lakeside.png" id="8_p5hml"]
 [ext_resource type="Texture2D" uid="uid://df8n352gwa07n" path="res://sprite/map/lake_map.png" id="9_jcpfl"]
 [ext_resource type="PackedScene" uid="uid://cs0y1kjlqxjyi" path="res://scenes/ui/default_ui.tscn" id="10_k18b4"]
-[ext_resource type="PackedScene" uid="uid://bj3ag25um2a4k" path="res://scenes/entities/construction/smithy/smithy.tscn" id="11_dhb30"]
+[ext_resource type="PackedScene" uid="uid://c3nhhksasc336" path="res://scenes/entities/npc/smithy/smithy_npc.tscn" id="11_5tlbc"]
 [ext_resource type="PackedScene" uid="uid://cgiuwxfh21bhm" path="res://scenes/entities/npc/kitchen/chef_npc.tscn" id="16_ah1ta"]
 [ext_resource type="PackedScene" uid="uid://yk88124h8iqj" path="res://scenes/entities/npc/store/farm_store_npc.tscn" id="17_yvtlk"]
 [ext_resource type="PackedScene" uid="uid://m2ib88feldcx" path="res://scenes/character/player/Player.tscn" id="23_oah11"]
@@ -2264,8 +2264,8 @@ position = Vector2(1026, 382)
 [node name="FarmStoreNPC" parent="Entity" instance=ExtResource("17_yvtlk")]
 position = Vector2(335, 27)
 
-[node name="Smithy" parent="Entity" instance=ExtResource("11_dhb30")]
-position = Vector2(980, 51)
+[node name="SmithyNPC" parent="Entity" instance=ExtResource("11_5tlbc")]
+position = Vector2(984, 41)
 
 [node name="Player" parent="Entity" instance=ExtResource("23_oah11")]
 position = Vector2(649, 365)

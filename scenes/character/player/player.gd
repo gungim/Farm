@@ -75,7 +75,7 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 
 func _on_movement_state_physics_processing(_delta):
 	var next_path = agent.get_next_path_position()
-	var new_dir: Vector2 = global_position.direction_to(next_path)
+	var new_dir: Vector2 = position.direction_to(next_path)
 
 	if get_input() != Vector2.ZERO:
 		agent.target_position = position

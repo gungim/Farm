@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=4 format=3 uid="uid://2sr5fnen5j5"]
 
-[ext_resource type="Script" path="res://core/recipe.gd" id="1_gn07k"]
+[ext_resource type="Script" path="res://core/recipe/recipe.gd" id="1_gn07k"]
 [ext_resource type="Resource" uid="uid://b2i3f12giruau" path="res://scenes/inventory/db/items/axe_2.tres" id="1_mkiil"]
 [ext_resource type="Texture2D" uid="uid://nv2ney24nd3m" path="res://sprite/items/tool/axe_2.png" id="2_tj115"]
 
