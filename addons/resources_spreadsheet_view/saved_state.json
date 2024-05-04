@@ -1,5 +1,13 @@
 {
   "hidden_columns": {
+    "res://scenes/entities/construction/smithy/db/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://scenes/entities/npc/kitchen/db/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
     "res://scenes/farm_entity/kitchen/db/": {
       "resource_local_to_scene": true,
       "resource_name": true
@@ -31,7 +39,9 @@
     "res://scenes/farm_entity/kitchen/db/",
     "res://scenes/inventory/db/categories/",
     "res://scenes/inventory/db/items/",
-    "res://scenes/farm_entity/seed/"
+    "res://scenes/farm_entity/seed/",
+    "res://scenes/entities/construction/smithy/db/",
+    "res://scenes/entities/npc/kitchen/db/"
   ],
   "table_functions": {
     "filter": [

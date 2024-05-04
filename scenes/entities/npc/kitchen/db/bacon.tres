@@ -24,5 +24,5 @@ display_name = "Thịt xông khói"
 description = "Thịt xông khói"
 icon = ExtResource("1_1f13f")
 ingredients = Array[ExtResource("4_1ryie")]([SubResource("Resource_iinup"), SubResource("Resource_3aat1")])
-time = 0.0
+time = 1210.0
 finished_product = ExtResource("1_gy67p")

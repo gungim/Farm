@@ -3,6 +3,7 @@ class_name NPC
 
 @onready var menu: Control = $CanvasLayer/Control
 @onready var player: Player
+@onready var npc: StaticBody2D = $StaticBody2D
 
 
 func _ready():
@@ -12,7 +13,7 @@ func _ready():
 
 func _on_static_body_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 	if event is InputEventMouseButton:
-		if player.position.distance_to(position) <= 64:
+		if player.position.distance_to(npc.global_position) <= 64:
 			if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 				menu.visible = true
 				PlayerEvents.emit_signal("on_disable_player", true)

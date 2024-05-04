@@ -25,7 +25,7 @@ func get_slot(index: int = 0) -> Slot:
 	return slots[index]
 
 
-# TODO: xử lý cho trường hợp số lượng thêm vào vượt quá max-stack
+# FIX: xử lý cho trường hợp số lượng thêm vào vượt quá max-stack
 func update_amount_slot(slot_index: int, amount_varies: int) -> int:
 	if slot_index >= slots.size() and slot_index < 0:
 		return amount_varies

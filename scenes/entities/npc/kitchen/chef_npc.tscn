@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cgiuwxfh21bhm"]
+[gd_scene load_steps=16 format=3 uid="uid://cgiuwxfh21bhm"]
 
 [ext_resource type="PackedScene" uid="uid://bq7hs1udtyav" path="res://scenes/entities/npc/npc.tscn" id="1_gh4ss"]
 [ext_resource type="Texture2D" uid="uid://dx67xt7nn1vh2" path="res://sprite/character/chef_npc.png" id="2_o2huq"]
+[ext_resource type="Texture2D" uid="uid://bmc8h54ahygi3" path="res://sprite/construction/house.png" id="2_qjteh"]
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/menu/kitchen_grid.gd" id="3_lsaa3"]
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/menu/kitchen_menu.gd" id="3_wkicd"]
 [ext_resource type="Texture2D" uid="uid://brrr2wttetm13" path="res://sprite/ui/GUI_4x copy 2.png" id="4_8dnsm"]
@@ -11,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://d1u6mk00ke18l" path="res://sprite/ui/3.png" id="7_avyrw"]
 [ext_resource type="PackedScene" uid="uid://ymrqv2xigrq2" path="res://scenes/entities/npc/kitchen/info/recipe_info.tscn" id="8_50w36"]
 [ext_resource type="PackedScene" uid="uid://bg8clmr7r61h" path="res://scenes/entities/npc/kitchen/info/kitchen_cooking.tscn" id="9_2m7ys"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kioc"]
+size = Vector2(68, 60)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hp1b5"]
 radius = 6.0
@@ -23,6 +27,21 @@ shadow_offset = Vector2(1, 0)
 
 [node name="ChefNPC" instance=ExtResource("1_gh4ss")]
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="." index="0"]
+scale = Vector2(1.48, 1.48)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" index="0"]
+position = Vector2(-3.8147e-06, -3.8147e-06)
+scale = Vector2(0.193073, 0.193073)
+texture = ExtResource("2_qjteh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" index="1"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_4kioc")
+
+[node name="StaticBody2D" parent="." index="1"]
+position = Vector2(27, 60)
+
 [node name="Sprite2D" parent="StaticBody2D" index="0"]
 texture = ExtResource("2_o2huq")
 hframes = 9
@@ -33,6 +52,7 @@ position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_hp1b5")
 
 [node name="Control" parent="CanvasLayer" index="0"]
+visible = false
 anchor_left = 0.2
 anchor_top = 0.15
 anchor_right = 0.8
