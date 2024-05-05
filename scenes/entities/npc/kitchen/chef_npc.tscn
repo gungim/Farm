@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/info/tab.gd" id="6_blgx5"]
 [ext_resource type="PackedScene" uid="uid://wbhjka623xeu" path="res://core/recipe/recipe_slot_ui.tscn" id="7_a0ppr"]
 [ext_resource type="Texture2D" uid="uid://d1u6mk00ke18l" path="res://sprite/ui/3.png" id="7_avyrw"]
-[ext_resource type="PackedScene" uid="uid://ymrqv2xigrq2" path="res://scenes/entities/npc/kitchen/info/recipe_info.tscn" id="8_50w36"]
+[ext_resource type="PackedScene" uid="uid://bhsy5m6kifgl3" path="res://scenes/entities/npc/kitchen/info/recipe_info.tscn" id="8_50w36"]
 [ext_resource type="PackedScene" uid="uid://bg8clmr7r61h" path="res://scenes/entities/npc/kitchen/info/kitchen_cooking.tscn" id="9_2m7ys"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4kioc"]
@@ -82,11 +82,12 @@ layout_mode = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer" index="0"]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer" index="0" node_paths=PackedStringArray("info_container")]
 layout_direction = 2
 layout_mode = 2
 columns = 6
 script = ExtResource("5_r76e6")
+info_container = NodePath("../../../../TabContainer/InfoTab/RecipeInfo")
 database = ExtResource("5_kn8bj")
 
 [node name="RecipeSlot" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer/GridContainer" index="0" instance=ExtResource("7_a0ppr")]
@@ -117,7 +118,6 @@ script = ExtResource("6_blgx5")
 
 [node name="InfoTab" type="TabBar" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/TabContainer" index="1"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_20as3")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/TabContainer/InfoTab" index="0"]
 layout_mode = 1

@@ -1,22 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://bt3gl1pvq782y"]
+[gd_scene load_steps=5 format=3 uid="uid://bt3gl1pvq782y"]
 
-[ext_resource type="PackedScene" uid="uid://ckmbf7xea4x1t" path="res://scenes/ui/item.tscn" id="1_ptc0h"]
-[ext_resource type="Script" path="res://scenes/entities/npc/smithy/item.gd" id="1_qolvb"]
-[ext_resource type="LabelSettings" uid="uid://bdbncs3huvmtp" path="res://style/labe_style.tres" id="2_6agge"]
+[ext_resource type="Texture2D" uid="uid://d1u6mk00ke18l" path="res://sprite/ui/3.png" id="1_8tjep"]
+[ext_resource type="Script" path="res://scenes/entities/npc/smithy/item.gd" id="2_6wed4"]
+[ext_resource type="Texture2D" uid="uid://cm4hxagctc07y" path="res://sprite/items/tool/axe.png" id="2_nda6b"]
 
-[node name="Panel" type="Panel"]
-script = ExtResource("1_qolvb")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fiyw6"]
+texture = ExtResource("1_8tjep")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/separation = 10
-
-[node name="Item" parent="HBoxContainer" instance=ExtResource("1_ptc0h")]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer"]
-layout_mode = 2
+[node name="SmithySlotUI" type="Button"]
+custom_minimum_size = Vector2(180, 54)
+anchors_preset = -1
+anchor_right = 0.155
+anchor_bottom = 0.083
+offset_right = -0.559998
+offset_bottom = 0.215996
+theme_override_styles/normal = SubResource("StyleBoxTexture_fiyw6")
 text = "Test"
-label_settings = ExtResource("2_6agge")
+icon = ExtResource("2_nda6b")
+alignment = 0
+expand_icon = true
+script = ExtResource("2_6wed4")

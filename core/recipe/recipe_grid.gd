@@ -20,7 +20,7 @@ func setup():
 	for i in database.amount:
 		var item = database.slots[i]
 
-		var obj: RecipeSlotUI = slot_scene.instantiate()
+		var obj = slot_scene.instantiate()
 
 		obj.pressed.connect(_item_pressed.bind(item))
 

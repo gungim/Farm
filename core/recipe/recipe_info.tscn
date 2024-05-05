@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c020nwuhxw7kw"]
+
+[ext_resource type="Script" path="res://core/recipe/recipe_info.gd" id="1_1bkjt"]
+[ext_resource type="Script" path="res://core/inventory/inventory_item_grid.gd" id="2_a11va"]
+
+[node name="RecipeInfo" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1bkjt")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Nguyên liệu để nâng cấp"
+horizontal_alignment = 1
+
+[node name="InventoryItemGrid" type="GridContainer" parent="."]
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("2_a11va")
+drag_item = false

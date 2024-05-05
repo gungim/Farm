@@ -1,9 +1,8 @@
-extends MarginContainer
+extends RecipeInfo
+class_name KitchenRecipeInfo
 
-@onready var raw_material_grid: InventoryItemGrid = $VBoxContainer/InventoryItemGrid
-
-@onready var start_button: Button = $VBoxContainer/HBoxContainer/StartButton
-@onready var item_icon: ItemIcon = $VBoxContainer/Item
+@onready var start_button: Button = $HBoxContainer/StartButton
+@onready var item_icon: ItemIcon = $Item
 
 @export var hotbar_db: Inventory
 
@@ -12,32 +11,17 @@ var recipe_item_added: bool = false
 
 
 func _ready():
-	FarmEvents.connect("recipe_select", _recipe_select)
 	FarmEvents.connect("start_cooking_success", _on_start_cooking_success)
 	visible = false
 	start_button.disabled = true
 
 
-func _recipe_select(recipe: Recipe):
-	if recipe:
-		visible = true
+func _help_view_info(item: Recipe):
+	current_recipe = item
 
-		current_recipe = recipe
-
-		$VBoxContainer/Label.text = "Weo, bạn muốn nấu món " + current_recipe.display_name + " ư?"
-		$VBoxContainer/TimeLabel.text = (
-			"Thời gian: " + GlobalEvents.format_time(int(current_recipe.time))
-		)
-		item_icon.set_icon(current_recipe.icon)
-
-		raw_material_grid.inventory.amount = current_recipe.ingredients.size()
-		raw_material_grid.inventory.slots = current_recipe.ingredients
-		raw_material_grid.setup_slots()
-
-		check_db()
-	else:
-		visible = false
-		raw_material_grid.reset()
+	$Label.text = "Weo, bạn muốn nấu món " + current_recipe.display_name + " ư?"
+	$TimeLabel.text = ("Thời gian: " + GlobalEvents.format_time(int(current_recipe.time)))
+	check_db()
 
 
 func _on_cancel_button_pressed():
@@ -83,7 +67,6 @@ func check_db():
 			obj["valid"] = true
 		else:
 			obj["valid"] = false
-
 
 		obj_of_amount[recipe.resource_name] = obj
 

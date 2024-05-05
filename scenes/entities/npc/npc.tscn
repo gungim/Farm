@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bq7hs1udtyav"]
+[gd_scene load_steps=6 format=3 uid="uid://bq7hs1udtyav"]
 
 [ext_resource type="Script" path="res://scenes/entities/npc/npc.gd" id="1_y5lgh"]
 [ext_resource type="Texture2D" uid="uid://cn8rq3wcxjhjm" path="res://sprite/ui/11.png" id="2_eaxhh"]
 [ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="3_caipq"]
-[ext_resource type="LabelSettings" uid="uid://bdbncs3huvmtp" path="res://style/labe_style.tres" id="4_4i577"]
 [ext_resource type="Texture2D" uid="uid://bpttxlnhum2y2" path="res://sprite/ui/1.png" id="5_sosl8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8jpni"]
@@ -68,8 +67,9 @@ size_flags_horizontal = 4
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/AspectRatioContainer"]
 layout_mode = 2
+theme_type_variation = &"HeaderLarge"
 theme_override_fonts/font = ExtResource("3_caipq")
-label_settings = ExtResource("4_4i577")
+text = "Title"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer"]
 layout_mode = 2

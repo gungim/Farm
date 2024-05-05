@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ygwo6d3baxhs"]
+
+[ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="1_m8wdi"]
+
+[resource]
+default_font = ExtResource("1_m8wdi")
+default_font_size = 16
+HeaderLarge/font_sizes/font_size = 32
