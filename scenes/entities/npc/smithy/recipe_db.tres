@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="RecipeDB" load_steps=2 format=3 uid="uid://kv4xc5ep3357"]
-
-[ext_resource type="Script" path="res://core/recipe/recipe_db.gd" id="1_tjgp2"]
-
-[resource]
-script = ExtResource("1_tjgp2")
-slots = Array[Resource("res://core/recipe/recipe.gd")]([])
-amount = 40

@@ -1,8 +1,17 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ygwo6d3baxhs"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://ygwo6d3baxhs"]
 
+[ext_resource type="Texture2D" uid="uid://d1u6mk00ke18l" path="res://sprite/ui/3.png" id="1_cqgk6"]
 [ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="1_m8wdi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lcyth"]
+texture = ExtResource("1_cqgk6")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
 
 [resource]
 default_font = ExtResource("1_m8wdi")
 default_font_size = 16
+Button/styles/normal = SubResource("StyleBoxTexture_lcyth")
 HeaderLarge/font_sizes/font_size = 32

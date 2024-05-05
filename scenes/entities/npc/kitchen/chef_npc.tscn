@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/info/tab.gd" id="6_blgx5"]
 [ext_resource type="PackedScene" uid="uid://wbhjka623xeu" path="res://core/recipe/recipe_slot_ui.tscn" id="7_a0ppr"]
 [ext_resource type="Texture2D" uid="uid://d1u6mk00ke18l" path="res://sprite/ui/3.png" id="7_avyrw"]
-[ext_resource type="PackedScene" uid="uid://bhsy5m6kifgl3" path="res://scenes/entities/npc/kitchen/info/recipe_info.tscn" id="8_50w36"]
+[ext_resource type="PackedScene" uid="uid://bhsy5m6kifgl3" path="res://scenes/entities/npc/kitchen/info/kitchen_recipe_info.tscn" id="8_50w36"]
 [ext_resource type="PackedScene" uid="uid://bg8clmr7r61h" path="res://scenes/entities/npc/kitchen/info/kitchen_cooking.tscn" id="9_2m7ys"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4kioc"]

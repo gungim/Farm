@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bt3gl1pvq782y"]
 
 [ext_resource type="Texture2D" uid="uid://d1u6mk00ke18l" path="res://sprite/ui/3.png" id="1_8tjep"]
-[ext_resource type="Script" path="res://scenes/entities/npc/smithy/item.gd" id="2_6wed4"]
+[ext_resource type="Script" path="res://scenes/entities/npc/smithy/smithy_slot_ui.gd" id="2_6wed4"]
 [ext_resource type="Texture2D" uid="uid://cm4hxagctc07y" path="res://sprite/items/tool/axe.png" id="2_nda6b"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fiyw6"]

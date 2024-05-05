@@ -1,7 +1,8 @@
-extends VBoxContainer
+extends RecipeInfo
 class_name SmithyRecipeInfo
 
-@onready var grid: InventoryItemGrid = $InventoryItemGrid
+
+@export var hotbar_db: Inventory
 
 
 func _ready():
@@ -28,3 +29,12 @@ func view_info(item: Recipe):
 
 	grid.inventory = database
 	grid.setup_slots()
+
+
+func _help_view_info(item: Recipe):
+	current_recipe = item
+	check_db()
+
+
+func check_db():
+	pass
