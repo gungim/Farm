@@ -24,7 +24,7 @@ func update_info_slot(new_slot: Cooking):
 		icon.text = cooking.recipe.display_name
 		if not timer.is_start:
 			timer.start_time = Time.get_unix_time_from_system()
-			timer.completed_time = cooking.completed_time
+			timer.completed_time = cooking.recipe.time
 			timer.start()
 	else:
 		icon.icon = null
@@ -32,6 +32,7 @@ func update_info_slot(new_slot: Cooking):
 
 
 func _on_done():
+	ok_button.text = "Hoàn thành"
 	ok_button.disabled = false
 
 
@@ -43,5 +44,5 @@ func _on_cancel_pressed():
 	cancel_pressed.emit()
 
 
-func _on_timer_timeout(value: String):
-	print_debug(value)
+func _on_timer_timeout(value: float):
+	ok_button.text = GlobalEvents.format_time(value)

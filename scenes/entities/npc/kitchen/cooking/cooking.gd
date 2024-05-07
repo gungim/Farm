@@ -6,5 +6,3 @@ class_name Cooking
 @export var start_time: float
 
 @export var recipe: Recipe
-
-@export var completed_time: float
