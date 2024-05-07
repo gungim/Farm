@@ -1,9 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://cgiuwxfh21bhm"]
+[gd_scene load_steps=19 format=3 uid="uid://cgiuwxfh21bhm"]
 
 [ext_resource type="PackedScene" uid="uid://bq7hs1udtyav" path="res://scenes/entities/npc/npc.tscn" id="1_gh4ss"]
 [ext_resource type="Texture2D" uid="uid://dx67xt7nn1vh2" path="res://sprite/character/chef_npc.png" id="2_o2huq"]
 [ext_resource type="Texture2D" uid="uid://bmc8h54ahygi3" path="res://sprite/construction/house.png" id="2_qjteh"]
-[ext_resource type="Script" path="res://scenes/entities/npc/kitchen/menu/kitchen_menu.gd" id="3_wkicd"]
 [ext_resource type="Texture2D" uid="uid://brrr2wttetm13" path="res://sprite/ui/GUI_4x copy 2.png" id="4_8dnsm"]
 [ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="5_20as3"]
 [ext_resource type="Resource" uid="uid://bl5vrv55mibwy" path="res://scenes/entities/npc/kitchen/kitchent_recipe.tres" id="5_kn8bj"]
@@ -69,7 +68,6 @@ text = "Chế biến các món ăn"
 layout_mode = 2
 theme_override_constants/separation = 1
 collapsed = true
-script = ExtResource("3_wkicd")
 
 [node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer" index="0"]
 layout_mode = 2
@@ -86,12 +84,13 @@ layout_mode = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer" index="0" node_paths=PackedStringArray("info_container")]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer" index="0" node_paths=PackedStringArray("info_container", "tab_container")]
 layout_direction = 2
 layout_mode = 2
 columns = 6
 script = ExtResource("5_r76e6")
 info_container = NodePath("../../../../TabContainer/InfoTab/RecipeInfo")
+tab_container = NodePath("../../../../TabContainer")
 database = ExtResource("5_kn8bj")
 
 [node name="RecipeSlot" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer/GridContainer" index="0" instance=ExtResource("7_a0ppr")]
@@ -118,11 +117,9 @@ theme_override_constants/side_margin = 2
 theme_override_fonts/font = ExtResource("5_20as3")
 theme_override_styles/panel = SubResource("StyleBoxFlat_hs2jq")
 tab_alignment = 2
-current_tab = 1
 script = ExtResource("6_blgx5")
 
 [node name="InfoTab" type="TabBar" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/TabContainer" index="1"]
-visible = false
 layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/TabContainer/InfoTab" index="0"]
@@ -139,11 +136,13 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="RecipeInfo" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/TabContainer/InfoTab" index="1" node_paths=PackedStringArray("kitchen_cooking") instance=ExtResource("8_50w36")]
+[node name="RecipeInfo" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/TabContainer/InfoTab" index="1" node_paths=PackedStringArray("kitchen_cooking", "tab_container") instance=ExtResource("8_50w36")]
 layout_mode = 1
 kitchen_cooking = NodePath("../../CookingTab/KitchentCookingTab")
+tab_container = NodePath("../..")
 
 [node name="CookingTab" type="TabBar" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/TabContainer" index="2"]
+visible = false
 layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/TabContainer/CookingTab" index="0"]

@@ -6,6 +6,7 @@ class_name KitchenRecipeInfo
 
 @export var hotbar_db: Inventory
 @export var kitchen_cooking: KitchenCooking
+@export var tab_container: TabContainer
 
 
 func _ready():
@@ -38,6 +39,7 @@ func _on_start_button_pressed():
 
 	kitchen_cooking.add_thread(cooking)
 	check_db()
+	tab_container.current_tab = 1
 
 
 # kiểm tra các items ở trong hotbar có đủ số lượng cần thiết để làm current_recipe không
