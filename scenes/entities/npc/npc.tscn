@@ -11,6 +11,10 @@ texture_margin_left = 6.0
 texture_margin_top = 6.0
 texture_margin_right = 6.0
 texture_margin_bottom = 6.0
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
 
 [node name="NPC" type="Node2D"]
 script = ExtResource("1_y5lgh")
@@ -46,40 +50,30 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_8jpni")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 21
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="VSplitContainer" type="VSplitContainer" parent="CanvasLayer/Control/MarginContainer"]
+[node name="VSplitContainer" type="VSplitContainer" parent="CanvasLayer/Control/PanelContainer"]
 layout_mode = 2
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer/Control/PanelContainer/VSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/AspectRatioContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/PanelContainer/VSplitContainer/AspectRatioContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 theme_override_fonts/font = ExtResource("3_caipq")
 text = "Title"
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/PanelContainer/VSplitContainer"]
 layout_mode = 2
 
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = 920.24
-offset_top = 4.896
-offset_right = 960.24
-offset_bottom = 44.896
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -42.0
+offset_bottom = 42.0
+grow_horizontal = 0
 texture_normal = ExtResource("5_sosl8")
 
 [connection signal="input_event" from="StaticBody2D" to="." method="_on_static_body_2d_input_event"]

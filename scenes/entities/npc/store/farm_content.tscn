@@ -1,0 +1,122 @@
+[gd_scene load_steps=10 format=3 uid="uid://cwgj62xrml1ri"]
+
+[ext_resource type="Script" path="res://scenes/entities/npc/sell_tab/tab.gd" id="1_fb6r4"]
+[ext_resource type="Texture2D" uid="uid://d1u6mk00ke18l" path="res://sprite/ui/3.png" id="2_4pgnp"]
+[ext_resource type="PackedScene" uid="uid://c6m2hgo25o1tw" path="res://scenes/entities/npc/store/grid/farm_store_grid.tscn" id="3_238dv"]
+[ext_resource type="Script" path="res://scenes/entities/npc/store/info_tab.gd" id="4_08hlc"]
+[ext_resource type="LabelSettings" uid="uid://bdbncs3huvmtp" path="res://style/labe_style.tres" id="5_k0eeo"]
+[ext_resource type="PackedScene" uid="uid://ckmbf7xea4x1t" path="res://scenes/ui/item.tscn" id="6_31cgd"]
+[ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="7_kqufo"]
+[ext_resource type="Texture2D" uid="uid://dtpjum3svhnv2" path="res://sprite/ui/button.png" id="8_my7w2"]
+[ext_resource type="PackedScene" uid="uid://1fh05cuk0h6v" path="res://scenes/entities/npc/sell_tab/player_sell_tab.tscn" id="9_i87sx"]
+
+[node name="FarmContent" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fb6r4")
+
+[node name="TabBar" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TabContainer/TabBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4pgnp")
+region_rect = Rect2(0, 0, 42, 43)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/TabBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HSplitContainer" type="HSplitContainer" parent="TabContainer/TabBar/MarginContainer"]
+layout_mode = 2
+split_offset = 41
+dragger_visibility = 1
+
+[node name="FarmStoreGrid" parent="TabContainer/TabBar/MarginContainer/HSplitContainer" node_paths=PackedStringArray("info_tab") instance=ExtResource("3_238dv")]
+clip_contents = true
+layout_mode = 2
+columns = 6
+info_tab = NodePath("../VBoxContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/TabBar/MarginContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("4_08hlc")
+
+[node name="Label" type="Label" parent="TabContainer/TabBar/MarginContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+text = "Chi tiết"
+label_settings = ExtResource("5_k0eeo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Info" type="VBoxContainer" parent="TabContainer/TabBar/MarginContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Item" parent="TabContainer/TabBar/MarginContainer/HSplitContainer/VBoxContainer/Info" instance=ExtResource("6_31cgd")]
+layout_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="TabContainer/TabBar/MarginContainer/HSplitContainer/VBoxContainer/Info"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="TabContainer/TabBar/MarginContainer/HSplitContainer/VBoxContainer/Info"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_kqufo")
+text = "Mua"
+icon = ExtResource("8_my7w2")
+flat = true
+icon_alignment = 1
+
+[node name="TabBar2" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_kqufo")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TabContainer/TabBar2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4pgnp")
+region_rect = Rect2(0, 0, 42, 43)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="PlayerSellTab" parent="TabContainer/TabBar2" instance=ExtResource("9_i87sx")]
+layout_mode = 1
+
+[connection signal="pressed" from="TabContainer/TabBar/MarginContainer/HSplitContainer/VBoxContainer/Info/Button" to="TabContainer/TabBar/MarginContainer/HSplitContainer/VBoxContainer" method="_on_button_pressed"]

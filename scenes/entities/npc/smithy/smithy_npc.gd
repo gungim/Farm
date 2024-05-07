@@ -1,5 +1,5 @@
 extends NPC
-class_name Smithy
+class_name SmithyNPC
 
 @export var inventory: Inventory
 

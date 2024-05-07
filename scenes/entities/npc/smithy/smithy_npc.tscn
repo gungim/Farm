@@ -1,12 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3nhhksasc336"]
+[gd_scene load_steps=8 format=3 uid="uid://c3nhhksasc336"]
 
 [ext_resource type="PackedScene" uid="uid://bq7hs1udtyav" path="res://scenes/entities/npc/npc.tscn" id="1_5u521"]
 [ext_resource type="Texture2D" uid="uid://bmc8h54ahygi3" path="res://sprite/construction/house.png" id="2_0ktt5"]
+[ext_resource type="Script" path="res://scenes/entities/npc/smithy/smithy_npc.gd" id="2_c6sth"]
 [ext_resource type="Texture2D" uid="uid://dy3plunrrdd6p" path="res://sprite/character/blacksmith.png" id="3_oefxf"]
-[ext_resource type="Script" path="res://scenes/entities/npc/smithy/grid.gd" id="4_ku8k8"]
-[ext_resource type="PackedScene" uid="uid://bt3gl1pvq782y" path="res://scenes/entities/npc/smithy/smithy_slot_ui.tscn" id="4_w8m66"]
-[ext_resource type="Resource" uid="uid://bujw6f3d02837" path="res://scenes/entities/npc/smithy/smithy_db.tres" id="5_k1lxy"]
-[ext_resource type="PackedScene" uid="uid://cgrj07tf2ngmx" path="res://scenes/entities/npc/smithy/smithy_recipe_info.tscn" id="7_cf6qa"]
+[ext_resource type="PackedScene" uid="uid://by2quldgbsy6s" path="res://scenes/entities/npc/smithy/smithy_content.tscn" id="5_fivyt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lt2p7"]
 size = Vector2(68, 60)
@@ -15,6 +13,8 @@ size = Vector2(68, 60)
 radius = 7.0
 
 [node name="SmithyNPC" instance=ExtResource("1_5u521")]
+script = ExtResource("2_c6sth")
+inventory = null
 
 [node name="House" type="StaticBody2D" parent="." index="0"]
 scale = Vector2(1.48, 1.48)
@@ -39,74 +39,8 @@ hframes = 9
 position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_3x8j7")
 
-[node name="Control" parent="CanvasLayer" index="0"]
-visible = false
+[node name="Label" parent="CanvasLayer/Control/PanelContainer/VSplitContainer/AspectRatioContainer" index="0"]
+text = "Lò rèn"
 
-[node name="HSplitContainer" type="HSplitContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer" index="0"]
-layout_mode = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer" index="0"]
-layout_mode = 2
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
-
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/ScrollContainer" index="0" node_paths=PackedStringArray("info_container")]
-layout_mode = 2
-script = ExtResource("4_ku8k8")
-info_container = NodePath("../../SmithyRecipeInfo")
-slot_scene = ExtResource("4_w8m66")
-database = ExtResource("5_k1lxy")
-
-[node name="SmithySlotUI" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/ScrollContainer/GridContainer" index="0" instance=ExtResource("4_w8m66")]
-layout_mode = 2
-
-[node name="SmithySlotUI3" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/ScrollContainer/GridContainer" index="1" instance=ExtResource("4_w8m66")]
-layout_mode = 2
-
-[node name="SmithySlotUI4" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/ScrollContainer/GridContainer" index="2" instance=ExtResource("4_w8m66")]
-layout_mode = 2
-
-[node name="SmithySlotUI5" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/ScrollContainer/GridContainer" index="3" instance=ExtResource("4_w8m66")]
-layout_mode = 2
-
-[node name="SmithySlotUI6" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/ScrollContainer/GridContainer" index="4" instance=ExtResource("4_w8m66")]
-layout_mode = 2
-
-[node name="SmithySlotUI7" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/ScrollContainer/GridContainer" index="5" instance=ExtResource("4_w8m66")]
-layout_mode = 2
-
-[node name="SmithySlotUI8" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/ScrollContainer/GridContainer" index="6" instance=ExtResource("4_w8m66")]
-layout_mode = 2
-
-[node name="SmithySlotUI9" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/ScrollContainer/GridContainer" index="7" instance=ExtResource("4_w8m66")]
-layout_mode = 2
-
-[node name="SmithySlotUI10" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/ScrollContainer/GridContainer" index="8" instance=ExtResource("4_w8m66")]
-layout_mode = 2
-
-[node name="SmithySlotUI11" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/ScrollContainer/GridContainer" index="9" instance=ExtResource("4_w8m66")]
-layout_mode = 2
-
-[node name="SmithySlotUI12" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/ScrollContainer/GridContainer" index="10" instance=ExtResource("4_w8m66")]
-layout_mode = 2
-
-[node name="SmithySlotUI13" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/ScrollContainer/GridContainer" index="11" instance=ExtResource("4_w8m66")]
-layout_mode = 2
-
-[node name="SmithySlotUI14" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/ScrollContainer/GridContainer" index="12" instance=ExtResource("4_w8m66")]
-layout_mode = 2
-
-[node name="SmithySlotUI15" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/ScrollContainer/GridContainer" index="13" instance=ExtResource("4_w8m66")]
-layout_mode = 2
-
-[node name="SmithySlotUI16" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/ScrollContainer/GridContainer" index="14" instance=ExtResource("4_w8m66")]
-layout_mode = 2
-
-[node name="SmithySlotUI17" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/ScrollContainer/GridContainer" index="15" instance=ExtResource("4_w8m66")]
-layout_mode = 2
-
-[node name="SmithySlotUI2" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/ScrollContainer/GridContainer" index="16" instance=ExtResource("4_w8m66")]
-layout_mode = 2
-
-[node name="SmithyRecipeInfo" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer" index="1" instance=ExtResource("7_cf6qa")]
+[node name="SmithyContent" parent="CanvasLayer/Control/PanelContainer/VSplitContainer/MarginContainer" index="0" instance=ExtResource("5_fivyt")]
 layout_mode = 2
