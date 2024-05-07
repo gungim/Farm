@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CookingDB" load_steps=2 format=3 uid="uid://cxndeni5dcusi"]
+
+[ext_resource type="Script" path="res://scenes/entities/npc/kitchen/cooking/cooking_db.gd" id="1_ech3i"]
+
+[resource]
+script = ExtResource("1_ech3i")
+list = Array[Resource("res://scenes/entities/npc/kitchen/cooking/cooking.gd")]([])

@@ -5,10 +5,10 @@ class_name KitchenRecipeInfo
 @onready var item_icon: ItemIcon = $Item
 
 @export var hotbar_db: Inventory
+@export var kitchen_cooking: KitchenCooking
 
 
 func _ready():
-	FarmEvents.connect("start_cooking_success", _on_start_cooking_success)
 	visible = false
 	start_button.disabled = true
 
@@ -22,18 +22,22 @@ func _help_view_info(item: Recipe):
 
 
 func _on_cancel_button_pressed():
-	FarmEvents.emit_signal("recipe_select", null)
 	current_recipe = null
 
 
 func _on_start_button_pressed():
-	FarmEvents.emit_signal("start_cooking", current_recipe)
-
-
-# remove all item of recipe ingredients
-func _on_start_cooking_success(_recipe: Recipe):
 	for recipe_item in current_recipe.ingredients:
 		hotbar_db.remove_item_with_amount(recipe_item.item, recipe_item.amount)
+
+	var current_time = Time.get_unix_time_from_system()
+
+	var cooking = Cooking.new()
+	cooking.id = current_recipe.name + "_" + str(current_time)
+	cooking.start_time = current_time
+	cooking.recipe = current_recipe
+
+	kitchen_cooking.add_thread(cooking)
+	check_db()
 
 
 # kiểm tra các items ở trong hotbar có đủ số lượng cần thiết để làm current_recipe không

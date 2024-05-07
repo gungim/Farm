@@ -39,6 +39,9 @@ hframes = 9
 position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_3x8j7")
 
+[node name="Control" parent="CanvasLayer" index="0"]
+visible = false
+
 [node name="HSplitContainer" type="HSplitContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer" index="0"]
 layout_mode = 2
 

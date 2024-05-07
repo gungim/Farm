@@ -55,7 +55,7 @@ func check_ingredients(db: Inventory) -> bool:
 				if recipe.item == slot.item:
 					filter_slot.push_back(slot)
 
-		var obj = {"array": [], "value": false}
+		var obj = {"array": [], "valid": false}
 		obj["array"] = filter_slot
 
 		var total_amount = filter_slot.reduce(func(sum, i): return sum + i.amount, 0)
@@ -65,7 +65,7 @@ func check_ingredients(db: Inventory) -> bool:
 		else:
 			obj["valid"] = false
 
-		obj_of_amount[recipe.resource_name] = obj
+		obj_of_amount[recipe.item.name] = obj
 
 	var checkall_valid: bool = true
 	for key in obj_of_amount.keys():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cgiuwxfh21bhm"]
+[gd_scene load_steps=20 format=3 uid="uid://cgiuwxfh21bhm"]
 
 [ext_resource type="PackedScene" uid="uid://bq7hs1udtyav" path="res://scenes/entities/npc/npc.tscn" id="1_gh4ss"]
 [ext_resource type="Texture2D" uid="uid://dx67xt7nn1vh2" path="res://sprite/character/chef_npc.png" id="2_o2huq"]
@@ -12,7 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://wbhjka623xeu" path="res://core/recipe/recipe_slot_ui.tscn" id="7_a0ppr"]
 [ext_resource type="Texture2D" uid="uid://d1u6mk00ke18l" path="res://sprite/ui/3.png" id="7_avyrw"]
 [ext_resource type="PackedScene" uid="uid://bhsy5m6kifgl3" path="res://scenes/entities/npc/kitchen/info/kitchen_recipe_info.tscn" id="8_50w36"]
-[ext_resource type="PackedScene" uid="uid://bg8clmr7r61h" path="res://scenes/entities/npc/kitchen/info/kitchen_cooking.tscn" id="9_2m7ys"]
+[ext_resource type="Script" path="res://scenes/entities/npc/kitchen/cooking/kitchen_cooking.gd" id="13_apvxn"]
+[ext_resource type="Script" path="res://scenes/entities/npc/kitchen/cooking/grid.gd" id="14_24nei"]
+[ext_resource type="Resource" uid="uid://cxndeni5dcusi" path="res://scenes/entities/npc/kitchen/cooking/db.tres" id="15_x778b"]
+[ext_resource type="PackedScene" uid="uid://d07relr7hw1a5" path="res://scenes/entities/npc/kitchen/cooking/cooking_slot.tscn" id="16_c8e4i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4kioc"]
 size = Vector2(68, 60)
@@ -53,6 +56,7 @@ position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_hp1b5")
 
 [node name="Control" parent="CanvasLayer" index="0"]
+visible = false
 anchor_left = 0.2
 anchor_top = 0.15
 anchor_right = 0.8
@@ -114,9 +118,11 @@ theme_override_constants/side_margin = 2
 theme_override_fonts/font = ExtResource("5_20as3")
 theme_override_styles/panel = SubResource("StyleBoxFlat_hs2jq")
 tab_alignment = 2
+current_tab = 1
 script = ExtResource("6_blgx5")
 
 [node name="InfoTab" type="TabBar" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/TabContainer" index="1"]
+visible = false
 layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/TabContainer/InfoTab" index="0"]
@@ -133,11 +139,11 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="RecipeInfo" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/TabContainer/InfoTab" index="1" instance=ExtResource("8_50w36")]
+[node name="RecipeInfo" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/TabContainer/InfoTab" index="1" node_paths=PackedStringArray("kitchen_cooking") instance=ExtResource("8_50w36")]
 layout_mode = 1
+kitchen_cooking = NodePath("../../CookingTab/KitchentCookingTab")
 
 [node name="CookingTab" type="TabBar" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/TabContainer" index="2"]
-visible = false
 layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/TabContainer/CookingTab" index="0"]
@@ -154,8 +160,29 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="MarginContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/TabContainer/CookingTab" index="1" instance=ExtResource("9_2m7ys")]
+[node name="KitchentCookingTab" type="MarginContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/TabContainer/CookingTab" index="1"]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+script = ExtResource("13_apvxn")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/TabContainer/CookingTab/KitchentCookingTab" index="0"]
+layout_mode = 2
+script = ExtResource("14_24nei")
+database = ExtResource("15_x778b")
+
+[node name="CookingSlotUI" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/TabContainer/CookingTab/KitchentCookingTab/GridContainer" index="0" instance=ExtResource("16_c8e4i")]
+layout_mode = 2
+
+[node name="CookingSlotUI2" parent="CanvasLayer/Control/MarginContainer/VSplitContainer/MarginContainer/HSplitContainer/TabContainer/CookingTab/KitchentCookingTab/GridContainer" index="1" instance=ExtResource("16_c8e4i")]
+layout_mode = 2
 
 [node name="TextureButton" parent="CanvasLayer/Control" index="2"]
 offset_left = 692.04

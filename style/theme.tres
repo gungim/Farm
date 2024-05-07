@@ -5,9 +5,9 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lcyth"]
 texture = ExtResource("1_cqgk6")
-texture_margin_left = 6.0
+texture_margin_left = 14.0
 texture_margin_top = 6.0
-texture_margin_right = 6.0
+texture_margin_right = 14.0
 texture_margin_bottom = 6.0
 
 [resource]

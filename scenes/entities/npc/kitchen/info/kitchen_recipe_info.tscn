@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhsy5m6kifgl3"]
+[gd_scene load_steps=9 format=3 uid="uid://bhsy5m6kifgl3"]
 
 [ext_resource type="PackedScene" uid="uid://c020nwuhxw7kw" path="res://core/recipe/recipe_info.tscn" id="1_5pr6b"]
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/info/kitchen_recipe_info.gd" id="2_jqxur"]
 [ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://scenes/inventory/db/hotbar.tres" id="3_feb0r"]
 [ext_resource type="PackedScene" uid="uid://ckmbf7xea4x1t" path="res://scenes/ui/item.tscn" id="4_ovyay"]
 [ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="5_xagyk"]
+[ext_resource type="Script" path="res://core/complete_time.gd" id="6_xsc6f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_840xk"]
 font = ExtResource("5_xagyk")
@@ -12,9 +13,10 @@ font = ExtResource("5_xagyk")
 [sub_resource type="LabelSettings" id="LabelSettings_qai6m"]
 font = ExtResource("5_xagyk")
 
-[node name="RecipeInfo" instance=ExtResource("1_5pr6b")]
+[node name="KitchentRecipeInfo" instance=ExtResource("1_5pr6b")]
 script = ExtResource("2_jqxur")
 hotbar_db = ExtResource("3_feb0r")
+max_thread = 1
 
 [node name="Label" parent="." index="0"]
 text = "Nguyên liệu để nấu món"
@@ -59,6 +61,9 @@ text = "Bắt đầu"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
+
+[node name="CompleteTime" type="Node" parent="." index="6"]
+script = ExtResource("6_xsc6f")
 
 [connection signal="pressed" from="HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
