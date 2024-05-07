@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwgj62xrml1ri"]
+[gd_scene load_steps=11 format=3 uid="uid://cwgj62xrml1ri"]
 
 [ext_resource type="Script" path="res://scenes/entities/npc/sell_tab/tab.gd" id="1_fb6r4"]
 [ext_resource type="Texture2D" uid="uid://d1u6mk00ke18l" path="res://sprite/ui/3.png" id="2_4pgnp"]
 [ext_resource type="PackedScene" uid="uid://c6m2hgo25o1tw" path="res://scenes/entities/npc/store/grid/farm_store_grid.tscn" id="3_238dv"]
+[ext_resource type="StyleBox" uid="uid://rq0es8yv12vg" path="res://style/pannel.tres" id="3_vdgim"]
 [ext_resource type="Script" path="res://scenes/entities/npc/store/info_tab.gd" id="4_08hlc"]
 [ext_resource type="LabelSettings" uid="uid://bdbncs3huvmtp" path="res://style/labe_style.tres" id="5_k0eeo"]
 [ext_resource type="PackedScene" uid="uid://ckmbf7xea4x1t" path="res://scenes/ui/item.tscn" id="6_31cgd"]
@@ -61,11 +62,15 @@ layout_mode = 2
 split_offset = 41
 dragger_visibility = 1
 
-[node name="FarmStoreGrid" parent="TabContainer/TabBar/MarginContainer/HSplitContainer" node_paths=PackedStringArray("info_tab") instance=ExtResource("3_238dv")]
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/TabBar/MarginContainer/HSplitContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_vdgim")
+
+[node name="FarmStoreGrid" parent="TabContainer/TabBar/MarginContainer/HSplitContainer/PanelContainer" node_paths=PackedStringArray("info_tab") instance=ExtResource("3_238dv")]
 clip_contents = true
 layout_mode = 2
 columns = 6
-info_tab = NodePath("../VBoxContainer")
+info_tab = NodePath("../../VBoxContainer")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/TabBar/MarginContainer/HSplitContainer"]
 layout_mode = 2
