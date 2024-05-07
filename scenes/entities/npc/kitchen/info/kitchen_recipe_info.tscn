@@ -16,7 +16,6 @@ font = ExtResource("5_xagyk")
 [node name="KitchentRecipeInfo" instance=ExtResource("1_5pr6b")]
 script = ExtResource("2_jqxur")
 hotbar_db = ExtResource("3_feb0r")
-max_thread = 1
 
 [node name="Label" parent="." index="0"]
 text = "Nguyên liệu để nấu món"
@@ -35,35 +34,5 @@ text = "Nguyên liệu để hoàn thành món này"
 label_settings = SubResource("LabelSettings_qai6m")
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." index="5"]
-layout_mode = 2
-theme_override_constants/separation = 21
-alignment = 1
-
-[node name="Control2" type="Control" parent="HBoxContainer" index="0"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-
-[node name="CancelButton" type="Button" parent="HBoxContainer" index="1"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("5_xagyk")
-text = " Huỷ"
-icon_alignment = 1
-
-[node name="StartButton" type="Button" parent="HBoxContainer" index="2"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Bắt đầu"
-
-[node name="Control" type="Control" parent="HBoxContainer" index="3"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-
-[node name="CompleteTime" type="Node" parent="." index="6"]
+[node name="CompleteTime" type="Node" parent="." index="5"]
 script = ExtResource("6_xsc6f")
-
-[connection signal="pressed" from="HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

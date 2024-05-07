@@ -1,3 +1,4 @@
+@icon("inventory.svg")
 extends Resource
 class_name Inventory
 
@@ -30,19 +31,24 @@ func update_amount_slot(slot_index: int, amount_varies: int) -> int:
 	if slot_index >= slots.size() and slot_index < 0:
 		return amount_varies
 
-	var max_stack = slots[slot_index].item.max_stack
-	var total_amount = slots[slot_index].amount + amount_varies
-
-	var inserted_amount = total_amount if total_amount <= max_stack else max_stack
-	var remaining_amount = 0 if total_amount <= max_stack else total_amount - max_stack
-
-	if inserted_amount <= 0:
-		remove_at(slot_index)
+	if amount_varies < 0:
+		var new_amount = slots[slot_index].amount + amount_varies
+		if new_amount <= 0:
+			remove_at(slot_index)
+		else:
+			slots[slot_index].amount = new_amount
+		return 0
 	else:
+		var max_stack = slots[slot_index].item.max_stack
+		var total_amount = slots[slot_index].amount + amount_varies
+
+		var inserted_amount = total_amount if total_amount <= max_stack else max_stack
+		var remaining_amount = 0 if total_amount <= max_stack else total_amount - max_stack
+
 		slots[slot_index].amount = inserted_amount
 		updated_slot.emit(slot_index)
 
-	return remaining_amount
+		return remaining_amount
 
 
 func get_slot_amount(index: int) -> int:

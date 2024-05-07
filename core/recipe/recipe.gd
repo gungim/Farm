@@ -1,3 +1,4 @@
+@icon("recipe.svg")
 extends Resource
 class_name Recipe
 

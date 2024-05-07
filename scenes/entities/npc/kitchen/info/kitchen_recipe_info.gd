@@ -1,22 +1,13 @@
 extends RecipeInfo
 class_name KitchenRecipeInfo
 
-@onready var start_button: Button = $HBoxContainer/StartButton
 @onready var item_icon: ItemIcon = $Item
 
 @export var hotbar_db: Inventory
-@export var kitchen_cooking: KitchenCooking
+@export var process_grid: RecipeProcessGrid
 @export var tab_container: TabContainer
 
-
-func _ready():
-	visible = false
-	start_button.disabled = true
-
-
 func _help_view_info(item: Recipe):
-	current_recipe = item
-
 	$Label.text = "Weo, bạn muốn nấu món " + current_recipe.display_name + " ư?"
 	$TimeLabel.text = "Thời gian: " + GlobalEvents.format_time(current_recipe.time)
 	check_db()
@@ -32,12 +23,12 @@ func _on_start_button_pressed():
 
 	var current_time = Time.get_unix_time_from_system()
 
-	var cooking = RecipeProcess.new()
-	cooking.id = current_recipe.name + "_" + str(current_time)
-	cooking.start_time = current_time
-	cooking.recipe = current_recipe
+	var process = RecipeProcess.new()
+	process.id = current_recipe.name + "_" + str(current_time)
+	process.start_time = current_time
+	process.recipe = current_recipe
 
-	kitchen_cooking.add_thread(cooking)
+	process_grid.add_process(process)
 	check_db()
 	tab_container.current_tab = 1
 

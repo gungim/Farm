@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ecyq3phnubdy"]
+[gd_scene load_steps=11 format=3 uid="uid://ecyq3phnubdy"]
 
 [ext_resource type="StyleBox" uid="uid://rq0es8yv12vg" path="res://style/pannel.tres" id="1_vd4jj"]
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/grid.gd" id="1_xh1nu"]
@@ -7,10 +7,9 @@
 [ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="5_i1a8p"]
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/info/tab.gd" id="6_6dy0d"]
 [ext_resource type="PackedScene" uid="uid://bhsy5m6kifgl3" path="res://scenes/entities/npc/kitchen/info/kitchen_recipe_info.tscn" id="8_135ll"]
-[ext_resource type="Script" path="res://scenes/entities/npc/kitchen/cooking/kitchen_cooking.gd" id="9_3ia06"]
-[ext_resource type="Script" path="res://scenes/entities/npc/kitchen/cooking/grid.gd" id="10_bktf6"]
-[ext_resource type="Resource" uid="uid://cxndeni5dcusi" path="res://scenes/entities/npc/kitchen/cooking/db.tres" id="11_ukfb5"]
-[ext_resource type="PackedScene" uid="uid://d07relr7hw1a5" path="res://scenes/entities/npc/kitchen/cooking/cooking_slot.tscn" id="12_jr63j"]
+[ext_resource type="Script" path="res://core/recipe/process/recipe_process_grid.gd" id="10_bktf6"]
+[ext_resource type="Resource" uid="uid://cxndeni5dcusi" path="res://scenes/entities/npc/kitchen/cooking/process_db.tres" id="11_ukfb5"]
+[ext_resource type="PackedScene" uid="uid://d07relr7hw1a5" path="res://core/recipe/process/recipe_process_slot.tscn" id="12_jr63j"]
 
 [node name="ChefContent" type="Control"]
 layout_mode = 3
@@ -60,18 +59,19 @@ theme_override_constants/side_margin = 2
 theme_override_fonts/font = ExtResource("5_i1a8p")
 theme_override_styles/panel = ExtResource("1_vd4jj")
 tab_alignment = 2
+current_tab = 1
 script = ExtResource("6_6dy0d")
 
 [node name="InfoTab" type="TabBar" parent="HSplitContainer/TabContainer"]
+visible = false
 layout_mode = 2
 
-[node name="RecipeInfo" parent="HSplitContainer/TabContainer/InfoTab" node_paths=PackedStringArray("kitchen_cooking", "tab_container") instance=ExtResource("8_135ll")]
+[node name="RecipeInfo" parent="HSplitContainer/TabContainer/InfoTab" node_paths=PackedStringArray("process_grid", "tab_container") instance=ExtResource("8_135ll")]
 layout_mode = 1
-kitchen_cooking = NodePath("../../CookingTab/KitchentCookingTab")
+process_grid = NodePath("../../CookingTab/KitchentCookingTab/RecipeProcessGrid")
 tab_container = NodePath("../..")
 
 [node name="CookingTab" type="TabBar" parent="HSplitContainer/TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="KitchentCookingTab" type="MarginContainer" parent="HSplitContainer/TabContainer/CookingTab"]
@@ -85,15 +85,14 @@ theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 7
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
-script = ExtResource("9_3ia06")
 
-[node name="GridContainer" type="GridContainer" parent="HSplitContainer/TabContainer/CookingTab/KitchentCookingTab"]
+[node name="RecipeProcessGrid" type="GridContainer" parent="HSplitContainer/TabContainer/CookingTab/KitchentCookingTab"]
 layout_mode = 2
 script = ExtResource("10_bktf6")
 database = ExtResource("11_ukfb5")
 
-[node name="CookingSlotUI" parent="HSplitContainer/TabContainer/CookingTab/KitchentCookingTab/GridContainer" instance=ExtResource("12_jr63j")]
+[node name="RecipeProccesSlot" parent="HSplitContainer/TabContainer/CookingTab/KitchentCookingTab/RecipeProcessGrid" instance=ExtResource("12_jr63j")]
 layout_mode = 2
 
-[node name="CookingSlotUI2" parent="HSplitContainer/TabContainer/CookingTab/KitchentCookingTab/GridContainer" instance=ExtResource("12_jr63j")]
+[node name="RecipeProccesSlot2" parent="HSplitContainer/TabContainer/CookingTab/KitchentCookingTab/RecipeProcessGrid" instance=ExtResource("12_jr63j")]
 layout_mode = 2

@@ -11,29 +11,3 @@ hotbar_db = ExtResource("3_2aqfb")
 
 [node name="CompleteTime" type="Node" parent="." index="2"]
 script = ExtResource("4_4g6wd")
-
-[node name="Control" type="Control" parent="." index="3"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="." index="4"]
-layout_mode = 2
-alignment = 2
-
-[node name="CancelButton" type="Button" parent="HBoxContainer" index="0"]
-layout_mode = 2
-text = "Huỷ
-"
-
-[node name="OKButton" type="Button" parent="HBoxContainer" index="1"]
-layout_mode = 2
-text = "Nâng cấp"
-
-[node name="Control2" type="Control" parent="." index="5"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.1
-
-[connection signal="pressed" from="HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/OKButton" to="." method="_on_ok_button_pressed"]

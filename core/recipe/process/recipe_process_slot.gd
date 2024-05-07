@@ -1,5 +1,5 @@
 extends HBoxContainer
-class_name CookingSlotUI
+class_name RecipeProcessSlot
 
 @onready var timer: CompleteTimer = $CompleteTimer
 @onready var icon: Button = $IconButton

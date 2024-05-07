@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="RecipeProcessDB" load_steps=2 format=3 uid="uid://bavypolwx5530"]
+
+[ext_resource type="Script" path="res://core/recipe/process/recipe_process_db.gd" id="1_q4gio"]
+
+[resource]
+script = ExtResource("1_q4gio")
+list = Array[Resource("res://core/recipe/process/recipe_process.gd")]([])
+amount = 3

@@ -2,21 +2,36 @@ extends VBoxContainer
 class_name RecipeInfo
 
 @onready var grid: InventoryItemGrid = $InventoryItemGrid
+@onready var start_button: Button = $HBoxContainer/StartButton
+@onready var cancel_button: Button = $HBoxContainer/CancelButton
 
 var current_recipe: Recipe
 
 
 func _ready():
 	visible = false
+	start_button.disabled = true
+
+	start_button.pressed.connect(_on_start_button_pressed)
+	cancel_button.pressed.connect(_on_cancel_button_pressed)
+
+
+func _on_start_button_pressed():
+	pass
+
+
+func _on_cancel_button_pressed():
+	pass
 
 
 func view_info(item: Recipe):
-	_help_view_info(item)
 	if not item:
 		visible = false
 		return
 
 	visible = true
+	current_recipe = item
+	_help_view_info(item)
 
 	var col = item.ingredients.size()
 	if col >= 6:
@@ -33,7 +48,7 @@ func view_info(item: Recipe):
 	grid.setup_slots()
 
 
-func _help_view_info(item: Recipe):
+func _help_view_info(_item: Recipe):
 	pass
 
 

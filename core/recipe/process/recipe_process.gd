@@ -1,3 +1,4 @@
+@icon("process.svg")
 extends Resource
 class_name RecipeProcess
 

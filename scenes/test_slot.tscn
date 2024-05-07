@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://546uinnky1ln"]
+
+[ext_resource type="StyleBox" uid="uid://cltaobps0i7ka" path="res://style/slot_inline.tres" id="1_jldym"]
+[ext_resource type="Texture2D" uid="uid://cm4hxagctc07y" path="res://sprite/items/tool/axe.png" id="2_kh1rb"]
+
+[node name="TestSlot" type="PanelContainer"]
+offset_right = 62.0
+offset_bottom = 28.0
+theme_override_styles/panel = ExtResource("1_jldym")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_kh1rb")
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Test"
