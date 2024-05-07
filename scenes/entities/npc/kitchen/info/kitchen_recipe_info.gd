@@ -18,7 +18,7 @@ func _help_view_info(item: Recipe):
 	current_recipe = item
 
 	$Label.text = "Weo, bạn muốn nấu món " + current_recipe.display_name + " ư?"
-	$TimeLabel.text = ("Thời gian: " + GlobalEvents.format_time(int(current_recipe.time)))
+	$TimeLabel.text = "Thời gian: " + GlobalEvents.format_time(current_recipe.time)
 	check_db()
 
 
