@@ -34,7 +34,7 @@ vertical_scroll_mode = 3
 [node name="GridContainer" type="GridContainer" parent="HSplitContainer/PanelContainer/ScrollContainer" node_paths=PackedStringArray("info_container")]
 layout_mode = 2
 script = ExtResource("1_e4xn8")
-info_container = NodePath("../../../SmithyRecipeInfo")
+info_container = NodePath("../../../Control/TabContainer/InfoTab/SmithyRecipeInfo")
 slot_scene = ExtResource("2_ixjja")
 database = ExtResource("3_8i62i")
 
@@ -89,5 +89,25 @@ layout_mode = 2
 [node name="SmithySlotUI2" parent="HSplitContainer/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("2_ixjja")]
 layout_mode = 2
 
-[node name="SmithyRecipeInfo" parent="HSplitContainer" instance=ExtResource("4_2m0yf")]
+[node name="Control" type="Control" parent="HSplitContainer"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="HSplitContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_i4212")
+tab_alignment = 2
+
+[node name="InfoTab" type="TabBar" parent="HSplitContainer/Control/TabContainer"]
+layout_mode = 2
+
+[node name="SmithyRecipeInfo" parent="HSplitContainer/Control/TabContainer/InfoTab" instance=ExtResource("4_2m0yf")]
+layout_mode = 1
+
+[node name="ThreadTab" type="TabBar" parent="HSplitContainer/Control/TabContainer"]
+visible = false
 layout_mode = 2

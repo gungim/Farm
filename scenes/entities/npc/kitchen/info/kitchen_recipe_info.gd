@@ -32,7 +32,7 @@ func _on_start_button_pressed():
 
 	var current_time = Time.get_unix_time_from_system()
 
-	var cooking = Cooking.new()
+	var cooking = RecipeProcess.new()
 	cooking.id = current_recipe.name + "_" + str(current_time)
 	cooking.start_time = current_time
 	cooking.recipe = current_recipe

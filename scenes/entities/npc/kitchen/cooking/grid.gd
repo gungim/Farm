@@ -1,6 +1,6 @@
 extends GridContainer
 
-@export var database: CookingDB
+@export var database: RecipeProcessDB
 
 @onready var scene = load("res://scenes/entities/npc/kitchen/cooking/cooking_slot.tscn")
 
@@ -36,7 +36,7 @@ func _on_updated_slot(slot_index: int):
 	slots[slot_index].update_info_slot(item)
 
 
-func create_slot_obj(slot_item: Cooking):
+func create_slot_obj(slot_item: RecipeProcess):
 	var obj: CookingSlotUI = scene.instantiate()
 	obj.cooking = slot_item
 	obj.done_pressed.connect(_on_done_pressed)

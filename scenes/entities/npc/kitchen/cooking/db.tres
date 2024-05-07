@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="CookingDB" load_steps=2 format=3 uid="uid://cxndeni5dcusi"]
+[gd_resource type="Resource" script_class="RecipeProcessDB" load_steps=2 format=3 uid="uid://cxndeni5dcusi"]
 
-[ext_resource type="Script" path="res://scenes/entities/npc/kitchen/cooking/cooking_db.gd" id="1_ech3i"]
+[ext_resource type="Script" path="res://core/recipe/recipe_proccess_db.gd" id="1_y7cr0"]
 
 [resource]
-script = ExtResource("1_ech3i")
-list = Array[Resource("res://scenes/entities/npc/kitchen/cooking/cooking.gd")]([])
+script = ExtResource("1_y7cr0")
+list = Array[Resource("res://core/recipe/recipe_process.gd")]([])
+amount = 3

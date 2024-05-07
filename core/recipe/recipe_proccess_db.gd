@@ -1,7 +1,7 @@
 extends Resource
-class_name CookingDB
+class_name RecipeProcessDB
 
-@export var list: Array[Cooking]
+@export var list: Array[RecipeProcess]
 @export var amount: int = 3
 
 signal updated_slot(index: int)
@@ -21,7 +21,7 @@ func update_time(id: String, time: float):
 	updated_slot.emit(find_index)
 
 
-func add(item: Cooking):
+func add(item: RecipeProcess):
 	if list.size() < amount:
 		list.push_back(item)
 		updated_slot.emit(list.size() - 1)

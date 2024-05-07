@@ -5,7 +5,7 @@ class_name CookingSlotUI
 @onready var icon: Button = $IconButton
 @onready var ok_button: Button = $OKButton
 
-@export var cooking: Cooking
+@export var cooking: RecipeProcess
 
 signal done_pressed
 signal cancel_pressed
@@ -17,7 +17,7 @@ func _ready():
 	ok_button.disabled = true
 
 
-func update_info_slot(new_slot: Cooking):
+func update_info_slot(new_slot: RecipeProcess):
 	cooking = new_slot
 	if cooking:
 		icon.icon = cooking.recipe.icon

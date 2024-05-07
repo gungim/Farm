@@ -1,6 +1,7 @@
 extends RecipeInfo
 class_name SmithyRecipeInfo
 
+@onready var ok_button: Button = $HBoxContainer/OKButton
 
 @export var hotbar_db: Inventory
 
@@ -37,4 +38,12 @@ func _help_view_info(item: Recipe):
 
 
 func check_db():
-	pass
+	ok_button.disabled = !check_ingredients(hotbar_db)
+
+
+func _on_ok_button_pressed():
+	pass  # Replace with function body.
+
+
+func _on_cancel_button_pressed():
+	pass  # Replace with function body.

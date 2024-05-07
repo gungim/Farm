@@ -8,5 +8,5 @@ func setup():
 	pass
 
 
-func add_thread(item: Cooking):
+func add_thread(item: RecipeProcess):
 	grid.database.add(item)
