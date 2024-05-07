@@ -1,0 +1,25 @@
+DONE: Chức năng xây chuồng
+DONE: Xây cổng
+
+DONE: chức năng nấu
+TODO: Check lại chức năng lấy sản phẩm khi nấu xong
+
+DONE: Farm store
+DONE: mua vật phẩm 
+DONE: Bán vật phẩm
+
+TODO: chức năng nâng cấp vật phẩm
+-- NPC
+
+TODO: Động vật 
+-- Tạo sản phẩm
+-- Thu hoạch sản phẩm
+-- Bán động vật
+
+TODO: UI
+-- Hiển thị vàng
+-- Hiển thị icon open inventory
+
+
+TODO: SHADOW
+-- Big job

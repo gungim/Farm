@@ -26,7 +26,7 @@ func _input(event):
 		if can_move:
 			if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 				var mouse_position = get_global_mouse_position()
-				if position.distance_to(mouse_position) >= 40:
+				if position.distance_to(mouse_position) >= 16:
 					agent.target_position = mouse_position
 					state.send_event("place_marker_setted")
 				else:
@@ -62,6 +62,7 @@ func _on_idle_state_physics_processing(_delta: float):
 
 	if mov_direction != Vector2.ZERO:
 		move()
+	# TODO: tính năng nếu gặp đối tượng và k thể di chuyển thì dừng sau 1 vài giây
 
 	if velocity <= Vector2.ZERO:
 		animated.flip_h = true
@@ -77,6 +78,7 @@ func _on_movement_state_physics_processing(_delta):
 	var next_path = agent.get_next_path_position()
 	var new_dir: Vector2 = position.direction_to(next_path)
 
+	# Check nếu người dùng ấn nút di chuyển thì kết thúc việc di chuyển đến marker
 	if get_input() != Vector2.ZERO:
 		agent.target_position = position
 		state.send_event("navigation_finished")

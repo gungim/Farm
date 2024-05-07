@@ -2268,7 +2268,7 @@ position = Vector2(335, 27)
 position = Vector2(984, 41)
 
 [node name="Player" parent="Entity" instance=ExtResource("23_oah11")]
-position = Vector2(649, 365)
+position = Vector2(1055, 464)
 
 [node name="DuckNest" parent="Entity" instance=ExtResource("25_hquls")]
 position = Vector2(647, 71)
@@ -2318,7 +2318,6 @@ shape = SubResource("RectangleShape2D_gx3bk")
 texture = ExtResource("30_kabis")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_gs8vu")
 constrain_avoidance = true
 
