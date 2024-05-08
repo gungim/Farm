@@ -7,6 +7,10 @@ class_name Quest
 @export_multiline var quest_description: String
 @export_multiline var quest_objective: String
 
+# Bổ sung
+@export var reward: Array[Reward]
+@export var prized_money: int
+
 signal started
 signal updated
 signal completed
