@@ -4,7 +4,6 @@ class_name NPC
 @onready var menu: Control = $CanvasLayer/Control
 @onready var player: Player
 @onready var npc: StaticBody2D = $StaticBody2D
-@onready var dialogue: DialogueBox = $CanvasLayer/DialogueBox
 
 @export var active_dialogue: bool = false
 
@@ -26,9 +25,7 @@ func _on_static_body_2d_input_event(_viewport: Node, event: InputEvent, _shape_i
 
 
 func open_dialogue():
-	if not dialogue.running:
-		dialogue.start()
-
+	pass
 
 func open_menu():
 	menu.visible = true
