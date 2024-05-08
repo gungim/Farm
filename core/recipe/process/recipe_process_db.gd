@@ -21,6 +21,14 @@ func update_time(id: String, time: float):
 	updated_slot.emit(find_index)
 
 
+func get_product(slot_index: int) -> InventoryItem:
+	if slot_index < 0 or slot_index >= list.size():
+		return null
+
+	var product = list[slot_index].recipe.finished_product
+	return product
+
+
 func add(item: RecipeProcess):
 	if list.size() < amount:
 		list.push_back(item)
@@ -37,3 +45,7 @@ func remove(id: String):
 		return
 
 	list.remove_at(find_index)
+
+
+func remove_at(index: int):
+	list.remove_at(index)
