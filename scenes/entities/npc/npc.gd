@@ -4,6 +4,9 @@ class_name NPC
 @onready var menu: Control = $CanvasLayer/Control
 @onready var player: Player
 @onready var npc: StaticBody2D = $StaticBody2D
+@onready var dialogue: DialogueBox = $CanvasLayer/DialogueBox
+
+@export var active_dialogue: bool = false
 
 
 func _ready():
@@ -15,10 +18,23 @@ func _on_static_body_2d_input_event(_viewport: Node, event: InputEvent, _shape_i
 	if event is InputEventMouseButton:
 		if player.position.distance_to(npc.global_position) <= 64:
 			if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-				menu.visible = true
-				PlayerEvents.emit_signal("on_disable_player", true)
+				if active_dialogue:
+					open_dialogue()
+					active_dialogue = false
+				else:
+					open_menu()
+
+
+func open_dialogue():
+	if not dialogue.running:
+		dialogue.start()
+
+
+func open_menu():
+	menu.visible = true
+	InventoryEvents.emit_signal("on_open_inventory", true)
 
 
 func _on_texture_button_pressed():
 	menu.visible = false
-	PlayerEvents.emit_signal("on_disable_player", false)
+	InventoryEvents.emit_signal("on_open_inventory", false)

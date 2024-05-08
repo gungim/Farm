@@ -24,5 +24,5 @@ display_name = "Công thức nâng cấp rìu"
 description = "Công thức nâng cấp rìu level 2"
 icon = ExtResource("2_tj115")
 ingredients = Array[ExtResource("4_ntgue")]([SubResource("Resource_k2vgp"), SubResource("Resource_uom7x")])
-time = 360.0
+time = 20.0
 finished_product = ExtResource("1_mkiil")

@@ -6,7 +6,6 @@ signal on_open_inventory(value)
 signal add_item(item: InventoryItem, amount: int)
 
 # set for open inventory or close
-var is_open_inventory: bool = false
 
 var player: Player
 
@@ -18,7 +17,6 @@ func _ready():
 
 
 func _on_open_inventory(value: bool):
-	is_open_inventory = value
 	PlayerEvents.emit_signal("on_disable_player", value)
 
 

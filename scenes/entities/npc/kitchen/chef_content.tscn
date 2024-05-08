@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bhsy5m6kifgl3" path="res://scenes/entities/npc/kitchen/info/kitchen_recipe_info.tscn" id="8_135ll"]
 [ext_resource type="Script" path="res://core/recipe/process/recipe_process_grid.gd" id="10_bktf6"]
 [ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://scenes/inventory/db/hotbar.tres" id="10_jx5xj"]
-[ext_resource type="Resource" uid="uid://cxndeni5dcusi" path="res://scenes/entities/npc/kitchen/cooking/process_db.tres" id="11_ukfb5"]
+[ext_resource type="Resource" uid="uid://cxndeni5dcusi" path="res://scenes/entities/npc/kitchen/process_db.tres" id="11_ukfb5"]
 [ext_resource type="PackedScene" uid="uid://d07relr7hw1a5" path="res://core/recipe/process/recipe_process_slot.tscn" id="12_jr63j"]
 
 [node name="ChefContent" type="Control"]

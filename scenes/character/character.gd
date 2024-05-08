@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Character
+class_name AppCharacter
 
 var FRICTION = 0.15
 

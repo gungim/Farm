@@ -1,5 +1,5 @@
 # FIX dev
-extends Character
+extends AppCharacter
 class_name Player
 
 # using to check player can farm

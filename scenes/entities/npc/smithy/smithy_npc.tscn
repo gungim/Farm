@@ -40,7 +40,9 @@ position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_3x8j7")
 
 [node name="Control" parent="CanvasLayer" index="0"]
-visible = false
+anchor_left = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.8
 
 [node name="Label" parent="CanvasLayer/Control/PanelContainer/VSplitContainer/AspectRatioContainer" index="0"]
 text = "Lò rèn"

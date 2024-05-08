@@ -9,8 +9,7 @@ func _ready():
 
 
 func _input(event):
-	if not InventoryEvents.is_open_inventory:
-		if event is InputEventMouseMotion:
-			clear_layer(mouse_layer)
-			var pos: Vector2 = local_to_map(get_global_mouse_position())
-			set_cell(mouse_layer, pos, select_cell_tile_id, Vector2i(0, 0), 0)
+	if event is InputEventMouseMotion:
+		clear_layer(mouse_layer)
+		var pos: Vector2 = local_to_map(get_global_mouse_position())
+		set_cell(mouse_layer, pos, select_cell_tile_id, Vector2i(0, 0), 0)

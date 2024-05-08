@@ -41,7 +41,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
+enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg", "res://addons/dialogue_nodes/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
 
 [gui]
 
