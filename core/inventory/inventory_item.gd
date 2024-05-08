@@ -31,6 +31,6 @@ class_name InventoryItem
 ## type of item: tool, weapon, seed, food
 @export var properties: Dictionary = {}
 
-@export var description: String
+@export_multiline var description: String
 
 @export var categories: Array[Category]
