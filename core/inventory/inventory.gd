@@ -117,7 +117,7 @@ func remove_item_with_amount(item_removed: InventoryItem, amount_removed: int) -
 		if slot.item && slot.item == item_removed:
 			remaining_amount = slot.amount - amount_removed
 
-			if remaining_amount >= 0:
+			if remaining_amount > 0:
 				slot.amount = remaining_amount
 				updated_slot.emit(index)
 				return 0
