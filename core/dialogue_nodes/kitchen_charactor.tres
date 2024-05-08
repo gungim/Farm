@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://vkmglvbq7442"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/Character.gd" id="1_c6o6o"]
+[ext_resource type="Texture2D" uid="uid://djo4gj7pvhnje" path="res://sprite/character/chef_npc_icon.png" id="1_mf715"]
+
+[resource]
+script = ExtResource("1_c6o6o")
+name = "Kitchen"
+image = ExtResource("1_mf715")
+color = Color(1, 1, 1, 1)
