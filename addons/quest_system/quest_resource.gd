@@ -10,6 +10,7 @@ class_name Quest
 # Bổ sung
 @export var reward: Array[Reward]
 @export var prized_money: int
+@export var status: int = 0
 
 signal started
 signal updated
@@ -21,11 +22,14 @@ var objective_completed: bool = false:
 	get:
 		return objective_completed
 
+
 func update() -> void:
 	updated.emit()
 
+
 func start() -> void:
 	started.emit()
+
 
 func complete() -> void:
 	completed.emit()
