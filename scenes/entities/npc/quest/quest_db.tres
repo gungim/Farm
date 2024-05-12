@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="QuestDatabase" load_steps=3 format=3 uid="uid://r75jlo6x07xr"]
+
+[ext_resource type="Resource" uid="uid://dyxoht7vwkjiu" path="res://scenes/entities/npc/quest/db/test.tres" id="1_25w3y"]
+[ext_resource type="Script" path="res://core/quest/database.gd" id="1_28hw5"]
+
+[resource]
+script = ExtResource("1_28hw5")
+quests = Array[Resource("res://addons/quest_system/quest_resource.gd")]([ExtResource("1_25w3y")])

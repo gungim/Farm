@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=5 format=3 uid="uid://dyxoht7vwkjiu"]
+
+[ext_resource type="Resource" uid="uid://bwprlyip4hj0i" path="res://scenes/inventory/db/items/apple.tres" id="1_6skvy"]
+[ext_resource type="Script" path="res://addons/quest_system/reward.gd" id="2_71bio"]
+[ext_resource type="Script" path="res://addons/quest_system/quest_resource.gd" id="3_xihh4"]
+
+[sub_resource type="Resource" id="Resource_wtgtw"]
+script = ExtResource("2_71bio")
+amount = 2
+item = ExtResource("1_6skvy")
+
+[resource]
+script = ExtResource("3_xihh4")
+id = 0
+quest_name = "Test quest"
+quest_description = "Nhiệm vụ này là test	3"
+quest_objective = ""
+reward = Array[ExtResource("2_71bio")]([SubResource("Resource_wtgtw")])
+prized_money = 200

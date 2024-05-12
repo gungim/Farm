@@ -1,13 +1,13 @@
 extends Node
+class_name QuestManager
 
-signal quest_accepted(quest: Quest) # Emitted when a quest gets moved to the ActivePool
-signal quest_completed(quest: Quest) # Emitted when a quest gets moved to the CompletedPool
-signal new_available_quest(quest: Quest) # Emitted when a quest gets added to the AvailablePool
+signal quest_accepted(quest: Quest)  # Emitted when a quest gets moved to the ActivePool
+signal quest_completed(quest: Quest)  # Emitted when a quest gets moved to the CompletedPool
+signal new_available_quest(quest: Quest)  # Emitted when a quest gets added to the AvailablePool
 
 const AvailableQuestPool = preload("./available_pool.gd")
 const ActiveQuestPool = preload("./active_pool.gd")
 const CompletedQuestPool = preload("./completed_pool.gd")
-
 
 var available: AvailableQuestPool = AvailableQuestPool.new("Available")
 var active: ActiveQuestPool = ActiveQuestPool.new("Active")
@@ -28,7 +28,7 @@ func start_quest(quest: Quest) -> Quest:
 
 	if active.is_quest_inside(quest):
 		return quest
-	if completed.is_quest_inside(quest): #Throw an error?
+	if completed.is_quest_inside(quest):  #Throw an error?
 		return quest
 
 	#Add the quest to the actives quests
@@ -59,7 +59,11 @@ func complete_quest(quest: Quest) -> Quest:
 
 
 func mark_quest_as_available(quest: Quest) -> void:
-	if available.is_quest_inside(quest) or completed.is_quest_inside(quest) or active.is_quest_inside(quest):
+	if (
+		available.is_quest_inside(quest)
+		or completed.is_quest_inside(quest)
+		or active.is_quest_inside(quest)
+	):
 		return
 
 	available.add_quest(quest)
@@ -68,6 +72,7 @@ func mark_quest_as_available(quest: Quest) -> void:
 
 func get_available_quests() -> Array[Quest]:
 	return available.quests
+
 
 func get_active_quests() -> Array[Quest]:
 	return active.quests
@@ -78,24 +83,29 @@ func is_quest_available(quest: Quest) -> bool:
 		return true
 	return false
 
+
 func is_quest_active(quest: Quest) -> bool:
 	if active.is_quest_inside(quest):
 		return true
 	return false
+
 
 func is_quest_completed(quest: Quest) -> bool:
 	if completed.is_quest_inside(quest):
 		return true
 	return false
 
+
 func is_quest_in_pool(quest: Quest, pool_name: String) -> bool:
 	if pool_name.is_empty():
 		for pool in get_children():
-			if pool.is_quest_inside(quest): return true
+			if pool.is_quest_inside(quest):
+				return true
 		return false
 
 	var pool := get_node(pool_name)
-	if pool.is_quest_inside(quest): return true
+	if pool.is_quest_inside(quest):
+		return true
 	return false
 
 
@@ -109,7 +119,8 @@ func call_quest_method(quest_id: int, method: String, args: Array) -> void:
 			break
 
 	# Make sure we've got the quest
-	if quest == null: return
+	if quest == null:
+		return
 
 	if quest.has_method(method):
 		quest.callv(method, args)
@@ -123,12 +134,14 @@ func set_quest_property(quest_id: int, property: String, value: Variant) -> void
 		if pools.get_quest_from_id(quest_id) != null:
 			quest = pools.get_quest_from_id(quest_id)
 
-	if quest == null: return
+	if quest == null:
+		return
 
 	# Now check if the quest has the property
 
 	# First if the property is null -> we return
-	if property == null: return
+	if property == null:
+		return
 
 	var was_property_found: bool = false
 	# Then we check if the property is present
@@ -138,16 +151,20 @@ func set_quest_property(quest_id: int, property: String, value: Variant) -> void
 			break
 
 	# Return if the property was not found
-	if not was_property_found: return
+	if not was_property_found:
+		return
 
 	# Finally we set the value
 	quest.set(property, value)
 
+
 # Manager API
+
 
 func add_new_pool(pool_path: String, pool_name: String) -> void:
 	var pool = load(pool_path)
-	if pool == null: return
+	if pool == null:
+		return
 
 	var pool_instance = pool.new(pool_name)
 
@@ -160,7 +177,8 @@ func add_new_pool(pool_path: String, pool_name: String) -> void:
 
 
 func move_quest_to_pool(quest: Quest, old_pool: String, new_pool: String) -> Quest:
-	if old_pool == new_pool: return
+	if old_pool == new_pool:
+		return
 
 	var old_pool_instance: BaseQuestPool = get_node_or_null(old_pool)
 	var new_pool_instance: BaseQuestPool = get_node_or_null(new_pool)
@@ -192,11 +210,12 @@ func quests_as_dict() -> Dictionary:
 
 	return quest_dict
 
+
 func dict_to_quests(dict: Dictionary, quests: Array[Quest]) -> void:
 	for pool in get_children():
-
 		# Make sure to iterate only for available pools
-		if !dict.has(pool.name.to_lower()): continue
+		if !dict.has(pool.name.to_lower()):
+			continue
 
 		# Match quest with their ids and insert them into the quest pool
 		var quest_with_id: Dictionary = {}
@@ -211,13 +230,13 @@ func dict_to_quests(dict: Dictionary, quests: Array[Quest]) -> void:
 func serialize_quests(pool: String) -> Dictionary:
 	var pool_node: BaseQuestPool = get_node_or_null(pool)
 
-	if pool_node == null: return {}
+	if pool_node == null:
+		return {}
 
 	var quest_dictionary: Dictionary = {}
 	for quests in pool_node.quests:
 		var quest_data: Dictionary
 		for name in quests.get_script().get_script_property_list():
-
 			# Filter only defined properties
 			if name.usage & PROPERTY_USAGE_STORAGE or name.usage & PROPERTY_USAGE_SCRIPT_VARIABLE:
 				quest_data[name["name"]] = quests.get(name["name"])

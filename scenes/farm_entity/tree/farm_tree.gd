@@ -115,7 +115,7 @@ func _mouse_right_event():
 
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
-		if player.position.distance_to(global_position) <= 64:
+		if player.position.distance_to(global_position) <= 32:
 			if event.button_index == MOUSE_BUTTON_LEFT:
 				_harvest()
 			elif event.button_index == MOUSE_BUTTON_RIGHT:

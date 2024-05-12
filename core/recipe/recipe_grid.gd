@@ -13,6 +13,10 @@ func _ready():
 
 
 func setup():
+	if not database:
+		print_debug("Can't set up recipe db")
+		return
+
 	database.setup()
 	for child in get_children():
 		child.queue_free()

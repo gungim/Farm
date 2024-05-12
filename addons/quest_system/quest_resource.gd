@@ -10,7 +10,6 @@ class_name Quest
 # Bổ sung
 @export var reward: Array[Reward]
 @export var prized_money: int
-@export var status: int = 0
 
 signal started
 signal updated

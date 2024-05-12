@@ -1,14 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cgiuwxfh21bhm"]
+[gd_scene load_steps=8 format=3 uid="uid://cgiuwxfh21bhm"]
 
 [ext_resource type="PackedScene" uid="uid://bq7hs1udtyav" path="res://scenes/entities/npc/npc.tscn" id="1_gh4ss"]
 [ext_resource type="Texture2D" uid="uid://dx67xt7nn1vh2" path="res://sprite/character/chef_npc.png" id="2_o2huq"]
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/kitchen_npc.gd" id="2_o4urb"]
 [ext_resource type="Texture2D" uid="uid://bmc8h54ahygi3" path="res://sprite/construction/house.png" id="2_qjteh"]
 [ext_resource type="PackedScene" uid="uid://ecyq3phnubdy" path="res://scenes/entities/npc/kitchen/chef_content.tscn" id="4_0dd82"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/dialogueBox.gd" id="4_mwwgh"]
-[ext_resource type="Resource" uid="uid://kjgsdn77clxf" path="res://core/dialogue_nodes/kitchen_dialogue.tres" id="5_p17l8"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="6_qp5bk"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="7_vhieu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4kioc"]
 size = Vector2(68, 60)
@@ -16,12 +12,6 @@ size = Vector2(68, 60)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hp1b5"]
 radius = 6.0
 height = 16.0
-
-[sub_resource type="RichTextEffect" id="RichTextEffect_k1sko"]
-script = ExtResource("6_qp5bk")
-
-[sub_resource type="RichTextEffect" id="RichTextEffect_l2ebp"]
-script = ExtResource("7_vhieu")
 
 [node name="ChefNPC" instance=ExtResource("1_gh4ss")]
 script = ExtResource("2_o4urb")
@@ -50,25 +40,8 @@ vframes = 2
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_hp1b5")
 
-[node name="DialogueBox" type="Panel" parent="CanvasLayer" index="0"]
+[node name="Control" parent="CanvasLayer" index="0"]
 visible = false
-custom_minimum_size = Vector2(256, 128)
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -128.0
-offset_right = 128.0
-grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("4_mwwgh")
-dialogue_data = ExtResource("5_p17l8")
-start_id = "dev1"
-custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_k1sko"), SubResource("RichTextEffect_l2ebp")])
-
-[node name="Control" parent="CanvasLayer" index="1"]
 anchor_left = 0.25
 anchor_top = 0.15
 anchor_right = 0.75

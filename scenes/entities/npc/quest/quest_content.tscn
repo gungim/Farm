@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkcv577lbwnq1"]
+
+[ext_resource type="Script" path="res://core/quest/quest_grid.gd" id="1_brc2r"]
+[ext_resource type="Resource" uid="uid://r75jlo6x07xr" path="res://scenes/entities/npc/quest/quest_db.tres" id="2_getti"]
+
+[node name="QuestContent" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Danh sách nhiệm vụ"
+
+[node name="QuestGrid" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+script = ExtResource("1_brc2r")
+database = ExtResource("2_getti")

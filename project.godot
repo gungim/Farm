@@ -35,6 +35,7 @@ UiEvents="*res://script/ui_events.gd"
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 HotbarEvents="*res://script/hotbar_events.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+QuestSystem="*res://addons/quest_system/quest_manager.gd"
 
 [display]
 
@@ -42,7 +43,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
+enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg", "res://addons/quest_system/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
 
 [gui]
 
@@ -86,6 +87,10 @@ test2={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"echo":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://core/dialogue_nodes/dev.dialogue")
 
 [layer_names]
 
