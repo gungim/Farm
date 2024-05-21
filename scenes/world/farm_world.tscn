@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c5qthjynhslhw"]
+[gd_scene load_steps=27 format=3 uid="uid://c5qthjynhslhw"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_rtydu"]
 [ext_resource type="Texture2D" uid="uid://f3hrlu2jsc00" path="res://sprite/map/world_map.png" id="2_qpuf5"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://c3nhhksasc336" path="res://scenes/entities/npc/smithy/smithy_npc.tscn" id="11_5tlbc"]
 [ext_resource type="PackedScene" uid="uid://cgiuwxfh21bhm" path="res://scenes/entities/npc/kitchen/chef_npc.tscn" id="16_ah1ta"]
 [ext_resource type="PackedScene" uid="uid://yk88124h8iqj" path="res://scenes/entities/npc/store/farm_store_npc.tscn" id="17_yvtlk"]
-[ext_resource type="PackedScene" uid="uid://c6nowsifcq6ie" path="res://scenes/entities/npc/quest/quest_npc.tscn" id="19_n0val"]
 [ext_resource type="PackedScene" uid="uid://m2ib88feldcx" path="res://scenes/character/player/Player.tscn" id="23_oah11"]
 [ext_resource type="PackedScene" uid="uid://hk25uk1el2v4" path="res://scenes/farm_entity/nest/duck_nest.tscn" id="25_hquls"]
 [ext_resource type="PackedScene" uid="uid://bgcb2a5f6ccqv" path="res://scenes/farm_entity/nest/chicken_nest.tscn" id="26_1qb8k"]
@@ -2323,9 +2322,6 @@ navigation_polygon = SubResource("NavigationPolygon_gs8vu")
 constrain_avoidance = true
 
 [node name="DefaultUI" parent="." instance=ExtResource("10_k18b4")]
-
-[node name="QuestNPC" parent="." instance=ExtResource("19_n0val")]
-position = Vector2(757, 511)
 
 [editable path="Entity/Trough2"]
 [editable path="Entity/Trough3"]
