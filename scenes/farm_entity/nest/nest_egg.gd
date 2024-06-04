@@ -3,7 +3,8 @@ class_name Nest
 
 @onready var amount_animal: int = 0
 @onready var product: int = 0
-# create a new "obstacle" and place it on the default navigation map.
+
+@export var max_value: int = 30
 
 
 func create_obstacle():
@@ -25,4 +26,6 @@ func _ready():
 
 
 func add_product(amount: int):
+	if product >= max_value:
+		return
 	product += amount

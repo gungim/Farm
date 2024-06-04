@@ -6,24 +6,30 @@ class_name SpawnProductComponent
 @export var wait_time: int = 2  #seconds
 @export var stored: String
 
+var stored_node: Node
+
 @export var started: bool = false
 
 
 func _ready():
-	timer.wait_time = wait_time * 60
+	timer.wait_time = wait_time
 	timer.autostart = false
+
+	if stored != "":
+		stored_node = get_tree().get_first_node_in_group(stored)
+
 	if started:
 		_start()
 
 
 func _start():
-	timer.start()
-	started = true
+	if stored_node:
+		timer.start()
+		started = true
+	else:
+		print_debug("Can't find stored " + stored)
 
 
 func _on_timer_timeout():
-	if stored != "":
-		var node = get_tree().get_first_node_in_group(stored)
-		if node.has_method("add_product"):
-			print_debug("Add chicken egg")
-			node.add_product(1)
+	if stored_node.has_method("add_product"):
+		stored_node.add_product(1)

@@ -5,23 +5,22 @@ class_name FarmAnimal
 @export var ACCELERATION = 40
 @export var MAX_HP = 100
 @export var HP: int = 10
+@export var time_to_start_spawn_product: int  # Hours
+@export var live_time: int = 720  # Hours
+@export var state_wait_time: float = 10.
 
 @onready var state: StateChart = $StateChart
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var hp_timer: Timer = $HpTimer
 @onready var sensor_area: Area2D = $SensorArea
-@onready var live_time: int = 720  # Hours
 @onready var hp_label: ProgressBar = $HPLabel
 @onready var live_timer: Timer = $LiveTimer
 @onready var spawn_product_component: SpawnProductComponent = $SpawnProductComponent
-
-var state_wait_time = 10.
 
 var product_timer: Timer
 var mov_direction: Vector2 = Vector2.ZERO
 var FRICTION = 0.15
 var lived_time: int = 649000  # Seconds
-var time_to_start_spawn_product: int  # Hours
 
 
 func _ready():
@@ -45,7 +44,9 @@ func _ready():
 	hp_label.value = HP
 	hp_label.max_value = MAX_HP
 
-	time_to_start_spawn_product = int(live_time / 4.)
+	if not time_to_start_spawn_product:
+		time_to_start_spawn_product = int(live_time / 4.)
+
 	navigation_agent.navigation_finished.connect(_on_navigation_agent_2d_finished)
 
 
@@ -131,8 +132,6 @@ func _on_place_marker_state_entered():
 func set_food_marker():
 	var nearest_node = get_nearest_trough()
 	if nearest_node:
-		print_debug("Goto food")
-		print_debug(nearest_node.global_position)
 		navigation_agent.set_target_position(nearest_node.global_position)
 		sensor_area.visible = true
 		state.send_event("food_marker_setted")
@@ -190,4 +189,3 @@ func _product_timer_timeout():
 
 func _on_navigation_agent_2d_finished():
 	navigation_agent.set_target_position(Vector2.ZERO)
-	print_debug("Navigation finished")
