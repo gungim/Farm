@@ -1,6 +1,7 @@
 extends StaticBody2D
 class_name Nest
 
+@onready var amount_animal: int = 0
 @onready var product: int = 0
 # create a new "obstacle" and place it on the default navigation map.
 

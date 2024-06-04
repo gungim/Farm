@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bospn5j5sts1s"]
+
+[ext_resource type="Script" path="res://scenes/character/animals/spawn_product_component.gd" id="1_ck6qa"]
+
+[node name="SpawnProductComponent" type="Node"]
+script = ExtResource("1_ck6qa")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

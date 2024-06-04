@@ -8,9 +8,9 @@
 blend_mode = 1
 light_mode = 1
 
-[node name="DuckNest" instance=ExtResource("1_iep87")]
+[node name="DuckNest" groups=["DuckNest"] instance=ExtResource("1_iep87")]
 script = ExtResource("2_ulgf5")
 
-[node name="Sprite2D" parent="." index="1"]
+[node name="Sprite2D" parent="." index="0"]
 material = SubResource("CanvasItemMaterial_gm7cy")
 texture = ExtResource("3_88by6")
