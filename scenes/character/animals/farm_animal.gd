@@ -58,6 +58,9 @@ func random_direction() -> Vector2:
 
 
 func _on_travel_state_physics_processing(_delta):
+	var path_position: Vector2 = navigation_agent.get_next_path_position()
+	# and move towards it
+	mov_direction = path_position - position
 	move()
 
 
@@ -69,6 +72,7 @@ func _on_place_marker_state_physics_processing(_delta):
 	var path_position: Vector2 = navigation_agent.get_next_path_position()
 	# and move towards it
 	mov_direction = path_position - position
+	print_debug(mov_direction)
 	move()
 	if velocity.length() <= 5:
 		state.send_event("navigation_finished")
@@ -90,8 +94,6 @@ func _on_idle_state_entered():
 		hp_timer.stop()
 		set_food_marker()
 	else:
-		var random_target = random_direction()
-		navigation_agent.set_target_position(random_target)
 		state.send_event("random_direction_setted")
 
 
