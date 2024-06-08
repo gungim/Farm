@@ -2,7 +2,9 @@ extends StaticBody2D
 class_name Nest
 
 @onready var amount_animal: int = 0
-@onready var product: int = 0
+@onready var value: int = 0
+
+@onready var sprite: Sprite2D = $Sprite2D
 
 @export var max_value: int = 30
 
@@ -13,8 +15,6 @@ func create_obstacle():
 
 	NavigationServer2D.obstacle_set_map(new_obstacle_rid, default_2d_map_rid)
 	NavigationServer2D.obstacle_set_position(new_obstacle_rid, global_position)
-
-	# Use obstacle dynamic by increasing radius above zero.
 	NavigationServer2D.obstacle_set_radius(new_obstacle_rid, 5.0)
 
 	# Enable the obstacle.
@@ -26,6 +26,16 @@ func _ready():
 
 
 func add_product(amount: int):
-	if product >= max_value:
+	if value >= max_value:
 		return
-	product += amount
+	value += amount
+	run_animation()
+
+
+func run_animation():
+	if value == 0:
+		sprite.frame = 0
+	elif value <= 10:
+		sprite.frame = 1
+	else:
+		sprite.frame = 2
