@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c5qthjynhslhw"]
+[gd_scene load_steps=29 format=3 uid="uid://c5qthjynhslhw"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_rtydu"]
 [ext_resource type="Texture2D" uid="uid://f3hrlu2jsc00" path="res://sprite/map/world_map.png" id="2_qpuf5"]
@@ -8,10 +8,12 @@
 [ext_resource type="TileSet" uid="uid://dejdvv4y0nyoh" path="res://tileset/farm_tile.tres" id="6_8clj4"]
 [ext_resource type="Texture2D" uid="uid://dh7a1e4y2hlaf" path="res://sprite/map/lakeside.png" id="8_p5hml"]
 [ext_resource type="Texture2D" uid="uid://df8n352gwa07n" path="res://sprite/map/lake_map.png" id="9_jcpfl"]
+[ext_resource type="PackedScene" uid="uid://cav6dm43bl0jc" path="res://scenes/entities/construction/pillar_fire/pillar_fire.tscn" id="9_umx1j"]
 [ext_resource type="PackedScene" uid="uid://cs0y1kjlqxjyi" path="res://scenes/ui/default_ui.tscn" id="10_k18b4"]
 [ext_resource type="PackedScene" uid="uid://c3nhhksasc336" path="res://scenes/entities/npc/smithy/smithy_npc.tscn" id="11_5tlbc"]
 [ext_resource type="PackedScene" uid="uid://cgiuwxfh21bhm" path="res://scenes/entities/npc/kitchen/chef_npc.tscn" id="16_ah1ta"]
 [ext_resource type="PackedScene" uid="uid://yk88124h8iqj" path="res://scenes/entities/npc/store/farm_store_npc.tscn" id="17_yvtlk"]
+[ext_resource type="PackedScene" uid="uid://300jxaodh1hi" path="res://scenes/world/light.tscn" id="20_rbyaj"]
 [ext_resource type="PackedScene" uid="uid://m2ib88feldcx" path="res://scenes/character/player/Player.tscn" id="23_oah11"]
 [ext_resource type="PackedScene" uid="uid://hk25uk1el2v4" path="res://scenes/farm_entity/nest/duck_nest.tscn" id="25_hquls"]
 [ext_resource type="PackedScene" uid="uid://bgcb2a5f6ccqv" path="res://scenes/farm_entity/nest/chicken_nest.tscn" id="26_1qb8k"]
@@ -2267,9 +2269,6 @@ position = Vector2(335, 27)
 [node name="SmithyNPC" parent="Entity" instance=ExtResource("11_5tlbc")]
 position = Vector2(984, 41)
 
-[node name="Player" parent="Entity" instance=ExtResource("23_oah11")]
-position = Vector2(1055, 464)
-
 [node name="DuckNest" parent="Entity" instance=ExtResource("25_hquls")]
 position = Vector2(647, 71)
 input_pickable = false
@@ -2317,11 +2316,20 @@ shape = SubResource("RectangleShape2D_gx3bk")
 [node name="Sprite2D2" type="Sprite2D" parent="Entity/Trough4"]
 texture = ExtResource("30_kabis")
 
+[node name="Player" parent="Entity" instance=ExtResource("23_oah11")]
+position = Vector2(432, 339)
+
+[node name="PillarFire" parent="Entity" instance=ExtResource("9_umx1j")]
+position = Vector2(428, 334)
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_gs8vu")
 constrain_avoidance = true
 
 [node name="DefaultUI" parent="." instance=ExtResource("10_k18b4")]
+
+[node name="Light" parent="." instance=ExtResource("20_rbyaj")]
 
 [editable path="Entity/Trough2"]
 [editable path="Entity/Trough3"]

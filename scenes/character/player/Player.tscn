@@ -293,7 +293,6 @@ position = Vector2(0, 10)
 shape = SubResource("CapsuleShape2D_vhuvf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-light_mask = 2
 sprite_frames = SubResource("SpriteFrames_2x8gn")
 animation = &"Move"
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgiuwxfh21bhm"]
+[gd_scene load_steps=9 format=3 uid="uid://cgiuwxfh21bhm"]
 
 [ext_resource type="PackedScene" uid="uid://bq7hs1udtyav" path="res://scenes/entities/npc/npc.tscn" id="1_gh4ss"]
 [ext_resource type="Texture2D" uid="uid://dx67xt7nn1vh2" path="res://sprite/character/chef_npc.png" id="2_o2huq"]
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/kitchen_npc.gd" id="2_o4urb"]
 [ext_resource type="Texture2D" uid="uid://bmc8h54ahygi3" path="res://sprite/construction/house.png" id="2_qjteh"]
 [ext_resource type="PackedScene" uid="uid://ecyq3phnubdy" path="res://scenes/entities/npc/kitchen/chef_content.tscn" id="4_0dd82"]
+[ext_resource type="PackedScene" uid="uid://u71k3ifp1dqo" path="res://scenes/entities/construction/light_source/ligh_source.tscn" id="4_deyju"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4kioc"]
 size = Vector2(68, 60)
@@ -27,6 +28,9 @@ texture = ExtResource("2_qjteh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="House" index="1"]
 position = Vector2(0, 14)
 shape = SubResource("RectangleShape2D_4kioc")
+
+[node name="PointLight2D" parent="House" index="2" instance=ExtResource("4_deyju")]
+position = Vector2(-0.675676, -1.35135)
 
 [node name="StaticBody2D" parent="." index="1"]
 position = Vector2(27, 60)

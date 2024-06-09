@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cav6dm43bl0jc"]
+
+[ext_resource type="Script" path="res://scenes/entities/construction/pillar_fire/pillar_fire.gd" id="1_2aaub"]
+[ext_resource type="Texture2D" uid="uid://x4x064v30070" path="res://sprite/construction/pillar_fire.png" id="2_tn2io"]
+[ext_resource type="PackedScene" uid="uid://u71k3ifp1dqo" path="res://scenes/entities/construction/light_source/ligh_source.tscn" id="3_wpqqq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_on71d"]
+size = Vector2(6, 6)
+
+[node name="PillarFire" type="StaticBody2D" groups=["LightSource"]]
+script = ExtResource("1_2aaub")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tn2io")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 13)
+shape = SubResource("RectangleShape2D_on71d")
+
+[node name="LighSource" parent="." instance=ExtResource("3_wpqqq")]
+position = Vector2(5, -5)
