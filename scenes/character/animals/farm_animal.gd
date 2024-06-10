@@ -22,6 +22,8 @@ var mov_direction: Vector2 = Vector2.ZERO
 var FRICTION = 0.15
 var lived_time: int = 649000  # Seconds
 
+var target_marker_name
+
 
 func _ready():
 	if not spawn_product_component.started:
@@ -72,7 +74,6 @@ func _on_place_marker_state_physics_processing(_delta):
 	var path_position: Vector2 = navigation_agent.get_next_path_position()
 	# and move towards it
 	mov_direction = path_position - position
-	print_debug(mov_direction)
 	move()
 	if velocity.length() <= 5:
 		state.send_event("navigation_finished")
@@ -115,7 +116,6 @@ func _on_eating_state_entered():
 
 	hp_timer.start()
 	state.send_event("finished_eating")
-	sensor_area.visible = false
 
 
 func _on_sensor_area_entered(area: Area2D):
@@ -124,7 +124,14 @@ func _on_sensor_area_entered(area: Area2D):
 		node = area.owner
 
 	if node.is_in_group("Trough"):
+		print_debug("Dev")
 		state.send_event("trough_detected")
+	elif node.is_in_group("Stall"):
+		print_debug("Dev 2")
+		state.send_event("stall_detected")
+
+	sensor_area.visible = false
+	target_marker_name = null
 
 
 func _on_place_marker_state_entered():
@@ -132,17 +139,21 @@ func _on_place_marker_state_entered():
 
 
 func set_food_marker():
-	var nearest_node = get_nearest_trough()
-	if nearest_node:
-		navigation_agent.set_target_position(nearest_node.global_position)
+	var nodes = get_tree().get_nodes_in_group("Trough")
+	var food_positon = find_nearest_node(nodes)
+
+	if food_positon != Vector2.ZERO:
+		navigation_agent.set_target_position(food_positon)
 		sensor_area.visible = true
+		target_marker_name = "Trough"
 		state.send_event("food_marker_setted")
 	else:
 		print_debug("Cannot find trough")
 
 
-func get_nearest_trough() -> Node:
-	var nodes = get_tree().get_nodes_in_group("Trough")
+func find_nearest_node(nodes: Array[Node]) -> Vector2:
+	if nodes.size() <= 0:
+		return Vector2.ZERO
 
 	var nearest_node: Node = nodes[0]
 	var nearest_node_postion: Vector2 = nearest_node.global_position
@@ -158,9 +169,9 @@ func get_nearest_trough() -> Node:
 			nearest_node_distance = distance
 
 	if nearest_node:
-		return nearest_node
+		return nearest_node_postion
 
-	return null
+	return Vector2.ZERO
 
 
 func _on_hp_timer_timeout():
@@ -184,10 +195,35 @@ func _on_live_timer_timeout():
 
 func _product_timer_timeout():
 	if check_can_create_product():
-		print_debug("Start create product")
 		start_create_product()
 		remove_child(product_timer)
 
 
 func _on_navigation_agent_2d_finished():
 	navigation_agent.set_target_position(Vector2.ZERO)
+
+
+# called if Light calll lights func
+func sleep(value: bool):
+	if value:
+		var nodes = get_tree().get_nodes_in_group("Stall")
+		var stall_position = find_nearest_node(nodes)
+		if stall_position != Vector2.ZERO:
+			sensor_area.visible = true
+			navigation_agent.set_target_position(stall_position)
+			target_marker_name = "Stall"
+			state.send_event("stall_marker_setted")
+	else:
+		state.send_event("wake_up")
+
+
+func _on_sleep_state_exited():
+	product_timer.start()
+	live_timer.start()
+	hp_timer.start()
+
+
+func _on_sleep_state_entered():
+	product_timer.stop()
+	live_timer.stop()
+	hp_timer.stop()

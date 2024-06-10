@@ -12,3 +12,7 @@ func light():
 
 func lights(value: bool):
 	get_tree().call_group("LightSource", "enable", value)
+
+
+func animal_sleep(value: bool):
+	get_tree().call_group("Animal", "sleep", value)

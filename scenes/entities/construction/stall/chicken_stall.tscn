@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2kl7nyu405d6"]
+
+[ext_resource type="Texture2D" uid="uid://bmc8h54ahygi3" path="res://sprite/construction/house.png" id="1_vy2ks"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6jcqh"]
+size = Vector2(156.75, 110.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u1uia"]
+radius = 102.55
+
+[node name="ChickenStall" type="StaticBody2D" groups=["Stall"]]
+scale = Vector2(0.200001, 0.200001)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-9.53674e-07, -4.76837e-07)
+scale = Vector2(0.446502, 0.446502)
+texture = ExtResource("1_vy2ks")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.375, 44)
+shape = SubResource("RectangleShape2D_6jcqh")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2.375, 44)
+shape = SubResource("CircleShape2D_u1uia")

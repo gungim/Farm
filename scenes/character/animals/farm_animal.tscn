@@ -14,7 +14,7 @@ radius = 7.07107
 [sub_resource type="CircleShape2D" id="CircleShape2D_rcxfg"]
 radius = 23.0217
 
-[node name="FarmAnimal" type="CharacterBody2D"]
+[node name="FarmAnimal" type="CharacterBody2D" groups=["Animal"]]
 collision_layer = 8
 collision_mask = 65
 script = ExtResource("1_ocv57")
@@ -43,17 +43,17 @@ event = &"initialized"
 [node name="Idle" type="Node" parent="StateChart/Root"]
 script = ExtResource("4_aml7g")
 
-[node name="On Next Marker" type="Node" parent="StateChart/Root/Idle"]
-script = ExtResource("5_drnav")
-to = NodePath("../../Traveling/Place Marker")
-event = &"place_marker_setted"
-
-[node name="On Next Trough" type="Node" parent="StateChart/Root/Idle"]
+[node name="GotoTrough" type="Node" parent="StateChart/Root/Idle"]
 script = ExtResource("5_drnav")
 to = NodePath("../../Traveling/Place Marker")
 event = &"food_marker_setted"
 
-[node name="On Random Direction" type="Node" parent="StateChart/Root/Idle"]
+[node name="GotoStall" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("5_drnav")
+to = NodePath("../../Traveling/Place Marker")
+event = &"stall_marker_setted"
+
+[node name="RandomDirection" type="Node" parent="StateChart/Root/Idle"]
 script = ExtResource("5_drnav")
 to = NodePath("../../Traveling/Travel")
 event = &"random_direction_setted"
@@ -75,10 +75,15 @@ script = ExtResource("5_drnav")
 to = NodePath("../../Travel")
 event = &"navigation_finished"
 
-[node name="Moved Trough" type="Node" parent="StateChart/Root/Traveling/Place Marker"]
+[node name="MovedTrough" type="Node" parent="StateChart/Root/Traveling/Place Marker"]
 script = ExtResource("5_drnav")
 to = NodePath("../../../Eating")
 event = &"trough_detected"
+
+[node name="MovedStall" type="Node" parent="StateChart/Root/Traveling/Place Marker"]
+script = ExtResource("5_drnav")
+to = NodePath("../../../Sleep")
+event = &"stall_detected"
 
 [node name="Travel" type="Node" parent="StateChart/Root/Traveling"]
 script = ExtResource("4_aml7g")
@@ -95,6 +100,14 @@ script = ExtResource("4_aml7g")
 script = ExtResource("5_drnav")
 to = NodePath("../../Idle")
 event = &"finished_eating"
+
+[node name="Sleep" type="Node" parent="StateChart/Root"]
+script = ExtResource("4_aml7g")
+
+[node name="Transition" type="Node" parent="StateChart/Root/Sleep"]
+script = ExtResource("5_drnav")
+to = NodePath("../../Idle")
+event = &"wake_up"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 animation = &""
@@ -132,6 +145,8 @@ show_percentage = false
 [connection signal="state_entered" from="StateChart/Root/Traveling/Travel" to="." method="_on_travel_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/Root/Traveling/Travel" to="." method="_on_travel_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/Root/Eating" to="." method="_on_eating_state_entered"]
+[connection signal="state_entered" from="StateChart/Root/Sleep" to="." method="_on_sleep_state_entered"]
+[connection signal="state_exited" from="StateChart/Root/Sleep" to="." method="_on_sleep_state_exited"]
 [connection signal="timeout" from="HpTimer" to="." method="_on_hp_timer_timeout"]
 [connection signal="area_entered" from="SensorArea" to="." method="_on_sensor_area_entered"]
 [connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]
