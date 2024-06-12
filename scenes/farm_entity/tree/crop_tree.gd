@@ -17,8 +17,9 @@ func _harvest():
 		kill()
 		_add_product_to_inventory()
 
+
 func _add_product_to_inventory():
-	var products: SeedProducts = seed_res.properties["products"]
+	var products: CropProducts = crop.products
 	if not products:
 		return
 

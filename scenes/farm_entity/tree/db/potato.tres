@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Crop" load_steps=4 format=3 uid="uid://2gq362x2xwwb"]
+
+[ext_resource type="Resource" uid="uid://b1sfxyy7gukaw" path="res://scenes/farm_entity/crop_product/potato.tres" id="1_xok0c"]
+[ext_resource type="Script" path="res://scenes/farm_entity/tree/crop.gd" id="1_yfavs"]
+[ext_resource type="SpriteFrames" uid="uid://i7ie17udaa5w" path="res://scenes/farm_entity/tree_animations/potato.tres" id="2_3j7he"]
+
+[resource]
+script = ExtResource("1_yfavs")
+name = "potato"
+type = 1
+sprite_frames = ExtResource("2_3j7he")
+completed_time = 120
+products = ExtResource("1_xok0c")

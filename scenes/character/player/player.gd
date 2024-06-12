@@ -144,32 +144,23 @@ func check_item_by_property(key: String) -> bool:
 
 # Trả về -1 nếu k có category = tool.tres
 func check_item_by_category(key: String) -> bool:
-	if not current_slot_selected:
-		return false
-	var tool_res = load("res://scenes/inventory/db/categories/" + key + ".tres")
-	if not tool_res:
-		return false
-
 	var item = current_slot_selected.item
 	if not item.categories:
 		return false
 
-	var check_is_tool = item.categories.find(tool_res)
+	var category_res = load("res://scenes/inventory/db/categories/" + key + ".tres")
+	if not category_res:
+		return false
 
+	var check_is_tool = item.categories.find(category_res)
 	if check_is_tool == -1:
 		return false
 
 	return true
 
 
-# Trả về -1 nếu k có property_name
 func get_item_property(property_name: String):
-	var property = current_slot_selected.item.properties.get(property_name)
-
-	if not property:
-		return
-
-	return property
+	return current_slot_selected.item.properties.get(property_name)
 
 
 func play_animation(animation_name):
@@ -182,11 +173,9 @@ func cancel_farm():
 
 
 func _on_plant_tree_success():
-	current_slot_selected.amount -= 1
+	decrement_current_slot()
 	if current_slot_selected.amount <= 0:
 		current_slot_selected = null
-
-	HotbarEvents.emit_signal("update_amount_slot", current_slot_index, -1)
 
 
 func _on_select_hotbar_slot(slot: Slot, index: int):
@@ -199,7 +188,7 @@ func eat_food():
 
 	if HP < MAX_HP:
 		change_hp(properties.healing)
-		current_slot_selected.amount -= 1
+		decrement_current_slot()
 
 
 # using when click on hotbar
@@ -210,4 +199,10 @@ func _on_use_item(slot: Slot):
 			GlobalEvents.product_actions.FOOD:
 				eat_food()
 
+
 # ---------------------- End Farm -------------------------------
+
+
+func decrement_current_slot():
+	HotbarEvents.emit_signal("update_amount_slot", current_slot_index, -1)
+	current_slot_selected.amount -= 1

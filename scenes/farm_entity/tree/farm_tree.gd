@@ -8,7 +8,7 @@ var stages: Array = []
 var current_state_index: int = 0
 
 var player: Player
-var seed_res: Resource
+var crop: Crop
 
 @onready var animated: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
@@ -35,45 +35,32 @@ func _setup():
 
 
 # Stages là 1 mảng int, là thơi gian các giai đoạn phát triển của cây
-# Được tạo thành nhờ số lượng animation trong sprite_frames
+# Được tạo thành nhờ số lượng animations trong sprite_frames
 # Sử dụng để tính animation sẽ chạy, ...
-func setup_stages(
-	sprite_frames: SpriteFrames,
-):
-	var anm_amount = sprite_frames.animations
+func setup_stages():
+	var anm_amount = crop.sprite_frames.animations
 
 	for i in anm_amount.size() - 1:
 		var value = completed_time * i / float(anm_amount.size())
 		stages.push_back(value)
+
 	stages.push_back(completed_time)
 
 
-func setup_with_seed_name(start_time: int, seed_name: String, hp: int):
-	if not seed_name:
-		return
-	var res = load("res://scenes/inventory/db/items/" + seed_name + ".tres")
-	setup(start_time, res, hp)
-
-
-func setup(start_time: int, item: InventoryItem, hp: int):
-	if not item:
+func setup(start_time: int, crop_res: Crop, hp: int):
+	if not crop:
 		return
 
 	HP = hp
-	seed_res = item
+	crop = crop_res
 
-	# setup animation
-	var sprite_name = seed_res.name.get_slice("_", 1)
-	var sprite_frames: SpriteFrames = load(
-		"res://scenes/farm_entity/tree_animations/" + sprite_name + ".tres"
-	)
-	animated.sprite_frames = sprite_frames
+	animated.sprite_frames = crop.sprite_frames
 
 	# setup time
-	completed_time = seed_res.properties["completed_time"]
+	completed_time = crop.completed_time
 	current_time = int(Time.get_unix_time_from_system() - start_time)
 
-	setup_stages(sprite_frames)
+	setup_stages()
 
 	if current_time < 0 or current_time > completed_time:
 		can_harvest = true
