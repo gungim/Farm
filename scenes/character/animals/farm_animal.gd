@@ -22,7 +22,7 @@ var mov_direction: Vector2 = Vector2.ZERO
 var FRICTION = 0.15
 var lived_time: int = 649000  # Seconds
 
-var target_marker_name
+var target_marker_group_name
 
 
 func _ready():
@@ -123,15 +123,13 @@ func _on_sensor_area_entered(area: Area2D):
 	if area.owner:
 		node = area.owner
 
-	if node.is_in_group("Trough"):
-		print_debug("Dev")
-		state.send_event("trough_detected")
-	elif node.is_in_group("Stall"):
-		print_debug("Dev 2")
-		state.send_event("stall_detected")
+	if target_marker_group_name:
+		var groups: Array[StringName] = node.get_groups()
+		if groups.bsearch(target_marker_group_name) >= 0:
+			state.send_event(target_marker_group_name.to_lower() + "_detected")
 
-	sensor_area.visible = false
-	target_marker_name = null
+		sensor_area.visible = false
+		target_marker_group_name = null
 
 
 func _on_place_marker_state_entered():
@@ -145,7 +143,7 @@ func set_food_marker():
 	if food_positon != Vector2.ZERO:
 		navigation_agent.set_target_position(food_positon)
 		sensor_area.visible = true
-		target_marker_name = "Trough"
+		target_marker_group_name = "Trough"
 		state.send_event("food_marker_setted")
 	else:
 		print_debug("Cannot find trough")
@@ -185,7 +183,7 @@ func check_can_create_product() -> bool:
 	return false
 
 
-func start_create_product():
+func _start_create_product():
 	pass
 
 
@@ -195,7 +193,7 @@ func _on_live_timer_timeout():
 
 func _product_timer_timeout():
 	if check_can_create_product():
-		start_create_product()
+		_start_create_product()
 		remove_child(product_timer)
 
 
@@ -211,7 +209,7 @@ func sleep(value: bool):
 		if stall_position != Vector2.ZERO:
 			sensor_area.visible = true
 			navigation_agent.set_target_position(stall_position)
-			target_marker_name = "Stall"
+			target_marker_group_name = "Stall"
 			state.send_event("stall_marker_setted")
 	else:
 		state.send_event("wake_up")

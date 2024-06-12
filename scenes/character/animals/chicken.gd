@@ -1,5 +1,5 @@
 extends FarmAnimal
 class_name Chicken
 
-func start_create_product():
+func _start_create_product():
 	spawn_product_component._start()

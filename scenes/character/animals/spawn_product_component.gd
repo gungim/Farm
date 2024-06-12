@@ -5,18 +5,21 @@ class_name SpawnProductComponent
 
 @export var wait_time: int = 2  #seconds
 @export var stored: String
+@export var started: bool = false
+@export var stored_is_parrent: bool = true
 
 var stored_node: Node
-
-@export var started: bool = false
 
 
 func _ready():
 	timer.wait_time = wait_time
 	timer.autostart = false
 
-	if stored != "":
-		stored_node = get_tree().get_first_node_in_group(stored)
+	if stored_is_parrent:
+		stored_node = get_parent()
+	else:
+		if stored != "":
+			stored_node = get_tree().get_first_node_in_group(stored)
 
 	if started:
 		_start()
