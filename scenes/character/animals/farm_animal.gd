@@ -216,12 +216,14 @@ func sleep(value: bool):
 
 
 func _on_sleep_state_exited():
+	spawn_product_component._start()
 	product_timer.start()
 	live_timer.start()
 	hp_timer.start()
 
 
 func _on_sleep_state_entered():
+	spawn_product_component._stop()
 	product_timer.stop()
 	live_timer.stop()
 	hp_timer.stop()

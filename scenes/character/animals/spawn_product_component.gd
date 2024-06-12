@@ -24,6 +24,9 @@ func _ready():
 	if started:
 		_start()
 
+func _stop():
+	timer.stop()
+
 
 func _start():
 	if stored_node:
