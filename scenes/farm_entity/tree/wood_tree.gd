@@ -3,19 +3,14 @@
 extends FarmTree
 class_name WoodTree
 
-var farm_state: String = "chop"
+var farm_type: String = "chop"
 
 
 # Hàm này sử dụng để thực hiện việc thu hoạch
 # TODO: chức năng thu hoạch cây thân gỗ
-func _harvest():
-	if not player and not can_harvest:
-		return
-
-	var tool_dmg = player.check_farm_state(farm_state)
-	if tool_dmg > 0:
-		player.play_animation(farm_state)
-		HP -= tool_dmg
+func harvest(dmg: int):
+	if dmg > 0:
+		HP -= dmg
 
 	if HP <= 0:
 		kill()

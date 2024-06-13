@@ -17,7 +17,6 @@ var can_move: bool = true
 func _ready():
 	PlayerEvents.connect("on_use_item", _on_use_item)
 	PlayerEvents.connect("on_select_hotbar_slot", _on_select_hotbar_slot)
-	FarmEvents.connect("plant_tree_success", _on_plant_tree_success)
 	PlayerEvents.connect("on_disable_player", _on_disable_player)
 
 
@@ -30,7 +29,13 @@ func _unhandled_input(event):
 				state.send_event("place_marker_setted")
 			else:
 				if check_item_by_category("tool"):
-					FarmEvents.emit_signal("on_hoe", mouse_position)
+					var item_action_type = check_item_property("action_type")
+					match item_action_type:
+						"hoe":
+							FarmEvents.emit_signal("on_hoe", mouse_position)
+						_:
+							pass
+
 				elif check_item_by_category("build"):
 					var construction = get_item_property("construction")
 					match construction:
@@ -132,7 +137,7 @@ func check_farm_state(key: String) -> int:
 			return -1
 
 
-func check_item_by_property(key: String) -> bool:
+func check_item_property(key: String) -> bool:
 	if not current_slot:
 		return false
 
@@ -169,14 +174,8 @@ func play_animation(animation_name):
 	animated.play(animation_name)
 
 
-func cancel_farm():
+func cancel_animation():
 	animated.stop()
-
-
-func _on_plant_tree_success():
-	decrement_current_slot()
-	if current_slot.amount <= 0:
-		current_slot = null
 
 
 func _on_select_hotbar_slot(slot: Slot, index: int):
@@ -207,3 +206,5 @@ func _on_use_item(slot: Slot):
 func decrement_current_slot():
 	HotbarEvents.emit_signal("update_amount_slot", current_slot_index, -1)
 	current_slot.amount -= 1
+	if current_slot.amount <= 0:
+		current_slot = null

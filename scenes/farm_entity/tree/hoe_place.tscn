@@ -1,10 +1,140 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsd067y180ku5"]
+[gd_scene load_steps=25 format=3 uid="uid://dsd067y180ku5"]
 
 [ext_resource type="Script" path="res://scenes/farm_entity/tree/hoe_place.gd" id="1_361gg"]
 [ext_resource type="Texture2D" uid="uid://1ccubohjejau" path="res://sprite/map/misc.png" id="1_prb2v"]
+[ext_resource type="Texture2D" uid="uid://bxs6o25cn12cc" path="res://sprite/effect/dust.png" id="3_yd778"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2gmlo"]
 size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_xqrqv"]
+resource_name = "Empty"
+
+[sub_resource type="Animation" id="Animation_xworr"]
+resource_name = "Planted"
+
+[sub_resource type="Animation" id="Animation_fa3i7"]
+resource_name = "Harvested"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s6ydd"]
+_data = {
+"Empty": SubResource("Animation_xqrqv"),
+"Harvested": SubResource("Animation_fa3i7"),
+"Planted": SubResource("Animation_xworr")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30fr0"]
+atlas = ExtResource("3_yd778")
+region = Rect2(0, 0, 83, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7w8xu"]
+atlas = ExtResource("3_yd778")
+region = Rect2(83, 0, 83, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j808"]
+atlas = ExtResource("3_yd778")
+region = Rect2(166, 0, 83, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_poxt5"]
+atlas = ExtResource("3_yd778")
+region = Rect2(249, 0, 83, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_woat1"]
+atlas = ExtResource("3_yd778")
+region = Rect2(332, 0, 83, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urydn"]
+atlas = ExtResource("3_yd778")
+region = Rect2(415, 0, 83, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcu17"]
+atlas = ExtResource("3_yd778")
+region = Rect2(498, 0, 83, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwp0m"]
+atlas = ExtResource("3_yd778")
+region = Rect2(581, 0, 83, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntoak"]
+atlas = ExtResource("3_yd778")
+region = Rect2(0, 83, 83, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0s3a"]
+atlas = ExtResource("3_yd778")
+region = Rect2(83, 83, 83, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcjp6"]
+atlas = ExtResource("3_yd778")
+region = Rect2(166, 83, 83, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbojj"]
+atlas = ExtResource("3_yd778")
+region = Rect2(249, 83, 83, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dofhx"]
+atlas = ExtResource("3_yd778")
+region = Rect2(332, 83, 83, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr70t"]
+atlas = ExtResource("3_yd778")
+region = Rect2(415, 83, 83, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etkt6"]
+atlas = ExtResource("3_yd778")
+region = Rect2(498, 83, 83, 83)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nmyae"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30fr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7w8xu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j808")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_poxt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_woat1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urydn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcu17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwp0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntoak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0s3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcjp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbojj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dofhx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vr70t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etkt6")
+}],
+"loop": true,
+"name": &"Planted",
+"speed": 30.0
+}]
 
 [node name="HoePlace" type="StaticBody2D"]
 input_pickable = true
@@ -17,3 +147,20 @@ frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2gmlo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s6ydd")
+}
+
+[node name="WaterTimer" type="Timer" parent="."]
+
+[node name="EffectSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.08778e-06, -3.57628e-07)
+scale = Vector2(0.192771, 0.192771)
+sprite_frames = SubResource("SpriteFrames_nmyae")
+animation = &"Planted"
+frame = 4
+frame_progress = 0.237338
+
+[connection signal="timeout" from="WaterTimer" to="." method="_on_water_timer_timeout"]

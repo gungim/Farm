@@ -7,31 +7,23 @@ var completed_time: int = 0
 var stages: Array = []
 var current_state_index: int = 0
 
-var player: Player
+var farm_type: String = "chop"
+
 var crop: Crop
 
 @onready var animated: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
 @onready var time_label: Label = $Label
 
-@export var id: String
 @export var HP: int = 0
 
 @export var time_label_visible: bool = false
 @export var can_harvest: bool = false
 
-signal on_harvested
-
 
 func _ready():
-	input_pickable = true
-	player = get_tree().get_first_node_in_group("Player")
-	_setup()
+	input_pickable = false
 	time_label.visible = time_label_visible
-
-
-func _setup():
-	pass
 
 
 # Stages là 1 mảng int, là thơi gian các giai đoạn phát triển của cây
@@ -48,7 +40,7 @@ func setup_stages():
 
 
 func setup(start_time: int, crop_res: Crop, hp: int):
-	if not crop:
+	if not crop_res:
 		return
 
 	HP = hp
@@ -92,27 +84,13 @@ func _on_timer_timeout():
 	time_label.text = GlobalEvents.format_time(completed_time - current_time)
 
 
-func _harvest():
+func harvest(_dmg: int):
 	pass
-
-
-func _mouse_right_event():
-	pass
-
-
-func _input_event(_viewport, event, _shape_idx):
-	if event is InputEventMouseButton and event.pressed:
-		if player.position.distance_to(global_position) <= 32:
-			if event.button_index == MOUSE_BUTTON_LEFT:
-				_harvest()
-			elif event.button_index == MOUSE_BUTTON_RIGHT:
-				_mouse_right_event()
 
 
 func kill():
-	FarmEvents.emit_signal("on_harvested", id)
-	player.cancel_farm()
-	emit_signal("on_harvested")
+	owner.harvested()
+	await get_tree().create_timer(2.).timeout
 	queue_free()
 
 

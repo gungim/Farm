@@ -10,6 +10,4 @@ signal on_add_duck_egg(amount: int)
 signal on_build_fence
 signal on_build_gate
 
-signal plant_tree_success
-
 var farm_dic = {}
