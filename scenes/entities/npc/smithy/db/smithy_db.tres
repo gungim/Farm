@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RecipeDB" load_steps=3 format=3 uid="uid://bujw6f3d02837"]
+
+[ext_resource type="Script" path="res://core/recipe/recipe_db.gd" id="1_l6arx"]
+[ext_resource type="Resource" uid="uid://2sr5fnen5j5" path="res://data/npc/smithy/items/axe_2.tres" id="2_n0psj"]
+
+[resource]
+script = ExtResource("1_l6arx")
+slots = Array[Resource("res://core/recipe/recipe.gd")]([ExtResource("2_n0psj")])
+amount = 40

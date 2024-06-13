@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://scenes/entities/npc/smithy/grid.gd" id="1_e4xn8"]
 [ext_resource type="StyleBox" uid="uid://rq0es8yv12vg" path="res://style/pannel.tres" id="1_i4212"]
 [ext_resource type="PackedScene" uid="uid://bt3gl1pvq782y" path="res://scenes/entities/npc/smithy/smithy_slot_ui.tscn" id="2_ixjja"]
-[ext_resource type="Resource" uid="uid://bujw6f3d02837" path="res://scenes/entities/npc/smithy/smithy_db.tres" id="3_8i62i"]
+[ext_resource type="Resource" uid="uid://bujw6f3d02837" path="res://scenes/entities/npc/smithy/db/smithy_db.tres" id="3_8i62i"]
 [ext_resource type="PackedScene" uid="uid://cgrj07tf2ngmx" path="res://scenes/entities/npc/smithy/smithy_recipe_info.tscn" id="4_2m0yf"]
 [ext_resource type="Script" path="res://core/recipe/process/recipe_process_grid.gd" id="6_dp1p1"]
-[ext_resource type="Resource" uid="uid://bavypolwx5530" path="res://scenes/entities/npc/smithy/process_db.tres" id="7_4x1m4"]
-[ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://scenes/inventory/db/hotbar.tres" id="8_ka17b"]
+[ext_resource type="Resource" uid="uid://bavypolwx5530" path="res://scenes/entities/npc/smithy/db/process_db.tres" id="7_4x1m4"]
+[ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://data/inventory/hotbar.tres" id="8_ka17b"]
 
 [node name="SmithyContent" type="Control"]
 layout_mode = 3

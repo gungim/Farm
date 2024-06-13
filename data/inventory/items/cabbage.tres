@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://dwc42qguex2gh"]
+
+[ext_resource type="Resource" uid="uid://b3v2t6odfep0f" path="res://data/inventory/categories/food.tres" id="1_a22wl"]
+[ext_resource type="Texture2D" uid="uid://dye02ck4w3pha" path="res://sprite/items/fruit/cabbage.png" id="1_ocyw6"]
+[ext_resource type="Script" path="res://core/inventory/inventory_item.gd" id="3_fmxii"]
+
+[resource]
+script = ExtResource("3_fmxii")
+max_stack = 999
+name = "cabbage"
+display_name = "Bắp cải"
+icon = ExtResource("1_ocyw6")
+weight = 1
+properties = {
+"healing": 12,
+"purchase": 20,
+"sell": 30
+}
+description = "Bắp cải"
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_a22wl")])

@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="CropProducts" load_steps=3 format=3 uid="uid://b1sfxyy7gukaw"]
-
-[ext_resource type="Resource" uid="uid://d180kfhexouf8" path="res://scenes/inventory/db/items/potato.tres" id="1_77r4w"]
-[ext_resource type="Script" path="res://scenes/farm_entity/crop_product/crop_product.gd" id="2_vwjl2"]
-
-[resource]
-script = ExtResource("2_vwjl2")
-items = Array[Resource("res://core/inventory/inventory_item.gd")]([ExtResource("1_77r4w")])

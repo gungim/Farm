@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://sd0kk0lai0a8"]
+
+[ext_resource type="Resource" uid="uid://dhwwh2ank2u6m" path="res://data/inventory/categories/build.tres" id="1_vdbgb"]
+[ext_resource type="Texture2D" uid="uid://b5oe1h2f13yon" path="res://sprite/items/gate.png.png" id="2_l78cf"]
+[ext_resource type="Script" path="res://core/inventory/inventory_item.gd" id="3_8skx0"]
+
+[resource]
+script = ExtResource("3_8skx0")
+max_stack = 1
+name = "gate"
+display_name = "Cổng"
+icon = ExtResource("2_l78cf")
+weight = 1
+properties = {
+"construction": "gate"
+}
+description = "Dưa hấu"
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_vdbgb")])

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/farm_entity/tree/wood_tree.gd" id="1_5dyqf"]
 [ext_resource type="PackedScene" uid="uid://c5f3q7jfo2hns" path="res://scenes/farm_entity/tree/farm_tree.tscn" id="1_nvb0q"]
-[ext_resource type="SpriteFrames" uid="uid://kisrgugksnvd" path="res://scenes/farm_entity/tree_animations/pine.tres" id="2_mloct"]
+[ext_resource type="SpriteFrames" uid="uid://kisrgugksnvd" path="res://data/crop/animation/pine.tres" id="2_mloct"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_inv22"]
 radius = 4.0

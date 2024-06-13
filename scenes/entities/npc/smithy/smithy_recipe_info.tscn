@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c020nwuhxw7kw" path="res://core/recipe/recipe_info.tscn" id="1_jx7mr"]
 [ext_resource type="Script" path="res://scenes/entities/npc/smithy/smithy_recipe_info.gd" id="2_vwerm"]
-[ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://scenes/inventory/db/hotbar.tres" id="3_2aqfb"]
+[ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://data/inventory/hotbar.tres" id="3_2aqfb"]
 [ext_resource type="Script" path="res://core/complete_time.gd" id="4_4g6wd"]
 
 [node name="SmithyRecipeInfo" instance=ExtResource("1_jx7mr")]

@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Category" load_steps=2 format=3 uid="uid://dhwwh2ank2u6m"]
-
-[ext_resource type="Script" path="res://scenes/inventory/db/categories/category.gd" id="1_u15u1"]
-
-[resource]
-script = ExtResource("1_u15u1")
-display_name = "Xây dựng"
-name = "build"

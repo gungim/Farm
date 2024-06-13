@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Quest" load_steps=5 format=3 uid="uid://dyxoht7vwkjiu"]
 
-[ext_resource type="Resource" uid="uid://bwprlyip4hj0i" path="res://scenes/inventory/db/items/apple.tres" id="1_6skvy"]
+[ext_resource type="Resource" uid="uid://bwprlyip4hj0i" path="res://data/inventory/items/apple.tres" id="1_6skvy"]
 [ext_resource type="Script" path="res://addons/quest_system/reward.gd" id="2_71bio"]
 [ext_resource type="Script" path="res://addons/quest_system/quest_resource.gd" id="3_xihh4"]
 

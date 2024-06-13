@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Category" load_steps=2 format=3 uid="uid://cupypm7nuakd3"]
+
+[ext_resource type="Script" path="res://data/inventory/categories/category.gd" id="1_bmk87"]
+
+[resource]
+script = ExtResource("1_bmk87")
+display_name = "Công cụ"
+name = "tool"

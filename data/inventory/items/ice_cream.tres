@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://b7aqqj4bew00d"]
+
+[ext_resource type="Resource" uid="uid://b3v2t6odfep0f" path="res://data/inventory/categories/food.tres" id="1_3b2rk"]
+[ext_resource type="Texture2D" uid="uid://c0umsn7tt1cfu" path="res://sprite/items/food/ice_cream.png" id="1_j628s"]
+[ext_resource type="Script" path="res://core/inventory/inventory_item.gd" id="3_m58sv"]
+
+[resource]
+script = ExtResource("3_m58sv")
+max_stack = 999
+name = "ice_cream"
+display_name = "Kem"
+icon = ExtResource("1_j628s")
+weight = 1
+properties = {
+"healing": 12,
+"purchase": 20,
+"sell": 30
+}
+description = "Kem"
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_3b2rk")])

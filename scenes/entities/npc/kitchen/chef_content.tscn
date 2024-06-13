@@ -2,14 +2,14 @@
 
 [ext_resource type="StyleBox" uid="uid://rq0es8yv12vg" path="res://style/pannel.tres" id="1_vd4jj"]
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/grid.gd" id="1_xh1nu"]
-[ext_resource type="Resource" uid="uid://bl5vrv55mibwy" path="res://scenes/entities/npc/kitchen/kitchent_recipe.tres" id="2_pek0s"]
+[ext_resource type="Resource" uid="uid://bl5vrv55mibwy" path="res://scenes/entities/npc/kitchen/db/kitchent_recipe.tres" id="2_pek0s"]
 [ext_resource type="PackedScene" uid="uid://wbhjka623xeu" path="res://core/recipe/recipe_slot_ui.tscn" id="3_pyd63"]
 [ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="5_i1a8p"]
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/info/tab.gd" id="6_6dy0d"]
 [ext_resource type="PackedScene" uid="uid://bhsy5m6kifgl3" path="res://scenes/entities/npc/kitchen/info/kitchen_recipe_info.tscn" id="8_135ll"]
 [ext_resource type="Script" path="res://core/recipe/process/recipe_process_grid.gd" id="10_bktf6"]
-[ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://scenes/inventory/db/hotbar.tres" id="10_jx5xj"]
-[ext_resource type="Resource" uid="uid://cxndeni5dcusi" path="res://scenes/entities/npc/kitchen/process_db.tres" id="11_ukfb5"]
+[ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://data/inventory/hotbar.tres" id="10_jx5xj"]
+[ext_resource type="Resource" uid="uid://cxndeni5dcusi" path="res://scenes/entities/npc/kitchen/db/process_db.tres" id="11_ukfb5"]
 [ext_resource type="PackedScene" uid="uid://d07relr7hw1a5" path="res://core/recipe/process/recipe_process_slot.tscn" id="12_jr63j"]
 
 [node name="ChefContent" type="Control"]

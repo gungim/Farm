@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://h3uaf4yqvh40"]
+
+[ext_resource type="Resource" uid="uid://b3v2t6odfep0f" path="res://data/inventory/categories/food.tres" id="1_o637d"]
+[ext_resource type="Texture2D" uid="uid://fdwpd44gmkx1" path="res://sprite/items/fruit/carrot.png" id="1_sm48v"]
+[ext_resource type="Script" path="res://core/inventory/inventory_item.gd" id="3_e5fsd"]
+
+[resource]
+script = ExtResource("3_e5fsd")
+max_stack = 999
+name = "carrot"
+display_name = "Củ cà rốt"
+icon = ExtResource("1_sm48v")
+weight = 1
+properties = {
+"healing": 12,
+"purchase": 20,
+"sell": 30
+}
+description = "Củ cà rốt"
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_o637d")])

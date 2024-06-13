@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://bwprlyip4hj0i"]
+
+[ext_resource type="Resource" uid="uid://b3v2t6odfep0f" path="res://data/inventory/categories/food.tres" id="1_8hfq5"]
+[ext_resource type="Texture2D" uid="uid://0qplhldyo5xn" path="res://sprite/items/fruit/apple.png" id="2_fyexd"]
+[ext_resource type="Script" path="res://core/inventory/inventory_item.gd" id="3_h0a6h"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("3_h0a6h")
+max_stack = 999
+name = "apple"
+display_name = "Quả táo"
+icon = ExtResource("2_fyexd")
+weight = 1
+properties = {
+"healing": 12,
+"purchase": 20,
+"sell": 30
+}
+description = "Quả táo"
+categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_8hfq5")])

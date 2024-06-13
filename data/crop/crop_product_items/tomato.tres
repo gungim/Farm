@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CropProducts" load_steps=3 format=3 uid="uid://cem7eium4h7dv"]
+
+[ext_resource type="Resource" uid="uid://bvkt88vl6n8hw" path="res://data/inventory/items/tomato.tres" id="1_00he0"]
+[ext_resource type="Script" path="res://data/crop/crop_product_items/crop_product.gd" id="1_46d8n"]
+
+[resource]
+script = ExtResource("1_46d8n")
+items = Array[Resource("res://core/inventory/inventory_item.gd")]([ExtResource("1_00he0")])

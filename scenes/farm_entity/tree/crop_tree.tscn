@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c5f3q7jfo2hns" path="res://scenes/farm_entity/tree/farm_tree.tscn" id="1_s3q30"]
 [ext_resource type="Script" path="res://scenes/farm_entity/tree/crop_tree.gd" id="2_vac58"]
-[ext_resource type="SpriteFrames" uid="uid://byiyd1iboi0dd" path="res://scenes/farm_entity/tree_animations/tomato.tres" id="3_02181"]
+[ext_resource type="SpriteFrames" uid="uid://byiyd1iboi0dd" path="res://data/crop/animation/tomato.tres" id="3_02181"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4plqx"]
 radius = 7.0
