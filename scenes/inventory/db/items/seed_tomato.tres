@@ -3,7 +3,7 @@
 [ext_resource type="Resource" uid="uid://bb5g758ehaoao" path="res://scenes/inventory/db/categories/seed.tres" id="1_8pp58"]
 [ext_resource type="Texture2D" uid="uid://wo00iug0a7bx" path="res://sprite/items/seed/seed_tomato.png" id="1_omu3r"]
 [ext_resource type="Script" path="res://core/inventory/inventory_item.gd" id="3_7dbie"]
-[ext_resource type="Resource" uid="uid://cem7eium4h7dv" path="res://scenes/farm_entity/crop_product/tomato.tres" id="3_ygrmc"]
+[ext_resource type="Resource" uid="uid://csds225mjtnl3" path="res://scenes/farm_entity/tree/db/tomato.tres" id="3_i6e0u"]
 
 [resource]
 script = ExtResource("3_7dbie")
@@ -13,7 +13,7 @@ display_name = "Hạt giống cà chua"
 icon = ExtResource("1_omu3r")
 weight = 1
 properties = {
-"crop": ExtResource("3_ygrmc"),
+"crop": ExtResource("3_i6e0u"),
 "purchase": 20,
 "sell": 30
 }

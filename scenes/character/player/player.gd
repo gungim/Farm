@@ -5,7 +5,7 @@ class_name Player
 # using to check player can farm
 
 var farm_state = null
-var current_slot_selected: Slot
+var current_slot: Slot
 var current_slot_index: int
 
 var can_move: bool = true
@@ -21,24 +21,23 @@ func _ready():
 	PlayerEvents.connect("on_disable_player", _on_disable_player)
 
 
-func _input(event):
-	if event is InputEventMouseButton:
-		if can_move:
-			if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-				var mouse_position = get_global_mouse_position()
-				if position.distance_to(mouse_position) >= 16:
-					agent.target_position = mouse_position
-					state.send_event("place_marker_setted")
-				else:
-					if check_item_by_category("tool"):
-						FarmEvents.emit_signal("on_hoe", mouse_position)
-					elif check_item_by_category("build"):
-						var construction = get_item_property("construction")
-						match construction:
-							"fence":
-								FarmEvents.emit_signal("on_build_fence")
-							"gate":
-								FarmEvents.emit_signal("on_build_gate")
+func _unhandled_input(event):
+	if event is InputEventMouseButton and event.is_pressed():
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			var mouse_position = get_global_mouse_position()
+			if position.distance_to(mouse_position) >= 32:
+				agent.target_position = mouse_position
+				state.send_event("place_marker_setted")
+			else:
+				if check_item_by_category("tool"):
+					FarmEvents.emit_signal("on_hoe", mouse_position)
+				elif check_item_by_category("build"):
+					var construction = get_item_property("construction")
+					match construction:
+						"fence":
+							FarmEvents.emit_signal("on_build_fence")
+						"gate":
+							FarmEvents.emit_signal("on_build_gate")
 
 
 func change_hp(value: int):
@@ -101,14 +100,14 @@ func _on_movement_state_physics_processing(_delta):
 # ----------------------- Inventory -------------------
 
 
-# if current_slot_selected
-# kiểm tra current_slot_selected có properties action không
+# if current_slot
+# kiểm tra current_slot có properties action không
 # nếu k có action return -1
 # nếu có thì return properties damage
 # hoặc return 0
 # với giá trị == 0 thì sẽ thực hiện nhừng hàng động k cần tool damage(thu hoạch)
 func check_farm_state(key: String) -> int:
-	if not current_slot_selected:
+	if not current_slot:
 		return -1
 
 	var check_is_tool = check_item_by_category("tool")
@@ -134,7 +133,7 @@ func check_farm_state(key: String) -> int:
 
 
 func check_item_by_property(key: String) -> bool:
-	if not current_slot_selected:
+	if not current_slot:
 		return false
 
 	if not get_item_property(key):
@@ -144,7 +143,9 @@ func check_item_by_property(key: String) -> bool:
 
 # Trả về -1 nếu k có category = tool.tres
 func check_item_by_category(key: String) -> bool:
-	var item = current_slot_selected.item
+	if not current_slot:
+		return false
+	var item = current_slot.item
 	if not item.categories:
 		return false
 
@@ -160,7 +161,7 @@ func check_item_by_category(key: String) -> bool:
 
 
 func get_item_property(property_name: String):
-	return current_slot_selected.item.properties.get(property_name)
+	return current_slot.item.properties.get(property_name)
 
 
 func play_animation(animation_name):
@@ -174,17 +175,18 @@ func cancel_farm():
 
 func _on_plant_tree_success():
 	decrement_current_slot()
-	if current_slot_selected.amount <= 0:
-		current_slot_selected = null
+	if current_slot.amount <= 0:
+		current_slot = null
 
 
 func _on_select_hotbar_slot(slot: Slot, index: int):
-	current_slot_selected = slot
+	print_debug(slot)
+	current_slot = slot
 	current_slot_index = index
 
 
 func eat_food():
-	var properties = current_slot_selected.item.properties
+	var properties = current_slot.item.properties
 
 	if HP < MAX_HP:
 		change_hp(properties.healing)
@@ -205,4 +207,4 @@ func _on_use_item(slot: Slot):
 
 func decrement_current_slot():
 	HotbarEvents.emit_signal("update_amount_slot", current_slot_index, -1)
-	current_slot_selected.amount -= 1
+	current_slot.amount -= 1

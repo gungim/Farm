@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://n6iw7si0bvf8" path="res://sprite/items/seed/seed_potato.png" id="1_gf31v"]
 [ext_resource type="Resource" uid="uid://bb5g758ehaoao" path="res://scenes/inventory/db/categories/seed.tres" id="1_ggqcs"]
-[ext_resource type="Resource" uid="uid://b1sfxyy7gukaw" path="res://scenes/farm_entity/crop_product/potato.tres" id="3_8j25s"]
+[ext_resource type="Resource" uid="uid://2gq362x2xwwb" path="res://scenes/farm_entity/tree/db/potato.tres" id="3_g2o6o"]
 [ext_resource type="Script" path="res://core/inventory/inventory_item.gd" id="3_mic7s"]
 
 [resource]
@@ -13,7 +13,7 @@ display_name = "Hạt giống khoai tây"
 icon = ExtResource("1_gf31v")
 weight = 1
 properties = {
-"crop": ExtResource("3_8j25s"),
+"crop": ExtResource("3_g2o6o"),
 "purchase": 20,
 "sell": 30
 }

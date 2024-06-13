@@ -15,11 +15,11 @@ func _ready():
 func _plant():
 	if not player:
 		return
-	if not player.current_slot_selected:
+	if not player.current_slot:
 		return
 
 	if player.check_item_by_category("seed"):
-		var crop = player.get_item_property("crop")
+		var crop: Crop = player.get_item_property("crop")
 		create_plant_node(crop)
 
 
