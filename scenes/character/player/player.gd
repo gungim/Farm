@@ -149,7 +149,7 @@ func check_item_by_category(key: String) -> bool:
 	if not item.categories:
 		return false
 
-	var category_res = load("res://scenes/inventory/db/categories/" + key + ".tres")
+	var category_res = load("res://data/inventory/categories/" + key + ".tres")
 	if not category_res:
 		return false
 
@@ -180,7 +180,6 @@ func _on_plant_tree_success():
 
 
 func _on_select_hotbar_slot(slot: Slot, index: int):
-	print_debug(slot)
 	current_slot = slot
 	current_slot_index = index
 

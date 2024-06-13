@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scenes/inventory/hotbar/hotbar_grid.gd" id="1_u17x5"]
 [ext_resource type="PackedScene" uid="uid://dn7ciiu27hnis" path="res://scenes/inventory/hotbar/hotbar_slot_ui.tscn" id="2_c3h7g"]
-[ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://data/inventory/hotbar.tres" id="2_wcv50"]
+[ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://data/inventory/hotbar.tres" id="2_urtas"]
 
 [node name="HotbarGrid" type="GridContainer"]
 columns = 10
 script = ExtResource("1_u17x5")
-inventory = ExtResource("2_wcv50")
+inventory = ExtResource("2_urtas")
 type = "hotbar"
 slot_scene = ExtResource("2_c3h7g")
