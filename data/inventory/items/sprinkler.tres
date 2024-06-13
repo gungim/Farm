@@ -15,4 +15,4 @@ properties = {
 "action_type": "wartering"
 }
 description = "Dùng để tưới cây"
-categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_vux7w")])
+categories = Array[Resource("res://data/inventory/categories/category.gd")]([ExtResource("1_vux7w")])

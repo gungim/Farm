@@ -18,4 +18,4 @@ properties = {
 "sell": 30
 }
 description = "Quả táo"
-categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_8hfq5")])
+categories = Array[Resource("res://data/inventory/categories/category.gd")]([ExtResource("1_8hfq5")])

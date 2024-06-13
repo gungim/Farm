@@ -14,4 +14,4 @@ properties = {
 "gold": 34
 }
 description = "Túi vàng"
-categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([])
+categories = Array[Resource("res://data/inventory/categories/category.gd")]([])

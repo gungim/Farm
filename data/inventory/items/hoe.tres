@@ -15,4 +15,4 @@ properties = {
 "action_type": "hoe"
 }
 description = "Dùng để cuốc đất, trông cây"
-categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_13d6c")])
+categories = Array[Resource("res://data/inventory/categories/category.gd")]([ExtResource("1_13d6c")])

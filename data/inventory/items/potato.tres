@@ -17,4 +17,4 @@ properties = {
 "sell": 30
 }
 description = "Củ khoai, có thể dùng để hồi máu"
-categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_mtscp")])
+categories = Array[Resource("res://data/inventory/categories/category.gd")]([ExtResource("1_mtscp")])

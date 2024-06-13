@@ -12,4 +12,4 @@ icon = ExtResource("1_ba8nq")
 weight = 1
 properties = {}
 description = "Khúc xương"
-categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([])
+categories = Array[Resource("res://data/inventory/categories/category.gd")]([])

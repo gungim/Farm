@@ -13,4 +13,4 @@ icon = ExtResource("1_783jb")
 weight = 1
 properties = {}
 description = "Thanh kiếm"
-categories = Array[Resource("res://scenes/inventory/db/categories/category.gd")]([ExtResource("1_i7oon")])
+categories = Array[Resource("res://data/inventory/categories/category.gd")]([ExtResource("1_i7oon")])
