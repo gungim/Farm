@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c3nhhksasc336" path="res://scenes/entities/npc/smithy/smithy_npc.tscn" id="11_5tlbc"]
 [ext_resource type="PackedScene" uid="uid://cgiuwxfh21bhm" path="res://scenes/entities/npc/kitchen/chef_npc.tscn" id="16_ah1ta"]
 [ext_resource type="PackedScene" uid="uid://yk88124h8iqj" path="res://scenes/entities/npc/store/farm_store_npc.tscn" id="17_yvtlk"]
-[ext_resource type="PackedScene" uid="uid://300jxaodh1hi" path="res://scenes/world/light.tscn" id="20_rbyaj"]
+[ext_resource type="PackedScene" uid="uid://300jxaodh1hi" path="res://scenes/world/day_night.tscn" id="20_rbyaj"]
 [ext_resource type="PackedScene" uid="uid://m2ib88feldcx" path="res://scenes/character/player/Player.tscn" id="23_oah11"]
 [ext_resource type="PackedScene" uid="uid://hk25uk1el2v4" path="res://scenes/farm_entity/nest/duck_nest.tscn" id="25_hquls"]
 [ext_resource type="PackedScene" uid="uid://bgcb2a5f6ccqv" path="res://scenes/farm_entity/nest/chicken_nest.tscn" id="26_1qb8k"]
