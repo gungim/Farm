@@ -169,9 +169,9 @@ func get_item_property(property_name: String):
 	return current_slot.item.properties.get(property_name)
 
 
-func play_animation(animation_name):
-	return
-	animated.play(animation_name)
+func play_animation(animation_name: String):
+	print_debug(animation_name)
+	# animated.play(animation_name)
 
 
 func cancel_animation():

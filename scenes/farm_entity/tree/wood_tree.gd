@@ -3,8 +3,8 @@
 extends FarmTree
 class_name WoodTree
 
-var farm_type: String = "chop"
-
+func _help_ready():
+	harvest_type = HarvestType.CHOP
 
 # Hàm này sử dụng để thực hiện việc thu hoạch
 # TODO: chức năng thu hoạch cây thân gỗ

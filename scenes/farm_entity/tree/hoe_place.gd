@@ -87,9 +87,17 @@ func _input_event(_viewport, event, _shape_idx):
 						watering()
 					"harvest":
 						if tree_node and tree_node.can_harvest:
-							var farm_type = tree_node.farm_type
-							player.play_animation(farm_type)
-							tree_node._harvest()
+							var harvest_type = tree_node.harvest_type
+							match harvest_type:
+								FarmTree.HarvestType.CHOP:
+									var tool_dmg = player.get_item_property("damage")
+									player.play_animation("HarvestChop")
+									if not tool_dmg:
+										tool_dmg = 1
+									tree_node.harvest(tool_dmg)
+								FarmTree.HarvestType.HAND:
+									player.play_animation("HarvestHand")
+									tree_node.harvest(100)
 					_:
 						pass
 

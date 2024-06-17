@@ -10,11 +10,11 @@ size = Vector2(16, 16)
 [sub_resource type="Animation" id="Animation_xqrqv"]
 resource_name = "Empty"
 
-[sub_resource type="Animation" id="Animation_xworr"]
-resource_name = "Planted"
-
 [sub_resource type="Animation" id="Animation_fa3i7"]
 resource_name = "Harvested"
+
+[sub_resource type="Animation" id="Animation_xworr"]
+resource_name = "Planted"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s6ydd"]
 _data = {

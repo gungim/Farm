@@ -1,13 +1,13 @@
 extends StaticBody2D
 class_name FarmTree
 
+enum HarvestType { CHOP, HAND }
+
 var current_time: int = 0
 var completed_time: int = 0
 
 var stages: Array = []
 var current_state_index: int = 0
-
-var farm_type: String = "chop"
 
 var crop: Crop
 
@@ -16,6 +16,7 @@ var crop: Crop
 @onready var time_label: Label = $Label
 
 @export var HP: int = 0
+@export var harvest_type: HarvestType = HarvestType.CHOP
 
 @export var time_label_visible: bool = false
 @export var can_harvest: bool = false
@@ -24,6 +25,11 @@ var crop: Crop
 func _ready():
 	input_pickable = false
 	time_label.visible = time_label_visible
+	_help_ready()
+
+
+func _help_ready():
+	pass
 
 
 # Stages là 1 mảng int, là thơi gian các giai đoạn phát triển của cây
