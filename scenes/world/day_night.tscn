@@ -9,7 +9,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Light/DirectionalLight2D:color")
+tracks/0/path = NodePath("DayNight/DirectionalLight2D:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -21,7 +21,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light")
+tracks/1/path = NodePath("DayNight")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -47,7 +47,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Light/DirectionalLight2D:color")
+tracks/0/path = NodePath("DayNight/DirectionalLight2D:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -63,11 +63,11 @@ _data = {
 "RESET": SubResource("Animation_g6n1i")
 }
 
-[node name="Light" type="Node"]
+[node name="DayNight" type="Node"]
 script = ExtResource("1_2os6q")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-color = Color(0.897296, 0.74305, 0.627084, 1)
+color = Color(0.0184917, 0.0548479, 0.145616, 1)
 blend_mode = 2
 shadow_enabled = true
 shadow_item_cull_mask = 2

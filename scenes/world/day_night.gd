@@ -1,6 +1,6 @@
 extends Node
 
-class_name Light
+class_name DayNight
 
 @onready var direction_light: DirectionalLight2D = $DirectionalLight2D
 @onready var animated: AnimationPlayer = $AnimationPlayer
