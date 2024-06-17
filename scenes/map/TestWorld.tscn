@@ -1,21 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtfkpdejvmlk5"]
+[gd_scene load_steps=12 format=3 uid="uid://dtfkpdejvmlk5"]
 
+[ext_resource type="PackedScene" uid="uid://300jxaodh1hi" path="res://scenes/world/light.tscn" id="1_ayyuq"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="2_a15bd"]
 [ext_resource type="PackedScene" uid="uid://h5xwe0kc7433" path="res://scenes/farm_entity/trough.tscn" id="3_kg4rq"]
 [ext_resource type="PackedScene" uid="uid://dhw3pm2ignslv" path="res://scenes/character/animals/chicken.tscn" id="4_tmnfw"]
 [ext_resource type="PackedScene" uid="uid://m2ib88feldcx" path="res://scenes/character/player/Player.tscn" id="5_m6cnk"]
 [ext_resource type="PackedScene" uid="uid://bgcb2a5f6ccqv" path="res://scenes/farm_entity/nest/chicken_nest.tscn" id="5_usuxe"]
 [ext_resource type="PackedScene" uid="uid://cs0y1kjlqxjyi" path="res://scenes/ui/default_ui.tscn" id="6_v1ceo"]
-[ext_resource type="PackedScene" uid="uid://yk88124h8iqj" path="res://scenes/entities/npc/store/farm_store_npc.tscn" id="7_rkrsj"]
-[ext_resource type="PackedScene" uid="uid://cgiuwxfh21bhm" path="res://scenes/entities/npc/kitchen/chef_npc.tscn" id="8_bopov"]
+[ext_resource type="TileSet" uid="uid://dejdvv4y0nyoh" path="res://tileset/farm_tile.tres" id="7_tuqp6"]
+[ext_resource type="PackedScene" uid="uid://cav6dm43bl0jc" path="res://scenes/entities/construction/pillar_fire/pillar_fire.tscn" id="9_wjp7w"]
+[ext_resource type="PackedScene" uid="uid://b2kl7nyu405d6" path="res://scenes/entities/construction/stall/chicken_stall.tscn" id="10_bk0nb"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_djchj"]
-vertices = PackedVector2Array(1140, 638, 13, 637, 9, 11, 1139, 11)
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_kna44"]
+vertices = PackedVector2Array(1142, 638, 10, 638, 10, 10, 1142, 10)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(1152, 0, 0, 0, 0, 648, 1152, 648)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1152, 0, 1152, 648, 0, 648, 0, 0)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="TestWorld" type="Node2D"]
+
+[node name="Light" parent="." instance=ExtResource("1_ayyuq")]
 
 [node name="StateChartDebugger" parent="." instance=ExtResource("2_a15bd")]
 offset_left = 589.0
@@ -24,25 +28,33 @@ offset_bottom = 384.0
 initial_node_to_watch = NodePath("../Chicken")
 
 [node name="Player" parent="." instance=ExtResource("5_m6cnk")]
+light_mask = 1
 position = Vector2(313, 182)
 
 [node name="Trough" parent="." instance=ExtResource("3_kg4rq")]
 position = Vector2(93, 169)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
-navigation_polygon = SubResource("NavigationPolygon_djchj")
-
 [node name="Chicken" parent="." instance=ExtResource("4_tmnfw")]
-position = Vector2(192, 166)
+position = Vector2(371, 94)
 
 [node name="ChickenNest" parent="." instance=ExtResource("5_usuxe")]
 position = Vector2(135, 305)
 
 [node name="DefaultUI" parent="." instance=ExtResource("6_v1ceo")]
 
-[node name="FarmStoreNPC" parent="." instance=ExtResource("7_rkrsj")]
-position = Vector2(255, 362)
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_kna44")
+constrain_avoidance = true
 
-[node name="ChefNPC" parent="." instance=ExtResource("8_bopov")]
-position = Vector2(274, 224)
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("7_tuqp6")
+format = 2
+
+[node name="PillarFire" parent="." instance=ExtResource("9_wjp7w")]
+show_behind_parent = true
+top_level = true
+position = Vector2(257, 186)
+
+[node name="ChickenStall" parent="." instance=ExtResource("10_bk0nb")]
+position = Vector2(436, 85)
