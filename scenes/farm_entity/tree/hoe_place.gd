@@ -94,10 +94,10 @@ func _input_event(_viewport, event, _shape_idx):
 									player.play_animation("HarvestChop")
 									if not tool_dmg:
 										tool_dmg = 1
-									tree_node.harvest(tool_dmg)
+									tree_node._harvest(tool_dmg)
 								FarmTree.HarvestType.HAND:
 									player.play_animation("HarvestHand")
-									tree_node.harvest(100)
+									tree_node._harvest(100)
 					_:
 						pass
 

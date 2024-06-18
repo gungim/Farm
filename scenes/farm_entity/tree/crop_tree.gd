@@ -11,7 +11,7 @@ func _on_mouse_exited():
 
 
 # TODO: chức năng thu hoạch cây nông nghiệp
-func harvest(dmg: int):
+func _harvest(_dmg: int):
 	kill()
 	_add_product_to_inventory()
 

@@ -90,7 +90,7 @@ func _on_timer_timeout():
 	time_label.text = GlobalEvents.format_time(completed_time - current_time)
 
 
-func harvest(_dmg: int):
+func _harvest(_dmg: int):
 	pass
 
 

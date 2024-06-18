@@ -8,7 +8,7 @@ func _help_ready():
 
 # Hàm này sử dụng để thực hiện việc thu hoạch
 # TODO: chức năng thu hoạch cây thân gỗ
-func harvest(dmg: int):
+func _harvest(dmg: int):
 	if dmg > 0:
 		HP -= dmg
 
