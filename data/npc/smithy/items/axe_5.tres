@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3 uid="uid://tebqhsj51b16"]
+
+[ext_resource type="Resource" uid="uid://dp5bs6er6e2ff" path="res://data/inventory/items/tools/axe_5.tres" id="1_226wh"]
+[ext_resource type="Texture2D" uid="uid://dwa87ry5a2opr" path="res://sprite/tool/axe_5.png" id="2_b8bin"]
+[ext_resource type="Resource" uid="uid://bjuqsmb6a3yii" path="res://data/inventory/items/rock.tres" id="3_h266v"]
+[ext_resource type="Script" path="res://core/inventory/slot.gd" id="4_2oguj"]
+[ext_resource type="Resource" uid="uid://d3q21g0qto0qu" path="res://data/inventory/items/tools/axe_4.tres" id="5_ks4ki"]
+[ext_resource type="Script" path="res://core/recipe/recipe.gd" id="6_f5w80"]
+
+[sub_resource type="Resource" id="Resource_uom7x"]
+script = ExtResource("4_2oguj")
+amount = 99
+item = ExtResource("3_h266v")
+
+[sub_resource type="Resource" id="Resource_034lu"]
+script = ExtResource("4_2oguj")
+amount = 1
+item = ExtResource("5_ks4ki")
+
+[resource]
+script = ExtResource("6_f5w80")
+name = "axe_5"
+display_name = "Công thức nâng cấp rìu"
+description = "Công thức nâng cấp rìu level 2"
+icon = ExtResource("2_b8bin")
+ingredients = Array[ExtResource("4_2oguj")]([SubResource("Resource_uom7x"), SubResource("Resource_034lu")])
+time = 20.0
+finished_product = ExtResource("1_226wh")
