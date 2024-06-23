@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3 uid="uid://o4gfgb3neg4p"]
+
+[ext_resource type="Resource" uid="uid://bmnmucr85o7ly" path="res://data/inventory/items/tools/shovel_4.tres" id="1_tdthx"]
+[ext_resource type="Texture2D" uid="uid://dwd1scc0amhvr" path="res://sprite/tool/shovel_4.png" id="2_xyjcg"]
+[ext_resource type="Resource" uid="uid://bjuqsmb6a3yii" path="res://data/inventory/items/rock.tres" id="3_j5o06"]
+[ext_resource type="Script" path="res://core/inventory/slot.gd" id="4_sm4rm"]
+[ext_resource type="Resource" uid="uid://btc02utffw758" path="res://data/inventory/items/tools/shovel_3.tres" id="5_6y03k"]
+[ext_resource type="Script" path="res://core/recipe/recipe.gd" id="6_rlsep"]
+
+[sub_resource type="Resource" id="Resource_uom7x"]
+script = ExtResource("4_sm4rm")
+amount = 180
+item = ExtResource("3_j5o06")
+
+[sub_resource type="Resource" id="Resource_034lu"]
+script = ExtResource("4_sm4rm")
+amount = 1
+item = ExtResource("5_6y03k")
+
+[resource]
+script = ExtResource("6_rlsep")
+name = "shovel_4"
+display_name = "Công thức nâng cấp xẻng"
+description = "Công thức nâng cấp xẻng level 5"
+icon = ExtResource("2_xyjcg")
+ingredients = Array[ExtResource("4_sm4rm")]([SubResource("Resource_uom7x"), SubResource("Resource_034lu")])
+time = 20.0
+finished_product = ExtResource("1_tdthx")

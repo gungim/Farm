@@ -9,7 +9,7 @@
 
 [sub_resource type="Resource" id="Resource_uom7x"]
 script = ExtResource("4_0pbiu")
-amount = 30
+amount = 99
 item = ExtResource("3_iev7f")
 
 [sub_resource type="Resource" id="Resource_034lu"]
@@ -21,7 +21,7 @@ item = ExtResource("1_aop7s")
 script = ExtResource("6_4yonb")
 name = "axe_3"
 display_name = "Công thức nâng cấp rìu"
-description = "Công thức nâng cấp rìu level 2"
+description = "Công thức nâng cấp rìu level 3"
 icon = ExtResource("2_cskfy")
 ingredients = Array[ExtResource("4_0pbiu")]([SubResource("Resource_uom7x"), SubResource("Resource_034lu")])
 time = 20.0

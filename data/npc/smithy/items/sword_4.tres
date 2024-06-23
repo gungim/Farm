@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3 uid="uid://ccnbim663ymfv"]
+
+[ext_resource type="Resource" uid="uid://bm8yhkg1hkola" path="res://data/inventory/items/tools/sword_4.tres" id="1_2qvor"]
+[ext_resource type="Texture2D" uid="uid://dokarnqxlltee" path="res://sprite/tool/sword_4.png" id="2_6h8k4"]
+[ext_resource type="Resource" uid="uid://bjuqsmb6a3yii" path="res://data/inventory/items/rock.tres" id="3_b1vn2"]
+[ext_resource type="Script" path="res://core/inventory/slot.gd" id="4_7fnfa"]
+[ext_resource type="Resource" uid="uid://c68gvlhigtdkc" path="res://data/inventory/items/tools/sword_3.tres" id="5_jiurj"]
+[ext_resource type="Script" path="res://core/recipe/recipe.gd" id="6_yvv6d"]
+
+[sub_resource type="Resource" id="Resource_uom7x"]
+script = ExtResource("4_7fnfa")
+amount = 180
+item = ExtResource("3_b1vn2")
+
+[sub_resource type="Resource" id="Resource_034lu"]
+script = ExtResource("4_7fnfa")
+amount = 1
+item = ExtResource("5_jiurj")
+
+[resource]
+script = ExtResource("6_yvv6d")
+name = "sword_4"
+display_name = "Công thức nâng cấp kiếm"
+description = "Công thức nâng cấp kiếm level 4"
+icon = ExtResource("2_6h8k4")
+ingredients = Array[ExtResource("4_7fnfa")]([SubResource("Resource_uom7x"), SubResource("Resource_034lu")])
+time = 20.0
+finished_product = ExtResource("1_2qvor")

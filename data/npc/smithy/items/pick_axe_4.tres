@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3 uid="uid://bwtqym4vw1f51"]
+
+[ext_resource type="Resource" uid="uid://cnqk0bjudpxxh" path="res://data/inventory/items/tools/pick_axe_4.tres" id="1_dtn0j"]
+[ext_resource type="Texture2D" uid="uid://bdxnxmbnogph2" path="res://sprite/tool/pick_axe_4.png" id="2_mdjat"]
+[ext_resource type="Resource" uid="uid://bjuqsmb6a3yii" path="res://data/inventory/items/rock.tres" id="3_2egui"]
+[ext_resource type="Script" path="res://core/inventory/slot.gd" id="4_mcmjv"]
+[ext_resource type="Resource" uid="uid://tao26y8433gx" path="res://data/inventory/items/tools/pick_axe_3.tres" id="5_3w7qb"]
+[ext_resource type="Script" path="res://core/recipe/recipe.gd" id="6_cbbp6"]
+
+[sub_resource type="Resource" id="Resource_uom7x"]
+script = ExtResource("4_mcmjv")
+amount = 180
+item = ExtResource("3_2egui")
+
+[sub_resource type="Resource" id="Resource_034lu"]
+script = ExtResource("4_mcmjv")
+amount = 1
+item = ExtResource("5_3w7qb")
+
+[resource]
+script = ExtResource("6_cbbp6")
+name = "pick_axe_4"
+display_name = "Công thức nâng cấp cuốc chim"
+description = "Công thức nâng cấp cuốc chim level 4"
+icon = ExtResource("2_mdjat")
+ingredients = Array[ExtResource("4_mcmjv")]([SubResource("Resource_uom7x"), SubResource("Resource_034lu")])
+time = 20.0
+finished_product = ExtResource("1_dtn0j")
