@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://daw3muvlyfoa4"]
+
+[ext_resource type="Resource" uid="uid://cupypm7nuakd3" path="res://data/inventory/categories/tool.tres" id="1_owt2d"]
+[ext_resource type="Texture2D" uid="uid://cjwqwg0fistsf" path="res://sprite/tool/pick_axe_2.png" id="2_o6nwb"]
+[ext_resource type="Script" path="res://core/inventory/inventory_item.gd" id="3_gvlyg"]
+
+[resource]
+script = ExtResource("3_gvlyg")
+max_stack = 1
+name = "pick_axe_2"
+display_name = "Cuốc chim"
+icon = ExtResource("2_o6nwb")
+weight = 1
+properties = {
+"action_type": "crawl_ice",
+"damage": 24,
+"level": 1,
+"upgrade_time": 600
+}
+description = "Dùng để thu hoạch đá"
+categories = Array[Resource("res://data/inventory/categories/category.gd")]([ExtResource("1_owt2d")])

@@ -1,51 +1,8 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=17 format=3 uid="uid://b7tdj35yq1wur"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=2 format=3 uid="uid://b7tdj35yq1wur"]
 
 [ext_resource type="Script" path="res://core/inventory/inventory.gd" id="1_dvblr"]
-[ext_resource type="Resource" uid="uid://caqbvffnohpl" path="res://data/inventory/items/axe.tres" id="2_nit0x"]
-[ext_resource type="Script" path="res://core/inventory/slot.gd" id="3_b25fc"]
-[ext_resource type="Resource" uid="uid://d2gbpwmggt6nt" path="res://data/inventory/items/bacon.tres" id="4_wi00h"]
-[ext_resource type="Resource" uid="uid://b8hctjqjv5ar8" path="res://data/inventory/items/rice.tres" id="5_5ifxd"]
-[ext_resource type="Resource" uid="uid://bwprlyip4hj0i" path="res://data/inventory/items/apple.tres" id="6_k5qy7"]
-[ext_resource type="Resource" uid="uid://co7nobtgx55oq" path="res://data/inventory/items/wood_panel.tres" id="7_dbybm"]
-[ext_resource type="Resource" uid="uid://bjuqsmb6a3yii" path="res://data/inventory/items/rock.tres" id="8_cynat"]
-[ext_resource type="Resource" uid="uid://bvo01esi8kbfi" path="res://data/inventory/items/seed_potato.tres" id="9_7y1r0"]
-
-[sub_resource type="Resource" id="Resource_lyccb"]
-script = ExtResource("3_b25fc")
-amount = 1
-item = ExtResource("2_nit0x")
-
-[sub_resource type="Resource" id="Resource_x6f2d"]
-script = ExtResource("3_b25fc")
-amount = 1
-item = ExtResource("4_wi00h")
-
-[sub_resource type="Resource" id="Resource_8wdve"]
-script = ExtResource("3_b25fc")
-amount = 99
-item = ExtResource("5_5ifxd")
-
-[sub_resource type="Resource" id="Resource_srydj"]
-script = ExtResource("3_b25fc")
-amount = 2
-item = ExtResource("6_k5qy7")
-
-[sub_resource type="Resource" id="Resource_c602c"]
-script = ExtResource("3_b25fc")
-amount = 99
-item = ExtResource("7_dbybm")
-
-[sub_resource type="Resource" id="Resource_3gepk"]
-script = ExtResource("3_b25fc")
-amount = 99
-item = ExtResource("8_cynat")
-
-[sub_resource type="Resource" id="Resource_fxvc7"]
-script = ExtResource("3_b25fc")
-amount = 2
-item = ExtResource("9_7y1r0")
 
 [resource]
 script = ExtResource("1_dvblr")
-slots = Array[ExtResource("3_b25fc")]([SubResource("Resource_lyccb"), SubResource("Resource_x6f2d"), SubResource("Resource_8wdve"), SubResource("Resource_srydj"), SubResource("Resource_c602c"), SubResource("Resource_3gepk"), SubResource("Resource_fxvc7")])
+slots = Array[Resource("res://core/inventory/slot.gd")]([])
 amount = 10

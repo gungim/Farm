@@ -9,5 +9,5 @@ script = ExtResource("1_yfavs")
 name = "potato"
 type = 1
 sprite_frames = ExtResource("2_3j7he")
-completed_time = 120
+completed_time = 12
 products = ExtResource("1_xok0c")

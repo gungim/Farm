@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://5peqylweaaco"]
+
+[ext_resource type="Resource" uid="uid://fm437bw8plha" path="res://data/inventory/categories/weapon.tres" id="1_ojwma"]
+[ext_resource type="Texture2D" uid="uid://dw4ybn1a7bvrp" path="res://sprite/tool/sword_2.png" id="2_abo6l"]
+[ext_resource type="Script" path="res://core/inventory/inventory_item.gd" id="3_e6uh1"]
+
+[resource]
+script = ExtResource("3_e6uh1")
+max_stack = 1
+name = "sword_2"
+display_name = "Thanh kiếm"
+icon = ExtResource("2_abo6l")
+weight = 1
+properties = {
+"action_type": "attack",
+"level": 2,
+"purchase": 20,
+"sell": 30,
+"upgrade_time": 600
+}
+description = "Thanh kiếm"
+categories = Array[Resource("res://data/inventory/categories/category.gd")]([ExtResource("1_ojwma")])

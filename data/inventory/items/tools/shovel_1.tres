@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://bqknrsyu66h62"]
+
+[ext_resource type="Resource" uid="uid://cupypm7nuakd3" path="res://data/inventory/categories/tool.tres" id="1_tw64i"]
+[ext_resource type="Texture2D" uid="uid://caxplpsntw7on" path="res://sprite/tool/shovel_1.png" id="2_k1g5p"]
+[ext_resource type="Script" path="res://core/inventory/inventory_item.gd" id="3_pn7rm"]
+
+[resource]
+script = ExtResource("3_pn7rm")
+max_stack = 1
+name = "shovel_1"
+display_name = "Xẻng"
+icon = ExtResource("2_k1g5p")
+weight = 1
+properties = {
+"action_type": "shovel",
+"level": 1,
+"purchase": 20,
+"sell": 30,
+"upgrade_time": 600
+}
+description = "Cải xẻng"
+categories = Array[Resource("res://data/inventory/categories/category.gd")]([ExtResource("1_tw64i")])
