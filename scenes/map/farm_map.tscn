@@ -1,10 +1,10 @@
 [gd_scene load_steps=29 format=3 uid="uid://c5qthjynhslhw"]
 
-[ext_resource type="Script" path="res://scenes/world/world.gd" id="1_rtydu"]
+[ext_resource type="Script" path="res://scenes/map/farm_map.gd" id="1_rtydu"]
 [ext_resource type="Texture2D" uid="uid://f3hrlu2jsc00" path="res://sprite/map/world_map.png" id="2_qpuf5"]
 [ext_resource type="Texture2D" uid="uid://bmk3ivo0qe23j" path="res://sprite/BoxSelector.png" id="3_tcsnj"]
-[ext_resource type="Script" path="res://scenes/world/tile_map.gd" id="4_stgf1"]
-[ext_resource type="Script" path="res://scenes/world/farm_tile.gd" id="5_ghdh3"]
+[ext_resource type="Script" path="res://scenes/map/tile_map.gd" id="4_stgf1"]
+[ext_resource type="Script" path="res://scenes/map/farm_tile.gd" id="5_ghdh3"]
 [ext_resource type="TileSet" uid="uid://dejdvv4y0nyoh" path="res://tileset/farm_tile.tres" id="6_8clj4"]
 [ext_resource type="Texture2D" uid="uid://dh7a1e4y2hlaf" path="res://sprite/map/lakeside.png" id="8_p5hml"]
 [ext_resource type="Texture2D" uid="uid://df8n352gwa07n" path="res://sprite/map/lake_map.png" id="9_jcpfl"]
