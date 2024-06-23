@@ -3,7 +3,7 @@ extends VBoxContainer
 @onready var input: SpinBox = $HSplitContainer/SpinBox
 @export var inventory: Inventory
 
-@onready var tool_res = load("res://scenes/inventory/db/categories/tool.tres")
+@onready var tool_res = load("res://data/inventory/categories/tool.tres")
 
 var current_index: int
 var current_slot: Slot

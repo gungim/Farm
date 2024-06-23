@@ -4,6 +4,10 @@
       "resource_local_to_scene": true,
       "resource_name": true
     },
+    "res://data/inventory/items/tools/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
     "res://scenes/entities/construction/smithy/db/": {
       "resource_local_to_scene": true,
       "resource_name": true
@@ -48,7 +52,8 @@
     }
   },
   "recent_paths": [
-    "res://data/inventory/items/"
+    "res://data/inventory/items/",
+    "res://data/inventory/items/tools/"
   ],
   "table_functions": {
     "filter": [

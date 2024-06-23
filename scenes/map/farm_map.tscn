@@ -2329,7 +2329,7 @@ constrain_avoidance = true
 
 [node name="DefaultUI" parent="." instance=ExtResource("10_k18b4")]
 
-[node name="Light" parent="." instance=ExtResource("20_rbyaj")]
+[node name="DayNight" parent="." instance=ExtResource("20_rbyaj")]
 
 [editable path="Entity/Trough2"]
 [editable path="Entity/Trough3"]

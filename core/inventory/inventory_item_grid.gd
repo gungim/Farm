@@ -60,5 +60,5 @@ func reset():
 	slots.clear()
 
 
-func _on_item_pressed(index: int):
+func _on_item_pressed(_index: int):
 	pass

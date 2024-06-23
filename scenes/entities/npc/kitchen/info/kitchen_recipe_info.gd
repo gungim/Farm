@@ -7,7 +7,7 @@ class_name KitchenRecipeInfo
 @export var process_grid: RecipeProcessGrid
 @export var tab_container: TabContainer
 
-func _help_view_info(item: Recipe):
+func _help_view_info(_item: Recipe):
 	$Label.text = "Weo, bạn muốn nấu món " + current_recipe.display_name + " ư?"
 	$TimeLabel.text = "Thời gian: " + GlobalEvents.format_time(current_recipe.time)
 	check_db()

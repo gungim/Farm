@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwu43tej6xty2"]
+[gd_scene load_steps=4 format=3 uid="uid://dwu43tej6xty2"]
 
 [ext_resource type="Script" path="res://scenes/inventory/item_info/icon.gd" id="1_h6ben"]
-[ext_resource type="Texture2D" uid="uid://ck7tfr1ywlj5v" path="res://sprite/tool/axe_icon.png" id="1_wflx7"]
 [ext_resource type="FontFile" uid="uid://61ntd2mdvlrp" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="3_4lngf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ne00h"]
@@ -20,7 +19,6 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="CenterContainer"]
 custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
-texture = ExtResource("1_wflx7")
 
 [node name="CenterContainer2" type="CenterContainer" parent="."]
 layout_mode = 2
