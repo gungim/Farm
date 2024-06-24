@@ -29,9 +29,9 @@ func _unhandled_input(event):
 				state.send_event("place_marker_setted")
 			else:
 				if check_item_by_category("tool"):
-					var item_action_type = check_item_property("action_type")
+					var item_action_type = get_item_property("action_type")
 					match item_action_type:
-						"hoe":
+						"hoe", "shovel":
 							FarmEvents.emit_signal("on_hoe", mouse_position)
 						_:
 							pass

@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("3_r260i")
-max_stack = 999
+max_stack = 10
 name = "potato"
 display_name = "Củ khoai"
 icon = ExtResource("1_1y7o2")

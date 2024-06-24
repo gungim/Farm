@@ -7,34 +7,41 @@ class_name HoePlace
 @onready var water_timer: Timer = $WaterTimer
 
 var tree_node: FarmTree
+var crop: Crop
 
 var planted: bool = false
 
 # max = 100
 # min = 0
-var water_value: int = 100
+var water_value: int = 100:
+	get:
+		return water_value
+	set(value):
+		if value > 100:
+			water_value = 100
+		if value < 0:
+			water_value = 0
+		water_value = value
 
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	input_pickable = true
 	water_timer.wait_time = 10
-	water_timer.autostart = true
+	water_timer.start()
 	effect.hide()
 
 
 func _plant():
-	if not player:
-		return
 	if not player.current_slot:
 		return
 
-	var crop: Crop = player.get_item_property("crop")
-	create_plant_node(crop)
+	crop = player.get_item_property("crop")
+	_create_plant_node()
 	effect.play("Planted")
 
 
-func create_plant_node(crop: Crop):
+func _create_plant_node():
 	var plant_scene: PackedScene
 
 	match crop.type:
@@ -68,6 +75,7 @@ func harvested():
 	player.cancel_animation()
 	planted = false
 	water_timer.stop()
+	_add_product_to_inventory()
 
 
 func _input_event(_viewport, event, _shape_idx):
@@ -94,10 +102,10 @@ func _input_event(_viewport, event, _shape_idx):
 									player.play_animation("HarvestChop")
 									if not tool_dmg:
 										tool_dmg = 1
-									tree_node._harvest(tool_dmg)
+									tree_node.harvest(tool_dmg)
 								FarmTree.HarvestType.HAND:
 									player.play_animation("HarvestHand")
-									tree_node._harvest(100)
+									tree_node.harvest(100)
 					_:
 						pass
 
@@ -112,3 +120,13 @@ func _on_water_timer_timeout():
 		sprite.frame = 1
 		if water_value <= 0:
 			water_timer.stop()
+
+
+func _add_product_to_inventory():
+	var products: CropProducts = crop.products
+	if not products:
+		return
+
+	for slot in products.items:
+		InventoryEvents.emit_signal("add_item", slot.item, slot.amount)
+	crop = null

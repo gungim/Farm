@@ -9,8 +9,6 @@ var completed_time: int = 0
 var stages: Array = []
 var current_state_index: int = 0
 
-var crop: Crop
-
 @onready var animated: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
 @onready var time_label: Label = $Label
@@ -35,7 +33,7 @@ func _help_ready():
 # Stages là 1 mảng int, là thơi gian các giai đoạn phát triển của cây
 # Được tạo thành nhờ số lượng animations trong sprite_frames
 # Sử dụng để tính animation sẽ chạy, ...
-func setup_stages():
+func setup_stages(crop: Crop):
 	var anm_amount = crop.sprite_frames.animations
 
 	for i in anm_amount.size() - 1:
@@ -45,12 +43,11 @@ func setup_stages():
 	stages.push_back(completed_time)
 
 
-func setup(start_time: int, crop_res: Crop, hp: int):
-	if not crop_res:
+func setup(start_time: int, crop: Crop, hp: int):
+	if not crop:
 		return
 
 	HP = hp
-	crop = crop_res
 
 	animated.sprite_frames = crop.sprite_frames
 
@@ -58,7 +55,7 @@ func setup(start_time: int, crop_res: Crop, hp: int):
 	completed_time = crop.completed_time
 	current_time = int(Time.get_unix_time_from_system() - start_time)
 
-	setup_stages()
+	setup_stages(crop)
 
 	if current_time < 0 or current_time > completed_time:
 		can_harvest = true
@@ -90,6 +87,10 @@ func _on_timer_timeout():
 	time_label.text = GlobalEvents.format_time(completed_time - current_time)
 
 
+func harvest(dmg: int):
+	_harvest(dmg)
+
+
 func _harvest(_dmg: int):
 	pass
 
@@ -99,6 +100,3 @@ func kill():
 	await get_tree().create_timer(2.).timeout
 	queue_free()
 
-
-func _add_product_to_inventory():
-	pass

@@ -13,13 +13,3 @@ func _on_mouse_exited():
 # TODO: chức năng thu hoạch cây nông nghiệp
 func _harvest(_dmg: int):
 	kill()
-	_add_product_to_inventory()
-
-
-func _add_product_to_inventory():
-	var products: CropProducts = crop.products
-	if not products:
-		return
-
-	for item in products.items:
-		InventoryEvents.emit_signal("add_item", item, 1)

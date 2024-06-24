@@ -1,8 +1,14 @@
-[gd_resource type="Resource" script_class="CropProducts" load_steps=3 format=3 uid="uid://cem7eium4h7dv"]
+[gd_resource type="Resource" script_class="CropProducts" load_steps=5 format=3 uid="uid://cem7eium4h7dv"]
 
 [ext_resource type="Resource" uid="uid://bvkt88vl6n8hw" path="res://data/inventory/items/tomato.tres" id="1_00he0"]
 [ext_resource type="Script" path="res://data/crop/crop_product_items/crop_product.gd" id="1_46d8n"]
+[ext_resource type="Script" path="res://core/inventory/slot.gd" id="2_74wc5"]
+
+[sub_resource type="Resource" id="Resource_wvcej"]
+script = ExtResource("2_74wc5")
+amount = 10
+item = ExtResource("1_00he0")
 
 [resource]
 script = ExtResource("1_46d8n")
-items = Array[Resource("res://core/inventory/inventory_item.gd")]([ExtResource("1_00he0")])
+items = Array[ExtResource("2_74wc5")]([SubResource("Resource_wvcej")])
