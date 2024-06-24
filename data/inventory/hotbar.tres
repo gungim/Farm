@@ -1,8 +1,15 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=2 format=3 uid="uid://b7tdj35yq1wur"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=5 format=3 uid="uid://b7tdj35yq1wur"]
 
 [ext_resource type="Script" path="res://core/inventory/inventory.gd" id="1_dvblr"]
+[ext_resource type="Resource" uid="uid://bjuqsmb6a3yii" path="res://data/inventory/items/rock.tres" id="2_jstwt"]
+[ext_resource type="Script" path="res://core/inventory/slot.gd" id="3_5nfa6"]
+
+[sub_resource type="Resource" id="Resource_6bogo"]
+script = ExtResource("3_5nfa6")
+amount = 99
+item = ExtResource("2_jstwt")
 
 [resource]
 script = ExtResource("1_dvblr")
-slots = Array[Resource("res://core/inventory/slot.gd")]([])
+slots = Array[ExtResource("3_5nfa6")]([SubResource("Resource_6bogo")])
 amount = 10

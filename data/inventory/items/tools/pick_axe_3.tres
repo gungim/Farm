@@ -14,8 +14,7 @@ weight = 1
 properties = {
 "action_type": "crawl_ice",
 "damage": 24,
-"level": 1,
-"upgrade_time": 600
+"level": 3
 }
 description = "Dùng để thu hoạch đá"
 categories = Array[Resource("res://data/inventory/categories/category.gd")]([ExtResource("1_pg01y")])

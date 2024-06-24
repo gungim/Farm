@@ -15,8 +15,7 @@ properties = {
 "action_type": "attack",
 "level": 1,
 "purchase": 20,
-"sell": 30,
-"upgrade_time": 600
+"sell": 30
 }
 description = "Thanh kiếm"
 categories = Array[Resource("res://data/inventory/categories/category.gd")]([ExtResource("1_2sg7p")])

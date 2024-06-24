@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("3_iq7av")
 max_stack = 1
-name = "shovel_1s"
+name = "shovel_5"
 display_name = "Xẻng"
 icon = ExtResource("2_g3bmf")
 weight = 1
@@ -15,8 +15,7 @@ properties = {
 "action_type": "shovel",
 "level": 5,
 "purchase": 20,
-"sell": 30,
-"upgrade_time": 600
+"sell": 30
 }
 description = "Cải xẻng"
 categories = Array[Resource("res://data/inventory/categories/category.gd")]([ExtResource("1_7gpuc")])

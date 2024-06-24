@@ -15,8 +15,7 @@ properties = {
 "action_type": "shovel",
 "level": 2,
 "purchase": 20,
-"sell": 30,
-"upgrade_time": 600
+"sell": 30
 }
 description = "Cải xẻng"
 categories = Array[Resource("res://data/inventory/categories/category.gd")]([ExtResource("1_u2ihs")])
