@@ -11,6 +11,10 @@ class_name NPC
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	menu.visible = false
+	_help_ready()
+
+func _help_ready():
+	pass
 
 
 func _on_static_body_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
@@ -21,6 +25,7 @@ func _on_static_body_2d_input_event(_viewport: Node, event: InputEvent, _shape_i
 					open_dialogue()
 					active_dialogue = false
 				else:
+					print_debug("Dev")
 					open_menu()
 
 

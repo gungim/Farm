@@ -1,11 +1,17 @@
 extends VBoxContainer
 class_name RecipeInfo
 
-@onready var grid: InventoryItemGrid = $InventoryItemGrid
+@onready var ingredients_grid: InventoryItemGrid = $InventoryItemGrid
 @onready var start_button: Button = $HBoxContainer/StartButton
 @onready var cancel_button: Button = $HBoxContainer/CancelButton
 
+@export var hotbar_db: Inventory
+@export var process_db: RecipeProcessDB
+
 var current_recipe: Recipe
+
+var valid_process_thread: bool = false
+var valid_all_db_can_remove: bool = false
 
 
 func _ready():
@@ -31,24 +37,25 @@ func view_info(item: Recipe):
 
 	visible = true
 	current_recipe = item
-	_help_view_info(item)
+	check_db()
+	_help_view_info()
 
 	var col = item.ingredients.size()
 	if col >= 6:
-		grid.columns = 6
+		ingredients_grid.columns = 6
 	else:
-		grid.columns = col
+		ingredients_grid.columns = col
 
 	var database = Inventory.new()
 	database.amount = col
 	database.setup()
 	database.slots = item.ingredients
 
-	grid.inventory = database
-	grid.setup_slots()
+	ingredients_grid.inventory = database
+	ingredients_grid.setup_slots()
 
 
-func _help_view_info(_item: Recipe):
+func _help_view_info():
 	pass
 
 
@@ -87,3 +94,28 @@ func check_ingredients(db: Inventory) -> bool:
 		checkall_valid = checkall_valid && obj_of_amount[key].valid
 
 	return checkall_valid
+
+
+func check_db():
+	valid_all_db_can_remove = check_ingredients(hotbar_db)
+	valid_process_thread = process_db.check_slot_empty()
+	if valid_process_thread && valid_all_db_can_remove:
+		start_button.disabled = false
+	else:
+		start_button.disabled = true
+
+
+func remove_hotbar_item():
+	for recipe_item in current_recipe.ingredients:
+		hotbar_db.remove_item_with_amount(recipe_item.item, recipe_item.amount)
+
+
+func create_process() -> RecipeProcess:
+	var current_time = Time.get_unix_time_from_system()
+
+	var process = RecipeProcess.new()
+	process.id = current_recipe.name + "_" + str(current_time)
+	process.start_time = current_time
+	process.recipe = current_recipe
+
+	return process

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bq7hs1udtyav" path="res://scenes/entities/npc/npc.tscn" id="1_gh4ss"]
 [ext_resource type="Texture2D" uid="uid://dx67xt7nn1vh2" path="res://sprite/character/chef_npc.png" id="2_o2huq"]
-[ext_resource type="Script" path="res://scenes/entities/npc/kitchen/kitchen_npc.gd" id="2_o4urb"]
+[ext_resource type="Script" path="res://scenes/entities/npc/kitchen/chef_npc.gd" id="2_o4urb"]
 [ext_resource type="Texture2D" uid="uid://bmc8h54ahygi3" path="res://sprite/construction/house.png" id="2_qjteh"]
 [ext_resource type="PackedScene" uid="uid://ecyq3phnubdy" path="res://scenes/entities/npc/kitchen/chef_content.tscn" id="4_0dd82"]
 [ext_resource type="PackedScene" uid="uid://u71k3ifp1dqo" path="res://scenes/entities/construction/light_source/ligh_source.tscn" id="4_deyju"]

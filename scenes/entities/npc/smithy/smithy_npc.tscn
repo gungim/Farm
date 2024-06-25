@@ -14,7 +14,6 @@ radius = 7.0
 
 [node name="SmithyNPC" instance=ExtResource("1_5u521")]
 script = ExtResource("2_c6sth")
-inventory = null
 
 [node name="House" type="StaticBody2D" parent="." index="0"]
 scale = Vector2(1.48, 1.48)

@@ -5,7 +5,7 @@ class_name RecipeProcessSlot
 @onready var icon: Button = $IconButton
 @onready var ok_button: Button = $OKButton
 
-@export var cooking: RecipeProcess
+@export var process: RecipeProcess
 
 signal done_pressed
 signal cancel_pressed
@@ -18,13 +18,13 @@ func _ready():
 
 
 func update_info_slot(new_slot: RecipeProcess):
-	cooking = new_slot
-	if cooking:
-		icon.icon = cooking.recipe.icon
-		icon.text = cooking.recipe.display_name
+	process = new_slot
+	if process:
+		icon.icon = process.recipe.icon
+		icon.text = process.recipe.display_name
 		if not timer.is_start:
 			timer.start_time = Time.get_unix_time_from_system()
-			timer.completed_time = cooking.recipe.time
+			timer.completed_time = process.recipe.time
 			timer.start()
 	else:
 		icon.icon = null

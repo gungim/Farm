@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ecyq3phnubdy"]
+[gd_scene load_steps=11 format=3 uid="uid://ecyq3phnubdy"]
 
 [ext_resource type="StyleBox" uid="uid://rq0es8yv12vg" path="res://style/pannel.tres" id="1_vd4jj"]
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/grid.gd" id="1_xh1nu"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://scenes/entities/npc/kitchen/info/tab.gd" id="6_6dy0d"]
 [ext_resource type="PackedScene" uid="uid://bhsy5m6kifgl3" path="res://scenes/entities/npc/kitchen/info/kitchen_recipe_info.tscn" id="8_135ll"]
 [ext_resource type="Script" path="res://core/recipe/process/recipe_process_grid.gd" id="10_bktf6"]
-[ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://data/inventory/hotbar.tres" id="10_jx5xj"]
 [ext_resource type="Resource" uid="uid://cxndeni5dcusi" path="res://scenes/entities/npc/kitchen/db/process_db.tres" id="11_ukfb5"]
 [ext_resource type="PackedScene" uid="uid://d07relr7hw1a5" path="res://core/recipe/process/recipe_process_slot.tscn" id="12_jr63j"]
 
@@ -67,10 +66,10 @@ script = ExtResource("6_6dy0d")
 visible = false
 layout_mode = 2
 
-[node name="RecipeInfo" parent="HSplitContainer/TabContainer/InfoTab" node_paths=PackedStringArray("process_grid", "tab_container") instance=ExtResource("8_135ll")]
+[node name="RecipeInfo" parent="HSplitContainer/TabContainer/InfoTab" node_paths=PackedStringArray("tab_container") instance=ExtResource("8_135ll")]
 layout_mode = 1
-process_grid = NodePath("../../CookingTab/KitchentCookingTab/RecipeProcessGrid")
 tab_container = NodePath("../..")
+process_db = ExtResource("11_ukfb5")
 
 [node name="CookingTab" type="TabBar" parent="HSplitContainer/TabContainer"]
 layout_mode = 2
@@ -91,7 +90,6 @@ theme_override_constants/margin_bottom = 6
 layout_mode = 2
 script = ExtResource("10_bktf6")
 database = ExtResource("11_ukfb5")
-hotbar_db = ExtResource("10_jx5xj")
 
 [node name="RecipeProccesSlot" parent="HSplitContainer/TabContainer/CookingTab/KitchentCookingTab/RecipeProcessGrid" instance=ExtResource("12_jr63j")]
 layout_mode = 2
