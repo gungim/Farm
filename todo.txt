@@ -9,12 +9,16 @@ DONE: mua vật phẩm
 DONE: Bán vật phẩm
 
 TODO: chức năng nâng cấp vật phẩm
--- NPC
+TODO: Check lại chức năng lấy sản phẩm khi nâng cấp xong
 
 TODO: Động vật 
 -- Tạo sản phẩm
 -- Thu hoạch sản phẩm
 -- Bán động vật
+
+TODO: Animal
+-- firefly
+-- frog
 
 TODO: UI
 -- Hiển thị vàng
@@ -23,3 +27,10 @@ TODO: UI
 
 TODO: SHADOW
 -- Big job
+
+TODO: Night and Day
+-- Đèn
+-- Hiển thị giờ
+
+TODO: Weather
+TODO: trough animation
