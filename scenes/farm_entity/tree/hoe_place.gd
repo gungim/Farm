@@ -61,7 +61,7 @@ func _create_plant_node():
 
 	planted = true
 
-	player.decrement_current_slot()
+	InventoryEvents.emit_signal("decrement_slot", player.current_slot_index, 1)
 
 
 func watering():

@@ -188,7 +188,7 @@ func eat_food():
 
 	if HP < MAX_HP:
 		change_hp(properties.healing)
-		decrement_current_slot()
+		InventoryEvents.emit_signal("decrement_slot", current_slot_index, 1)
 
 
 # using when click on hotbar
@@ -199,12 +199,4 @@ func _on_use_item(slot: Slot):
 			GlobalEvents.product_actions.FOOD:
 				eat_food()
 
-
 # ---------------------- End Farm -------------------------------
-
-
-func decrement_current_slot():
-	HotbarEvents.emit_signal("update_amount_slot", current_slot_index, -1)
-	current_slot.amount -= 1
-	if current_slot.amount <= 0:
-		current_slot = null

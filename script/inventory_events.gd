@@ -4,6 +4,7 @@ extends Node
 signal on_open_inventory(value)
 
 signal add_item(item: InventoryItem, amount: int)
+signal decrement_slot(index: int, amount: int)
 
 # set for open inventory or close
 

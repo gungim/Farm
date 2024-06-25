@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4wpyocjendwe"]
+[gd_scene load_steps=6 format=3 uid="uid://b4wpyocjendwe"]
 
 [ext_resource type="Script" path="res://scenes/inventory/inventory_sys.gd" id="1_rbv83"]
+[ext_resource type="Resource" uid="uid://b7tdj35yq1wur" path="res://data/inventory/hotbar.tres" id="2_68yvs"]
 [ext_resource type="PackedScene" uid="uid://crxgnlr5pwebb" path="res://scenes/inventory/player_inventory.tscn" id="2_jcuye"]
+[ext_resource type="Resource" uid="uid://bqmtwlv4wv3os" path="res://data/inventory/inventory.tres" id="3_2aef0"]
 [ext_resource type="PackedScene" uid="uid://c3qx1ngn7jsv8" path="res://scenes/inventory/hotbar/hotbar_ui.tscn" id="8_1dec4"]
 
 [node name="InventorySys" type="Node" groups=["InventorySys"]]
 script = ExtResource("1_rbv83")
+hotbar_db = ExtResource("2_68yvs")
+player_db = ExtResource("3_2aef0")
 
 [node name="HotbarUI" parent="." instance=ExtResource("8_1dec4")]
 size_flags_vertical = 4

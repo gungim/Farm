@@ -2317,7 +2317,7 @@ shape = SubResource("RectangleShape2D_gx3bk")
 texture = ExtResource("30_kabis")
 
 [node name="Player" parent="Entity" instance=ExtResource("23_oah11")]
-position = Vector2(432, 339)
+position = Vector2(986, 135)
 
 [node name="PillarFire" parent="Entity" instance=ExtResource("9_umx1j")]
 position = Vector2(428, 334)
