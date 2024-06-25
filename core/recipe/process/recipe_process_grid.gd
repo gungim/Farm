@@ -10,6 +10,7 @@ var slots: Array[RecipeProcessSlot] = []
 
 func _ready():
 	database.connect("updated_slot", _on_updated_slot)
+	database.connect("removed_slot", _on_removed_slot)
 	setup()
 
 
@@ -27,7 +28,6 @@ func _on_done_pressed(slot_index: int):
 	if product:
 		InventoryEvents.emit_signal("add_item", product, 1)
 		database.remove_at(slot_index)
-		slots.remove_at(slot_index)
 
 
 func _on_cancel_pressed():
@@ -41,6 +41,11 @@ func _on_updated_slot(slot_index: int):
 		create_slot_obj(slot_index)
 
 	slots[slot_index].update_info_slot(item)
+
+
+func _on_removed_slot(slot_index: int):
+	slots[slot_index].queue_free()
+	slots.remove_at(slot_index)
 
 
 func create_slot_obj(slot_index: int):

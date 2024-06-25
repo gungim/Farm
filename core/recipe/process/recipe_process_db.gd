@@ -5,6 +5,7 @@ class_name RecipeProcessDB
 var max_amount: int = 3
 
 signal updated_slot(index: int)
+signal removed_slot(index: int)
 
 
 func update_time(id: String, time: float):
@@ -40,6 +41,7 @@ func add(item: RecipeProcess):
 
 func remove_at(index: int):
 	slots.remove_at(index)
+	removed_slot.emit(index)
 
 
 func check_slot_empty() -> bool:
