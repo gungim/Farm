@@ -18,19 +18,14 @@ func _ready():
 
 
 func update_info_slot(new_slot: Slot):
-	var tween = create_tween()
-	tween.tween_property(bg, "scale", Vector2(1.04, 1.04), 0.4)
-	tween.tween_property(bg, "scale", Vector2(1, 1), 0.3)
-
-	set_default_slot(new_slot)
-
-
-func set_default_slot(new_slot: Slot):
 	slot = new_slot
 
 	if slot != null and slot.item != null:
 		icon.texture = slot.item.icon
 		amount_label.text = str(slot.amount) if slot.amount >= 2 else ""
+		var tween = create_tween()
+		tween.tween_property(bg, "scale", Vector2(1.04, 1.04), 0.4)
+		tween.tween_property(bg, "scale", Vector2(1, 1), 0.3)
 	else:
 		icon.texture = null
 		amount_label.text = ""

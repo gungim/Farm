@@ -17,11 +17,11 @@ func _setup():
 func _ready():
 	if not slot_scene:
 		slot_scene = load("res://scenes/inventory/slot_ui.tscn")
-	setup_inventory()
+	_setup_inventory()
 	_setup()
 
 
-func setup_inventory():
+func _setup_inventory():
 	if not inventory:
 		return
 
@@ -31,7 +31,7 @@ func setup_inventory():
 
 
 func setup_slots():
-	reset()
+	_reset()
 
 	for i in inventory.amount:
 		var slot_obj: SlotUI = slot_scene.instantiate()
@@ -45,7 +45,7 @@ func setup_slots():
 		add_child(slots[i])
 
 		var slot: Slot = inventory.get_slot(i)
-		slot_obj.set_default_slot(slot)
+		slot_obj.update_info_slot(slot)
 		slot_obj.show_item_name = show_item_name
 		slot_obj.drag_item = drag_item
 
@@ -54,7 +54,7 @@ func _on_updated_slot(slot_index: int):
 	slots[slot_index].update_info_slot(inventory.get_slot(slot_index))
 
 
-func reset():
+func _reset():
 	for child in get_children():
 		child.queue_free()
 	slots.clear()
