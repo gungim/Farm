@@ -16,6 +16,7 @@ func _on_cancel_button_pressed():
 
 
 func _on_start_button_pressed():
+	check_db()
 	if not (valid_process_thread && valid_all_db_can_remove):
 		return
 
