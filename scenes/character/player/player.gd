@@ -102,41 +102,8 @@ func _on_movement_state_physics_processing(_delta):
 
 #------------------------ End state ------------------
 
+
 # ----------------------- Inventory -------------------
-
-
-# if current_slot
-# kiểm tra current_slot có properties action không
-# nếu k có action return -1
-# nếu có thì return properties damage
-# hoặc return 0
-# với giá trị == 0 thì sẽ thực hiện nhừng hàng động k cần tool damage(thu hoạch)
-func check_farm_state(key: String) -> int:
-	if not current_slot:
-		return -1
-
-	var check_is_tool = check_item_by_category("tool")
-	if not check_is_tool:
-		return -1
-
-	var action_type = get_item_property("action_type")
-	if not action_type:
-		return -1
-
-	match key:
-		"chop":
-			var damage = get_item_property("damage")
-			if action_type == key:
-				return damage
-			return 0
-		"harvest":
-			if action_type == key:
-				return 0
-			return -1
-		_:
-			return -1
-
-
 func check_item_property(key: String) -> bool:
 	if not current_slot:
 		return false
@@ -147,19 +114,19 @@ func check_item_property(key: String) -> bool:
 
 
 # Trả về -1 nếu k có category = tool.tres
-func check_item_by_category(key: String) -> bool:
+func check_item_by_category(category_name: String) -> bool:
 	if not current_slot:
 		return false
 	var item = current_slot.item
 	if not item.categories:
 		return false
 
-	var category_res = load("res://data/inventory/categories/" + key + ".tres")
+	var category_res = load("res://data/inventory/categories/" + category_name + ".tres")
 	if not category_res:
 		return false
 
 	var check_is_tool = item.categories.find(category_res)
-	if check_is_tool == -1:
+	if check_is_tool < 0:
 		return false
 
 	return true
@@ -179,8 +146,11 @@ func cancel_animation():
 
 
 func _on_select_hotbar_slot(slot: Slot, index: int):
-	current_slot = slot
-	current_slot_index = index
+	if not slot:
+		clear_current_slot()
+	else:
+		current_slot = slot
+		current_slot_index = index
 
 
 func eat_food():
@@ -199,4 +169,10 @@ func _on_use_item(slot: Slot):
 			GlobalEvents.product_actions.FOOD:
 				eat_food()
 
+
 # ---------------------- End Farm -------------------------------
+
+
+func clear_current_slot():
+	current_slot = null
+	current_slot_index = -1
